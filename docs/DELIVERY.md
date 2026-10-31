@@ -1,5 +1,7 @@
 # Delivery status - 2026-11-01
 
+**Phase 21: WSL2 and Docker installed; staging blocked by directory ACL.** [Actual installation, versions and scoped permission proposal](PHASE21_REPORT.md). WSL 3.0.3 / Docker Desktop 4.97 / Engine 29.9.2 / Compose 5.6.1 verified with a local WSL2 backend. All 89 context hashes match; Compose cannot read the sandbox-owned staging configuration from the host account. No containers or PostgreSQL tests executed; scoped read/traverse access requires owner approval. No reboot, purchase or public deployment occurred.
+
 **Phase 20: awaiting specific runtime installation approval.** [Environment, proposed setup and launch-gate report](PHASE20_REPORT.md). Host discovery and all 89 context hashes checked; WSL/Docker remain unavailable, compatibility remains open, and staging/regression execution has not occurred.
 
 **Phase 19: blocked at local runtime prerequisite.** [Discovery report, outstanding gates and installation instructions](PHASE19_REPORT.md). Docker/Podman and PostgreSQL tools are unavailable; WSL reports it is not installed. No provisioning, container/PostgreSQL execution or host changes occurred. Runtime installation requires explicit owner authorization under the Phase 19 instructions.
