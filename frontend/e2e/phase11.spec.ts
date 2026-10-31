@@ -14,7 +14,7 @@ test("longitudinal dashboard uses actual measurements and saves technical achiev
     [0, 50],
   ]) {
     const date = new Date();
-    date.setDate(date.getDate() - days);
+    date.setUTCDate(date.getUTCDate() - days);
     const response = await page.request.post("/api/progress", {
       data: {
         date: date.toISOString().slice(0, 10),
@@ -119,7 +119,7 @@ test("history pagination, calendar anchor, report download and date filters", as
   const plan = await (await page.request.get("/api/training-plans")).json();
   for (let days = 0; days < 12; days++) {
     const date = new Date();
-    date.setDate(date.getDate() - days);
+    date.setUTCDate(date.getUTCDate() - days);
     expect(
       (
         await page.request.post("/api/progress", {
@@ -153,7 +153,9 @@ test("history pagination, calendar anchor, report download and date filters", as
       .locator("tbody tr"),
   ).toHaveCount(2);
   const monday = new Date();
-  monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7) - 14);
+  // Fixture dates are submitted as UTC ISO days; local weekday arithmetic can
+  // turn Monday into Sunday before 04:00 on the Dubai test host.
+  monday.setUTCDate(monday.getUTCDate() - ((monday.getUTCDay() + 6) % 7) - 14);
   await page
     .getByLabel("Analytics cycle start (Monday)", { exact: true })
     .fill(monday.toISOString().slice(0, 10));

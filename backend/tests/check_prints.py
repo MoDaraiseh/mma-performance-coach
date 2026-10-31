@@ -8,8 +8,8 @@ import pymupdf
 from pypdf import PdfReader
 
 phase = os.getenv("MMA_QA_PHASE", "phase1")
-if phase not in {f"phase{i}" for i in range(1, 16)}:
-    raise ValueError("MMA_QA_PHASE must be phase1 through phase15")
+if phase not in {f"phase{i}" for i in range(1, 18)}:
+    raise ValueError("MMA_QA_PHASE must be phase1 through phase17")
 root = Path(__file__).resolve().parents[2] / "docs" / "evidence" / phase
 output = root / "print-pages"
 output.mkdir(exist_ok=True)

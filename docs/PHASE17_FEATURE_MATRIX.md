@@ -1,0 +1,33 @@
+# Phase 17 final feature acceptance matrix
+
+Reviewed 2026-11-01. Status describes the stated implementation, not professional approval or production infrastructure. Complete = implemented and exercised locally; partial = material bounded coverage/requirement gaps; blocked = an external prerequisite prevents acceptance; unverified = available code without actual required execution. No invented overall percentage. The final [acceptance report](PHASE17_ACCEPTANCE.md) records run totals; corresponding backend files and browser specs were executed in the documented full/focused runs.
+
+| Feature | Status | Actual implementation / supporting source or endpoint | Evidence and remaining limitation |
+| --- | --- | --- | --- |
+| Account management | Partial | `identity.py`, `access.py`, `SessionSecurity.tsx`; auth/config/session/link/revoke APIs | test_phase6/13/16; phase6/13.spec. Local recovery/session ownership verified; real OIDC/MFA/cutover unverified |
+| Athlete onboarding | Complete | `Wizard.tsx`, `schemas.py`; profile/draft APIs | test_api/phase2; journey and states-and-print: validation, units, draft restoration and persistence |
+| Physical analysis | Complete | `analysis.py` physical ratios/BMI; `/api/assessment` | test_services/phase12; journey/phase12.spec. Documented calculations only, missing values explicit, no talent diagnosis |
+| UFC divisions | Complete | `divisions.py`, bundled dated reference; weight-class API | test_phase4/8; journey. Current dated reference versus historical divisions explicit; not event eligibility approval |
+| Sustainable weight guidance | Partial | Conservative `WeightClassService` boundary/referral | test_services/phase12; phase12.spec. No individualized target or weight cut; requires qualified assessment |
+| Fighting-style recommendations | Partial | `analysis.py`, `athletics.py`, preference/access/experience heuristics | test_phase7/12/15; responsive/phase7.spec. Useful development direction, no validated optimal style or professional potential |
+| Martial arts priorities | Complete | Seven independently recorded disciplines; coached/solo technical stages | test_phase7; phase7.spec. Self-report/coaching access are not credential verification |
+| Athletic assessment | Partial | `athletics.py`, measured versus estimated benchmarks and missing-data reporting | test_phase3/7/12; phase3/7.spec. No validated anaerobic capacity, medical or professional-athlete norms |
+| Fighter matching | Partial | `matching.py` v4 deterministic normalized available evidence, configurable weights, explanations | test_phase4/8/15; phase4/8/15.spec. Only 19 snapshots, sparse technical/current statistics, 11 rights unresolved |
+| Fighter Comparison Lab | Complete | `Comparison.tsx`; paginated search/filter/manual comparison/favorites APIs | phase4/8/15.spec plus backend tests. Tested curated inputs; no comprehensive roster claim |
+| Exercise catalog | Complete | `exercises.py`, `TrainingInsights.tsx`; exercise API | test_phase3/7/15; phase3/7/15.spec. 49 curated entries, 15 coaching-required; independent technique review pending |
+| Twelve-week planning/calendar | Complete | `training.py`, `plan_integrity.py`; approved plan/calendar views | test_phase3/7/15; phase3/7/15.spec. Conservative templates, recovery and availability caps; not fight-camp validation |
+| Exercise logging | Complete | `WorkoutLog` and per-exercise actual sets/reps/load/RPE/time/distance | test_phase3/7; phase3/7.spec. UI records one discipline per log; API supports more |
+| Progression | Complete | `progression.py`, future-only proposed adaptation and history | test_phase3/7; phase3/7.spec. Fatigue/missed/failed sessions do not force overload; heuristic thresholds pending review |
+| Nutrition | Partial | Separate ingredients/calculations/exclusions/composition/validation; seven days/grocery/instructions | test_phase5/9/12/15; phase5/9/15.spec. 55 USDA foods; limited variety, editorial budget/cuisine, no clinical adequacy or certification |
+| Meal substitutions | Complete | `meal_composition.py`, nutrition integrity, bounded macro portion solver and before/after approval | test_phase5/9/10/15; phase5/9/10/15.spec. Infeasible portions reject honestly; package/cross-contact verification remains external |
+| AI coaching | Partial | `coach_context.py`, `coach_guidance.py`, `mma_agent.py`; meaningful offline and optional structured provider | test_phase10/13 and mocked provider cases; phase10.spec; 18 offline evaluation scenarios. Live quality, billing and deployment spend controls unverified |
+| Controlled actions | Complete | `coach_security.py`, `coach_actions.py`, account/version-bound proposals and explicit approval/rejection | test_phase10/13; phase10.spec. Supported typed actions only; LLM cannot approve or persist arbitrary changes |
+| Longitudinal analytics | Complete | `analytics.py`, `history_index.py`, paginated histories, window records/trends and accessible tables | test_phase11; phase11.spec. Explicit event/series/point/source-plan caps; records apply to comparable selected windows |
+| Reassessment | Complete | Week 4/8/12 measured comparisons and future-only proposals | test_phase3/7/11; journey/phase3/7/11.spec. No automatic modification of approved plans |
+| Reporting/export | Partial | Owned account JSON, bounded reports, streamed CSV, five current-view print reports | test_phase6/11; journey/phase6/11/states-and-print. Full account JSON still materializes history; selected week/day details rather than entire program book |
+| Account deletion | Complete | Owned transaction deletes account-linked records/sessions; UI cancel/confirm | test_phase6/11/13; phase6.spec. Offhost backup deletion reconciliation still operator responsibility |
+| PostgreSQL infrastructure | Blocked | Guarded `verify_postgres.py`, driver/offline migration SQL | SQLite migration and offline compilation verified; real database/native restore unavailable |
+| Professional validation | Blocked | 31-method inventory, seven synthetic examples, four specialist packs | All unsigned; automated safety cases do not prove specialist approval |
+| Public distribution/deployment | Blocked | Production cutover/licensing gates; container/proxy/backup templates | Missing licensed packaging, actual PostgreSQL/IdP/TLS/image/monitoring/restore evidence and explicit subsequent owner authorization |
+
+No listed local feature is accepted solely because a button/route exists. Workflow, persistence, negative cases and service-level tests are mapped above. Historical Phase 14/15 matrices remain snapshot evidence; this matrix supersedes their current-readiness wording.

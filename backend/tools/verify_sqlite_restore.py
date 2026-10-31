@@ -63,7 +63,7 @@ with tempfile.TemporaryDirectory(prefix="restore-check-", dir=runtime) as folder
         "sessions_invalidated": True,
     }
     phase = os.getenv("MMA_QA_PHASE", "phase13")
-    if phase not in {"phase13", "phase14", "phase16"}:
+    if phase not in {"phase13", "phase14", "phase16", "phase17"}:
         raise ValueError("Unsupported evidence phase")
     output = root / f"docs/evidence/{phase}/backup-restore.json"
     output.parent.mkdir(parents=True, exist_ok=True)

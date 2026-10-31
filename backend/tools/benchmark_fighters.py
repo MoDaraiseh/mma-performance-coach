@@ -56,11 +56,11 @@ with tempfile.TemporaryDirectory(dir=runtime, prefix="fighter-perf-") as folder:
         }
     engine.dispose()
     phase = os.getenv("MMA_QA_PHASE", "phase8")
-    if phase not in {"phase8", "phase13", "phase14"}:
+    if phase not in {"phase8", "phase13", "phase14", "phase17"}:
         raise ValueError("Unsupported evidence phase")
     path = root / (
         f"docs/evidence/{phase}/fighter-performance.json"
-        if phase in {"phase13", "phase14"}
+        if phase in {"phase13", "phase14", "phase17"}
         else "docs/evidence/phase8/performance.json"
     )
     path.parent.mkdir(parents=True, exist_ok=True)

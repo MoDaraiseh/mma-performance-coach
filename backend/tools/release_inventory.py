@@ -50,7 +50,7 @@ def main():
             for k in next(iter(foods.values()))["per_100g"]
         },
         "exercise_count": len(exercises),
-        "licensing_limit": "Original 11 fighter source snapshots have unestablished redistribution rights; six attributed CC BY-SA adaptations. Foods USDA SR Legacy April 2018; editorial allergen metadata is not certification.",
+        "licensing_limit": "Original 11 fighter source snapshots have unestablished redistribution rights; eight attributed CC BY-SA adaptations. Foods USDA SR Legacy April 2018; editorial allergen metadata is not certification.",
     }
     runtime = {
         "platform": platform.platform(),
@@ -64,7 +64,10 @@ def main():
         "public_deployment": False,
         "independent_expert_approval": False,
     }
-    directory = root / "docs/evidence/phase14"
+    phase = os.getenv("MMA_QA_PHASE", "phase14")
+    if phase not in {"phase14", "phase17"}:
+        raise ValueError("Unsupported evidence phase")
+    directory = root / f"docs/evidence/{phase}"
     directory.mkdir(parents=True, exist_ok=True)
     for name, value in (("data-quality", report), ("runtime", runtime)):
         (directory / f"{name}.json").write_text(json.dumps(value, indent=2), encoding="utf-8")

@@ -1,5 +1,7 @@
 # Architecture review — Phase 6
 
+Current consolidated architecture/acceptance: [Phase 17](PHASE17_ACCEPTANCE.md), schema 0008, 19 fighter snapshots, 55 foods, 49 exercises, indexed/paginated histories and Phase 16 identity/licensing startup gates. Historical sections below retain their original counts and bundle sizes; they are not current readiness claims.
+
 ## Boundaries and contracts
 
 The React/TypeScript client uses a same-origin typed JSON API. FastAPI validates Pydantic inputs; deterministic physical, division, training, progression, fighter-matching and nutrition modules produce calculations. The provider interprets bounded coaching intents and explanations only. SQLAlchemy stores owned versioned JSON aggregates with immutable plan/input snapshots; Alembic controls schema changes. Public fighter/reference snapshots and revision archives are separate from athlete data. Source-backed exercise/food catalogs remain bundled data.

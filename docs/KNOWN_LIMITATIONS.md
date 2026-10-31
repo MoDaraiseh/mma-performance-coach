@@ -1,11 +1,11 @@
 # Known limitations and release gates
 
-Highest supported release category: B, verified local release candidate (subject to the final results in PHASE14_ACCEPTANCE.md). This does not authorize public deployment or paid services.
+Highest supported category: **A - local release candidate** under [Phase 17 acceptance](PHASE17_ACCEPTANCE.md). Earlier B-local labels are historical and use a different scale. Not staging-ready or production-ready; no deployment or paid-service authorization.
 
 ## Public-launch blockers
 
 - No PostgreSQL runtime/native restore test: PostgreSQL/Docker/native tools and an authorized test database are unavailable here. Offline SQL compilation is not runtime compatibility.
-- Managed OIDC is validated with signed-token mocked transports and mocked browser provider pages only. Real tenant policy, MFA, recovery, key rotation, back-channel logout and live account linking need staging tests. Legacy recovery remains enabled by default and bypasses IdP MFA; migrate accounts before changing this policy.
+- Managed OIDC is validated with signed-token mocked transports and mocked browser provider pages only. Real tenant policy, MFA, recovery, key rotation, back-channel logout and live account linking need staging tests. Local legacy recovery remains enabled by default. Phase 16 production startup blocks recovery bypass, unacknowledged cutover and unlinked accounts; migrate/verify access explicitly without silently changing credentials.
 - Docker images, nginx/TLS, remote database roles/TLS, forwarded-header trust, secrets storage, monitoring, edge abuse controls and retention services have not been deployed/exercised. Initialize reference data with one worker; concurrent first-start seeding is not hardened.
 - Original11 fighter source records have unestablished redistribution rights. Eight additions have attributed CC BY-SA terms; the whole database is not automatically licensed for commercial redistribution.
 - No independent security penetration test or sports-science/clinical approval. Four specialist packs remain blank and pending. User safety/claims and contact or competition-specific use require qualified review.

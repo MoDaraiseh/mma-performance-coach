@@ -1,5 +1,46 @@
 # Testing and reproducibility
 
+Current final acceptance and exact results: [Phase 17](PHASE17_ACCEPTANCE.md). Historical sections below retain their phase-specific totals. Phase 17 evidence is isolated in ignored `docs/evidence/phase17/`; no normal athlete database is used.
+
+## Phase 17 commands and environment
+
+Windows PowerShell, app-local Python 3.14.7 environment, Node 24.20.0/npm11.19.0, Edge155.0.4283.45. From backend, actual commands used:
+
+```powershell
+..\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp=../.qa-runtime/pytest-phase17
+..\..\.venv\Scripts\ruff.exe check app tests tools migrations
+..\..\.venv\Scripts\ruff.exe format --check app tests tools migrations
+..\.venv\Scripts\python.exe -m pip check
+..\.venv\Scripts\python.exe -m pip_audit -r requirements.lock.txt --format json --output ../docs/evidence/phase17/python-audit.json
+$env:MMA_QA_PHASE='phase17'
+..\.venv\Scripts\python.exe tools/release_inventory.py
+..\.venv\Scripts\python.exe tools/verify_sqlite_restore.py
+..\.venv\Scripts\python.exe tools/evaluate_coach.py --limit 18
+..\.venv\Scripts\python.exe tools/benchmark_api.py
+..\.venv\Scripts\python.exe tools/benchmark_fighters.py
+# After browser PDFs are available:
+..\.venv\Scripts\python.exe tests/check_prints.py
+# After final source commit/tag (refuses dirty source):
+..\.venv\Scripts\python.exe tools/build_release_manifest.py
+```
+
+Ruff is available in the parent virtual environment but commands inspect only this project. No parent code/configuration is modified. From frontend:
+
+```powershell
+npm.cmd test
+npm.cmd run build
+npm.cmd run typecheck:browser
+npx.cmd prettier --check src e2e
+npm.cmd audit --json
+$env:PW_REPORT_FILE='../docs/evidence/phase17/browser-results.json'
+$env:PW_EVIDENCE_DIR='../docs/evidence/phase17'
+npm.cmd run test:browser
+```
+
+The build command includes app TypeScript (`tsc -b`); the browser command repeats production build and browser TypeScript before the full suite. Outputs were redirected into named Phase 17 logs; PowerShell text logs can be UTF-16 while native JSON files are UTF-8. Browser channel is installed Edge/Blink, one worker, local isolated HTTP at8123, five configured viewports and synthetic fixtures. Live provider keys are cleared by test server. Automated accessibility checks, screen-reader/manual-device testing and mocked/live identity/provider tests are distinct in the final report.
+
+Real PostgreSQL verification was not executed: no Docker/PostgreSQL/native tools or authorized disposable test URL. When available, explicitly configure `MMA_TEST_DATABASE_URL` naming `mma_test*`, optionally `MMA_TEST_RESTORE=1`, then run `python tools/verify_postgres.py`; preserve output and inspect failures. Never substitute a normal DATABASE_URL or athlete database. Live-model evaluation likewise remains unexecuted and requires separate explicit configuration/cost authorization. [Controlled procedures and remaining gates](PHASE17_LAUNCH_RUNBOOK.md).
+
 Run commands from the stated MMA project directories. Never point tests at personal or production data. The original tracker has independent tooling and is outside this task.
 
 From `backend/`:
@@ -107,3 +148,6 @@ Baseline328backend/12frontend passed. Updated344backend/12frontend passed;16new 
 From backend: `..\.venv\Scripts\python.exe tools/phase15_quality.py` produces the operator report using public bundled data, without athlete DB reads/writes or network. Reproduce foods using `..\.venv\Scripts\python.exe tools/import_usda.py ../.qa-runtime/usda-sr-2018.zip` after obtaining the exact official hash-pinned archive. This intentionally updates the source catalog, not athlete data. Keep source changes in the independent MMA repository; do not add runtime data/evidence.
 
 From frontend set PW_REPORT_FILE=../docs/evidence/phase15/browser-results.json and PW_EVIDENCE_DIR=../docs/evidence/phase15 before npm.cmd run test:browser. The dedicated phase15.spec.ts tests a new sourced fighter, explicit training context, selected fat-food preview/approval/history, and final Mobility filter/objective behavior. Final follow-up uses a new API process and rebuilt assets so stale static modules do not stand in for final code. MMA_QA_PHASE=phase15 selects the optional print inspector. No physical-device/live-AI/real-IdP/PostgreSQL runtime pass is implied.
+
+
+Phase17 full Edge initially returned163passed/5fixture failures/7intentional skips. Corrected UTC calendar fixtures; final `npm.cmd run test:browser -- phase11.spec.ts` passed15cases across five widths with explicit native exit0. Reports/logs use edge-phase11-final names and separate evidence directory. `PW_CHANNEL=chromium` with `journey.spec.ts --project=desktop-1440 --project=mobile-375` additionally passed4cases. All commands were sequential against isolated servers; the original full report remains unchanged. [Failure analysis and precise accounting](PHASE17_BROWSER_QA.md).

@@ -1,5 +1,7 @@
 # Security review and operating boundaries
 
+Current acceptance: [Phase 17 security/licensing assessment](PHASE17_SECURITY_LICENSING.md) and [launch/runbooks](PHASE17_LAUNCH_RUNBOOK.md). Automated local checks pass; independent security, professional and deployed infrastructure acceptance remain pending.
+
 **Phase 16 supersedes earlier production-cutover wording.** See [the current operations and independent-test handoff](PHASE16_OPERATIONS.md). Production startup blocks legacy recovery, unacknowledged cutover, unlinked accounts and unresolved fighter distribution rights. Local defaults preserve recovery credentials. OIDC fresh authentication is checked explicitly; no live MFA, penetration-test or staging certification is implied.
 
 **Phase 13 supersedes the historical Phase6 control matrix below.** See [current evidence and blockers](PHASE13_INFRASTRUCTURE.md). Production now requires configured Authlib OIDC, PostgreSQL and current migrations. Explicit issuer/subject linking preserves local account/recovery ownership; no email merging. Session list/revocation, single-use flows, aggregate AI budgets and error-response headers are implemented. Legacy recovery deliberately remains available by default and bypasses IdP MFA; disable only after an authorized migration. No live-provider/TLS/proxy/penetration or production security certification is claimed.
