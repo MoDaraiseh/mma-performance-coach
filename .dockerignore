@@ -1,0 +1,13 @@
+.env
+.env.*
+**/.venv
+**/node_modules
+**/dist
+**/__pycache__
+**/*.db
+**/*.sqlite*
+.qa-runtime
+docs/evidence
+frontend/test-results
+frontend/playwright-report
+.git

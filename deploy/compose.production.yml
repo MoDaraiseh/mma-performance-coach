@@ -1,0 +1,37 @@
+# Private staging/deployment recipe; never started automatically.
+services:
+  database:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: mma
+      POSTGRES_USER: mma
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure a secret-managed password}
+    volumes:
+      - mma-postgres:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mma -d mma"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    env_file: ../.env
+    environment:
+      # Set this to the exact proxy peer as observed inside the container.
+      # Never use '*'. Incorrect trust fails HTTPS checks rather than guessing.
+      FORWARDED_ALLOW_IPS: ${FORWARDED_ALLOW_IPS:-127.0.0.1}
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      database:
+        condition: service_healthy
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+volumes:
+  mma-postgres:

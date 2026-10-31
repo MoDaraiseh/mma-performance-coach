@@ -1,0 +1,14 @@
+[Unit]
+Description=MMA retention dry run (no deletion by default)
+
+[Service]
+Type=oneshot
+User=mma
+WorkingDirectory=/opt/mma/backend
+EnvironmentFile=/etc/mma/environment
+# Dry run. Changing to --scheduled --apply also requires RETENTION_ENABLED=true.
+ExecStart=/opt/mma/.venv/bin/python -m app.maintenance --scheduled
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true

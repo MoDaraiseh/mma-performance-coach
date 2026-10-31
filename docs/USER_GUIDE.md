@@ -1,0 +1,18 @@
+# Local user guide
+
+Use the exact setup commands in README.md. Keep this app's database and configuration separate from the original tracker. Existing databases need a verified backup before Alembic upgrade to head0008; the acceptance tests do not migrate your personal database.
+
+1. Open http://127.0.0.1:8000. Explore the synthetic demo or choose Build my athlete profile. Save the one-time recovery token privately; signing out ends the current session, not the recovery credential. Settings lists sessions and can revoke them. Never share recovery tokens or exports.
+2. Complete the assessment wizard. Enter everyday weight, actual measurements, independent discipline experience, optional comparable benchmark results, availability, equipment, goals and dietary preferences. Mark measured versus estimated information honestly. Draft saving lets you return later.
+3. Review Physical analysis and Fighting style. Division references are not weigh-in eligibility or a weight-cut target. Technical priorities reflect self-report/access/preferences and need your coach's judgment.
+4. In Comparison lab inspect top matches, coverage, source dates and differences. Change weights or search/filter/manual compare. Saving a favorite preserves a snapshot; a high score does not establish professional skill.
+5. Review Training and each session. Log the actual date, status, completed sets, repetitions, load, RPE and duration. Record missed/failed sessions honestly. Recovery feedback can hold progression; recommendations do not silently modify the approved plan.
+6. In Nutrition review estimates, portions, ingredients and restrictions. Check packaging/certification and cross-contact with suppliers. Preview substitutions, inspect changed totals, then explicitly approve or reject. Profile/plan/preference changes can make old nutrition stale; regenerate deliberately without deleting history.
+7. In Progress add dated check-ins and comparable tests. Choose a date window and development metric; expand the accessible chart data table. Set a Monday cycle anchor if you want due-versus-completed adherence. Sparse evidence is qualified, and records apply to the selected window. Narrow long windows when coverage warnings appear.
+8. Request week4/8/12 reassessment. Review proposed changes and source versions. Approve only the intended changes; rejection leaves the current plan intact. If a proposal becomes stale, request a new preview.
+9. Ask AI coach supported questions about your current plan, progression, discipline priorities, meals or comparisons. Offline mode uses local rules. Optional provider mode can fail or fall back and is explicitly labeled. A response is not proof that data changed: look for persisted approval confirmation.
+10. Export private account JSON from Settings; use Progress CSV/JSON or browser Print for the current report. Keep downloads secure. Delete account data only when ready: confirmation removes application account records and sessions, but does not delete an external IdP account or operator backups/previous downloads.
+
+For loading/network errors, retry after connectivity recovers. A401 returns to account recovery; a409 means the source changed and needs a fresh preview. Unavailable numerical recommendations are intentionally withheld for unsupported/minor/clinical/unsafe requests. Stop symptom-provoking training and seek qualified assessment; contact practice and competition nutrition require professional supervision.
+
+This is a verified local release candidate, with automated checks rather than independent professional approval. See KNOWN_LIMITATIONS.md and PHASE14_ACCEPTANCE.md before broader use.

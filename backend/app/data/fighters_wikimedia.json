@@ -1,0 +1,520 @@
+[
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "usman",
+    "name": "Kamaru Usman",
+    "competition_division": "Men",
+    "height_cm": 182.88,
+    "reach_cm": 193.04,
+    "listed_weight_kg": 83.9146,
+    "division_history": [
+      {
+        "name": "Welterweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [
+      "Wrestling",
+      "BJJ"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Kamaru_Usman",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 72,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 76,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 185,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Kamaru_Usman"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "jones",
+    "name": "Jon Jones",
+    "competition_division": "Men",
+    "height_cm": 193.04,
+    "reach_cm": 214.63,
+    "listed_weight_kg": 107.955,
+    "division_history": [
+      {
+        "name": "Light Heavyweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Heavyweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": null,
+    "background": [
+      "Wrestling",
+      "BJJ"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Jon_Jones",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 76,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 84.5,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 238,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Jon_Jones"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "cejudo",
+    "name": "Henry Cejudo",
+    "competition_division": "Men",
+    "height_cm": 162.56,
+    "reach_cm": 162.56,
+    "listed_weight_kg": 61.235,
+    "division_history": [
+      {
+        "name": "Flyweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Bantamweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": null,
+    "background": [
+      "Wrestling"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Henry_Cejudo",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 64,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 64,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 135,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Henry_Cejudo"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "namajunas",
+    "name": "Rose Namajunas",
+    "competition_division": "Women",
+    "height_cm": 165.1,
+    "reach_cm": 165.1,
+    "listed_weight_kg": 56.699,
+    "division_history": [
+      {
+        "name": "Strawweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Flyweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": null,
+    "background": [
+      "Taekwondo",
+      "Karate",
+      "BJJ"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Rose_Namajunas",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 65,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 65,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 125,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Rose_Namajunas"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "rousey",
+    "name": "Ronda Rousey",
+    "competition_division": "Women",
+    "height_cm": 167.64,
+    "reach_cm": 172.72,
+    "listed_weight_kg": 64.4101,
+    "division_history": [
+      {
+        "name": "Bantamweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [
+      "Judo"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Ronda_Rousey",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 66,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 68,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 142,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Ronda_Rousey"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "tate",
+    "name": "Miesha Tate",
+    "competition_division": "Women",
+    "height_cm": 167.64,
+    "reach_cm": 165.1,
+    "listed_weight_kg": 61.6886,
+    "division_history": [
+      {
+        "name": "Bantamweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Flyweight",
+        "context": "Documented UFC historical participation; not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": null,
+    "background": [
+      "BJJ"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Miesha_Tate",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 66,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 65,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 136,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Miesha_Tate"
+    }
+  }
+]

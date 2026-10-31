@@ -1,0 +1,15 @@
+-- Fresh dedicated PostgreSQL deployment only. Review as an administrator.
+-- Set role passwords through a secret manager / secure interactive \password,
+-- never by committing literals or putting them into command history.
+CREATE ROLE mma_migrate LOGIN;
+CREATE ROLE mma_runtime LOGIN;
+REVOKE CREATE ON SCHEMA public FROM PUBLIC;
+GRANT CONNECT ON DATABASE mma TO mma_migrate, mma_runtime;
+GRANT USAGE, CREATE ON SCHEMA public TO mma_migrate;
+GRANT USAGE ON SCHEMA public TO mma_runtime;
+ALTER DEFAULT PRIVILEGES FOR ROLE mma_migrate IN SCHEMA public
+    GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO mma_runtime;
+ALTER DEFAULT PRIVILEGES FOR ROLE mma_migrate IN SCHEMA public
+    GRANT USAGE, SELECT ON SEQUENCES TO mma_runtime;
+-- Run Alembic using mma_migrate; run the application using mma_runtime.
+-- Existing tables require equivalent explicit GRANT statements after review.
