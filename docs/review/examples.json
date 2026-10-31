@@ -532,6 +532,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 4,
@@ -1210,14 +1215,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-banana",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-banana-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 31.2,
@@ -1303,14 +1309,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-carrot",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-carrot-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.4,
@@ -1396,14 +1403,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-tomato",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-tomato-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.5,
@@ -1489,14 +1497,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-strawberry",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-strawberry-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 18.7,
@@ -1527,7 +1536,7 @@
             }
           }
         ],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -2095,6 +2104,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 6,
@@ -2198,8 +2212,8 @@
                     ]
                   },
                   {
-                    "name": "Wall push-up",
-                    "catalog_id": "wall-push",
+                    "name": "Dumbbell floor press",
+                    "catalog_id": "floor-press",
                     "rep_range": [
                       8,
                       12
@@ -2209,11 +2223,13 @@
                     "sets": 2,
                     "reps": "8–12",
                     "rest": "45–60 seconds",
-                    "cue": "Use a stable wall and bend elbows under control. Keep about three comfortable repetitions in reserve; never work through pain.",
-                    "substitution": "Ask your coach for a suitable alternative.",
+                    "cue": "Lie on the floor; press comfortable dumbbells with wrists stacked. Lower elbows gently, without bouncing. Keep about three comfortable repetitions in reserve; never work through pain.",
+                    "substitution": "Wall push-up",
                     "block_minutes": 4.66,
                     "progression_rule": "Progress only through a reviewed proposal after two comparable completed exposures with actual sets and effort; hold after missed/failed work or recovery flags. Keep all work and rest inside this block.",
-                    "alternative_ids": []
+                    "alternative_ids": [
+                      "wall-push"
+                    ]
                   },
                   {
                     "name": "Easy walk or stationary cycle",
@@ -3121,14 +3137,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-banana",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-banana-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 31.2,
@@ -3214,14 +3231,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-potato-carrot",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-potato-carrot-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare potato (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.4,
@@ -3307,14 +3325,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-quinoa-tomato",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-quinoa-tomato-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare quinoa (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.4,
@@ -3400,14 +3419,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-strawberry",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-strawberry-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 18.7,
@@ -3438,7 +3458,7 @@
             }
           }
         ],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -4003,6 +4023,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 3,
@@ -4420,7 +4445,7 @@
         "reason": "No numerical targets for minors, clinical needs, pregnancy/breastfeeding, eating-disorder concerns or unspecified metabolic equation input.",
         "guidance": "Educational estimates, not measured energy expenditure or medical nutrition therapy. Independent sports-dietitian review is pending. A calorie floor and matching macros do not establish adequate energy availability or a nutritionally complete diet; this app cannot diagnose REDs. Review clinical needs and competition-specific fueling with a qualified sports dietitian. No dehydration, rapid weight cuts or extreme diets. Check labels, halal certification and cross-contact; ingredient screening is not an allergy safety guarantee.",
         "days": [],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -4968,6 +4993,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": false,
         "reason": "Automatic exercise prescriptions are withheld for reported training limitations. Obtain an individualized plan from a qualified professional; update the limitation only when appropriate.",
         "days": 0,
@@ -5140,14 +5170,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-banana",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-banana-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 31.2,
@@ -5233,14 +5264,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-carrot",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-carrot-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.4,
@@ -5326,14 +5358,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-tomato",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-tomato-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.5,
@@ -5419,14 +5452,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-strawberry",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-strawberry-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 18.7,
@@ -5457,7 +5491,7 @@
             }
           }
         ],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -6016,6 +6050,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 4,
@@ -6580,7 +6619,7 @@
         "reason": "Automated numerical nutrition withheld for a rapid-cutting or extreme-restriction request. No dehydration or rapid weight-loss plan is provided; consult a qualified sports dietitian and medical team.",
         "guidance": "Educational estimates, not measured energy expenditure or medical nutrition therapy. Independent sports-dietitian review is pending. A calorie floor and matching macros do not establish adequate energy availability or a nutritionally complete diet; this app cannot diagnose REDs. Review clinical needs and competition-specific fueling with a qualified sports dietitian. No dehydration, rapid weight cuts or extreme diets. Check labels, halal certification and cross-contact; ingredient screening is not an allergy safety guarantee.",
         "days": [],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -7130,6 +7169,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 4,
@@ -7694,7 +7738,7 @@
         "reason": "Unrecognized allergy; automated meals withheld",
         "guidance": "Educational estimates, not measured energy expenditure or medical nutrition therapy. Independent sports-dietitian review is pending. A calorie floor and matching macros do not establish adequate energy availability or a nutritionally complete diet; this app cannot diagnose REDs. Review clinical needs and competition-specific fueling with a qualified sports dietitian. No dehydration, rapid weight cuts or extreme diets. Check labels, halal certification and cross-contact; ingredient screening is not an allergy safety guarantee.",
         "days": [],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",
@@ -8242,6 +8286,11 @@
         }
       ],
       "training": {
+        "development_context": {
+          "mode": "General fitness and MMA development",
+          "coach_review_required": false,
+          "note": "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance."
+        },
         "available": true,
         "reason": null,
         "days": 3,
@@ -8773,14 +8822,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-banana",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-banana-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 31.2,
@@ -8866,14 +8916,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-carrot",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-carrot-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.4,
@@ -8959,14 +9010,15 @@
                     }
                   }
                 ],
-                "recipe_id": "chicken-couscous-tomato",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "chicken-couscous-tomato-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare couscous (cooked) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion chicken breast (cooked); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 37.5,
@@ -9052,14 +9104,15 @@
                     }
                   }
                 ],
-                "recipe_id": "yogurt-oats-strawberry",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": "yogurt-oats-strawberry-olive-oil",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": "Varied: ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                  "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                  "Prepare oats (dry) to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                  "Portion Greek yogurt (plain, nonfat); use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                   "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                  "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil."
+                  "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed olive oil portion, with no uncounted dressing."
                 ],
                 "cooking_note": "Beginner: assembly estimate 10 minutes, within your 30-minute limit; batch preparation and shopping are excluded.",
                 "protein": 18.7,
@@ -9090,7 +9143,7 @@
             }
           }
         ],
-        "catalog_version": "usda-sr-curated-v2",
+        "catalog_version": "usda-sr-curated-v3",
         "preferences": {
           "objective": "Maintain",
           "culture": "Varied",

@@ -72,6 +72,7 @@ def provider(monkeypatch):
                 "aud": "mma-client",
                 "exp": int(time.time()) + 300,
                 "iat": int(time.time()),
+                "auth_time": int(time.time()),
                 "nonce": state["nonce"],
                 **state["override"],
             }
@@ -128,7 +129,15 @@ def test_real_authlib_signed_oidc_nonce_pkce_login_and_replay(client, provider):
 
 @pytest.mark.parametrize(
     "claims",
-    [{"nonce": "wrong"}, {"aud": "other-client"}, {"iss": "https://evil.example"}, {"exp": 1}],
+    [
+        {"nonce": "wrong"},
+        {"aud": "other-client"},
+        {"iss": "https://evil.example"},
+        {"exp": 1},
+        {"auth_time": None},
+        {"auth_time": 1},
+        {"auth_time": 9999999999},
+    ],
 )
 def test_oidc_bad_signed_claims_never_create_accounts(client, provider, claims):
     provider["override"] = claims

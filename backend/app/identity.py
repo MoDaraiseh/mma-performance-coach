@@ -61,6 +61,7 @@ async def begin(request, uid=None):
                 state_hash=digest(state),
                 payload={
                     "user_id": uid,
+                    "started_at": datetime.now(timezone.utc).timestamp(),
                     "session_hash": digest(request.cookies.get("mma_session", "")) if uid else None,
                 },
                 expires_at=datetime.now(timezone.utc) + timedelta(minutes=10),
@@ -88,6 +89,19 @@ async def begin(request, uid=None):
         raise HTTPException(
             503, "Managed identity provider unavailable; no account was changed"
         ) from None
+
+
+def validate_fresh_authentication(claims, flow, now=None):
+    # max_age=0 requires auth_time. Token issuance alone is not fresh authentication.
+    now = now or datetime.now(timezone.utc).timestamp()
+    auth_time = claims.get("auth_time")
+    started = flow.get("started_at")
+    if (
+        type(auth_time) not in (int, float)
+        or type(started) not in (int, float)
+        or not started - 30 <= auth_time <= now + 30
+    ):
+        raise ValueError("Fresh provider authentication was not established")
 
 
 def bind_identity(claims, flow):
@@ -189,6 +203,7 @@ def install(app, auth, set_cookie):
             claims = token.get("userinfo")
             if not token.get("id_token") or not claims:
                 raise ValueError("Missing validated ID token")
+            validate_fresh_authentication(claims, flow)
             session_token = bind_identity(claims, flow)
         except HTTPException:
             raise

@@ -32,6 +32,8 @@ class Settings(BaseSettings):
     oidc_client_secret: str = ""
     oidc_state_secret: str = ""
     allow_legacy_recovery: bool = True
+    identity_cutover_acknowledged: bool = False
+    fighter_distribution_reviewed: bool = False
     retention_enabled: bool = False
     ai_global_daily: int = Field(1000, ge=0, le=1000000)
     ai_global_monthly: int = Field(10000, ge=0, le=10000000)

@@ -15,16 +15,29 @@ from .settings import settings
 
 
 def increment(key):
+    increment_many([key])
+
+
+def record_http(status, duration_ms):
+    bucket = next((n for n in (100, 500, 1000, 5000) if duration_ms <= n), "inf")
+    keys = ["http.total", f"http.latency_ms.le_{bucket}"]
+    if status >= 400:
+        keys.append("http." + str(status))
+    increment_many(keys)
+
+
+def increment_many(keys):
     for _ in range(2):
         try:
             with Session.begin() as db:
-                result = db.execute(
-                    update(OperatorCounter)
-                    .where(OperatorCounter.key == key)
-                    .values(count=OperatorCounter.count + 1)
-                )
-                if not result.rowcount:
-                    db.add(OperatorCounter(key=key, count=1))
+                for key in keys:
+                    result = db.execute(
+                        update(OperatorCounter)
+                        .where(OperatorCounter.key == key)
+                        .values(count=OperatorCounter.count + 1)
+                    )
+                    if not result.rowcount:
+                        db.add(OperatorCounter(key=key, count=1))
             return
         except IntegrityError:
             continue
@@ -106,6 +119,7 @@ def report():
     return {
         "database": readiness(),
         "counters": counts,
+        "latency_note": "Disjoint response-header latency buckets in milliseconds; excludes streaming body delivery. Lifetime counters, not windowed percentiles.",
         "identity_mode": settings.identity_mode,
         "ai": {
             "daily_outbound_ceiling": settings.ai_global_daily,

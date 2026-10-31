@@ -62,9 +62,10 @@ from .ingredients import catalog_payload as nutrition_catalog_payload
 from .meal_composition import validate_plan as validate_meal_plan
 from .mma_agent import MMAAgentService
 from .nutrition_models import CoachIntent, NutritionChange, NutritionPreferences
-from .operations import increment, readiness, reserve_ai
+from .operations import increment, readiness, record_http, reserve_ai
 from .plan_integrity import make_plan, newest_checkin, plan_status
 from .progression import adapt_future, progression_review
+from .release_policy import require_release
 from .repository import account_records, account_write, append_record, latest_checkin, latest_record
 from .schemas import (
     AnalyticsSchedule,
@@ -95,7 +96,9 @@ async def lifespan(app):
         conn.execute(select(LoginSession).limit(1))
         conn.execute(select(RateBucket).limit(1))
     with Session() as db:
-        for f in SeededFighterProvider().all():
+        if settings.app_env == "production":
+            require_release(db, settings)
+        for f in [] if settings.app_env == "production" else SeededFighterProvider().all():
             if not db.get(FighterSnapshot, f["id"]):
                 db.add(FighterSnapshot(id=f["id"], payload=f, verified_at=f["verified_at"]))
         for division in ("Men", "Women"):
@@ -219,11 +222,12 @@ async def operational_response(request: Request, call_next):
             }
         )
     )
-    if response.status_code >= 400:
-        try:
-            await run_in_threadpool(increment, "http." + str(response.status_code))
-        except SQLAlchemyError:
-            logger.error(json.dumps({"event": "operational_counter_unavailable"}))
+    try:
+        await run_in_threadpool(
+            record_http, response.status_code, (time.perf_counter() - started) * 1000
+        )
+    except SQLAlchemyError:
+        logger.error(json.dumps({"event": "operational_counter_unavailable"}))
     return response
 
 

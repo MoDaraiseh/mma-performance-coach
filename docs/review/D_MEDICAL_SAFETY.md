@@ -48,3 +48,12 @@ Approval status: ____________________  Approved scope, exclusions and required f
 | | | | | | |
 
 Reviewer signature/original feedback reference: ____________________
+
+
+## Phase 16 review refresh (2026-11-01)
+
+Source baseline: 1943020 (Phase 15); review the Phase 16 diff and regenerated `examples.json` together. All seven examples were regenerated from the current deterministic engine, not an LLM or clinician. Coverage is 19 fighters, 55 USDA ingredients and 49 exercises (15 requiring coach access). These counts describe curated coverage, not completeness. All 31 inventory methods remain independently unvalidated. No actual expert feedback or signed approval was supplied/found; all reviewer, credentials, date and approval fields remain unfilled.
+
+Record each finding with method ID, example ID, severity, proposed correction, rationale/source, acceptance test and disposition. Acceptance requires the qualified reviewer to assess exact outputs and population limits; passing software tests is insufficient. See [operational/security handoff](../PHASE16_OPERATIONS.md) for identity, privacy and licensing gates.
+
+Specialist questions and acceptance gate: Review youth/no-cut boundaries, unresolved injury conflicts, low recovery holds, absence of medical diagnosis, uncertainty around measured/estimated metrics and professional referral wording. Confirm self-reported coaching access is not credential verification. Accept only with documented red flags, exclusion criteria and escalation instructions.

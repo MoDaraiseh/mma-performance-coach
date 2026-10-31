@@ -1,7 +1,7 @@
 # Private staging/deployment recipe; never started automatically.
 services:
   database:
-    image: postgres:18
+    image: ${POSTGRES_IMAGE:-postgres:18}
     environment:
       POSTGRES_DB: mma
       POSTGRES_USER: mma
@@ -18,6 +18,9 @@ services:
     build:
       context: ..
       dockerfile: deploy/Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:24-bookworm-slim}
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.14-slim-bookworm}
     env_file: ../.env
     environment:
       # Set this to the exact proxy peer as observed inside the container.

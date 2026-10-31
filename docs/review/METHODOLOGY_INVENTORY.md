@@ -88,3 +88,12 @@ Submit feedback against a method ID and a reproduced example. Record source/cred
 Meal portion composition now uses a pivoted3x3 linear solve of measured catalog protein/carbohydrate/fat per gram for three ingredients, after fixed produce contributions. Outputs are bounded gram portions; singular/negative/out-of-range solutions fail. This replaces the special-case oil-only2x2 solve, and includes non-fat nutrients in nuts/seeds/avocado. Rounding and per-meal/day/grocery recomputation remain validated. Nutrient exactness does not establish variety, clinical adequacy, energy availability or allergen safety. Dietitian review remains pending.
 
 Matching v4 normalizes explicit background spelling/case aliases and reports score contributions; scales/weights remain uncalibrated product heuristics. Training adds a bench-free press option and competition-context/source-staleness flag without increasing dose. Exercise expansion instructions and preparation steps remain editorial, with contact/power supervision and all previous safety gates. No reviewer sign-off was supplied or invented.
+
+
+## Phase 16 review refresh (2026-11-01)
+
+Source baseline: 1943020 (Phase 15); review the Phase 16 diff and regenerated `examples.json` together. All seven examples were regenerated from the current deterministic engine, not an LLM or clinician. Coverage is 19 fighters, 55 USDA ingredients and 49 exercises (15 requiring coach access). These counts describe curated coverage, not completeness. All 31 inventory methods remain independently unvalidated. No actual expert feedback or signed approval was supplied/found; all reviewer, credentials, date and approval fields remain unfilled.
+
+Record each finding with method ID, example ID, severity, proposed correction, rationale/source, acceptance test and disposition. Acceptance requires the qualified reviewer to assess exact outputs and population limits; passing software tests is insufficient. See [operational/security handoff](../PHASE16_OPERATIONS.md) for identity, privacy and licensing gates.
+
+Phase 16 changes concern release policy, authentication freshness and operational counters; no sports-science equation was newly validated or altered. Existing 31-method rows remain the authoritative inputs/outputs/equations/assumptions/sources/limitations/safety inventory. All expert-review gates remain PENDING.

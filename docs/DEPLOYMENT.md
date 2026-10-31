@@ -1,5 +1,7 @@
 # Deployment and operations - Phase 13
 
+**Phase 16 policy supersedes historical cutover instructions:** see [current operations and release gates](PHASE16_OPERATIONS.md). Production requires explicit identity cutover and fighter distribution review. No staging deployment was performed.
+
 **Public production deployment is not authorized or verified.** Read [Phase 13 evidence and blockers](PHASE13_INFRASTRUCTURE.md) and [security boundaries](SECURITY.md). Local SQLite validation and mocked OIDC protocol tests do not establish PostgreSQL, real IdP, proxy/TLS, container or production readiness.
 
 ## Existing local installation

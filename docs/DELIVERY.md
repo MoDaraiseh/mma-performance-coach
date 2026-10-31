@@ -1,6 +1,8 @@
 # Delivery status · 2026-10-31
 
-**Current delivery: Phase 15.** [Delivery report and actual evidence](PHASE15_DELIVERY.md), [updated feature matrix](PHASE15_FEATURE_MATRIX.md).344backend tests/12frontend tests passed. Source-backed catalogs now19fighters/55foods/49exercises; normalization, allergy validation, macro-balanced food replacement, exercise filtering and competition-context review are integrated. No athlete database reset/migration or tracker change. Public release gates remain open.
+**Current delivery: Phase 16.** [Verification report](PHASE16_DELIVERY.md), [operations/review handoff](PHASE16_OPERATIONS.md). 358 backend / 12 frontend / 15 targeted five-width Edge checks passed. Status remains a local release candidate; external infrastructure and independent reviews are pending.
+
+**Historical Phase 15 delivery:** [Delivery report and actual evidence](PHASE15_DELIVERY.md), [updated feature matrix](PHASE15_FEATURE_MATRIX.md).344backend tests/12frontend tests passed. Source-backed catalogs now19fighters/55foods/49exercises; normalization, allergy validation, macro-balanced food replacement, exercise filtering and competition-context review are integrated. No athlete database reset/migration or tracker change. Public release gates remain open.
 
 
 **Current release: Phase14 - verified local release candidate (category B).** [Acceptance report, feature matrix, evidence and launch gates](PHASE14_ACCEPTANCE.md). 328 backend / 12 frontend tests passed; full Edge 158 passed, 0 failed, 7 intentional skips across five widths; final focused checks 15 passed. Current schema0008. No public deployment, live AI/IdP, PostgreSQL runtime or independent professional approval. Earlier phase statements below are historical snapshots.
