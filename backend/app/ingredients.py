@@ -10,7 +10,7 @@ CATALOG = {
         (Path(__file__).parent / "data/ingredients.json").read_text(encoding="utf-8")
     )
 }
-VERSION = "usda-sr-curated-v2"
+VERSION = "usda-sr-curated-v3"
 MACROS = ("protein", "carbs", "fat")
 
 

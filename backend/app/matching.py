@@ -7,12 +7,27 @@ from .divisions import current_reference
 from .fighters import SeededFighterProvider
 
 GROUPS = ("physical", "background", "style", "stance", "weight_class")
-ALGORITHM = "resemblance-v3"
-METHOD = "Heuristic resemblance, not probability or professional proficiency. Individual physical scores = 100 * exp(-0.5 * standardized difference squared); height/reach scale 15 cm, derived reach/height ratio scale 0.05. Physical subweights and available group weights are renormalized; a partially observed physical group contributes only its supported fraction of the requested weight. Ratio defaults to zero to avoid double counting reach. Background/style use Jaccard set overlap, stance exact agreement. Division = 100 * exp(-nearest reference-limit difference / 30 lb), using active reference divisions only; everyday scale reference is not eligibility or a target. Missing data never scores zero. Coverage is the fraction of requested weight backed by available dimensions, including physical subweights. Rankings use unrounded scores, ties by fighter ID. Display rounded to whole points; comparisons with different coverage require caution. Stale means observed over 365 days ago, not necessarily incorrect."
+ALGORITHM = "resemblance-v4"
+METHOD = "Heuristic resemblance, not probability or professional proficiency. Individual physical scores = 100 * exp(-0.5 * standardized difference squared); height/reach scale 15 cm, derived reach/height ratio scale 0.05. Physical subweights and available group weights are renormalized; a partially observed physical group contributes only its supported fraction of the requested weight. Ratio defaults to zero to avoid double counting reach. Explicit background names normalize whitespace/case and Brazilian jiu-jitsu/BJJ aliases without inferring skills. Background/style use Jaccard set overlap, stance exact agreement. Division = 100 * exp(-nearest reference-limit difference / 30 lb), using active reference divisions only; everyday scale reference is not eligibility or a target. Missing data never scores zero. Coverage is the fraction of requested weight backed by available dimensions, including physical subweights. Rankings use unrounded scores, ties by fighter ID. Display rounded to whole points; comparisons with different coverage require caution. Stale means observed over 365 days ago, not necessarily incorrect."
 
 
 def overlap(a, b):
     return 100 * len(a & b) / len(a | b)
+
+
+def background_terms(values):
+    """Normalize explicit names only; do not infer disciplines from style or teams."""
+    aliases = {
+        "brazilian jiu-jitsu": "bjj",
+        "brazilian jiu jitsu": "bjj",
+        "brazilian jiujitsu": "bjj",
+        "muay-thai": "muay thai",
+    }
+    return {
+        aliases.get(" ".join(v.casefold().split()), " ".join(v.casefold().split()))
+        for v in values
+        if v.strip()
+    }
 
 
 def percentages(values):
@@ -64,10 +79,21 @@ class FighterMatchingService:
             reasons["physical"] = "No requested physical measurements available on both sides."
         known = {e.discipline for e in p.experience if e.months > 0}
         if known and f.get("background"):
-            components["background"] = overlap(known, set(f["background"]))
+            components["background"] = overlap(
+                background_terms(known), background_terms(f["background"])
+            )
             differences.append(
                 "Shared documented disciplines: "
-                + (", ".join(sorted(known & set(f["background"]))) or "none")
+                + (
+                    ", ".join(
+                        sorted(
+                            k
+                            for k in known
+                            if background_terms([k]) & background_terms(f["background"])
+                        )
+                    )
+                    or "none"
+                )
                 + "; practice duration and proficiency are not comparable."
             )
         else:
@@ -160,6 +186,11 @@ class FighterMatchingService:
             "algorithm": ALGORITHM,
             "breakdown": {k: round(v) for k, v in components.items()},
             "effective_weights": percentages(supported),
+            "score_contributions": {
+                k: round(supported[k] * v / total, 1) if total else 0
+                for k, v in components.items()
+                if raw[k] > 0
+            },
             "physical_components": {k: round(v) for k, v in physical.items()},
             "physical_effective_weights": percentages({k: physical_raw[k] for k in physical}),
             "coverage": coverage,

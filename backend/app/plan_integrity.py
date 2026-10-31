@@ -28,6 +28,7 @@ TRAINING_FIELDS = (
     "equipment",
     "objectives",
     "conditioning_mode",
+    "competitive",
 )
 
 

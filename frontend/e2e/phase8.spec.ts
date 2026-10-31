@@ -8,11 +8,11 @@ test("paginated fighter library, source-aware filters and licensed manual compar
   await seedDemo(page);
   await navigate(page, "Comparison lab");
   await expect(
-    page.getByText("17 records found; page 1", { exact: true }),
+    page.getByText("19 records found; page 1", { exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Next fighter page" }).click();
   await expect(
-    page.getByText("17 records found; page 2", { exact: true }),
+    page.getByText("19 records found; page 2", { exact: true }),
   ).toBeVisible();
   await page
     .getByLabel("Search competition category", { exact: true })
@@ -43,7 +43,7 @@ test("paginated fighter library, source-aware filters and licensed manual compar
   await page
     .getByText("Coverage and data quality report", { exact: true })
     .click();
-  await expect(page.getByText(/Men: 10; Women: 7/)).toBeVisible();
+  await expect(page.getByText(/Men: 11; Women: 8/)).toBeVisible();
   await noOverflow(page);
   expect(
     (
@@ -85,7 +85,7 @@ test("women historical records retain unknown current status and distinguish lis
   const data = await (
     await page.request.get("/api/fighters/search?category=Women&status=Unknown")
   ).json();
-  expect(data.total).toBe(3);
+  expect(data.total).toBe(4);
   expect(
     data.items.find((f: { id: string }) => f.id === "rousey"),
   ).toMatchObject({ current_division: null, career_status: "Unknown" });

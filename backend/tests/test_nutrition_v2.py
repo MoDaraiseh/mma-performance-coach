@@ -21,7 +21,7 @@ def profile(**kwargs):
 
 
 def test_catalog_provenance_original_energy_and_unit_scaling():
-    assert len(CATALOG) == 40
+    assert len(CATALOG) == 55
     for food in CATALOG.values():
         assert food["source"]["license"] == "CC0-1.0"
         assert food["source"]["fdc_id"] and food["source"]["archive_sha256"]

@@ -610,7 +610,7 @@ def test_phase4_manual_favorites_refresh_and_history(client):
     response = client.post("/api/fighter-data/refresh?provider=local")
     assert response.status_code == 200 and response.json()["changed"] > 0
     status = client.get("/api/fighter-data").json()
-    assert status["count"] == 17 and not status["unavailable_records"]
+    assert status["count"] == 19 and not status["unavailable_records"]
     assert len([r for r in status["revisions"] if r["entity"] == "fighter:holloway"]) == 2
     count = len(status["revisions"])
     assert client.post("/api/fighter-data/refresh").json()["changed"] == 0

@@ -1,0 +1,17 @@
+# Disposable QA only. Do not reuse for athlete data or production.
+services:
+  postgres-test:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: mma_test
+      POSTGRES_USER: mma_test
+      POSTGRES_PASSWORD: disposable-test-only
+    ports:
+      - "127.0.0.1:55432:5432"
+    tmpfs:
+      - /var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mma_test -d mma_test"]
+      interval: 2s
+      timeout: 3s
+      retries: 30

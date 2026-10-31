@@ -150,7 +150,11 @@ class TrainingPlanService:
                         ids = [
                             "goblet-squat" if "dumbbells" in have else "chair-squat",
                             "row" if {"dumbbells", "bench"} <= have else "prone-y",
-                            "incline-push" if "bench" in have else "wall-push",
+                            "floor-press"
+                            if "dumbbells" in have and not novice_strength
+                            else "incline-push"
+                            if "bench" in have
+                            else "wall-push",
                             "hip-hinge",
                             "dead-bug",
                         ]
@@ -366,6 +370,15 @@ class TrainingPlanService:
                 }
             )
         return {
+            "development_context": {
+                "mode": "Supervised amateur preparation"
+                if p.competitive
+                else "General fitness and MMA development",
+                "coach_review_required": p.competitive,
+                "note": "Competition intent does not increase prescribed volume or authorize contact. A qualified MMA coach must review class schedule, contact exposure, rules and readiness; medical eligibility and competition nutrition require separate review."
+                if p.competitive
+                else "Build general fitness and coached technical foundations. This template is not a fight camp or competition clearance.",
+            },
             "available": not bool(p.limitations.strip()),
             "reason": "Automatic exercise prescriptions are withheld for reported training limitations. Obtain an individualized plan from a qualified professional; update the limitation only when appropriate."
             if p.limitations.strip()

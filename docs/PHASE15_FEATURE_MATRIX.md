@@ -1,0 +1,58 @@
+# Phase 15 feature acceptance matrix
+
+Delivery reviewed 2026-11-01 (Asia/Dubai); source/main verification dated 2026-10-31. Complete means the stated local workflow is implemented and exercised, not that the broader domain has expert approval. Partial means useful working functionality with the stated requirement gap. Evidence: backend tests plus corresponding real Edge e2e files; exact run totals are in PHASE15_DELIVERY.md. No percentage is assigned.
+
+| Original requirement | Actual implementation / supporting files or API | Status | User impact, severity and next action | Coverage |
+| --- | --- | --- | --- | --- |
+| Account creation, access and deletion | main.py auth/account; identity.py; SessionSecurity.tsx | Complete locally; managed identity unverified live | P1 public gate: live IdP/MFA/linking/recovery review; local recovery is a bearer credential | test_phase6/13; phase6/13.spec |
+| Athlete onboarding / draft / editable profile | Wizard.tsx; schemas.py; /profile and /profile/draft | Complete locally | Optional fields stay unknown; no verified measurements | test_api; journey/states-and-print |
+| Independent martial arts histories | Seven disciplines with months/frequency/goals/self-report/coaching; athletics.py | Complete locally | P2: coach access and proficiency are self-reported | test_phase7; phase7.spec |
+| Physical profile | analysis.py ratios, BMI and entered body-fat-derived lean mass | Complete within documented calculations | P2: estimate uncertainty; no talent, diagnosis or pediatric adult-BMI inference | test_services; phase12.spec |
+| UFC division reference | divisions.py; /weight-classes; dated active/historical reference | Complete as dated reference | P1 competition gate: event rules and eligibility need professional confirmation | test_phase4/8; journey |
+| Individual long-term target weight | Conservative uncertainty / referral; no inferred target | Partial deliberately | P2: cannot responsibly choose target from measurements alone; individual assessment needed | test_services/phase12 |
+| Fighting-style development | Explainable preference/access/experience priorities; analysis.py, athletics.py | Partial heuristic | P2: no objectively validated optimal style or fighting prediction | test_phase7/12; phase7.spec |
+| Athletic assessment | Separate measured/self-reported/estimated/missing dimensions; athletics.py | Complete within available metrics | P2: no validated anaerobic-capacity, mobility diagnosis or pro benchmark score | test_phase7/11 |
+| Fighter dataset / extensible providers | fighters.py, fighter_models.py, fighter_governance.py; 19 snapshots | Partial | P1 public gate: rights for original 11 unresolved; current roster/stats sparse. Licensed expansion needed | test_phase4/8 |
+| Explainable fighter matching | matching.py; deterministic normalized configurable weights, missing-data coverage | Complete heuristic implementation | P2: weights/scales uncalibrated; resemblance is not proficiency/confidence probability | test_phase4/8; phase4/8.spec |
+| Comparison Lab | Comparison.tsx; search/filter/pagination/manual/top-three/favorite immutable snapshots/charts | Complete locally | P2: no supported style traits in current data; missing comparisons disclosed | phase4/8.spec |
+| Data refresh/governance | Offline preview/apply, duplicate/conflict review, archived rollback; fighter_governance.py | Complete local operator workflow | P2: no scraping, live licensed feed or public administration portal | test_phase8 |
+| Curated exercises | exercises.py; 49 educational exercises with alternatives/equipment/technique notes | Partial coverage | P2: useful catalog, not exhaustive or medically individualized | test_phase3/7 |
+| Twelve-week training | plan_integrity.py/programs.py; foundation/development/consolidation and deloads | Complete template implementation | P2: coach must individualize advanced/contact/injury-sensitive programming | test_phase3/7/12; phase3/7.spec |
+| Weekly calendar | Selected weekdays, daily caps, recovery days; explicit cycle anchor | Complete local template | P2: external class/contact load not automatically synchronized | test_phase7/11; phase11.spec |
+| Exercise logging and progression | Completed sets/reps/load/RPE/duration/distance/fatigue; progression.py | Complete within supported protocols | P2: actual comparable exposures gate proposals; no automatic intensity increase | test_api/phase7; phase3/7.spec |
+| Adaptive reassessment | Week4/8/12 report, future-only proposed adjustments and retained versions | Complete locally | No silent rewrite; stale/current-state validation at approval | test_api/phase7/10/11; journey/phase10.spec |
+| Energy/macronutrient calculation | nutrition_calculations.py; Mifflin-St Jeor, activity factors, conservative optional adjustment | Complete estimate implementation | P2: not measured energy expenditure/energy availability; specialist review pending | test_phase5/9/12 |
+| Verified food composition | ingredients.py/data/ingredients.json; 55 USDA SR Legacy foods | Partial coverage | P2: not hundreds, no full micronutrient adequacy; editorial allergens/costs are uncertain | test_phase9 |
+| Seven-day meal composition | meal_composition.py; portions, simple assembly, macros, selected minerals, grocery list | Partial | P2: limited variety, generic preparation, no full recipe engine or monetary budget optimizer | test_phase5/9; phase5/9.spec |
+| Dietary customization | NutritionWorkbench.tsx; exclusions, halal preference, cuisine/dislikes/time/skill/meal count | Partial | P1 safety boundary: not halal certification or cross-contact/allergen-free assurance; inspect labels | test_phase9/12; phase9.spec |
+| Food/meal replacement | Before/after validated totals, approved nutrition versions and history | Complete locally | Stale profiles/plans/preferences reject obsolete proposals | test_api/phase9/10; phase5/9/10.spec |
+| Training-day nutrition | Educational day-specific explanation | Partial | P2: no individualized workload-based calorie cycling | test_phase9 |
+| Context-aware offline coach | coach_context/guidance/actions/security; bounded current approved context | Complete supported local intents | P2: finite rules, ambiguous unsupported requests disclosed | test_phase10; phase10.spec |
+| Optional LLM | mma_agent.py schema validation, retries/deadline, safe fallback, quotas/budgets | Complete mocked integration; live unverified | P1 public gate: live model quality/cost/project controls not tested; no paid calls | test_api/phase10/13 |
+| Controlled coach actions | Typed permission/version checks, proposed differences, approve/reject, persistence confirmation | Complete supported action set | Unsupported tools rejected; provider cannot directly mutate data | test_phase10/13; phase10.spec |
+| Longitudinal analytics | analytics.py/history_index.py; charts/tables, comparable window records, workload/adherence/recovery | Complete bounded implementation | P2: 2,000-event/60-series/120-point/64-source-plan caps; disclosed; no fabricated baseline | test_phase11; phase11.spec |
+| Reporting and exporting | Owned account JSON, bounded report JSON, streamed source CSV, five print reports | Complete locally | P2: full account JSON materializes history; very large account exports need future streaming | test_phase6/11; journey/phase11/states-and-print |
+| Accessibility and responsive UI | Labels, focus-trapped dialogs, keyboard/Escape, reduced motion, chart tables, five widths | Verified automated Edge subset | P2: physical devices, manual screen reader and other engines unverified | responsive/states-and-print plus phase tests |
+| SQLite migrations and version integrity | Alembic0008; account locks, immutable versions and stale-source checks | Complete locally | Owner must back up and upgrade existing database; no personal DB migrated by QA | test_migrations/phase11/13 |
+| PostgreSQL compatibility | Driver, offline SQL, guarded disposable integration/restore tool | Unverified runtime | P1 staging gate: execute against authorized mma_test database | offline compilation passes; runtime unavailable |
+| Backup / retention / deployment | SQLite restore tool, dry-run retention, Docker/compose/nginx/systemd examples | Partial | P1: actual infrastructure, encrypted off-host backups/RPO/RTO and scheduled retention unverified | test_phase6/13; restore rehearsal |
+| Security release review | Ownership/session/rate/origin/body/config/schema/logging guards | Verified automated local regressions | P1: independent pentest/edge defense/operational monitoring pending | test_phase6/10/13 |
+| Scientific and clinical validation | 31-method inventory, seven examples and four blank specialist packs | Pending independent review | P1 for claims/advanced use: qualified reviewers must assess scope; no sign-offs | test_phase12 verifies guards, not expert approval |
+
+No P0 local defect was found in this acceptance run. Public-launch blockers are not downgraded because local tests pass. Historical phase reports describe their own snapshots; the Phase 15 report supersedes their release totals and schema references. Independent app checkpoint d8839ce now preserves source/config with private/runtime/evidence paths excluded; the parent tracker remains unchanged. No signed release tag or public remote was created.
+
+
+## Phase 15 acceptance changes
+
+| Requirement | Actual result | Status | Evidence / remaining action |
+| --- | --- | --- | --- |
+|Independent preservation checkpoint|183 source/config/review files committed as d8839ce; runtime/secrets/evidence excluded|Complete locally|.gitignore and delivery report; no parent Git changes|
+|Permitted fighter expansion|19 distinct snapshots,11 men/8 women; two attributable additions|Partial coverage|fighter sources/quality report;11 original rights unresolved|
+|Import/dedup/conflict/rollback|Existing guarded workflow retained; bundled duplicate-ID/identity rejection added|Complete local operator workflow|test_phase8 plus new source-duplicate regression|
+|Matching explainability|v4 name normalization, supported contributions and priority-sensitive deterministic ranking|Complete heuristic implementation|test_phase15; no calibrated professional-ability claims|
+|Exercise depth|49 entries including 2 Mobility; objectives, equipment, alternatives/modifications/supervision; dynamic category filter|Complete curated refinement|Catalog/API, TrainingInsights and fresh browser follow-up; expert review pending|
+|Training personalization|Bench-free trained press option, explicit general/amateur context, competition input invalidates plan|Complete bounded template refinement|test_phase15 plus existing experience/recovery/progression tests; no fight-camp clearance|
+|Food expansion|55 USDA records, all 9 tracked nutrients, unknown certification/prices|Partial coverage|Reproducible importer and data-quality.json; no hundreds/adequacy claim|
+|Practical substitutions|Full 3-nutrient portion solve including fat-role foods; before/after approval and preserved history|Complete within feasible portions|Three substitution regressions and browser persisted approval; no recipe/taste approval|
+|Allergy integration|Canonical peanut/plural tags, soy/legume exclusions, recognized new tags, stale-preview rejection|Complete generic screen|16 new Phase 15 cases; packaging/cross-contact/clinical review still required|
+|Release/science/security|Local candidate retained; external gates remain open|Pending independent validation|No live AI/IdP/PostgreSQL/public deployment/expert approval claimed|

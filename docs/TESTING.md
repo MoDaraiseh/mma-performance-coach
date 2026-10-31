@@ -98,3 +98,12 @@ cd ..\backend
 ```
 
 Use the backend/frontend/static/advisory commands above as well. The native Phase14 full report predates addition of the five timing cases; the separate release-check report verifies those plus ten repeated responsive/keyboard cases. Do not add repeated test executions together as unique coverage. Advisory results are dated point-in-time checks. Re-running against the same evidence directory intentionally replaces that run's artifacts; archive them first if immutable evidence is required.
+
+
+## Phase15 regression and catalog reproduction
+
+Baseline328backend/12frontend passed. Updated344backend/12frontend passed;16new cases are in backend/tests/test_phase15.py. Existing fixed coverage expectations now match19fighters/55foods and the additional Mobility category; no validation assertions were removed. Full/current browser evidence and final follow-up results are in PHASE15_DELIVERY.md.
+
+From backend: `..\.venv\Scripts\python.exe tools/phase15_quality.py` produces the operator report using public bundled data, without athlete DB reads/writes or network. Reproduce foods using `..\.venv\Scripts\python.exe tools/import_usda.py ../.qa-runtime/usda-sr-2018.zip` after obtaining the exact official hash-pinned archive. This intentionally updates the source catalog, not athlete data. Keep source changes in the independent MMA repository; do not add runtime data/evidence.
+
+From frontend set PW_REPORT_FILE=../docs/evidence/phase15/browser-results.json and PW_EVIDENCE_DIR=../docs/evidence/phase15 before npm.cmd run test:browser. The dedicated phase15.spec.ts tests a new sourced fighter, explicit training context, selected fat-food preview/approval/history, and final Mobility filter/objective behavior. Final follow-up uses a new API process and rebuilt assets so stale static modules do not stand in for final code. MMA_QA_PHASE=phase15 selects the optional print inspector. No physical-device/live-AI/real-IdP/PostgreSQL runtime pass is implied.

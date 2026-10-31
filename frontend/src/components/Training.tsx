@@ -91,6 +91,11 @@ export default function Training({
     );
   return (
     <>
+      {plan.data.development_context && (
+        <Card title={plan.data.development_context.mode}>
+          <p>{plan.data.development_context.note}</p>
+        </Card>
+      )}
       {plan.data.available === false && <Note>{plan.data.reason}</Note>}
       {substitutionMessage && <p role="status">{substitutionMessage}</p>}
       {plan.data.availability_note && (

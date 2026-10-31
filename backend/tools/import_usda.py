@@ -14,7 +14,7 @@ import zipfile
 from pathlib import Path
 
 SELECTION = [
-    (168878, "rice", "rice (cooked)", "carb", [], 1),
+    (168878, "rice", "rice (cooked)", "carb", ["rice"], 1),
     (172421, "lentils", "lentils (cooked)", "protein", ["legumes", "lentils"], 1),
     (173757, "chickpeas", "chickpeas (cooked)", "protein", ["legumes", "chickpeas"], 1),
     (170440, "potato", "potato (cooked)", "carb", [], 1),
@@ -48,13 +48,47 @@ SELECTION = [
     (169986, "cauliflower", "cauliflower (raw)", "vegetable", [], 2),
     (169247, "romaine", "romaine lettuce (raw)", "vegetable", [], 1),
     (168484, "sweet-potato", "sweet potato (boiled, without skin)", "carb", [], 1),
-    (169704, "brown-rice", "brown rice (cooked)", "carb", [], 1),
+    (169704, "brown-rice", "brown rice (cooked)", "carb", ["rice"], 1),
     (169737, "pasta", "pasta (cooked, enriched)", "carb", ["wheat", "gluten"], 1),
     (170285, "barley", "barley (cooked)", "carb", ["gluten"], 1),
     (172429, "split-peas", "split peas (cooked)", "protein", ["legumes"], 1),
     (175194, "kidney-beans", "kidney beans (cooked)", "protein", ["legumes", "beans"], 1),
     (175200, "pinto-beans", "pinto beans (cooked)", "protein", ["legumes", "beans"], 1),
 ]
+
+SELECTION.extend(
+    [
+        (170567, "almonds", "almonds (raw)", "fat", ["tree nuts", "almonds"], 3),
+        (170187, "walnuts", "walnuts (English)", "fat", ["tree nuts", "walnuts"], 3),
+        (170554, "chia", "chia seeds (dried)", "fat", ["seeds"], 3),
+        (170556, "pumpkin-seeds", "pumpkin seed kernels (dried)", "fat", ["seeds"], 2),
+        (
+            172470,
+            "peanut-butter",
+            "peanut butter (smooth, unsalted)",
+            "fat",
+            ["peanuts", "legumes"],
+            2,
+        ),
+        (173432, "skim-milk", "skim milk (fluid, unfortified)", "protein", ["milk"], 1),
+        (175215, "soy-milk", "soy milk (unsweetened, fortified)", "protein", ["soy"], 2),
+        (171496, "turkey", "turkey breast (roasted, meat only)", "protein", ["poultry"], 2),
+        (174028, "lean-beef", "lean beef (95 percent, cooked crumbles)", "protein", ["beef"], 3),
+        (171705, "avocado", "avocado (raw)", "fat", [], 3),
+        (169910, "mango", "mango (raw)", "fruit", [], 2),
+        (169291, "zucchini", "zucchini (raw, with skin)", "vegetable", [], 1),
+        (
+            170420,
+            "green-peas",
+            "green peas (boiled, unsalted)",
+            "vegetable",
+            ["legumes", "peas"],
+            1,
+        ),
+        (169999, "sweetcorn", "sweetcorn (boiled, unsalted)", "vegetable", [], 1),
+        (168914, "rice-noodles", "rice noodles (cooked)", "carb", ["rice"], 2),
+    ]
+)
 
 
 def main(archive):
@@ -102,17 +136,26 @@ def main(archive):
                     "name": name,
                     "role": role,
                     "serving_g": 100,
-                    "data_version": "SR-Legacy-2018-04 / curated-v2",
+                    "data_version": "SR-Legacy-2018-04 / curated-v3",
                     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
                     "certification": {"halal": "unknown"},
                     "units": {"mass": "g", "energy": "kcal", "macros": "g"},
                     "per_100g": values,
                     "allergens": allergens,
-                    "vegan": key not in {"chicken", "yogurt", "egg", "salmon"},
-                    "vegetarian": key not in {"chicken", "salmon"},
+                    "vegan": key
+                    not in {
+                        "chicken",
+                        "yogurt",
+                        "egg",
+                        "salmon",
+                        "skim-milk",
+                        "turkey",
+                        "lean-beef",
+                    },
+                    "vegetarian": key not in {"chicken", "salmon", "turkey", "lean-beef"},
                     "cost_tier": tier,
-                    "halal_note": "Choose certified halal poultry; nutrient record is not halal certification."
-                    if key == "chicken"
+                    "halal_note": "Choose appropriately certified halal meat; nutrient record is not halal certification."
+                    if key in {"chicken", "turkey", "lean-beef"}
                     else "Check product ingredients, processing and certification requirements.",
                     "source": {
                         "publisher": "USDA FoodData Central",

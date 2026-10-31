@@ -102,7 +102,15 @@ class SeededFighterProvider:
         supplement = json.loads(
             (Path(__file__).parent / "data" / "fighters_wikimedia.json").read_text(encoding="utf-8")
         )
-        return [validated(r) for r in [*reviewed_records(), *supplement]]
+        records = [validated(r) for r in [*reviewed_records(), *supplement]]
+        identities = {
+            (" ".join(r["name"].casefold().split()), r["competition_division"]) for r in records
+        }
+        if len({r["id"] for r in records}) != len(records) or len(identities) != len(records):
+            raise ValueError(
+                "Duplicate bundled fighter ID or identity; review source reconciliation"
+            )
+        return records
 
 
 class LicensedFileFighterProvider:

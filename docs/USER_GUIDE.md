@@ -16,3 +16,6 @@ Use the exact setup commands in README.md. Keep this app's database and configur
 For loading/network errors, retry after connectivity recovers. A401 returns to account recovery; a409 means the source changed and needs a fresh preview. Unavailable numerical recommendations are intentionally withheld for unsupported/minor/clinical/unsafe requests. Stop symptom-provoking training and seek qualified assessment; contact practice and competition nutrition require professional supervision.
 
 This is a verified local release candidate, with automated checks rather than independent professional approval. See KNOWN_LIMITATIONS.md and PHASE14_ACCEPTANCE.md before broader use.
+
+
+Phase15: Training now labels general development versus supervised amateur intent. Edit competition intent deliberately and review a new proposal when prompted; it never authorizes contact or increases workload automatically. The exercise library includes a Mobility filter and objective text. Nutrition supports selected nut/seed/avocado alternatives through the existing replacement preview; inspect the full ingredient/portion differences before approving. New catalog v3 may request reviewed regeneration of earlier meal plans; saved history is retained. Generic food labels are not certification or cross-contact assurance. Verify packaged ingredients and professional guidance for allergies.

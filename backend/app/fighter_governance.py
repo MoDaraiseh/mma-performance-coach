@@ -45,6 +45,8 @@ def quality(records):
         ],
         "supported_fields": {f: sum(bool(r.get(f)) for r in records) for f in fields},
         "statuses": dict(Counter(r["career_status"] for r in records)),
+        "providers": dict(Counter(r["provider_id"] for r in records)),
+        "field_gaps": {f: [r["id"] for r in records if not r.get(f)] for f in fields},
         "stale_count": sum(
             (date.today() - date.fromisoformat(r["verified_at"])).days > 365 for r in records
         ),

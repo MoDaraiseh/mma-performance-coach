@@ -81,3 +81,10 @@ Status for each row: **PENDING — G-DIET/G-MED; G-MMA/G-SC for coaching actions
 ## Feedback integration rules
 
 Submit feedback against a method ID and a reproduced example. Record source/credentials, proposed change, rationale, affected population, acceptance test and decision. Preserve the submitted feedback verbatim; distinguish accepted, adapted, rejected-with-reason and unresolved. An expert's approval of one scope never approves other modules or later versions. No feedback was invented or implemented as an expert opinion in this phase.
+
+
+## Phase15 method refinements - independent review pending
+
+Meal portion composition now uses a pivoted3x3 linear solve of measured catalog protein/carbohydrate/fat per gram for three ingredients, after fixed produce contributions. Outputs are bounded gram portions; singular/negative/out-of-range solutions fail. This replaces the special-case oil-only2x2 solve, and includes non-fat nutrients in nuts/seeds/avocado. Rounding and per-meal/day/grocery recomputation remain validated. Nutrient exactness does not establish variety, clinical adequacy, energy availability or allergen safety. Dietitian review remains pending.
+
+Matching v4 normalizes explicit background spelling/case aliases and reports score contributions; scales/weights remain uncalibrated product heuristics. Training adds a bench-free press option and competition-context/source-staleness flag without increasing dose. Exercise expansion instructions and preparation steps remain editorial, with contact/power supervision and all previous safety gates. No reviewer sign-off was supplied or invented.

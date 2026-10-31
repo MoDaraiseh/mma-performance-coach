@@ -7,6 +7,23 @@ from .ingredients import CATALOG, MACROS, VERSION, portion
 MEALS = ["Breakfast", "Lunch", "Dinner", "Recovery snack"]
 
 
+def solve_portions(foods, targets):
+    """Solve three nutrient equations, in grams; no invented nutrient values."""
+    matrix = [[CATALOG[f]["per_100g"][k] / 100 for f in foods] + [targets[k]] for k in MACROS]
+    for column in range(3):
+        pivot = max(range(column, 3), key=lambda r: abs(matrix[r][column]))
+        if abs(matrix[pivot][column]) < 1e-9:
+            return None
+        matrix[column], matrix[pivot] = matrix[pivot], matrix[column]
+        divisor = matrix[column][column]
+        matrix[column] = [v / divisor for v in matrix[column]]
+        for row in range(3):
+            if row != column:
+                factor = matrix[row][column]
+                matrix[row] = [a - factor * b for a, b in zip(matrix[row], matrix[column])]
+    return [matrix[i][3] for i in range(3)]
+
+
 def measure(meal):
     values = {k: 0.0 for k in (*MACROS, "source_calories")}
     for ingredient in meal["ingredients"]:
@@ -31,6 +48,9 @@ def compose(name, targets, allowed, prefs, rotation=0, protein_id=None, food_id=
         proteins = [protein_id]
     else:
         proteins = proteins[rotation % len(proteins) :] + proteins[: rotation % len(proteins)]
+        if name in ("Breakfast", "Recovery snack"):
+            breakfast = {"yogurt", "egg", "tofu", "skim-milk", "soy-milk"}
+            proteins.sort(key=lambda k: k not in breakfast)
         if name in ("Breakfast", "Recovery snack") and "yogurt" in proteins and rotation % 3 == 0:
             proteins = ["yogurt", *[k for k in proteins if k != "yogurt"]]
     preferred = {
@@ -55,6 +75,7 @@ def compose(name, targets, allowed, prefs, rotation=0, protein_id=None, food_id=
         if name in ("Breakfast", "Recovery snack")
         else [(veg, 100)]
     )
+    fat_id = "olive-oil"
     if food_id:
         if food_id not in allowed:
             raise ValueError("Requested food is excluded or unavailable")
@@ -67,33 +88,26 @@ def compose(name, targets, allowed, prefs, rotation=0, protein_id=None, food_id=
             if CATALOG[fixed[0][0]]["role"] != role:
                 raise ValueError("Choose fruit for breakfast/snack or vegetables for lunch/dinner")
             fixed = [(food_id, fixed[0][1])]
+        elif role == "fat":
+            fat_id = food_id
         else:
-            raise ValueError("Fat-only substitutions are outside current recipe coverage")
+            raise ValueError("Unsupported food role")
     fixed_values = {k: sum(portion(f, grams)[k] for f, grams in fixed) for k in MACROS}
     for pro in proteins:
         for carb in carbs:
-            a, b = CATALOG[pro]["per_100g"], CATALOG[carb]["per_100g"]
-            determinant = a["protein"] * b["carbs"] - b["protein"] * a["carbs"]
-            if abs(determinant) < 0.001:
-                continue
-            p, c = (
-                targets["protein"] - fixed_values["protein"],
-                targets["carbs"] - fixed_values["carbs"],
+            solved = solve_portions(
+                [pro, carb, fat_id], {k: targets[k] - fixed_values[k] for k in MACROS}
             )
-            pro_g = 100 * (p * b["carbs"] - c * b["protein"]) / determinant
-            carb_g = 100 * (a["protein"] * c - a["carbs"] * p) / determinant
-            fat_g = (
-                targets["fat"]
-                - fixed_values["fat"]
-                - a["fat"] * pro_g / 100
-                - b["fat"] * carb_g / 100
-            ) / (CATALOG["olive-oil"]["per_100g"]["fat"] / 100)
+            if solved is None:
+                continue
+            pro_g, carb_g, fat_g = solved
             carb_cap = 140 if carb == "oats" else 500
-            if not (20 <= pro_g <= 500 and 15 <= carb_g <= carb_cap and 0 <= fat_g <= 40):
+            fat_cap = 150 if fat_id == "avocado" else 40 if fat_id == "olive-oil" else 60
+            if not (20 <= pro_g <= 500 and 15 <= carb_g <= carb_cap and 0 <= fat_g <= fat_cap):
                 continue
             parts = [(pro, pro_g), (carb, carb_g), *fixed]
             if fat_g >= 0.1:
-                parts.append(("olive-oil", fat_g))
+                parts.append((fat_id, fat_g))
             ingredients = [
                 {
                     "id": k,
@@ -107,15 +121,22 @@ def compose(name, targets, allowed, prefs, rotation=0, protein_id=None, food_id=
                 "name": name,
                 "title": f"{CATALOG[pro]['name']} & {CATALOG[carb]['name']}",
                 "ingredients": ingredients,
-                "recipe_id": f"{pro}-{carb}-{fixed[0][0]}",
-                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Oil is a measured ingredient, not an additional uncounted dressing.",
+                "recipe_id": f"{pro}-{carb}-{fixed[0][0]}-{fat_id}",
+                "preparation": "Use the specified raw/dry/cooked edible weights. Prepare separately as appropriate; combine as a bowl, with fruit on the side. Use only the listed fat-source portion; do not add uncounted oil or dressing.",
                 "culture_note": prefs.culture
                 + ": ingredient preference only, not an authentic regional recipe.",
                 "preparation_minutes": 10,
                 "preparation_steps": [
-                    "Use batch-cooked grains, legumes and meat, or ready-cooked equivalents matching the named preparation state. Batch cooking time is additional.",
+                    "Prepare "
+                    + CATALOG[carb]["name"]
+                    + " to the listed state; weigh after cooking when marked cooked. Dry oats need preparation according to the package. Batch preparation time is additional.",
+                    "Portion "
+                    + CATALOG[pro]["name"]
+                    + "; use the exact stated preparation, including cooked meat/eggs or chilled dairy/alternatives. Do not substitute raw meat weights.",
                     "Weigh the listed edible portions. Wash raw produce; keep raw and cooked foods separate.",
-                    "Reheat cooked components safely according to local food-safety guidance. Serve with the listed produce and measured oil.",
+                    "Reheat only components intended hot according to local food-safety guidance; serve chilled foods separately. Add only the listed "
+                    + CATALOG[fat_id]["name"]
+                    + " portion, with no uncounted dressing.",
                 ],
                 "cooking_note": f"{prefs.cooking_skill}: assembly estimate 10 minutes, within your {prefs.cooking_minutes}-minute limit; batch preparation and shopping are excluded.",
             }

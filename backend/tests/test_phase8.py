@@ -36,7 +36,7 @@ def sample():
 def test_actual_coverage_licenses_and_no_current_status_inference():
     rows = SeededFighterProvider().all()
     report = quality(rows)
-    assert report["validated_count"] == 17 and report["categories"] == {"Men": 10, "Women": 7}
+    assert report["validated_count"] == 19 and report["categories"] == {"Men": 11, "Women": 8}
     assert len([r for r in report["history_divisions"] if r["category"] == "Men"]) == 8
     assert {r["division"] for r in report["history_divisions"] if r["category"] == "Women"} >= {
         "Strawweight",
@@ -44,7 +44,7 @@ def test_actual_coverage_licenses_and_no_current_status_inference():
         "Bantamweight",
     }
     new = [r for r in rows if r["provider_id"] == "wikimedia-reviewed"]
-    assert len(new) == 6
+    assert len(new) == 8
     assert all(r["current_division"] is None and r["career_status"] == "Unknown" for r in new)
     assert all(
         s["license_reference"] == "CC-BY-SA-4.0" and s["attribution"]
@@ -162,7 +162,7 @@ def test_search_pagination_filters_literal_query_and_query_count(client):
     account(client)
     result = client.get("/api/fighters/search?page_size=5").json()
     second = client.get("/api/fighters/search?page_size=5&page=2").json()
-    assert result["total"] == 17 and len(result["items"]) == 5
+    assert result["total"] == 19 and len(result["items"]) == 5
     assert not ({f["id"] for f in result["items"]} & {f["id"] for f in second["items"]})
     filtered = client.get(
         "/api/fighters/search?category=Women&division=Bantamweight&stance=Orthodox"

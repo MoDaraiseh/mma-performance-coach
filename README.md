@@ -1,5 +1,8 @@
 # MMA Performance Coach
 
+**Current delivery: Phase 15.** [Changes, source coverage, tests and limitations](docs/PHASE15_DELIVERY.md) ? [Updated acceptance matrix](docs/PHASE15_FEATURE_MATRIX.md).19source-backed fighter snapshots,55USDA foods and49exercises; macro-balanced fat-food substitutions, explicit amateur-training context and stronger allergy/source validation.344backend/12frontend tests pass; full Edge verification: 168 passed, 0 failed, 7 intentional skips; final safety checks: 5 passed. Existing data/schema0008 are preserved; nutrition catalog v3 requires reviewed regeneration of older meal plans. Independent baseline checkpoint d8839ce excludes secrets/runtime/evidence. No public deployment or expert approval. Earlier phase notes below are historical.
+
+
 **Current release: Phase14 - verified local release candidate (category B).** [Acceptance report, feature matrix, evidence and launch gates](docs/PHASE14_ACCEPTANCE.md). 328 backend / 12 frontend tests passed; full Edge 158 passed, 0 failed, 7 intentional skips across five widths; final focused checks 15 passed. Current schema0008. No public deployment, live AI/IdP, PostgreSQL runtime or independent professional approval. Earlier phase statements below are historical snapshots.
 
 

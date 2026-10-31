@@ -54,6 +54,7 @@ def test_catalog_integrity_and_coverage():
         "Conditioning",
         "Athleticism",
         "Martial arts",
+        "Mobility",
     }
     required = {
         "name",

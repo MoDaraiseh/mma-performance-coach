@@ -1,3 +1,7 @@
+# Phase15 release notes
+
+2026-10-31: independent app checkpoint;19source-backed fighter snapshots,55USDA foods,49exercises. Matching normalizes explicit background names and exposes score contributions; source duplicate protection and per-field operator gaps added. Three-nutrient fat-food replacements, breakfast-aware candidate ordering, ingredient-specific preparation and canonical allergen screening integrate with existing approval/history. Training adds a bench-free press option, explicit amateur context and competition-input staleness. Exercise categories/objectives are available in the UI. Current schema0008 is unchanged; existing athlete data is preserved and older nutrition catalogs need reviewed regeneration. See PHASE15_DELIVERY.md for exact verification and open licensing/scientific/production gates.
+
 # Phase14 release notes
 
 2026-10-31: consolidated acceptance of the existing local application. Preserved existing application workflows, personal databases, approved plans and the original tracker.

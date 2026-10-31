@@ -1,0 +1,89 @@
+# Phase 15 delivery: product intelligence and curated data expansion
+
+Delivery: 2026-11-01 (Asia/Dubai). Source review and main test runs: 2026-10-31, with precise UTC times retained in native evidence. Scope: mma-performance-coach only. No normal athlete database was opened/migrated/reset for QA. No public deployment, external data purchase, paid provider call or original-tracker change occurred. SQLite schema remains0008. Release category remains B: verified local release candidate; external gates from Phase 14 remain open.
+
+## Baseline and independent checkpoint
+
+Before product changes, backend 328 passed (2 upstream warnings,63.61 s) and frontend 12 passed. Phase 14 browser evidence was historical; a new full browser run is recorded below. The parent repository reported only an untracked MMA folder and no tracked diff. No applicable AGENTS.md was found.
+
+Created an independent nested Git repository only in mma-performance-coach/.git, without modifying parent Git/config/index or adding a submodule/remote. Baseline checkpoint: **d8839cea0835f1a8c26678d645eaaa2c0cdd6403**. Its183source/config/review files exclude databases/WAL files, .env secrets, private-key credentials, logs, exports, backups, runtime directories, node_modules and all generated docs/evidence. Reviewed the candidate paths and scanned for private/provider keys before committing. Evidence remains on disk but intentionally outside version control; archive it securely when needed. No private athlete export or recovery credential was staged. Synthetic review/test examples are retained as fixtures.
+
+Git identity for this automated local checkpoint is Codex <codex@localhost>; no human signature is implied. A sandbox ownership warning on parent read-only Git inspection was handled with a command-local exact safe.directory setting, without editing global or parent configuration. The owner may need to trust the exact MMA repository path if Git reports its sandbox-created ownership; do not globally trust arbitrary repositories.
+
+## Fighter sources, governance and matching
+
+The bundle now contains **19 distinct source-backed snapshots:11 men/8 women**, up from17. Added Alexander Volkov (historical UFC Heavyweight) and Antonina Shevchenko (historical UFC Flyweight) using small factual adaptations of the reviewed Wikipedia articles under CC BY-SA4.0, with source URLs, date, imperial originals, arithmetic metric conversion, field references and attribution. Their current career status/division and professional record remain unknown. Volkov's documented BJJ rank and Antonina's MuayThai/kickboxing participation/Southpaw stance are supported; no team-to-skill inference or subjective style label was invented.
+
+Historical division coverage overlaps: men Flyweight2, Bantamweight1, Featherweight2, Lightweight2, Welterweight2, Middleweight3, LightHeavyweight3, Heavyweight4; women Strawweight3, Flyweight6, Bantamweight3, historicalFeatherweight1. This does not establish a current roster or comprehensive career history. Original11official-source rights remain unresolved; eight adaptations carry the explicit [supplement attribution/license](FIGHTER_SUPPLEMENT_LICENSE.md). Redistribution of the whole bundle is not automatically authorized. No prohibited scraping or live import startup dependency was added. [Source review](SOURCES.md).
+
+Reviewed the existing offline preview/apply/conflict/deduplication/archived rollback workflow. It already has ownership/operator restrictions and transactional tests; it was retained. Added bundled-provider duplicate-ID/identity rejection before seeding, so a mistaken addition cannot silently shadow a record. An initial candidate duplicated an existing Volkanovski record; it was removed in favor of the independently sourced Volkov addition. No existing fighter record or saved favorite was overwritten. Operator quality reports now include provider counts and exact per-field missing-record IDs, in addition to counts/freshness/rights/divisions.
+
+Matching is now resemblance-v4. Existing Gaussian physical scales, partial-evidence contribution, normalized weights, division reference and deterministic tie-breaking were retained after review. Explicit background names normalize case/whitespace and Brazilian jiu-jitsu/BJJ aliases; MuayThai and Kickboxing remain distinct. Displayed shared-background explanations use the same normalization. Source labels remain unchanged. Responses additionally expose component score contributions; the result is a heuristic, never a professional-ability probability or calibrated confidence.
+
+New controlled synthetic tests prove ranking changes independently for physical build, documented background and division priorities, repeated ranking stability, alias matching and the absence of discipline inference. Existing tests retain missing evidence, metric/imperial conversion, ties, zero weights, stale data, import conflicts/rollback and query behavior.
+
+## Exercise catalog and training usefulness
+
+**49 exercises**, up from39: floor press, shallow wall hold, supported calf raise, side plank from knees, comfortable marching, ankle rocks, seated trunk rotation, coached chest pass, solo jab/exit rehearsal and coached clinch hand-position practice. Coverage:20 Strength/8 Conditioning/8 Athleticism/11 Martialarts/2 Mobility;15 entries require a coach. All 49 have an objective, technique, equipment, difficulty, dose guidance, modifications, alternatives and general-principle source references. These are editorial educational instructions, not biomechanical or injury-prevention efficacy claims.
+
+Trained dumbbell users can receive a floor press without requiring a bench, within the existing time/effort/recovery gates. Beginners retain simpler supported pressing and conservative workload caps. Catalog categories in the UI now derive from returned records, so Mobility is selectable; objective text is visible. Equipment filtering and supervised alternatives remain bounded by existing substitution validation. Catalog inclusion alone does not mean a drill is automatically prescribed or freely interchangeable with every movement.
+
+Plans now distinguish general fitness/MMA development from supervised amateur preparation. Competition intent **does not increase volume**, authorize contact or constitute clearance. The new context asks the MMA coach to review external classes/contact load/rules/readiness, with separate medical and competition-nutrition review. Changing competition intent now marks the approved plan as requiring review; previously this input was absent from the plan-staleness field list. No saved plan is silently rewritten. Logged performance, failed/missed-session holds, recovery gates, deloads and explicit approval/version history remain intact.
+
+## Nutrition and practical meals
+
+**55 USDA foods**, up from40, reproducible through the existing hash-pinned official April2018 SR Legacy archive. Added15foods across nuts/seeds, dairy/soy alternatives, lean meats, fruit/vegetables, avocado and rice noodles. Source identifiers, dataset/publication/review date, units, license and archive fingerprint remain per record. All55contain the9tracked composition values: protein/carbs/fat/sourceenergy/fiber/sodium/calcium/iron/potassium. Roles:15 protein/11 carb/12 vegetable/10 fruit/7 fat. This is not full micronutrient coverage or adequacy validation. Current price records0; certified-halal records0. Cost tiers and generic allergen tags are editorial and product/cross-contact status remains unknown.
+
+Catalog version is usda-sr-curated-v3. Existing nutrition snapshots remain immutable; old catalog plans are withheld as stale until reviewed regeneration through the existing proposal workflow. Allergy/profile/training/preference source changes still invalidate affected previews. No user inputs are replaced by generated values.
+
+Meal composition now solves the full three-nutrient system for protein, carbohydrate and fat-source portions, including protein/carbs present in nuts/seeds/avocado. Singular, negative, infeasible or excessive portions are rejected; existing daily energy/macro checks and recomputed grocery totals still apply. Users can select fat-role foods in the replacement UI, see differences, then explicitly approve/reject a new version. Almond, peanut-butter and avocado regression cases retain source plans and match macro targets within rounding tolerance.
+
+Breakfast/snack ordering prioritizes suitable dairy/egg/tofu/alternative candidates before meat when feasible. Preparation now names the selected grain/protein/fat and distinguishes cooked weights, dry oats, chilled components and additional batch preparation. It remains simple assembly, not recipe-level cooking/taste validation. A synthetic default seven-day plan has28meals/18 distinct compositions and maximum1.9 kcal daily rounding difference; this is an observation for that fixture, not a claim about every dietary combination.
+
+Fixed an allergen-normalization gap: plural peanuts in a food record could miss normalized peanut input. Source allergen tags now normalize consistently, soy includes legume screening, rice allergy excludes brown rice and rice noodles rather than only the exact rice identifier, and newly reviewed tags such as beef/seeds are recognized. Ambiguous "nuts" input conservatively excludes both peanuts and tree nuts; it is not a diagnosis. Unknown allergies still withhold automated meals. These screens do not establish allergen-free preparation or certification.
+
+## Cross-module and regression evidence
+
+Baseline328backend/12 frontend passed. Updated backend **344 passed**,2 upstream Starlette/Authlib httpx deprecation warnings,57.27 seconds, including16new Phase 15cases. Existing calculation, API ownership/export/delete/session security, plan versioning, ingestion/rollback, analytics/reassessment, fatigue/progression and AI approval tests remain included. The new cases cover source integrity/coverage, alias-sensitive ranking, three fat substitutions, diet/allergy exclusions, competition intent and immutable stale-proposal history.
+
+Frontend12passed; app/browser TypeScript and Vite build passed; Ruff lint/format and Prettier passed.76 Pythonfiles formatted. Fresh npm and Python advisory scans report zero known vulnerabilities; pinned requirements and frontend dependencies did not change. pip check passed. Advisory results are point-in-time lookups, not supply-chain certification.
+
+Development runs initially failed on a duplicate candidate/name, old coverage counts, changed preparation-step count and incorrect new test assumptions about response envelopes/dynamic read-only status metadata. Those were corrected rather than suppressed. Plan history is compared with its original stored export, not a decorated read response. Actual full-browser results are recorded below; the initial failed run is retained, not suppressed.
+
+The full Edge suite exercises the expanded library, existing journeys/security/approvals and new fat-food UI at1440/1920/768/390/375 CSS pixels. The fresh-build rerun includes the final Mobility filter/objective UI. A focused fresh-server check follows the last conservative ambiguous-nuts screening refinement. No physical devices, second engine, live IdP, live LLM, PostgreSQL runtime or external penetration/specialist review is claimed.
+
+## Reproduction and preservation
+
+From backend: project Python `..\.venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp=../.qa-runtime/pytest-phase15-local`. From frontend: npm.cmd test; npm.cmd run build; npm.cmd run typecheck:browser; set PW_REPORT_FILE/PW_EVIDENCE_DIR to ../docs/evidence/phase15; npm.cmd run test:browser. Run tools/phase15_quality.py for public-data coverage without athlete reads/writes/network. Run tools/import_usda.py with the reviewed official archive to reproduce55foods; do not point import tools at athlete exports. Full test/quality reports are in docs/evidence/phase15 and deliberately ignored by Git.
+
+No schema migration was added; existing installations still require schema 0008 from earlier phases. Standard startup remains README.md/run-local.cmd; back up existing data before any operational migration. Saved plans/logs/favorites are retained; nutrition version changes require explicit regeneration/approval. [Updated acceptance matrix](PHASE15_FEATURE_MATRIX.md).
+
+## Remaining limitations and owner next steps
+
+Fighter source snapshots remain small/secondary/sparse; no new live striking/takedown/submission rates or verified current professional records were available from the permitted additions. Current status is deliberately unknown. No comprehensive UFC claim. Original source rights still block broader redistribution.
+
+Nutrition remains limited to55foods and9nutrients, generic assembly, estimated activity expenditure and uncertain editorial allergen/cost/cuisine labels. No precise prices, halal/allergen-free certification, complete micronutrient/energy-availability adequacy or clinical approval. Not every requested food/target has feasible portions; failures are explicit. New exercise/training instructions and heuristics need qualified review, especially power, contact, injury limitations and amateur competition preparation. Independent expert approval remains pending.
+
+PostgreSQL, actual OIDC/MFA/linking, container/proxy/TLS, production recovery/monitoring and independent security tests remain Phase 14launch gates. No public deployment is authorized by this delivery. Owner next: retain/review the independent source checkpoint, archive evidence securely, obtain licensing/specialist/operational reviews, and use the existing private staging runbook before considering wider release.
+
+
+## Full browser and print verification
+
+The first full run recorded153 passed / 15 failed / 7 intentional skips in959.44 seconds. All 15 failures were the same 3 obsolete fixture assertions across 5 widths:40 ingredients,10 men / 7 women and3 unknown-status women. The expanded application correctly rendered55 ingredients,11 men / 8 women and4 unknown-status women. The tests were updated to those actual reviewed data counts; the [initial native report](evidence/phase15/browser-initial-results.json) and initial log remain available.
+
+The complete fresh-build rerun passed **168 tests, 0 failed, 0 flaky, 7 intentional skips**,535.71 seconds (8.9minutes). [Native result](evidence/phase15/browser-results.json). Widths:1440,1920,768,390,375 CSS pixels; installed Edge155.0.4283.45/Blink on Windows. The 7 skips are the 4 non-desktop print configurations and 3 non-mobile drawer configurations. No skip hides a missing browser prerequisite. All 40 core-view axe summaries contain zero targeted violations and no captured runtime errors; targeted phase/dialog scans also passed. Keyboard, focus/Escape, reduced motion, drawers, forms, charts, loading/errors, approval/history, session expiry/deletion and exports remain exercised. The final Mobility/objective UI is included in this full rerun.
+
+Five A4 reports contain 18 pages: comparison5/nutrition4/overview2/progress4/training3. Text and 20pt safe-margin checks passed on every page. Representative newly rendered nutrition/training pages were visually inspected; source portions/instructions and the general-development context are readable. [Print results](evidence/phase15/print-checks.json). Long content spans pages; this is not physical printer/device testing.
+
+The last conservative ambiguous-nuts/rice-family screening refinements are included in the 344-test backend run. A separate fresh-server Phase15browser verification tests positive approval/history and explicit allergy rejection against the final source; its passing results are recorded below. These repeated checks must not be added to the full run as unique cases.
+
+[Bundled-data quality report](evidence/phase15/data-quality.json), [npm audit](evidence/phase15/npm-audit.json), [Python audit](evidence/phase15/python-audit.json), [backend log](evidence/phase15/backend-tests.log). Evidence is generated locally and intentionally ignored by Git.
+
+
+## Final safety confirmation and release decision
+
+The final fresh-server/browser check passed **5 cases, 0 failed, 0 skipped**, across all five widths. It repeats the expanded-source search, Mobility filtering/objective display, macro-balanced food approval/history, then changes allergies, regenerates through approval and attempts a peanut-butter replacement under ambiguous "nuts". The backend returns 422 with a clear UI error and the approved nutrition version remains unchanged. [Native final safety report](evidence/phase15/browser-final-safety.json), [mobile rejection screenshot](evidence/phase15/mobile-375-phase15-allergy-rejection.png). This is five repeated/extended checks, not five additional unique full-suite tests.
+
+Final backend: 344 passed, 2 upstream warnings, 57.27 seconds. Frontend: 12 passed. App/browser TypeScript, Vite build, Ruff lint/format (76 files), Prettier, pip check and both fresh advisory scans pass. No dependency versions changed. The full browser run covered the final UI; the later conservative allergy-family refinements additionally have the full backend suite and fresh-server confirmation above.
+
+Phase 15 is complete for the stated curated refinements and verified local workflows. Release remains **B - verified local release candidate**. No comprehensive data claim, independent professional approval, live provider/IdP/PostgreSQL validation, production security approval or public deployment is implied. Outstanding licensing/scientific/operational gates remain as documented. The owner should review the source diff from checkpoint d8839ce, preserve private backups, archive ignored QA evidence securely, and arrange the qualified reviews/private staging checks before any wider release.

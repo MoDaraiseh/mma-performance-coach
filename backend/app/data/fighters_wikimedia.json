@@ -516,5 +516,169 @@
     "external_ids": {
       "wikipedia-en": "Miesha_Tate"
     }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "volkov",
+    "name": "Alexander Volkov",
+    "competition_division": "Men",
+    "height_cm": 200.66,
+    "reach_cm": 203.2,
+    "listed_weight_kg": 116.57323909,
+    "division_history": [
+      {
+        "name": "Heavyweight",
+        "context": "Documented historical UFC heavyweight participation; not a current roster assertion.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": null,
+    "background": [
+      "BJJ"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Alexander_Volkov_(fighter)",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 79,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 80,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 257,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source factual adaptation; CC BY-SA 4.0. Current status/division and live record unknown. No photos or biography.",
+    "external_ids": {
+      "wikipedia-en": "Alexander_Volkov_(fighter)"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "antonina-shevchenko",
+    "name": "Antonina Shevchenko",
+    "competition_division": "Women",
+    "height_cm": 172.72,
+    "reach_cm": 172.72,
+    "listed_weight_kg": 56.69904625,
+    "division_history": [
+      {
+        "name": "Flyweight",
+        "context": "Documented historical UFC participation, not a current roster assertion or complete career history.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Southpaw",
+    "background": [
+      "Muay Thai",
+      "Kickboxing"
+    ],
+    "verified_at": "2026-10-31",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Antonina_Shevchenko",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-10-31",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 68,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 68,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 125,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source factual adaptation; CC BY-SA 4.0. Current status/division and live record unknown. No photos or biography.",
+    "external_ids": {
+      "wikipedia-en": "Antonina_Shevchenko"
+    }
   }
 ]

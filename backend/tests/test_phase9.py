@@ -34,7 +34,7 @@ def test_catalog_duplicate_invalid_and_missing_optional_nutrients():
     records[0]["per_100g"]["protein"] = None
     with pytest.raises(ValueError, match="required"):
         validate_catalog(records)
-    assert catalog_payload()["coverage"]["foods"] == 40
+    assert catalog_payload()["coverage"]["foods"] == 55
     assert all(r["certification"]["halal"] == "unknown" for r in CATALOG.values())
 
 
@@ -59,7 +59,7 @@ def test_customization_variety_budget_and_preparation(count):
         for m in d["meals"]:
             recipes.add(m["recipe_id"])
             assert m["preparation_minutes"] <= 10
-            assert len(m["preparation_steps"]) == 3
+            assert len(m["preparation_steps"]) == 4
             assert all(CATALOG[i["id"]]["cost_tier"] <= 2 for i in m["ingredients"])
     assert len(recipes) >= 7
     with pytest.raises(ValidationError):

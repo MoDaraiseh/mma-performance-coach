@@ -176,13 +176,11 @@ export default function NutritionWorkbench({
                 onChange={(e) => setSwapFood(e.target.value)}
               >
                 <option value="">Choose a catalog food</option>
-                {catalog
-                  .filter((i) => i.role !== "fat")
-                  .map((i) => (
-                    <option key={i.id} value={i.id}>
-                      {i.name}
-                    </option>
-                  ))}
+                {catalog.map((i) => (
+                  <option key={i.id} value={i.id}>
+                    {i.name}
+                  </option>
+                ))}
               </select>
             </label>
           </div>

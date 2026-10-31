@@ -386,15 +386,11 @@ export default function TrainingInsights({
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                {[
-                  "All",
-                  "Strength",
-                  "Conditioning",
-                  "Athleticism",
-                  "Martial arts",
-                ].map((c) => (
-                  <option key={c}>{c}</option>
-                ))}
+                {["All", ...new Set(exercises.map((ex) => ex.category))].map(
+                  (c) => (
+                    <option key={c}>{c}</option>
+                  ),
+                )}
               </select>
             </label>
           </div>
@@ -431,6 +427,7 @@ export default function TrainingInsights({
                   .
                 </p>
                 <p>{ex.technique}</p>
+                {ex.objective && <p>Objective: {ex.objective}</p>}
                 <p>
                   {ex.sets_guidance}. {ex.repetition_guidance}.
                 </p>

@@ -481,6 +481,135 @@ _ROWS.extend(
         ),
     ]
 )
+# Editorial exercise descriptions; general sources do not validate individual drills.
+_ROWS.extend(
+    [
+        entry(
+            "floor-press",
+            "Dumbbell floor press",
+            "Strength",
+            "Horizontal press",
+            "pectorals,triceps",
+            ["dumbbells"],
+            "Lie on the floor; press comfortable dumbbells with wrists stacked. Lower elbows gently, without bouncing.",
+            ["wall-push", "incline-push"],
+            modification="Begin with an unloaded press pattern; floor setup and getting weights into position must be comfortable.",
+        ),
+        entry(
+            "wall-hold",
+            "Supported shallow wall hold",
+            "Strength",
+            "Squat isometric",
+            "quadriceps,gluteals",
+            [],
+            "Rest the back against a stable wall, bend knees a comfortable short distance and hold briefly while breathing. Stand before fatigue changes posture.",
+            ["chair-squat"],
+            modification="Use a shallow position and short holds; omit for symptoms and avoid breath holding.",
+        ),
+        entry(
+            "calf-raise",
+            "Supported calf raise",
+            "Strength",
+            "Ankle extension",
+            "calves",
+            [],
+            "Hold a stable support, rise onto the forefoot and lower slowly on level ground.",
+            ["walk"],
+            modification="Start with both feet and a comfortable small range.",
+        ),
+        entry(
+            "side-plank-knees",
+            "Side plank from knees",
+            "Strength",
+            "Trunk stabilization",
+            "trunk,shoulders",
+            [],
+            "Support on forearm and bent knees; lift hips briefly while breathing normally.",
+            ["dead-bug", "bird-dog"],
+            modification="Use short holds; choose dead bug if shoulder loading is uncomfortable.",
+        ),
+        entry(
+            "march",
+            "Comfortable marching",
+            "Conditioning",
+            "Aerobic",
+            "whole body",
+            [],
+            "March at an easy conversational pace on a clear stable surface.",
+            ["walk"],
+            modification="Use a stable support and shorter bouts if balance is uncertain.",
+        ),
+        entry(
+            "ankle-rock",
+            "Supported ankle rocks",
+            "Mobility",
+            "Ankle mobility",
+            "calves",
+            [],
+            "With support, gently move the knee forward over the foot while keeping the heel comfortable on the floor.",
+            ["mobility"],
+            modification="Use a small symptom-free range; no forceful stretching.",
+        ),
+        entry(
+            "thoracic-turn",
+            "Seated trunk rotation",
+            "Mobility",
+            "Trunk mobility",
+            "trunk",
+            [],
+            "Sit upright and gently turn the upper trunk within a comfortable range; keep breathing.",
+            ["mobility"],
+            modification="Reduce range and avoid forcing end positions.",
+        ),
+        entry(
+            "chest-pass",
+            "Coached medicine-ball chest pass",
+            "Athleticism",
+            "Throw",
+            "pectorals,triceps,trunk",
+            ["medicine_ball"],
+            "A qualified coach selects a light ball, safe wall or partner setup and controlled low-volume chest passes. Stop when quality drops.",
+            ["footwork"],
+            "Intermediate",
+            coached=True,
+            modification="Use a slow unloaded rehearsal or omit power work; no maximal throws.",
+        ),
+        entry(
+            "shadow-exit",
+            "Solo jab and exit rehearsal",
+            "Martial arts",
+            "Boxing",
+            "whole body",
+            [],
+            "Rehearse an already taught jab recovery and small balanced exit, without contact or maximal speed.",
+            ["footwork", "boxing"],
+            modification="Begin with slow stance resets; instructor feedback is recommended before adding complexity.",
+        ),
+        entry(
+            "coached-pummel",
+            "Coached clinch hand-position practice",
+            "Martial arts",
+            "Clinch",
+            "whole body",
+            ["mats"],
+            "A qualified instructor supervises cooperative hand-position and posture practice. No live resistance, strikes, throws or neck pressure.",
+            ["footwork"],
+            coached=True,
+        ),
+    ]
+)
+for exercise in _ROWS:
+    exercise["objective"] = (
+        exercise["movement_pattern"] + " practice within the prescribed time and recovery limits"
+    )
+    if exercise["id"] in {"wall-hold", "side-plank-knees"}:
+        exercise["repetition_guidance"] = (
+            "Brief comfortable holds with recovery inside the session block; breathe continuously. "
+            "Stop before posture changes; individual hold duration needs coaching judgment."
+        )
+    exercise.setdefault(
+        "modification_notes", "Use a comfortable unloaded variation and stop for symptoms."
+    )
 CATALOG = {e["id"]: e for e in _ROWS}
 
 
@@ -503,4 +632,4 @@ def alternatives(key, profile):
 
 
 def catalog_payload():
-    return {"version": "2026-10-phase7", "exercises": deepcopy(_ROWS), "sources": SOURCES}
+    return {"version": "2026-10-phase15", "exercises": deepcopy(_ROWS), "sources": SOURCES}

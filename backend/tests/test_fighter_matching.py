@@ -163,8 +163,8 @@ def test_documented_background_stance_and_shared_style():
 
 def test_catalog_field_provenance_and_observed_dates():
     records = SeededFighterProvider().all()
-    assert len(records) == 17
-    assert len([r for r in records if r["competition_division"] == "Women"]) == 7
+    assert len(records) == 19
+    assert len([r for r in records if r["competition_division"] == "Women"]) == 8
     for record in records:
         assert validated(record) == record
         assert record["record"] is None

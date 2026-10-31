@@ -12,6 +12,8 @@ ALIASES = {
     "chickpea": "chickpeas",
     "legume": "legumes",
     "oat": "oats",
+    "peas": "peas",
+    "seed": "seeds",
 }
 COMMON = {
     "milk",
@@ -57,7 +59,16 @@ def eligible(p, prefs):
         for a in [*p.allergies, *prefs.add_allergies]
         if a.strip()
     }
-    known = COMMON | set(CATALOG) | {i["name"].split(" (")[0] for i in CATALOG.values()}
+    # "Nuts" is ambiguous user language: conservatively exclude both groups.
+    # This is a screening rule, not a diagnosis or a cross-contact assurance.
+    if any(a.strip().lower() == "nuts" for a in [*p.allergies, *prefs.add_allergies]):
+        allergies.add("peanut")
+    known = (
+        COMMON
+        | set(CATALOG)
+        | {i["name"].split(" (")[0] for i in CATALOG.values()}
+        | {ALIASES.get(a.lower(), a.lower()) for i in CATALOG.values() for a in i["allergens"]}
+    )
     if allergies - known:
         raise ValueError("Unrecognized allergy; automated meals withheld")
     diet = set(p.diet) | set(prefs.add_diet)
@@ -65,8 +76,11 @@ def eligible(p, prefs):
     for key, item in CATALOG.items():
         if (allergies or diet & {"Dairy-free", "Gluten-free"}) and not item.get("allergen_review"):
             continue
-        tags = set(item["allergens"]) | {key, item["name"].split(" (")[0]}
-        if key == "tofu":
+        tags = {ALIASES.get(a.lower(), a.lower()) for a in item["allergens"]} | {
+            key,
+            item["name"].split(" (")[0],
+        }
+        if "soy" in tags:
             tags.add("legumes")
         if key == "olive-oil":
             tags |= {"olive", "olive oil"}

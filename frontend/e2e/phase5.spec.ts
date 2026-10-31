@@ -62,7 +62,7 @@ test("source-backed nutrition, feedback, meal preview, reject and approval", asy
     ),
   ).not.toEqual(expect.arrayContaining(["rice"]));
   await page
-    .getByText("Inspect 40 source-backed ingredients", { exact: true })
+    .getByText("Inspect 55 source-backed ingredients", { exact: true })
     .click();
   const riceSummary = page
     .locator("summary")

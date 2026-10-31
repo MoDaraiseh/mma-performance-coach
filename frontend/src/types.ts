@@ -118,6 +118,11 @@ export interface Week {
   sessions: TrainingSession[];
 }
 export interface Plan {
+  development_context?: {
+    mode: string;
+    coach_review_required: boolean;
+    note: string;
+  };
   recovery_days?: string[];
   availability_note?: string;
   power_note?: string;
@@ -552,6 +557,7 @@ export const defaultProfile: Profile = {
 export type Runner = (task: () => Promise<void>) => Promise<void>;
 
 export interface CatalogExercise {
+  objective?: string;
   id: string;
   name: string;
   category: string;

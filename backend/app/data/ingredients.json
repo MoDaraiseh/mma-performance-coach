@@ -4,7 +4,7 @@
     "name": "rice (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -25,7 +25,9 @@
       "carbs": 28.17,
       "source_calories": 130.0
     },
-    "allergens": [],
+    "allergens": [
+      "rice"
+    ],
     "vegan": true,
     "vegetarian": true,
     "cost_tier": 1,
@@ -49,7 +51,7 @@
     "name": "lentils (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -97,7 +99,7 @@
     "name": "chickpeas (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -145,7 +147,7 @@
     "name": "potato (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -190,7 +192,7 @@
     "name": "broccoli (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -235,7 +237,7 @@
     "name": "banana (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -280,7 +282,7 @@
     "name": "olive oil",
     "role": "fat",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -325,7 +327,7 @@
     "name": "chicken breast (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -352,7 +354,7 @@
     "vegan": false,
     "vegetarian": false,
     "cost_tier": 2,
-    "halal_note": "Choose certified halal poultry; nutrient record is not halal certification.",
+    "halal_note": "Choose appropriately certified halal meat; nutrient record is not halal certification.",
     "source": {
       "publisher": "USDA FoodData Central",
       "fdc_id": 171477,
@@ -372,7 +374,7 @@
     "name": "tofu (firm, raw)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -419,7 +421,7 @@
     "name": "oats (dry)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -468,7 +470,7 @@
     "name": "quinoa (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -513,7 +515,7 @@
     "name": "black beans (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -561,7 +563,7 @@
     "name": "Greek yogurt (plain, nonfat)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -608,7 +610,7 @@
     "name": "egg (hard-boiled)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -655,7 +657,7 @@
     "name": "carrot (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -700,7 +702,7 @@
     "name": "tomato (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -745,7 +747,7 @@
     "name": "apple (raw, with skin)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -790,7 +792,7 @@
     "name": "orange (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -835,7 +837,7 @@
     "name": "bulgur (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -883,7 +885,7 @@
     "name": "couscous (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -931,7 +933,7 @@
     "name": "spinach (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -976,7 +978,7 @@
     "name": "salmon (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1023,7 +1025,7 @@
     "name": "strawberries (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1068,7 +1070,7 @@
     "name": "blueberries (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1113,7 +1115,7 @@
     "name": "pear (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1158,7 +1160,7 @@
     "name": "peach (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1203,7 +1205,7 @@
     "name": "pineapple (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1248,7 +1250,7 @@
     "name": "grapes (raw)",
     "role": "fruit",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1293,7 +1295,7 @@
     "name": "cucumber (raw, with peel)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1338,7 +1340,7 @@
     "name": "red pepper (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1383,7 +1385,7 @@
     "name": "cabbage (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1428,7 +1430,7 @@
     "name": "cauliflower (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1473,7 +1475,7 @@
     "name": "romaine lettuce (raw)",
     "role": "vegetable",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1518,7 +1520,7 @@
     "name": "sweet potato (boiled, without skin)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1563,7 +1565,7 @@
     "name": "brown rice (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1584,7 +1586,9 @@
       "calcium_mg": 3.0,
       "potassium_mg": 86.0
     },
-    "allergens": [],
+    "allergens": [
+      "rice"
+    ],
     "vegan": true,
     "vegetarian": true,
     "cost_tier": 1,
@@ -1608,7 +1612,7 @@
     "name": "pasta (cooked, enriched)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1656,7 +1660,7 @@
     "name": "barley (cooked)",
     "role": "carb",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1703,7 +1707,7 @@
     "name": "split peas (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1750,7 +1754,7 @@
     "name": "kidney beans (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1798,7 +1802,7 @@
     "name": "pinto beans (cooked)",
     "role": "protein",
     "serving_g": 100,
-    "data_version": "SR-Legacy-2018-04 / curated-v2",
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
     "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
     "certification": {
       "halal": "unknown"
@@ -1832,6 +1836,707 @@
       "fdc_id": 175200,
       "description": "Beans, pinto, mature seeds, cooked, boiled, without salt",
       "url": "https://fdc.nal.usda.gov/food-details/175200/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "almonds",
+    "name": "almonds (raw)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "protein": 21.15,
+      "fiber": 12.5,
+      "iron_mg": 3.71,
+      "fat": 49.93,
+      "carbs": 21.55,
+      "source_calories": 579.0,
+      "calcium_mg": 269.0,
+      "potassium_mg": 733.0,
+      "sodium_mg": 1.0
+    },
+    "allergens": [
+      "tree nuts",
+      "almonds"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 3,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 170567,
+      "description": "Nuts, almonds",
+      "url": "https://fdc.nal.usda.gov/food-details/170567/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "walnuts",
+    "name": "walnuts (English)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "calcium_mg": 98.0,
+      "carbs": 13.71,
+      "source_calories": 654.0,
+      "protein": 15.23,
+      "fiber": 6.7,
+      "iron_mg": 2.91,
+      "sodium_mg": 2.0,
+      "potassium_mg": 441.0,
+      "fat": 65.21
+    },
+    "allergens": [
+      "tree nuts",
+      "walnuts"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 3,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 170187,
+      "description": "Nuts, walnuts, english",
+      "url": "https://fdc.nal.usda.gov/food-details/170187/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "chia",
+    "name": "chia seeds (dried)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "protein": 16.54,
+      "fiber": 34.4,
+      "iron_mg": 7.72,
+      "sodium_mg": 16.0,
+      "fat": 30.74,
+      "carbs": 42.12,
+      "source_calories": 486.0,
+      "potassium_mg": 407.0,
+      "calcium_mg": 631.0
+    },
+    "allergens": [
+      "seeds"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 3,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 170554,
+      "description": "Seeds, chia seeds, dried",
+      "url": "https://fdc.nal.usda.gov/food-details/170554/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "pumpkin-seeds",
+    "name": "pumpkin seed kernels (dried)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "carbs": 10.71,
+      "source_calories": 559.0,
+      "protein": 30.23,
+      "fiber": 6.0,
+      "iron_mg": 8.82,
+      "sodium_mg": 7.0,
+      "calcium_mg": 46.0,
+      "potassium_mg": 809.0,
+      "fat": 49.05
+    },
+    "allergens": [
+      "seeds"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 2,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 170556,
+      "description": "Seeds, pumpkin and squash seed kernels, dried",
+      "url": "https://fdc.nal.usda.gov/food-details/170556/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "peanut-butter",
+    "name": "peanut butter (smooth, unsalted)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "sodium_mg": 17.0,
+      "protein": 22.21,
+      "fiber": 5.0,
+      "iron_mg": 1.74,
+      "calcium_mg": 49.0,
+      "potassium_mg": 558.0,
+      "fat": 51.36,
+      "carbs": 22.31,
+      "source_calories": 598.0
+    },
+    "allergens": [
+      "peanuts",
+      "legumes"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 2,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 172470,
+      "description": "Peanut butter, smooth style, without salt",
+      "url": "https://fdc.nal.usda.gov/food-details/172470/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "skim-milk",
+    "name": "skim milk (fluid, unfortified)",
+    "role": "protein",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "fat": 0.18,
+      "carbs": 4.86,
+      "source_calories": 35.0,
+      "fiber": 0.0,
+      "iron_mg": 0.03,
+      "sodium_mg": 42.0,
+      "protein": 3.37,
+      "calcium_mg": 122.0,
+      "potassium_mg": 156.0
+    },
+    "allergens": [
+      "milk"
+    ],
+    "vegan": false,
+    "vegetarian": true,
+    "cost_tier": 1,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 173432,
+      "description": "Milk, nonfat, fluid, without added vitamin A and vitamin D (fat free or skim)",
+      "url": "https://fdc.nal.usda.gov/food-details/173432/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "soy-milk",
+    "name": "soy milk (unsweetened, fortified)",
+    "role": "protein",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "calcium_mg": 124.0,
+      "potassium_mg": 120.0,
+      "fat": 1.61,
+      "carbs": 1.74,
+      "source_calories": 33.0,
+      "sodium_mg": 37.0,
+      "fiber": 0.5,
+      "iron_mg": 0.46,
+      "protein": 2.86
+    },
+    "allergens": [
+      "soy"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 2,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 175215,
+      "description": "Soymilk (all flavors), unsweetened, with added calcium, vitamins A and D",
+      "url": "https://fdc.nal.usda.gov/food-details/175215/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "turkey",
+    "name": "turkey breast (roasted, meat only)",
+    "role": "protein",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "iron_mg": 0.71,
+      "sodium_mg": 99.0,
+      "protein": 30.13,
+      "fat": 2.08,
+      "source_calories": 147.0,
+      "calcium_mg": 9.0,
+      "potassium_mg": 249.0,
+      "fiber": 0.0,
+      "carbs": 0.0
+    },
+    "allergens": [
+      "poultry"
+    ],
+    "vegan": false,
+    "vegetarian": false,
+    "cost_tier": 2,
+    "halal_note": "Choose appropriately certified halal meat; nutrient record is not halal certification.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 171496,
+      "description": "Turkey, whole, breast, meat only, cooked, roasted",
+      "url": "https://fdc.nal.usda.gov/food-details/171496/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "lean-beef",
+    "name": "lean beef (95 percent, cooked crumbles)",
+    "role": "protein",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "source_calories": 193.0,
+      "fiber": 0.0,
+      "iron_mg": 3.23,
+      "sodium_mg": 85.0,
+      "protein": 29.17,
+      "carbs": 0.0,
+      "calcium_mg": 9.0,
+      "potassium_mg": 459.0,
+      "fat": 7.58
+    },
+    "allergens": [
+      "beef"
+    ],
+    "vegan": false,
+    "vegetarian": false,
+    "cost_tier": 3,
+    "halal_note": "Choose appropriately certified halal meat; nutrient record is not halal certification.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 174028,
+      "description": "Beef, ground, 95% lean meat / 5% fat, crumbles, cooked, pan-browned",
+      "url": "https://fdc.nal.usda.gov/food-details/174028/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "avocado",
+    "name": "avocado (raw)",
+    "role": "fat",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "protein": 2.0,
+      "fiber": 6.7,
+      "iron_mg": 0.55,
+      "sodium_mg": 7.0,
+      "fat": 14.66,
+      "calcium_mg": 12.0,
+      "potassium_mg": 485.0,
+      "carbs": 8.53,
+      "source_calories": 160.0
+    },
+    "allergens": [],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 3,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 171705,
+      "description": "Avocados, raw, all commercial varieties",
+      "url": "https://fdc.nal.usda.gov/food-details/171705/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "mango",
+    "name": "mango (raw)",
+    "role": "fruit",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "fat": 0.38,
+      "calcium_mg": 11.0,
+      "potassium_mg": 168.0,
+      "protein": 0.82,
+      "fiber": 1.6,
+      "iron_mg": 0.16,
+      "sodium_mg": 1.0,
+      "carbs": 14.98,
+      "source_calories": 60.0
+    },
+    "allergens": [],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 2,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 169910,
+      "description": "Mangos, raw",
+      "url": "https://fdc.nal.usda.gov/food-details/169910/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "zucchini",
+    "name": "zucchini (raw, with skin)",
+    "role": "vegetable",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "calcium_mg": 16.0,
+      "potassium_mg": 261.0,
+      "fat": 0.32,
+      "carbs": 3.11,
+      "source_calories": 17.0,
+      "fiber": 1.0,
+      "iron_mg": 0.37,
+      "sodium_mg": 8.0,
+      "protein": 1.21
+    },
+    "allergens": [],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 1,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 169291,
+      "description": "Squash, summer, zucchini, includes skin, raw",
+      "url": "https://fdc.nal.usda.gov/food-details/169291/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "green-peas",
+    "name": "green peas (boiled, unsalted)",
+    "role": "vegetable",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "carbs": 15.63,
+      "source_calories": 84.0,
+      "fat": 0.22,
+      "calcium_mg": 27.0,
+      "potassium_mg": 271.0,
+      "protein": 5.36,
+      "fiber": 5.5,
+      "iron_mg": 1.54,
+      "sodium_mg": 3.0
+    },
+    "allergens": [
+      "legumes",
+      "peas"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 1,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 170420,
+      "description": "Peas, green, cooked, boiled, drained, without salt",
+      "url": "https://fdc.nal.usda.gov/food-details/170420/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "sweetcorn",
+    "name": "sweetcorn (boiled, unsalted)",
+    "role": "vegetable",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "calcium_mg": 3.0,
+      "potassium_mg": 218.0,
+      "fat": 1.5,
+      "carbs": 20.98,
+      "source_calories": 96.0,
+      "protein": 3.41,
+      "fiber": 2.4,
+      "iron_mg": 0.45,
+      "sodium_mg": 1.0
+    },
+    "allergens": [],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 1,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 169999,
+      "description": "Corn, sweet, yellow, cooked, boiled, drained, without salt",
+      "url": "https://fdc.nal.usda.gov/food-details/169999/nutrients",
+      "dataset": "SR Legacy April 2018",
+      "publication_date": "2019-04-01",
+      "reviewed_at": "2026-10-31",
+      "license": "CC0-1.0",
+      "license_url": "https://fdc.nal.usda.gov/api-guide/",
+      "download_url": "https://fdc.nal.usda.gov/fdc-datasets/FoodData_Central_sr_legacy_food_csv_2018-04.zip",
+      "archive_sha256": "b80817294b8850530aaedf2e515c02593b1824f763a0ff356e5c2081643e6fd0"
+    }
+  },
+  {
+    "id": "rice-noodles",
+    "name": "rice noodles (cooked)",
+    "role": "carb",
+    "serving_g": 100,
+    "data_version": "SR-Legacy-2018-04 / curated-v3",
+    "allergen_review": "generic-ingredient-screened; product and cross-contact unknown",
+    "certification": {
+      "halal": "unknown"
+    },
+    "units": {
+      "mass": "g",
+      "energy": "kcal",
+      "macros": "g"
+    },
+    "per_100g": {
+      "fiber": 1.0,
+      "iron_mg": 0.14,
+      "sodium_mg": 19.0,
+      "fat": 0.2,
+      "calcium_mg": 4.0,
+      "potassium_mg": 4.0,
+      "carbs": 24.01,
+      "source_calories": 108.0,
+      "protein": 1.79
+    },
+    "allergens": [
+      "rice"
+    ],
+    "vegan": true,
+    "vegetarian": true,
+    "cost_tier": 2,
+    "halal_note": "Check product ingredients, processing and certification requirements.",
+    "source": {
+      "publisher": "USDA FoodData Central",
+      "fdc_id": 168914,
+      "description": "Rice noodles, cooked",
+      "url": "https://fdc.nal.usda.gov/food-details/168914/nutrients",
       "dataset": "SR Legacy April 2018",
       "publication_date": "2019-04-01",
       "reviewed_at": "2026-10-31",
