@@ -1,6 +1,10 @@
 # Delivery status - 2026-11-01
 
-**Current development: Phase 18.** [Report](PHASE18_DELIVERY.md), [staging procedure](PHASE18_STAGING.md), [launch gates](PHASE18_LAUNCH_GATES.md). Local release candidate; runtime/external review gates remain open. Phase 17 tag is unchanged.
+**Phase 20: awaiting specific runtime installation approval.** [Environment, proposed setup and launch-gate report](PHASE20_REPORT.md). Host discovery and all 89 context hashes checked; WSL/Docker remain unavailable, compatibility remains open, and staging/regression execution has not occurred.
+
+**Phase 19: blocked at local runtime prerequisite.** [Discovery report, outstanding gates and installation instructions](PHASE19_REPORT.md). Docker/Podman and PostgreSQL tools are unavailable; WSL reports it is not installed. No provisioning, container/PostgreSQL execution or host changes occurred. Runtime installation requires explicit owner authorization under the Phase 19 instructions.
+
+**Latest implemented development: Phase 18.** [Report](PHASE18_DELIVERY.md), [staging procedure](PHASE18_STAGING.md), [launch gates](PHASE18_LAUNCH_GATES.md). Local release candidate; runtime/external review gates remain open. Phase 17 tag is unchanged.
 
 **Historical Phase 17 delivery:** [Final acceptance](PHASE17_ACCEPTANCE.md), [feature matrix](PHASE17_FEATURE_MATRIX.md), [launch/runbooks](PHASE17_LAUNCH_RUNBOOK.md). Category A: local release candidate under the Phase 17 scale; public launch remains blocked.
 
