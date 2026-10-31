@@ -1,5 +1,7 @@
 # Deployment and operations - Phase 13
 
+Current development staging procedure: [Phase 18](PHASE18_STAGING.md), [verified results and blockers](PHASE18_DELIVERY.md). Use the sanitized private context and separate synthetic credentials; no production database, secret or public target is authorized.
+
 Current controlled deployment and rollback instructions: [Phase 17 runbook](PHASE17_LAUNCH_RUNBOOK.md). No public deployment is authorized. Category A: local release candidate on the Phase 17 scale; earlier status labels are historical.
 
 **Phase 16 policy supersedes historical cutover instructions:** see [current operations and release gates](PHASE16_OPERATIONS.md). Production requires explicit identity cutover and fighter distribution review. No staging deployment was performed.

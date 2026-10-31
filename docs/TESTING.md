@@ -151,3 +151,14 @@ From frontend set PW_REPORT_FILE=../docs/evidence/phase15/browser-results.json a
 
 
 Phase17 full Edge initially returned163passed/5fixture failures/7intentional skips. Corrected UTC calendar fixtures; final `npm.cmd run test:browser -- phase11.spec.ts` passed15cases across five widths with explicit native exit0. Reports/logs use edge-phase11-final names and separate evidence directory. `PW_CHANNEL=chromium` with `journey.spec.ts --project=desktop-1440 --project=mobile-375` additionally passed4cases. All commands were sequential against isolated servers; the original full report remains unchanged. [Failure analysis and precise accounting](PHASE17_BROWSER_QA.md).
+
+
+## Phase 18 isolated-staging verification
+
+See [actual results](PHASE18_DELIVERY.md) and [safe staging/restore steps](PHASE18_STAGING.md). Use phase18 evidence paths and dedicated pytest basetemp. Full backend370/frontend12 passed; full Edge168passed/0failed/7intentional skips. Twelve new staging/monitoring cases are included, not added again for focused reruns.
+
+From backend: `python -m pytest tests/test_phase18.py` verifies no-overwrite/private context, source preservation, generated role credentials, loopback/internal networking, actual sanitized SQLite migration/app lifecycle and fixed local alert signals. `python tools/prepare_staging.py --destination ../.qa-runtime/phase18-preparation-check` prepared a private test context; existing destinations are refused. The final default folder is prepared from the committed branch. No command starts Docker or reads the athlete database.
+
+`python tools/build_staging_review.py` generates seven full synthetic12-week/seven-day examples, with nutrition withholding retained. `python -m app.monitoring --current ../docs/evidence/phase18/alert-current.json --previous ../docs/evidence/phase18/alert-previous.json` exercises local signals only. `MMA_QA_PHASE=phase18` routes source inventory, synthetic SQLite restore and print inspection. Git Bash `-n ../deploy/staging-init.sh` checks shell syntax only; it does not validate PostgreSQL SQL.
+
+Full regression/advisory/build commands match Phase17 with phase18 log paths and `--basetemp=../.qa-runtime/pytest-phase18`. The browser command uses `PW_REPORT_FILE=../docs/evidence/phase18/browser-results.json`, `PW_EVIDENCE_DIR=../docs/evidence/phase18`, installed Edge and one isolated server. Real PostgreSQL/containers/live IdP/image scans remain NOT RUN; do not replace unavailable tests with production URLs. No paid/live AI or external notifications were executed.

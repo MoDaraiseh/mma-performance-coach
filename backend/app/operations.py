@@ -11,6 +11,7 @@ from sqlalchemy.exc import IntegrityError
 
 from .access import digest
 from .db import OperatorCounter, RateBucket, Session, engine
+from .monitoring import evaluate_alerts
 from .settings import settings
 
 
@@ -116,7 +117,7 @@ def report():
         )
         / 1000000
     )
-    return {
+    snapshot = {
         "database": readiness(),
         "counters": counts,
         "latency_note": "Disjoint response-header latency buckets in milliseconds; excludes streaming body delivery. Lifetime counters, not windowed percentiles.",
@@ -134,6 +135,8 @@ def report():
             "note": "Conservative two-attempt reservation, not measured billing. Provider dashboards must enforce independent spending limits.",
         },
     }
+    snapshot["local_alerts"] = evaluate_alerts(snapshot)
+    return snapshot
 
 
 if __name__ == "__main__":

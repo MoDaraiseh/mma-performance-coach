@@ -59,3 +59,14 @@ Source baseline: 1943020 (Phase 15); review the Phase 16 diff and regenerated `e
 Record each finding with method ID, example ID, severity, proposed correction, rationale/source, acceptance test and disposition. Acceptance requires the qualified reviewer to assess exact outputs and population limits; passing software tests is insufficient. See [operational/security handoff](../PHASE16_OPERATIONS.md) for identity, privacy and licensing gates.
 
 Specialist questions and acceptance gate: Review 55-food composition/source versus macro energy, bounded three-variable portion solver (including fat-heavy substitutions), ambiguous nuts/soy/legume/rice-family exclusion, missing allergen uncertainty and lack of certification claims. Assess seven-day variety and micronutrient limitations; do not infer complete dietary adequacy. Accept only after examining extreme-goal/minor outputs and defining referral/individualization limits.
+
+
+## Phase 18 isolated-staging review handoff (2026-11-01)
+
+Baseline release v1.0.0-rc.17 / 2f43e4d is preserved; fixes live on phase18-isolated-staging. Seven synthetic examples.json outputs were regenerated from unchanged training/nutrition equations. Internal catalog:19fighters/55foods/49exercises; sanitized staging candidate:8attributed CC-BY-SA fighter snapshots (4men/4women), with the11unresolved original records excluded before the Docker context is built. This is technical exclusion, not legal or specialist approval. PostgreSQL/containers/live IdP remain unexecuted.
+
+Reviewer must record exact revision/output hash, credentials, date, scope, population/exclusions, findings by method/case, severity, correction rationale and retest outcome. Name/date/approval/signature fields above remain blank; no genuine external feedback was supplied or invented. Review all31methodology entries and seven generated examples. See [Phase18 gates](../PHASE18_DELIVERY.md) and [staging procedures](../PHASE18_STAGING.md).
+
+Specific review request: Assess actual seven-day output and substitutions,55historical foods, ingredient quantity practicality, missing nutrient coverage, allergy/certification uncertainty and referral for medical/competition needs.
+
+Full current12-week training and seven-day nutrition outputs (including withheld/unsupported safety cases) are available as [seven synthetic full examples](../evidence/phase18/specialist-full-examples.json). Regenerate using `python tools/build_staging_review.py` from backend. They are software outputs, not expert-approved programs; reviewer fields remain blank.

@@ -1,6 +1,8 @@
 # Delivery status - 2026-11-01
 
-**Current delivery: Phase 17.** [Final acceptance](PHASE17_ACCEPTANCE.md), [feature matrix](PHASE17_FEATURE_MATRIX.md), [launch/runbooks](PHASE17_LAUNCH_RUNBOOK.md). Category A: local release candidate under the Phase 17 scale; public launch remains blocked.
+**Current development: Phase 18.** [Report](PHASE18_DELIVERY.md), [staging procedure](PHASE18_STAGING.md), [launch gates](PHASE18_LAUNCH_GATES.md). Local release candidate; runtime/external review gates remain open. Phase 17 tag is unchanged.
+
+**Historical Phase 17 delivery:** [Final acceptance](PHASE17_ACCEPTANCE.md), [feature matrix](PHASE17_FEATURE_MATRIX.md), [launch/runbooks](PHASE17_LAUNCH_RUNBOOK.md). Category A: local release candidate under the Phase 17 scale; public launch remains blocked.
 
 **Historical Phase 16 delivery:** [Verification report](PHASE16_DELIVERY.md), [operations/review handoff](PHASE16_OPERATIONS.md). 358 backend / 12 frontend / 15 targeted five-width Edge checks passed. Status remains a local release candidate; external infrastructure and independent reviews are pending.
 

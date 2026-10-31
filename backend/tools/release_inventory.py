@@ -65,7 +65,7 @@ def main():
         "independent_expert_approval": False,
     }
     phase = os.getenv("MMA_QA_PHASE", "phase14")
-    if phase not in {"phase14", "phase17"}:
+    if phase not in {"phase14", "phase17", "phase18"}:
         raise ValueError("Unsupported evidence phase")
     directory = root / f"docs/evidence/{phase}"
     directory.mkdir(parents=True, exist_ok=True)

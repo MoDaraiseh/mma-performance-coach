@@ -1,0 +1,175 @@
+{
+  "name": "mma-phase18-isolated",
+  "services": {
+    "database": {
+      "image": "${POSTGRES_IMAGE:-postgres:18}",
+      "env_file": [
+        "../.qa-runtime/phase18/postgres.env"
+      ],
+      "tmpfs": [
+        "/var/lib/postgresql:rw,nosuid,size=512m"
+      ],
+      "shm_size": "128m",
+      "secrets": [
+        "admin_password",
+        "migrator_password",
+        "runtime_password"
+      ],
+      "volumes": [
+        "./staging-init.sh:/docker-entrypoint-initdb.d/10-staging.sh:ro"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -U mma_stage_admin -d postgres"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 20
+      },
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "networks": [
+        "isolated"
+      ]
+    },
+    "migrate": {
+      "image": "mma-phase18:local",
+      "build": {
+        "context": "../.qa-runtime/phase18/context",
+        "dockerfile": "deploy/Dockerfile",
+        "args": {
+          "NODE_IMAGE": "${NODE_IMAGE:-node:24-bookworm-slim}",
+          "PYTHON_IMAGE": "${PYTHON_IMAGE:-python:3.14-slim-bookworm}"
+        }
+      },
+      "read_only": true,
+      "tmpfs": [
+        "/tmp"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "networks": [
+        "isolated"
+      ],
+      "env_file": [
+        "../.qa-runtime/phase18/migration.env"
+      ],
+      "command": [
+        "python",
+        "-m",
+        "alembic",
+        "upgrade",
+        "head"
+      ],
+      "depends_on": {
+        "database": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthcheck": {
+        "disable": true
+      },
+      "restart": "no",
+      "pull_policy": "never"
+    },
+    "app": {
+      "image": "mma-phase18:local",
+      "build": {
+        "context": "../.qa-runtime/phase18/context",
+        "dockerfile": "deploy/Dockerfile",
+        "args": {
+          "NODE_IMAGE": "${NODE_IMAGE:-node:24-bookworm-slim}",
+          "PYTHON_IMAGE": "${PYTHON_IMAGE:-python:3.14-slim-bookworm}"
+        }
+      },
+      "read_only": true,
+      "tmpfs": [
+        "/tmp"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "networks": [
+        "isolated"
+      ],
+      "env_file": [
+        "../.qa-runtime/phase18/app.env"
+      ],
+      "ports": [
+        "127.0.0.1:18018:8000"
+      ],
+      "depends_on": {
+        "migrate": {
+          "condition": "service_completed_successfully"
+        }
+      },
+      "restart": "no",
+      "pull_policy": "never"
+    },
+    "restore-app": {
+      "image": "mma-phase18:local",
+      "build": {
+        "context": "../.qa-runtime/phase18/context",
+        "dockerfile": "deploy/Dockerfile",
+        "args": {
+          "NODE_IMAGE": "${NODE_IMAGE:-node:24-bookworm-slim}",
+          "PYTHON_IMAGE": "${PYTHON_IMAGE:-python:3.14-slim-bookworm}"
+        }
+      },
+      "read_only": true,
+      "tmpfs": [
+        "/tmp"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "networks": [
+        "isolated"
+      ],
+      "env_file": [
+        "../.qa-runtime/phase18/restore.env"
+      ],
+      "ports": [
+        "127.0.0.1:18019:8000"
+      ],
+      "depends_on": {
+        "database": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "no",
+      "profiles": [
+        "recovery"
+      ],
+      "pull_policy": "never"
+    }
+  },
+  "networks": {
+    "isolated": {
+      "internal": true
+    }
+  },
+  "secrets": {
+    "admin_password": {
+      "file": "../.qa-runtime/phase18/secrets/admin.txt"
+    },
+    "migrator_password": {
+      "file": "../.qa-runtime/phase18/secrets/migrator.txt"
+    },
+    "runtime_password": {
+      "file": "../.qa-runtime/phase18/secrets/runtime.txt"
+    }
+  }
+}

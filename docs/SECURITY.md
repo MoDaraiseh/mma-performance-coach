@@ -1,5 +1,7 @@
 # Security review and operating boundaries
 
+Phase 18 adds tested fixed-label local alert evaluation and a source-excluding staging context with separate credentials/roles. Actual container/TLS/IdP/monitoring delivery and independent pentest remain unverified. [Evidence and limits](PHASE18_DELIVERY.md).
+
 Current acceptance: [Phase 17 security/licensing assessment](PHASE17_SECURITY_LICENSING.md) and [launch/runbooks](PHASE17_LAUNCH_RUNBOOK.md). Automated local checks pass; independent security, professional and deployed infrastructure acceptance remain pending.
 
 **Phase 16 supersedes earlier production-cutover wording.** See [the current operations and independent-test handoff](PHASE16_OPERATIONS.md). Production startup blocks legacy recovery, unacknowledged cutover, unlinked accounts and unresolved fighter distribution rights. Local defaults preserve recovery credentials. OIDC fresh authentication is checked explicitly; no live MFA, penetration-test or staging certification is implied.

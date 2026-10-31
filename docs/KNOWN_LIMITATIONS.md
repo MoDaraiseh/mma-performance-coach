@@ -1,5 +1,7 @@
 # Known limitations and release gates
 
+Phase 18 technically excludes the original11 fighter records from its generated staging context, preserving internal source/history; whole-repository distribution remains unapproved. Staging configuration and local alerts are tested, but Docker/PostgreSQL/separate-DB restore/live IdP/TLS/external reviews remain unavailable or pending. [Current gates](PHASE18_LAUNCH_GATES.md).
+
 Highest supported category: **A - local release candidate** under [Phase 17 acceptance](PHASE17_ACCEPTANCE.md). Earlier B-local labels are historical and use a different scale. Not staging-ready or production-ready; no deployment or paid-service authorization.
 
 ## Public-launch blockers

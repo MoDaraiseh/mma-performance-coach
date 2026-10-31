@@ -97,3 +97,12 @@ Source baseline: 1943020 (Phase 15); review the Phase 16 diff and regenerated `e
 Record each finding with method ID, example ID, severity, proposed correction, rationale/source, acceptance test and disposition. Acceptance requires the qualified reviewer to assess exact outputs and population limits; passing software tests is insufficient. See [operational/security handoff](../PHASE16_OPERATIONS.md) for identity, privacy and licensing gates.
 
 Phase 16 changes concern release policy, authentication freshness and operational counters; no sports-science equation was newly validated or altered. Existing 31-method rows remain the authoritative inputs/outputs/equations/assumptions/sources/limitations/safety inventory. All expert-review gates remain PENDING.
+
+
+## Phase 18 isolated-staging review handoff (2026-11-01)
+
+Baseline release v1.0.0-rc.17 / 2f43e4d is preserved; fixes live on phase18-isolated-staging. Seven synthetic examples.json outputs were regenerated from unchanged training/nutrition equations. Internal catalog:19fighters/55foods/49exercises; sanitized staging candidate:8attributed CC-BY-SA fighter snapshots (4men/4women), with the11unresolved original records excluded before the Docker context is built. This is technical exclusion, not legal or specialist approval. PostgreSQL/containers/live IdP remain unexecuted.
+
+Reviewer must record exact revision/output hash, credentials, date, scope, population/exclusions, findings by method/case, severity, correction rationale and retest outcome. Name/date/approval/signature fields above remain blank; no genuine external feedback was supplied or invented. Review all31methodology entries and seven generated examples. See [Phase18 gates](../PHASE18_DELIVERY.md) and [staging procedures](../PHASE18_STAGING.md).
+
+No physiological equation or31method expert status changed. New operator monitoring thresholds (5%5xx with>=20responses,5failed sign-ins between samples,80%AIattempt reservations) are deployment heuristics requiring operational tuning, not sports-science methods.
