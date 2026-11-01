@@ -1,0 +1,125 @@
+{
+  "name": "mma-phase24-patched",
+  "services": {
+    "database": {
+      "image": "mma-phase24-postgres-patched:local",
+      "pull_policy": "never",
+      "user": "70:70",
+      "read_only": true,
+      "env_file": ["../.qa-runtime/phase24/runtime-host/postgres.env"],
+      "tmpfs": [
+        "/var/lib/postgresql:rw,nosuid,size=512m,uid=70,gid=70,mode=0700",
+        "/var/run/postgresql:rw,nosuid,size=8m,uid=70,gid=70,mode=0775",
+        "/tmp:rw,nosuid,noexec,size=64m,uid=70,gid=70,mode=1777"
+      ],
+      "shm_size": "128m",
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 128,
+      "mem_limit": "768m",
+      "secrets": ["admin_password", "migrator_password", "runtime_password"],
+      "volumes": [
+        "./staging-init.sh:/docker-entrypoint-initdb.d/10-staging.sh:ro"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "mma_stage_admin",
+          "-d",
+          "postgres"
+        ],
+        "interval": "5s",
+        "timeout": "3s",
+        "retries": 20
+      },
+      "networks": ["backend"],
+      "restart": "no"
+    },
+    "app": {
+      "image": "mma-phase24-app:local",
+      "pull_policy": "never",
+      "user": "10001",
+      "read_only": true,
+      "tmpfs": ["/tmp:rw,nosuid,noexec,size=64m"],
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 128,
+      "mem_limit": "512m",
+      "networks": ["backend"],
+      "restart": "no",
+      "env_file": ["../.qa-runtime/phase24/runtime-host/app-patched.env"]
+    },
+    "migrate": {
+      "image": "mma-phase24-app:local",
+      "pull_policy": "never",
+      "user": "10001",
+      "read_only": true,
+      "tmpfs": ["/tmp:rw,nosuid,noexec,size=64m"],
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 128,
+      "mem_limit": "512m",
+      "networks": ["backend"],
+      "restart": "no",
+      "env_file": ["../.qa-runtime/phase24/runtime-host/migration.env"],
+      "command": ["python", "-m", "alembic", "upgrade", "head"],
+      "healthcheck": {
+        "disable": true
+      },
+      "profiles": ["tools"]
+    },
+    "ingress": {
+      "image": "mma-phase24-app:local",
+      "pull_policy": "never",
+      "user": "10001",
+      "read_only": true,
+      "tmpfs": ["/tmp:rw,nosuid,noexec,size=64m"],
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 64,
+      "mem_limit": "128m",
+      "networks": ["backend", "loopback"],
+      "restart": "no",
+      "cpus": 0.5,
+      "command": [
+        "python",
+        "-c",
+        "import runpy; r=runpy.run_path('/relay/staging_relay.py'); s=r['RelayServer'](('0.0.0.0',8080),('app',8000)); s.serve_forever()"
+      ],
+      "volumes": ["./staging_relay.py:/relay/staging_relay.py:ro"],
+      "ports": ["127.0.0.1:18026:8080"],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/api/ready',timeout=4)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      }
+    }
+  },
+  "networks": {
+    "backend": {
+      "internal": true
+    },
+    "loopback": {
+      "driver": "bridge"
+    }
+  },
+  "secrets": {
+    "admin_password": {
+      "file": "../.qa-runtime/phase24/runtime-host/secrets/admin.txt"
+    },
+    "migrator_password": {
+      "file": "../.qa-runtime/phase24/runtime-host/secrets/migrator.txt"
+    },
+    "runtime_password": {
+      "file": "../.qa-runtime/phase24/runtime-host/secrets/runtime.txt"
+    }
+  }
+}

@@ -20,12 +20,19 @@ test("complete athlete journey through onboarding, logging, reassessment, approv
     process.env.LOCALAPPDATA!,
     "Programs/DockerDesktop/resources/bin/docker.exe",
   );
+  expect(["http://127.0.0.1:18018", "http://127.0.0.1:18026"]).toContain(
+    info.project.use.baseURL,
+  );
+  const databaseContainer =
+    info.project.use.baseURL === "http://127.0.0.1:18026"
+      ? "mma-phase24-patched-database-1"
+      : "mma-phase18-isolated-database-1";
   const sql = (query: string) =>
     execFileSync(
       docker,
       [
         "exec",
-        "mma-phase18-isolated-database-1",
+        databaseContainer,
         "psql",
         "-U",
         "mma_stage_admin",

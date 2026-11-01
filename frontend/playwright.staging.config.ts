@@ -10,7 +10,14 @@ export default defineConfig({
   outputDir: "test-results-staging",
   reporter: [
     ["list"],
-    ["json", { outputFile: "../docs/evidence/phase22/browser-results.json" }],
+    [
+      "json",
+      {
+        outputFile:
+          process.env.PW_STAGING_REPORT ||
+          "../docs/evidence/phase22/browser-results.json",
+      },
+    ],
   ],
   use: {
     ...baseline.use,

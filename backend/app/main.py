@@ -153,7 +153,7 @@ async def security(request: Request, call_next):
             if len(body) > settings.max_body_bytes:
                 return JSONResponse({"error": "Request body too large"}, status_code=413)
         request._body = bytes(body)
-    if request.url.path.startswith("/api/") and request.url.path not in {
+    if request.url.path.startswith("/api/") and request.url.path.rstrip("/") not in {
         "/api/health",
         "/api/ready",
     }:
@@ -222,12 +222,14 @@ async def operational_response(request: Request, call_next):
             }
         )
     )
-    try:
-        await run_in_threadpool(
-            record_http, response.status_code, (time.perf_counter() - started) * 1000
-        )
-    except SQLAlchemyError:
-        logger.error(json.dumps({"event": "operational_counter_unavailable"}))
+    # Health responses must never wait on database-backed telemetry.
+    if request.url.path.rstrip("/") not in {"/api/health", "/api/ready"}:
+        try:
+            await run_in_threadpool(
+                record_http, response.status_code, (time.perf_counter() - started) * 1000
+            )
+        except SQLAlchemyError:
+            logger.error(json.dumps({"event": "operational_counter_unavailable"}))
     return response
 
 
@@ -397,7 +399,11 @@ def health():
 @app.get("/api/ready")
 def ready():
     if not readiness()["ready"]:
-        raise HTTPException(503, "Database migration review required")
+        raise HTTPException(
+            503,
+            "Database dependency unavailable or migration review required",
+            headers={"Retry-After": "3"},
+        )
     return {"status": "ready"}
 
 
@@ -431,6 +437,7 @@ def restore(response: Response, request: dict):
             select(User).where(User.token_hash == hashlib.sha256(token.encode()).hexdigest())
         )
     if not exists:
+        increment("auth.local_failure")
         raise HTTPException(401, "Invalid recovery token")
     with Session.begin() as db:
         # Check the account again inside the transaction to handle concurrent deletion.

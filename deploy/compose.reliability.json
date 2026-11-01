@@ -1,0 +1,65 @@
+{
+  "name": "mma-phase23-reliability",
+  "services": {
+    "candidate": {
+      "image": "mma-phase23:local",
+      "pull_policy": "never",
+      "build": {
+        "context": "${PHASE23_BUILD_CONTEXT:-../.qa-runtime/phase23/context-release}",
+        "dockerfile": "deploy/Dockerfile",
+        "args": {
+          "NODE_IMAGE": "node@sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf34dc9749addbf383b1920c",
+          "PYTHON_IMAGE": "python@sha256:516b51cb9db2ef061e465c803e50f64361b82cefd91e525b889b967b83e83527"
+        }
+      },
+      "env_file": ["../.qa-runtime/phase18/app.env"],
+      "user": "10001",
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:rw,nosuid,noexec,size=64m",
+        "/app/.qa-runtime:rw,nosuid,noexec,size=16m,uid=10001,gid=10001,mode=0700"
+      ],
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 128,
+      "mem_limit": "512m",
+      "networks": { "backend": { "aliases": ["phase23-app"] } },
+      "restart": "no"
+    },
+    "ingress": {
+      "image": "mma-phase23:local",
+      "pull_policy": "never",
+      "user": "10001",
+      "read_only": true,
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 64,
+      "mem_limit": "128m",
+      "cpus": 0.5,
+      "command": [
+        "python",
+        "-c",
+        "import runpy; r=runpy.run_path('/relay/staging_relay.py'); s=r['RelayServer'](('0.0.0.0',8080),('phase23-app',8000)); s.serve_forever()"
+      ],
+      "volumes": ["./staging_relay.py:/relay/staging_relay.py:ro"],
+      "ports": ["127.0.0.1:${PHASE23_INGRESS_PORT:-18020}:8080"],
+      "networks": ["backend", "loopback"],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/api/ready',timeout=4)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      },
+      "restart": "no"
+    }
+  },
+  "networks": {
+    "backend": { "external": true, "name": "mma-phase18-isolated_isolated" },
+    "loopback": { "driver": "bridge" }
+  }
+}

@@ -18,9 +18,9 @@ async function register(context: APIRequestContext) {
 test("real staging sessions, ownership, host and origin protections", async ({
   page,
   playwright,
+  baseURL,
 }) => {
   test.setTimeout(150_000);
-  const baseURL = "http://127.0.0.1:18018";
   const other = await playwright.request.newContext({ baseURL });
   try {
     expect((await page.request.get("/api/ready")).status()).toBe(200);

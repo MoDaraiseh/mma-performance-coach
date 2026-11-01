@@ -12,7 +12,11 @@ FROM ${PYTHON_IMAGE}
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app/backend
 COPY backend/requirements.lock.txt ./
-RUN pip install --no-cache-dir -r requirements.lock.txt && useradd --uid 10001 --create-home mma
+RUN pip install --no-cache-dir -r requirements.lock.txt \
+    && python -m pip check \
+    && python -m pip uninstall --yes pip \
+    && python -c "import shutil,sysconfig; shutil.rmtree(sysconfig.get_path('stdlib') + '/ensurepip')" \
+    && useradd --uid 10001 --create-home mma
 COPY backend/ ./
 COPY --from=frontend /build/dist /app/frontend/dist
 USER 10001

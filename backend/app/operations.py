@@ -1,12 +1,18 @@
 """Privacy-minimized shared counters and migration-aware readiness."""
 
+import json
+import os
+import subprocess
+import sys
+import threading
+from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from alembic.config import Config
 from alembic.script import ScriptDirectory
 from fastapi import HTTPException
-from sqlalchemy import select, text, update
+from sqlalchemy import update
 from sqlalchemy.exc import IntegrityError
 
 from .access import digest
@@ -80,6 +86,10 @@ def reserve_ai(now=None):
             return
         except IntegrityError:
             continue
+        except HTTPException as exc:
+            if exc.status_code == 429:
+                increment("ai.quota_denied")
+            raise
     raise HTTPException(503, "AI budget temporarily unavailable; use offline coaching")
 
 
@@ -89,25 +99,87 @@ def expected_head():
     return ScriptDirectory.from_config(cfg).get_current_head()
 
 
-def readiness():
-    with engine.connect() as db:
-        current = db.execute(text("SELECT version_num FROM alembic_version")).scalar_one()
-        db.execute(text("SELECT 1"))
+# One bounded child at a time per application process: no accumulating timeout threads.
+PROBE_TIMEOUT_SECONDS = 3
+_probe_condition = threading.Condition()
+_probe_running = False
+_probe_last = None
+
+
+def _unavailable(reason):
     return {
-        "ready": current == expected_head(),
-        "migration_current": current,
-        "migration_expected": expected_head(),
+        "database": {
+            "ready": False,
+            "migration_current": None,
+            "migration_expected": expected_head(),
+            "reason": reason,
+        },
+        "counters": {},
+        "reservations": {},
+        "metrics_available": False,
     }
 
 
+def _bounded_probe(aggregate=False):
+    global _probe_running, _probe_last
+    with _probe_condition:
+        if _probe_running:
+            completed = _probe_condition.wait_for(
+                lambda: not _probe_running, PROBE_TIMEOUT_SECONDS + 0.25
+            )
+            if not completed:
+                return _unavailable("probe_busy")
+            return deepcopy(_probe_last)
+        _probe_running = True
+    result = _unavailable("probe_failed")
+    try:
+        # Credentials stay in the child environment, never argv or error output.
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "app.health_probe",
+                "aggregate" if aggregate else "readiness",
+                expected_head(),
+            ],
+            cwd=Path(__file__).resolve().parents[1],
+            env={**os.environ, "DATABASE_URL": engine.url.render_as_string(hide_password=False)},
+            capture_output=True,
+            timeout=PROBE_TIMEOUT_SECONDS,
+        )
+        if completed.returncode or len(completed.stdout) > 65536:
+            result = _unavailable("probe_failed")
+            return result
+        result = json.loads(completed.stdout)
+        if (
+            not isinstance(result, dict)
+            or not isinstance(result.get("database"), dict)
+            or type(result["database"].get("ready")) is not bool
+        ):
+            result = _unavailable("probe_failed")
+        return result
+    except subprocess.TimeoutExpired:
+        # subprocess.run kills and reaps the child; no hung pooled DB connection survives.
+        result = _unavailable("probe_timeout")
+        return result
+    except (OSError, ValueError, TypeError):
+        result = _unavailable("probe_failed")
+        return result
+    finally:
+        with _probe_condition:
+            _probe_last = result
+            _probe_running = False
+            _probe_condition.notify_all()
+
+
+def readiness():
+    return _bounded_probe()["database"]
+
+
 def report():
-    with Session() as db:
-        counts = dict(db.execute(select(OperatorCounter.key, OperatorCounter.count)).all())
-        now = datetime.now(timezone.utc)
-        reservations = {}
-        for period in ("day:" + now.date().isoformat(), "month:" + now.strftime("%Y-%m")):
-            row = db.get(RateBucket, digest("operator-ai:" + period))
-            reservations[period] = row.count if row else 0
+    collected = _bounded_probe(aggregate=True)
+    counts = collected["counters"]
+    reservations = collected["reservations"]
     ceiling_input = 40000
     estimated = (
         2
@@ -118,7 +190,9 @@ def report():
         / 1000000
     )
     snapshot = {
-        "database": readiness(),
+        "database": collected["database"],
+        "metrics_available": collected["metrics_available"],
+        "observed_at": datetime.now(timezone.utc).isoformat(),
         "counters": counts,
         "latency_note": "Disjoint response-header latency buckets in milliseconds; excludes streaming body delivery. Lifetime counters, not windowed percentiles.",
         "identity_mode": settings.identity_mode,
@@ -127,6 +201,7 @@ def report():
             "monthly_outbound_ceiling": settings.ai_global_monthly,
             "max_attempts": 2,
             "reserved_outbound_attempts": reservations,
+            "metrics_available": collected["metrics_available"],
             "output_token_cap": settings.ai_max_output_tokens,
             "allowed_models": settings.ai_allowed_models.split(","),
             "configured_rate_reservation_estimate_usd": round(estimated, 6),
@@ -140,6 +215,4 @@ def report():
 
 
 if __name__ == "__main__":
-    import json
-
     print(json.dumps(report(), indent=2))

@@ -29,3 +29,4 @@ credentials/
 docs/evidence/
 *.pending
 frontend/test-results-staging/
+frontend/test-results-candidate/
