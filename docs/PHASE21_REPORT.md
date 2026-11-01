@@ -1,8 +1,22 @@
 # Phase 21: compatibility review and installation approval boundary
 
+**Superseded status:** additional ACL authorization was subsequently received and applied. See [actual staging execution, recovery results and remaining blockers](PHASE21_STAGING_RESULTS.md). Earlier pending/blocked statements below are historical snapshots.
+
 Date: 2026-11-01. **Runtime installed and verified; staging blocked by existing directory ACL.** The initial review below is retained as historical evidence; the authorized execution update supersedes its pending-installation statements.
 
 ## Authorized execution update
+
+### Subsequent scoped ACL authorization: protected-child stop
+
+The owner subsequently authorized adding only an inheritable ReadAndExecute allow rule for their current Windows SID on `.qa-runtime/phase18`, preserving ownership, entries and inheritance protection, and explicitly required stopping if protected children need separate rules.
+
+Read-only host identity resolved the intended account to `IWA2024\darai_qtguapt`. Before applying any rule, recursive ACL inspection found **two protected child directories: `secrets` and `backups`**. Their ACLs block inheritance from the staging root. The `secrets` directory grants OWNER RIGHTS/SYSTEM/Administrators and therefore needs its own explicit rule for the owner account to read credentials. Parent permission alone cannot satisfy the staging preflight.
+
+**Stopped before Set-Acl: zero ACL changes were applied.** No owner/entry/protection change, secret regeneration or value disclosure occurred. Evidence: ignored `.qa-runtime/phase21/acl-boundary.json`. No container build/start, PostgreSQL migration, backup/restore, monitoring, security scan or regression suite ran in this continuation. Previous runtime results below remain historical evidence, not new executions.
+
+**Next narrowly scoped authorization needed:** add an explicit inheritable ReadAndExecute allow entry for the same current owner SID on the protected `.qa-runtime/phase18/secrets` directory, preserving its ownership, existing entries and protection, in addition to the already approved root entry. Credential files themselves were not identified as protected children and should inherit from that directory; verify effective read access without displaying values. Leave protected `backups` unchanged. Any later backup-output permission requirement must be identified separately; no write, FullControl, Everyone/Users rule, ownership change or ACL reset is proposed.
+
+The original root-only permission proposal below is superseded by this finding. Staging remains blocked at the owner's explicit protected-child boundary; public deployment remains unauthorized.
 
 Owner confirmed **personal use** and approved the identified installation scope in the next message. This satisfies the licensing-category question under Docker's cited terms and the Step 3 scope approval. No purchase was made. Windows UAC was used for the required administrator check and approved WSL installation; outside-sandbox execution alone did not elevate the token.
 

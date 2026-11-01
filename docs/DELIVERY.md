@@ -1,6 +1,10 @@
 # Delivery status - 2026-11-01
 
-**Phase 21: WSL2 and Docker installed; staging blocked by directory ACL.** [Actual installation, versions and scoped permission proposal](PHASE21_REPORT.md). WSL 3.0.3 / Docker Desktop 4.97 / Engine 29.9.2 / Compose 5.6.1 verified with a local WSL2 backend. All 89 context hashes match; Compose cannot read the sandbox-owned staging configuration from the host account. No containers or PostgreSQL tests executed; scoped read/traverse access requires owner approval. No reboot, purchase or public deployment occurred.
+**Latest Phase 21 execution:** [ACL, container/PostgreSQL, recovery, security and regression results](PHASE21_STAGING_RESULTS.md). Two exact RX entries applied; ownership/protection/prior entries and protected backups preserved. Sanitized build, PostgreSQL 18.6/head 0008, guarded tests and separate-database restore passed (11.647-second local rehearsal). New regression: 370 backend / 12 frontend / 40 Edge passed. Windows loopback publication remains blocked; TLS, image scanning and external review gates remain open. No public deployment.
+
+**Historical Phase 21 permission preflight:** root read/traverse approval received, but protected `secrets` and `backups` child ACLs were discovered. Stopped before any permission change under the owner's explicit instruction. A separate read/traverse rule on `secrets` requires approval; `backups` stays unchanged. See [actual findings and precise next permission scope](PHASE21_REPORT.md). No staging tests ran in this continuation.
+
+**Historical Phase 21 runtime-installation checkpoint:** [Actual installation, versions and scoped permission proposal](PHASE21_REPORT.md). WSL 3.0.3 / Docker Desktop 4.97 / Engine 29.9.2 / Compose 5.6.1 verified with a local WSL2 backend. All 89 context hashes match; Compose cannot read the sandbox-owned staging configuration from the host account. No containers or PostgreSQL tests executed; scoped read/traverse access requires owner approval. No reboot, purchase or public deployment occurred.
 
 **Phase 20: awaiting specific runtime installation approval.** [Environment, proposed setup and launch-gate report](PHASE20_REPORT.md). Host discovery and all 89 context hashes checked; WSL/Docker remain unavailable, compatibility remains open, and staging/regression execution has not occurred.
 
