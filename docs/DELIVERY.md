@@ -1,5 +1,7 @@
 # Delivery status - 2026-11-01
 
+**Phase 22: ingress repaired; real PostgreSQL browser acceptance verified.** [Root cause, exact repair, preservation evidence and gates](PHASE22_REPORT.md). Secret-free loopback relay serves `http://127.0.0.1:18018` while original app/DB/restore IDs, start times, data and archives remain unchanged. New results: 371 backend / 12 frontend / 10 Edge-to-PostgreSQL passed across five widths. Readiness timeout/continuous monitoring and broader TLS/scanning/external review gates remain open; full staging readiness and public launch are not declared.
+
 **Latest Phase 21 execution:** [ACL, container/PostgreSQL, recovery, security and regression results](PHASE21_STAGING_RESULTS.md). Two exact RX entries applied; ownership/protection/prior entries and protected backups preserved. Sanitized build, PostgreSQL 18.6/head 0008, guarded tests and separate-database restore passed (11.647-second local rehearsal). New regression: 370 backend / 12 frontend / 40 Edge passed. Windows loopback publication remains blocked; TLS, image scanning and external review gates remain open. No public deployment.
 
 **Historical Phase 21 permission preflight:** root read/traverse approval received, but protected `secrets` and `backups` child ACLs were discovered. Stopped before any permission change under the owner's explicit instruction. A separate read/traverse rule on `secrets` requires approval; `backups` stays unchanged. See [actual findings and precise next permission scope](PHASE21_REPORT.md). No staging tests ran in this continuation.

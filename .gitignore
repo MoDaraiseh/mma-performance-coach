@@ -28,3 +28,4 @@ backups/
 credentials/
 docs/evidence/
 *.pending
+frontend/test-results-staging/

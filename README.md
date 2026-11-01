@@ -1,6 +1,6 @@
 # MMA Performance Coach
 
-Current development: [Phase 18 isolated staging](docs/PHASE18_DELIVERY.md) on `phase18-isolated-staging`. The existing release tag below is preserved. [Private staging procedure](docs/PHASE18_STAGING.md) and [launch gates](docs/PHASE18_LAUNCH_GATES.md) distinguish local preparation from unexecuted PostgreSQL/container/live-identity verification. No public deployment is authorized.
+Current verification: [Phase 22 local ingress and PostgreSQL browser acceptance](docs/PHASE22_REPORT.md) on `phase18-isolated-staging`. Local access is `http://127.0.0.1:18018` through a dedicated, secret-free ingress relay; original containers/data are preserved. New results: 371 backend, 12 frontend and 10 real Edge-to-PostgreSQL tests passed. Readiness timeout/continuous monitoring and broader release gates remain open; no public deployment is authorized. Earlier phase status notes below are historical; the original release tag is preserved.
 
 Current release: **1.0.0-rc.17**, [Phase 17 acceptance](docs/PHASE17_ACCEPTANCE.md), [feature matrix](docs/PHASE17_FEATURE_MATRIX.md), [launch/deployment/rollback runbooks](docs/PHASE17_LAUNCH_RUNBOOK.md). Readiness is **A - local release candidate** on the Phase 17 scale. Public launch is blocked; no public deployment is authorized. Earlier B-local labels used a different scale. See the current report for actual verification and remaining infrastructure, licensing and independent-review gates.
 

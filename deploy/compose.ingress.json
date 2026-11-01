@@ -1,0 +1,36 @@
+{
+  "name": "mma-phase22-ingress",
+  "services": {
+    "ingress": {
+      "image": "mma-phase18@sha256:4445750e0135806ee6099c9daf509d6f862e1fb4169d98539606f794ff02398b",
+      "pull_policy": "never",
+      "user": "10001",
+      "read_only": true,
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "pids_limit": 64,
+      "mem_limit": "128m",
+      "cpus": 0.5,
+      "command": ["python", "/relay/staging_relay.py"],
+      "volumes": ["./staging_relay.py:/relay/staging_relay.py:ro"],
+      "ports": ["127.0.0.1:18018:8080"],
+      "networks": ["backend", "loopback"],
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8080/api/ready',timeout=4)"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      },
+      "restart": "no"
+    }
+  },
+  "networks": {
+    "backend": { "external": true, "name": "mma-phase18-isolated_isolated" },
+    "loopback": { "driver": "bridge" }
+  }
+}
