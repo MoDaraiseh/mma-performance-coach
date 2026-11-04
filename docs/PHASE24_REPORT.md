@@ -1,5 +1,7 @@
 # Phase 24 - container triage and isolated candidate verification
 
+Historical report. See [the authoritative final handoff](FINAL_DELIVERY.md) for current acceptance and security dispositions.
+
 Date: 2026-11-01. Branch `phase18-isolated-staging`; starting HEAD `43f5eadf05af909ec2c3ca6df4cf19624f0ebeac`. Existing uncommitted Phase 23 work was preserved. Original tag `v1.0.0-rc.17` still resolves to `2f43e4d66e76e921bc40d3840611c347ab9824c8`.
 
 **Candidate verification passed; security clearance remains blocked. No existing staging container was replaced, no database cutover occurred, and no public deployment is authorized.** Original staging remains on port 18018. The final patched candidate is separately accessible at `http://127.0.0.1:18026`.

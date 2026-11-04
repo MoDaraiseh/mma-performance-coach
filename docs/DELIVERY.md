@@ -1,4 +1,10 @@
-# Delivery status - 2026-11-01
+# Delivery index
+
+**Authoritative final record: [Final delivery and owner handoff](FINAL_DELIVERY.md), 4 November 2026.** Local candidate acceptance passed; security clearance remains blocked. No staging replacement, public deployment, unresolved-risk acceptance or final release tag is authorized. See the final record for actual current results, evidence, access, operations and required owner decisions.
+
+## Historical delivery snapshots
+
+Everything below is historical, including statements using “current” or “latest.”
 
 **Phase 24: isolated candidate remediation and recovery verified; security clearance blocked.** [Report](PHASE24_REPORT.md), [72-row high/critical triage matrix](PHASE24_TRIAGE.md). Candidate application 0 high/critical; candidate PostgreSQL 0 critical/1 high, plus unresolved musl advisory discrepancy. 388 backend / 12 frontend / 10 final candidate Edge-to-PostgreSQL passed; native restore, session invalidation and export/version preservation passed. Original containers, records, archives and tag preserved. No cutover/public deployment.
 

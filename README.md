@@ -1,5 +1,7 @@
 # MMA Performance Coach
 
+Authoritative final handoff: [Final delivery, acceptance, operations and owner decisions](docs/FINAL_DELIVERY.md) (4 November 2026). Local candidate acceptance passed; security clearance and launch remain blocked. Staging replacement and public deployment are not authorized. All numbered reports and status statements below are historical snapshots, not current availability or clearance claims.
+
 Current verification: [Phase 24 isolated vulnerability remediation](docs/PHASE24_REPORT.md). Original staging at `127.0.0.1:18018` is preserved; the patched candidate is separately available at `127.0.0.1:18026`. Candidate scans: application 0 high/critical; PostgreSQL 0 critical/1 high, with a musl data discrepancy still open. New verification: 388 backend / 12 frontend / 10 real Edge-to-PostgreSQL passed, plus native restore/session recovery. Security clearance and cutover remain blocked; no public deployment.
 
 Current release: **1.0.0-rc.17**, [Phase 17 acceptance](docs/PHASE17_ACCEPTANCE.md), [feature matrix](docs/PHASE17_FEATURE_MATRIX.md), [launch/deployment/rollback runbooks](docs/PHASE17_LAUNCH_RUNBOOK.md). Readiness is **A - local release candidate** on the Phase 17 scale. Public launch is blocked; no public deployment is authorized. Earlier B-local labels used a different scale. See the current report for actual verification and remaining infrastructure, licensing and independent-review gates.

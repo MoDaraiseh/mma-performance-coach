@@ -1,5 +1,7 @@
 # Phase 24 vulnerability triage matrix
 
+Historical scanner/advisory snapshot. See [the authoritative final handoff](FINAL_DELIVERY.md) for updated musl vendor-patch evidence and remaining security gates. No historical finding has been suppressed.
+
 72 image/finding rows; 69 distinct high/critical CVEs. Covers every baseline high/critical finding and high/critical findings introduced by the evaluated Alpine variant. No exceptions are approved.
 
 Full versions, affected locations, vendor/CNA boundaries, reachability evidence, compensating controls, remaining risks and approval requirements are in [JSON](evidence/phase24/triage-matrix.json) and [CSV](evidence/phase24/triage-matrix.csv). Authoritative CNA records were retrieved on 2026-11-01; original descriptions and references are retained privately under `.qa-runtime/phase24/advisories`.
