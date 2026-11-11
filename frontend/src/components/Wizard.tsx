@@ -70,8 +70,9 @@ export default function Wizard({
         {optional && <small>Optional</small>}
         <input
           type="number"
-          min={imperial ? Number((min * factor).toFixed(2)) : min}
-          max={imperial ? Number((max * factor).toFixed(2)) : max}
+          // Round inward so a converted bound never falls outside the metric range.
+          min={imperial ? Math.ceil(min * factor * 100) / 100 : min}
+          max={imperial ? Math.floor(max * factor * 100) / 100 : max}
           step={increment === "1" ? "1" : "any"}
           required={!optional}
           value={shown == null ? "" : String(shown)}
