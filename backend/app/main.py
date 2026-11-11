@@ -1211,7 +1211,9 @@ def reassessments(uid=Depends(auth)):
 
 @app.post("/api/coach")
 async def coach(data: CoachRequest, uid=Depends(auth)):
-    if data.use_ai:
+    # Only a configured provider can make outbound calls; without a key the request is
+    # answered locally, so it must not consume the athlete quota or the operator budget.
+    if data.use_ai and os.getenv("OPENAI_API_KEY"):
         await run_in_threadpool(quota, uid, "ai", settings.ai_per_day, 86400)
         await run_in_threadpool(reserve_ai)
     with Session() as db:

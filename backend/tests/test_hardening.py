@@ -122,13 +122,25 @@ def test_production_tls_cookie_headers_and_shared_refresh_authorization(client, 
 
 
 def test_ai_quota_prevents_provider_call_and_plan_mutation(client, monkeypatch):
+    import httpx
+
     account(client)
     client.post("/api/demo")
     original = client.get("/api/training-plans").json()["id"]
     monkeypatch.setattr(settings, "ai_per_day", 1)
+    monkeypatch.setenv("OPENAI_API_KEY", "mock-only-never-live")
+    calls = []
+
+    async def offline(*args, **kwargs):
+        calls.append(1)
+        raise httpx.ConnectError("offline")
+
+    monkeypatch.setattr(httpx.AsyncClient, "post", offline)
     request = {"message": "Explain recovery", "use_ai": True}
     assert client.post("/api/coach", json=request).status_code == 200
+    attempts = len(calls)
     assert client.post("/api/coach", json=request).status_code == 429
+    assert len(calls) == attempts
     assert client.get("/api/training-plans").json()["id"] == original
     assert client.post("/api/coach", json={**request, "use_ai": False}).status_code == 200
 
@@ -172,3 +184,18 @@ def test_failed_transaction_rolls_back_and_response_hides_database_details(clien
     response = client.put("/api/profile", json={"name": "Sam"})
     assert response.status_code == 503
     assert "secret" not in response.text and "private" not in response.text
+
+
+def test_unconfigured_ai_answers_locally_without_spending_quota_or_budget(client, monkeypatch):
+    # Staging runs with a blank key and zero operator budgets: asking for AI must
+    # fall back to the offline coach instead of failing with "budget exhausted".
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setattr(settings, "ai_per_day", 1)
+    monkeypatch.setattr(settings, "ai_global_daily", 0)
+    account(client)
+    client.post("/api/demo")
+    request = {"message": "Explain recovery", "use_ai": True}
+    for _ in range(3):
+        response = client.post("/api/coach", json=request)
+        assert response.status_code == 200
+        assert response.json()["data"]["usage"]["outcome"] == "unconfigured"
