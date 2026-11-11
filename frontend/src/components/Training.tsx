@@ -13,7 +13,7 @@ import type { ExercisePerformance, Runner } from "../types";
 import { Plan, Saved, TrainingSession, Workout } from "../types";
 import { Card, Note, Tag } from "./ui";
 import PerformanceEditor from "./PerformanceEditor";
-import { today } from "../utils";
+import { inPlanLineage, today } from "../utils";
 import { useDialog } from "./useDialog";
 const TrainingInsights = lazy(() => import("./TrainingInsights"));
 export default function Training({
@@ -82,13 +82,11 @@ export default function Training({
       </Card>
     );
   const historicalWeek = week <= (plan.data.review_week ?? 0);
-  const lineageIds = new Set(plan.data.history_plan_ids ?? []);
-  const done = (id: string) =>
-    logs.some(
-      (l) =>
-        (l.data.plan_id === plan.id || lineageIds.has(l.data.plan_id)) &&
-        l.data.session_id === id,
+  const loggedSession = (id: string) =>
+    logs.find(
+      (l) => inPlanLineage(plan, l.data.plan_id) && l.data.session_id === id,
     );
+  const done = (id: string) => loggedSession(id) !== undefined;
   return (
     <>
       {plan.data.development_context && (
@@ -246,11 +244,7 @@ export default function Training({
                         {done(s.id) ? (
                           <>
                             <Check size={15} />{" "}
-                            {logs.find(
-                              (l) =>
-                                l.data.plan_id === plan.id &&
-                                l.data.session_id === s.id,
-                            )?.data.status === "missed"
+                            {loggedSession(s.id)?.data.status === "missed"
                               ? "Missed"
                               : "Logged"}
                           </>
