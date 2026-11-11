@@ -612,14 +612,16 @@ def fighter_data(uid=Depends(auth)):
             },
         ],
         "revisions": fighter_revisions(),
+        "refresh_allowed": settings.user_fighter_refresh,
     }
 
 
 @app.post("/api/fighter-data/refresh")
 def refresh_fighter_data(provider: str = "local", uid=Depends(auth)):
-    if settings.app_env == "production":
+    if not settings.user_fighter_refresh:
         raise HTTPException(
-            403, "Shared fighter data refresh is an operator-only maintenance task in production."
+            403,
+            "Shared fighter data refresh is an operator-only maintenance task in this environment.",
         )
     if provider not in ("local", "licensed"):
         raise HTTPException(422, "Choose local or licensed provider")

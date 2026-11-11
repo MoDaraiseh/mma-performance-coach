@@ -100,6 +100,8 @@ Start with one worker. Database quotas are shared and atomic, but startup refere
 
 `GET /api/health` is liveness/key-configuration presence, never the key. `GET /api/ready` checks DB connectivity and exact migration head, returning503 otherwise. Neither proves provider availability or scientific validity. Restrict health probes appropriately at the proxy.
 
+Shared fighter data is operator-maintained outside development: the `POST /api/fighter-data/refresh` endpoint returns 403 unless `ALLOW_USER_FIGHTER_REFRESH=true` (never in production). From backend, run `python -m app.fighter_refresh` (or `--provider licensed` with `FIGHTER_LICENSED_EXPORT`/`FIGHTER_LICENSE_REFERENCE` set) to reimport reviewed snapshots.
+
 From backend, `python -m app.operations` provides an operator-only CLI JSON report: migration status, aggregate HTTP-error/OIDC/AI-outcome counters, current shared budget reservations, model/token settings and configured-rate estimates. There is no public administration/metrics endpoint. Logs include route templates/status/duration; no query strings, body measurements, prompts, provider text, keys or recovery tokens are intentionally logged. Configure redacted aggregation, rotation/retention, alerts for503/5xx/auth failures429/budget exhaustion and external liveness/readiness/latency. The app does not install a monitoring service or page responders.
 
 ## Backup, restore and deletion governance

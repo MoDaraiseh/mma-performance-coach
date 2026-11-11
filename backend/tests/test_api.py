@@ -12,6 +12,7 @@ os.environ["APP_ENV"] = "test"
 os.environ["API_PER_MINUTE"] = "100000"
 os.environ["AUTH_PER_MINUTE"] = "1000"
 os.environ["AI_PER_DAY"] = "10000"
+os.environ["ALLOW_USER_FIGHTER_REFRESH"] = "true"
 
 from fastapi.testclient import TestClient
 

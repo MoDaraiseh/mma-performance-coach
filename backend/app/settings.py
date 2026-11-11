@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Literal
 from urllib.parse import urlsplit
 
-from pydantic import Field, model_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -35,6 +35,8 @@ class Settings(BaseSettings):
     identity_cutover_acknowledged: bool = False
     fighter_distribution_reviewed: bool = False
     retention_enabled: bool = False
+    # Shared fighter-data refresh over HTTP. Unset: allowed only in development.
+    allow_user_fighter_refresh: bool | None = None
     ai_global_daily: int = Field(1000, ge=0, le=1000000)
     ai_global_monthly: int = Field(10000, ge=0, le=10000000)
     ai_allowed_models: str = "gpt-4o-mini"
@@ -42,6 +44,20 @@ class Settings(BaseSettings):
     ai_max_context_chars: int = Field(16000, ge=2000, le=16000)
     ai_input_usd_per_million: float = Field(0, ge=0, le=1000)
     ai_output_usd_per_million: float = Field(0, ge=0, le=10000)
+
+    @field_validator("allow_user_fighter_refresh", mode="before")
+    @classmethod
+    def blank_means_unset(cls, value):
+        return None if isinstance(value, str) and not value.strip() else value
+
+    @property
+    def user_fighter_refresh(self) -> bool:
+        """Any signed-in account may reimport shared fighter data (never in production)."""
+        if self.app_env == "production":
+            return False
+        if self.allow_user_fighter_refresh is not None:
+            return self.allow_user_fighter_refresh
+        return self.app_env == "development"
 
     @model_validator(mode="after")
     def production(self):

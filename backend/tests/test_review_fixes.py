@@ -101,3 +101,30 @@ def test_unexpected_host_is_rejected_before_quota_and_telemetry_writes(client):
     before = rows()
     assert client.get("/api/fighters", headers={"host": "evil.example"}).status_code == 400
     assert rows() == before
+
+
+def test_shared_fighter_refresh_is_operator_only_outside_development(client, monkeypatch):
+    from app.settings import settings
+
+    account(client)
+    # Generated staging: APP_ENV=test with open self-registration and no explicit opt-in.
+    monkeypatch.setattr(settings, "app_env", "test")
+    monkeypatch.setattr(settings, "allow_user_fighter_refresh", None)
+    assert client.get("/api/fighter-data").json()["refresh_allowed"] is False
+    assert client.post("/api/fighter-data/refresh").status_code == 403
+    monkeypatch.setattr(settings, "app_env", "development")
+    assert client.get("/api/fighter-data").json()["refresh_allowed"] is True
+    assert client.post("/api/fighter-data/refresh").status_code == 200
+    # An explicit opt-out wins in development; production is always blocked.
+    monkeypatch.setattr(settings, "allow_user_fighter_refresh", False)
+    assert client.post("/api/fighter-data/refresh").status_code == 403
+    monkeypatch.setattr(settings, "allow_user_fighter_refresh", True)
+    monkeypatch.setattr(settings, "app_env", "production")
+    assert settings.user_fighter_refresh is False
+
+
+def test_blank_fighter_refresh_setting_means_unset():
+    from app.settings import Settings
+
+    assert Settings(allow_user_fighter_refresh="").allow_user_fighter_refresh is None
+    assert Settings(allow_user_fighter_refresh="false").user_fighter_refresh is False
