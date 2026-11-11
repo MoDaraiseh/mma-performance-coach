@@ -40,6 +40,7 @@ from .analysis import (
     weight_classes,
 )
 from .athletics import athletic_assessment
+from .clock import latest_user_date
 from .db import (
     ExternalIdentity,
     FighterSnapshot,
@@ -720,7 +721,7 @@ def log_workout(data: WorkoutLog, uid=Depends(auth)):
             )
         if data.plan_id is not None and data.plan_id != current.id:
             raise HTTPException(409, "Plan changed; reopen the session before logging")
-        if data.completed_on and data.completed_on > date.today():
+        if data.completed_on and data.completed_on > latest_user_date():
             raise HTTPException(422, "Session dates cannot be in the future")
         if (
             sum(s.duration_seconds or 0 for e in data.performances for s in e.sets)
@@ -907,7 +908,7 @@ def progress(limit: int | None = Query(None, ge=1, le=500), uid=Depends(auth)):
 
 @app.post("/api/progress")
 def checkin(data: CheckIn, uid=Depends(auth)):
-    if data.date > date.today():
+    if data.date > latest_user_date():
         raise HTTPException(422, "Check-in dates cannot be in the future")
     with account_write(uid) as db:
         if db.scalar(
@@ -1416,7 +1417,7 @@ def analytics_schedule(data: AnalyticsSchedule, uid=Depends(auth)):
 
 @app.post("/api/analytics/achievements")
 def technical_achievement(data: TechnicalAchievement, uid=Depends(auth)):
-    if data.date > date.today():
+    if data.date > latest_user_date():
         raise HTTPException(422, "Achievement date cannot be in the future")
     return record_json(save(uid, "technical_achievement", data.model_dump(mode="json")))
 
