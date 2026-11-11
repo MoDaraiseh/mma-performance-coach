@@ -14,6 +14,10 @@ Branch `review/post-handoff-fixes`, based on the final handoff commit `7e43a1f` 
 | 4 | Database | `sqlite:///./mma.db` resolved against the launch directory. | Starting the server from anywhere other than `backend/` silently created a second empty database, and startup then failed with "no such table". Relative SQLite paths now always mean `backend/…`. | `tests/test_review_fixes.py` |
 | 5 | Profile wizard | Imperial input min/max were rounded to the nearest 0.01. | A bound could convert back outside the metric limit (240 cm → 94.49 in → 240.005 cm), so the browser accepted values the API rejected. | Bounds verified numerically for every converted field |
 | 6 | Middleware | `TrustedHostMiddleware` was registered first, so it ran innermost. | A request with `Host: evil.example` was rejected (400) only after writing a rate-limit row and three telemetry counters. Unexpected hosts are now rejected before any other processing. | `tests/test_review_fixes.py` (fails on the old code) |
+| 7 | Shared data | `POST /api/fighter-data/refresh` was blocked only when `APP_ENV=production`. Generated staging uses `APP_ENV=test` with open self-registration. | Any visitor could create an account and reimport the shared fighter dataset (reproduced: 200 for a fresh account). New `ALLOW_USER_FIGHTER_REFRESH` setting: unset or blank means development only, and production is always blocked. The UI disables the button with an explanation, and operators run `python -m app.fighter_refresh`. | `tests/test_review_fixes.py` |
+| 8 | Readiness | `/api/ready` is unauthenticated, quota-exempt and starts a database probe per call. | A public client could keep a probe running continuously. The nginx template now limits the route to loopback and private monitoring networks. A cache was rejected because it would delay the immediate 503/200 transitions the outage drill relies on. | Template change; existing readiness tests unchanged |
+| 9 | Security headers | Headers and two copies of the CSP string were set in two middlewares. | A policy edit could silently diverge. There is now one `CONTENT_SECURITY_POLICY`, applied once by the outer middleware; behaviour is unchanged. | New header test passes on both the old and new code |
+| 10 | Build recipe | `deploy/Dockerfile` (original staging, `compose.production.yml`) used floating base tags. | Rebuilds could silently change base images. It is now pinned to the exact digests recorded for original staging in Phase 21. | Deployment tests (`test_phase18`) pass |
 
 ## Documentation and configuration corrected
 
@@ -23,17 +27,13 @@ Branch `review/post-handoff-fixes`, based on the final handoff commit `7e43a1f` 
 - Encoding damage repaired where en dashes had become `?` (e.g. `1?500`, `1.4?2.0 g/kg`), and missing spaces restored (e.g. `original11`, `Default90-day`).
 - `.env.example` now lists every setting the code reads (OIDC, release gates, AI rate estimates), as `.env.production.example` already did.
 
-## Open findings (not changed; need an owner decision)
+## Remaining items
 
-| # | Severity | Finding | Recommendation |
+| # | Status | Finding | Notes |
 | --- | --- | --- | --- |
-| A | Medium (staging) | `POST /api/fighter-data/refresh` is blocked only when `APP_ENV=production`. Generated staging uses `APP_ENV=test` with open local registration, so any visitor who creates an account can trigger a reimport of the shared fighter dataset. Reproduced: a freshly self-registered account received 200 under the generated staging settings. | Make refresh an operator-only command or add an explicit setting, default off outside development. Changing it alters staging behaviour, so it was left for decision. |
-| B | Medium (pre-launch) | Rate limits key on the TCP peer address. Behind the staging relay or any reverse proxy, all users share one bucket. The auth limit (10/min) then applies to everyone together, and one client can exhaust it for all. | Configure trusted forwarded-header handling for the chosen proxy before multi-user use. This is already listed as unexercised in KNOWN_LIMITATIONS. |
-| C | Low | `/api/ready` is unauthenticated, exempt from rate limiting, and starts a Python subprocess per probe. Probes are serialized per process, so concurrent callers wait for the running one. | Cache the last result for a few seconds, or restrict readiness to the internal network at the proxy. |
-| D | Low | Security headers are set in two middlewares (`security` and `operational_response`) with duplicated CSP strings. | Keep one definition to avoid drift. |
-| E | Info | The original `deploy/Dockerfile` still uses floating base tags. Only the candidate recipes pin digests. | Retire it or pin it like the candidate. |
-| F | Info | Starlette's test client and Authlib emit `httpx` → `httpx2` deprecation warnings. | Track upstream before the next dependency refresh. |
-| G | Info | The local development database `backend/mma.db` is at Alembic revision `0002`; the code expects `0008`. | Back it up, then run `alembic upgrade head` from `backend/` before using `run-local.cmd`. Not done automatically because it is the owner's data. |
+| B | Staging only | Rate limits key on the client address. The production template already passes it correctly: nginx replaces `X-Forwarded-For`, and uvicorn runs with `--proxy-headers` and a pinned `FORWARDED_ALLOW_IPS`. The loopback staging relay forwards raw TCP and cannot pass the client address, so staging users share one bucket. | Acceptable for the single-operator loopback staging. Verify forwarded-address handling on the real proxy before multi-user use. |
+| F | Upstream | Starlette's test client and Authlib emit `httpx` → `httpx2` deprecation warnings from inside their own code. | Fixing it means changing locked dependencies, which would invalidate the tested set. Address it in the next reviewed dependency refresh. |
+| G | Done locally | The local development database `backend/mma.db` was at Alembic revision `0002`. | It contained no users or records. It was backed up byte-for-byte to the git-ignored `backend/mma.db-backup-2026-11-11-rev0002`, migrated to `0008`, and readiness now reports ready. |
 
 The external gates in FINAL_DELIVERY are unchanged: libxml2 CVE-2026-86140, a current trusted image scan, content rights, professional review, identity/TLS/backup operations, and staging/public approvals.
 
@@ -41,7 +41,7 @@ The external gates in FINAL_DELIVERY are unchanged: libxml2 CVE-2026-86140, a cu
 
 | Check | Before fixes | After fixes |
 | --- | --- | --- |
-| Backend pytest (cwd `backend/`) | 388 passed in one uninterrupted run | 393 passed in one uninterrupted run (5 new tests) |
+| Backend pytest (cwd `backend/`) | 388 passed in one uninterrupted run | 396 passed in one uninterrupted run (8 new tests) |
 | Ruff 0.17.4 check / format | Passed | Passed |
 | Frontend Vitest | 12 passed | 13 passed |
 | TypeScript (app and browser configs) / Prettier | Passed | Passed |
