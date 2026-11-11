@@ -23,7 +23,7 @@ OpenAI configuration/transport remains the Phase 5 server-only Responses adapter
 
 ## Phase 8 search and governance additions
 
-`GET /api/fighters/search` accepts bounded `q`, `category` (Men/Women), `division` (historical), `stance`, `status`, `page` and `page_size` (1?50); returns `items`, `total`, `page`, `page_size`. Legacy `/api/fighters` keeps a list response with a 50-record cap and `X-Result-Limit`; use pagination for larger datasets. `GET /api/fighter-data` includes the current coverage/field/source-rights quality report. Manual comparison uses indexed ID lookup, and matching returns v3 evidence-scaled weights/support labels.
+`GET /api/fighters/search` accepts bounded `q`, `category` (Men/Women), `division` (historical), `stance`, `status`, `page` and `page_size` (1–50); returns `items`, `total`, `page`, `page_size`. Legacy `/api/fighters` keeps a list response with a 50-record cap and `X-Result-Limit`; use pagination for larger datasets. `GET /api/fighter-data` includes the current coverage/field/source-rights quality report. Manual comparison uses indexed ID lookup, and matching returns v3 evidence-scaled weights/support labels.
 
 There is **no public import/rollback endpoint**. Operator CLI and migration **0006** are documented in [Phase 8](PHASE8_FIGHTERS.md). Ordinary production-user refresh remains denied. Optional typed professional-record fields require dated scope and provenance, but the current bundle has none verified; sparse historical statistic values remain outside similarity scoring.
 
@@ -43,7 +43,7 @@ All endpoints require the current authenticated account; ownership is never acce
 - `POST /api/analytics/schedule`: `{plan_id,start_date}`; Monday anchor must reference the current approved plan. Stale plan returns 409. Does not alter workouts.
 - `POST /api/analytics/achievements`: `{date,discipline,title,notes}`; dated self-reported technical milestone, no future dates.
 - Workout logs optionally accept `practices:[{discipline,minutes}]`; unique disciplines, total practice minutes cannot exceed actual duration.
-- Existing progress/workout GET routes accept optional `limit` (1?500), preserving legacy array responses.
+- Existing progress/workout GET routes accept optional `limit` (1–500), preserving legacy array responses.
 
 See [methodology and limits](PHASE11_ANALYTICS.md). Migration 0007 is required.
 

@@ -1,4 +1,4 @@
-# Phase 23 ? local staging reliability and security verification
+# Phase 23 — local staging reliability and security verification
 
 Date: 2026-11-01. Branch: `phase18-isolated-staging`; starting HEAD `43f5eadf05af909ec2c3ca6df4cf19624f0ebeac`. Original annotated tag `v1.0.0-rc.17` still resolves to commit `2f43e4d66e76e921bc40d3840611c347ab9824c8`.
 
@@ -53,7 +53,7 @@ Installed Docker Scout 1.27.0 produced local SPDX SBOMs and SARIF scans using of
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Final application/relay image | 187 | 0 | 8 | 4 | 44 |
 | Preserved PostgreSQL image | 210 | 4 | 34 | 31 | 55 |
-| Frontend CycloneDX SBOM | 180 | ? | ? | ? | ? |
+| Frontend CycloneDX SBOM | 180 | — | — | — | — |
 
 Fresh npm audit reported zero advisories. Remaining application high findings concern OS packages including util-linux, glibc, perl and zlib; the cached report marks these not fixed. PostgreSQL's four critical findings identify Go 1.24.6 in `/usr/local/bin/gosu`: CVE-2026-78663, CVE-2026-39821, CVE-2026-56857 and CVE-2025-68121. These are scanner findings, not proof of four exploitable PostgreSQL server vulnerabilities. They nevertheless require vendor/reachability triage and remediation. The database image was deliberately not upgraded or restarted under the preservation constraint. A future patched candidate database should be validated by separate restore before an authorized cutover.
 
