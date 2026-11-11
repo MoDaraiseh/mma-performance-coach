@@ -14,6 +14,7 @@ from test_api import account
 from test_api import client as api_client
 
 from app.analytics import normalize, trend, window
+from app.clock import latest_user_date
 from app.db import Record, Session, User, engine
 
 client = api_client
@@ -94,7 +95,8 @@ def test_unit_conversion_and_time_window_bounds():
     with pytest.raises(ValueError):
         normalize(1, "cups")
     for a, b in [
-        (date.today(), date.today() + timedelta(days=1)),
+        # Later than "today" in every time zone; server-date + 1 can still be today in UTC+14.
+        (date.today(), latest_user_date() + timedelta(days=1)),
         (date.today(), date.today() - timedelta(days=1)),
         (date.today() - timedelta(days=3651), date.today()),
     ]:
