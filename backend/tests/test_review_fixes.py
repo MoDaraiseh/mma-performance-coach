@@ -7,6 +7,7 @@ from test_api import client as client
 
 from app import analytics, main
 from app.clock import latest_user_date
+from app.db import BACKEND_DIR, resolve_database_url
 
 
 def test_latest_user_date_covers_furthest_ahead_time_zone():
@@ -73,3 +74,15 @@ def test_dates_ahead_of_server_utc_are_accepted_until_truly_future(client, monke
     window = f"start={(local_today - timedelta(days=30)).isoformat()}"
     assert client.get(f"/api/analytics?{window}&end={local_today.isoformat()}").status_code == 200
     assert client.get(f"/api/analytics?{window}&end={future.isoformat()}").status_code == 422
+
+
+def test_relative_sqlite_path_is_anchored_to_backend_directory(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)  # launching from another directory must not matter
+    resolved = resolve_database_url("sqlite:///./mma.db")
+    assert resolved.database == str((BACKEND_DIR / "mma.db").resolve())
+    absolute = tmp_path / "explicit.db"
+    assert resolve_database_url(f"sqlite:///{absolute}").database == str(absolute)
+    assert resolve_database_url("sqlite://").database in (None, "")
+    assert resolve_database_url("sqlite:///:memory:").database == ":memory:"
+    pg = "postgresql+psycopg://user:secret@db:5432/mma"
+    assert resolve_database_url(pg).render_as_string(hide_password=False) == pg

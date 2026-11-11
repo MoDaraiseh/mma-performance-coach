@@ -15,6 +15,7 @@ from sqlalchemy import (
     event,
     text,
 )
+from sqlalchemy.engine import make_url
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
 
 
@@ -139,12 +140,35 @@ class FighterDataRevision(Base):
     )
 
 
-load_dotenv(Path(__file__).resolve().parents[2] / ".env")
+BACKEND_DIR = Path(__file__).resolve().parents[1]
+
+
+def resolve_database_url(raw):
+    """Anchor relative SQLite paths to backend/, independent of the launch directory.
+
+    run-local.cmd and Alembic run from backend/, so ./mma.db has always meant
+    backend/mma.db. Launching from another directory must not silently create a
+    second, unmigrated database there.
+    """
+    url = make_url(raw)
+    database = url.database
+    if (
+        url.get_backend_name() == "sqlite"
+        and database
+        and database != ":memory:"
+        and not database.startswith("file:")
+        and not Path(database).is_absolute()
+    ):
+        url = url.set(database=str((BACKEND_DIR / database).resolve()))
+    return url
+
+
+load_dotenv(BACKEND_DIR.parent / ".env")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./mma.db")
 engine = create_engine(
-    DATABASE_URL,
+    resolve_database_url(DATABASE_URL),
     connect_args={"check_same_thread": False, "timeout": 30}
-    if DATABASE_URL.startswith("sqlite")
+    if make_url(DATABASE_URL).get_backend_name() == "sqlite"
     else {"connect_timeout": 5},
     pool_pre_ping=True,
     hide_parameters=True,
