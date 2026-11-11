@@ -128,3 +128,25 @@ def test_blank_fighter_refresh_setting_means_unset():
 
     assert Settings(allow_user_fighter_refresh="").allow_user_fighter_refresh is None
     assert Settings(allow_user_fighter_refresh="false").user_fighter_refresh is False
+
+
+def test_security_headers_on_success_rejection_and_docs(client):
+    from app.main import CONTENT_SECURITY_POLICY
+
+    responses = [
+        client.get("/api/health"),
+        client.post("/api/progress", json={}, headers={"sec-fetch-site": "cross-site"}),
+        client.get("/api/does-not-exist"),
+    ]
+    assert [r.status_code for r in responses] == [200, 403, 404]
+    for r in responses:
+        assert r.headers["Content-Security-Policy"] == CONTENT_SECURITY_POLICY
+        assert r.headers["X-Content-Type-Options"] == "nosniff"
+        assert r.headers["X-Frame-Options"] == "DENY"
+        assert r.headers["Cache-Control"] == "no-store"
+        assert "camera=()" in r.headers["Permissions-Policy"]
+        assert "Strict-Transport-Security" not in r.headers  # production only
+    docs = client.get("/docs")
+    assert docs.status_code == 200
+    assert "Content-Security-Policy" not in docs.headers  # development docs load CDN assets
+    assert docs.headers["X-Frame-Options"] == "DENY"

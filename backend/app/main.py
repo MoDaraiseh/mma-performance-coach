@@ -176,22 +176,16 @@ async def security(request: Request, call_next):
             return JSONResponse(
                 {"error": "Service temporarily unavailable. Please retry."}, status_code=503
             )
-    response = await call_next(request)
-    response.headers["X-Content-Type-Options"] = "nosniff"
-    response.headers["Referrer-Policy"] = "same-origin"
-    response.headers["Cache-Control"] = "no-store"
-    response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
-        "img-src 'self' data:; font-src 'self'; connect-src 'self'; "
-        "object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
-    )
-    response.headers["X-Frame-Options"] = "DENY"
-    if settings.app_env != "production" and request.url.path in {"/docs", "/redoc"}:
-        # FastAPI's development documentation loads its own inline/CDN assets.
-        del response.headers["Content-Security-Policy"]
-    if settings.app_env == "production":
-        response.headers["Strict-Transport-Security"] = "max-age=31536000"
-    return response
+    # Security headers are applied once, by operational_response (the outer middleware),
+    # so early rejections above receive them too.
+    return await call_next(request)
+
+
+CONTENT_SECURITY_POLICY = (
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+    "img-src 'self' data:; font-src 'self'; connect-src 'self'; "
+    "object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
+)
 
 
 @app.middleware("http")
@@ -203,13 +197,12 @@ async def operational_response(request: Request, call_next):
     response.headers["Referrer-Policy"] = "same-origin"
     response.headers["Cache-Control"] = "no-store"
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
-    if "Content-Security-Policy" not in response.headers and request.url.path not in {
-        "/docs",
-        "/redoc",
-    }:
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
-        )
+    if settings.app_env != "production" and request.url.path in {"/docs", "/redoc"}:
+        # FastAPI's development documentation loads its own inline/CDN assets.
+        if "Content-Security-Policy" in response.headers:
+            del response.headers["Content-Security-Policy"]
+    else:
+        response.headers["Content-Security-Policy"] = CONTENT_SECURITY_POLICY
     if settings.app_env == "production":
         response.headers["Strict-Transport-Security"] = "max-age=31536000"
     logger.info(
