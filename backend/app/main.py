@@ -116,7 +116,6 @@ app = FastAPI(
     docs_url=None if settings.app_env == "production" else "/docs",
     redoc_url=None if settings.app_env == "production" else "/redoc",
 )
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_hosts.split(","))
 app.add_middleware(
     SessionMiddleware,
     secret_key=settings.oidc_state_secret or secrets.token_urlsafe(48),
@@ -232,6 +231,11 @@ async def operational_response(request: Request, call_next):
         except SQLAlchemyError:
             logger.error(json.dumps({"event": "operational_counter_unavailable"}))
     return response
+
+
+# Registered last so it is the outermost middleware: an unexpected Host header is
+# rejected before origin/body checks, rate-limit writes or telemetry counters run.
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_hosts.split(","))
 
 
 @app.exception_handler(HTTPException)

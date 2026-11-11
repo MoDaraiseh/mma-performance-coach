@@ -7,7 +7,7 @@ from test_api import client as client
 
 from app import analytics, main
 from app.clock import latest_user_date
-from app.db import BACKEND_DIR, resolve_database_url
+from app.db import BACKEND_DIR, OperatorCounter, RateBucket, Session, resolve_database_url
 
 
 def test_latest_user_date_covers_furthest_ahead_time_zone():
@@ -86,3 +86,18 @@ def test_relative_sqlite_path_is_anchored_to_backend_directory(tmp_path, monkeyp
     assert resolve_database_url("sqlite:///:memory:").database == ":memory:"
     pg = "postgresql+psycopg://user:secret@db:5432/mma"
     assert resolve_database_url(pg).render_as_string(hide_password=False) == pg
+
+
+def test_unexpected_host_is_rejected_before_quota_and_telemetry_writes(client):
+    from sqlalchemy import func, select
+
+    def rows():
+        with Session() as db:
+            return (
+                db.scalar(select(func.count()).select_from(RateBucket)),
+                db.scalar(select(func.count()).select_from(OperatorCounter)),
+            )
+
+    before = rows()
+    assert client.get("/api/fighters", headers={"host": "evil.example"}).status_code == 400
+    assert rows() == before
