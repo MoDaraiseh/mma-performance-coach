@@ -46,6 +46,7 @@ type DataStatus = {
   unavailable_records: { id: string; reason: string }[];
   providers: { id: string; available: boolean; description: string }[];
   revisions: { digest: string; entity: string }[];
+  refresh_allowed?: boolean;
 };
 export default function Comparison({
   profile,
@@ -979,7 +980,7 @@ export default function Comparison({
         </label>
         <button
           className="secondary"
-          disabled={busy}
+          disabled={busy || dataStatus?.refresh_allowed === false}
           onClick={() =>
             run(async () => {
               const result = await api<{ message: string; changed: number }>(
@@ -995,6 +996,12 @@ export default function Comparison({
         >
           Refresh reviewed fighter data
         </button>
+        {dataStatus?.refresh_allowed === false && (
+          <p className="muted">
+            Shared fighter data is maintained by the operator in this
+            environment.
+          </p>
+        )}
         <p className="muted">
           Refresh preserves prior data revisions and saved comparisons. It never
           changes athlete inputs or training plans.{" "}

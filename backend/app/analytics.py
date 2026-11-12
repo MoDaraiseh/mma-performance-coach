@@ -10,6 +10,7 @@ from datetime import date, timedelta
 from sqlalchemy import func, select
 
 from . import nutrition_integrity as ni
+from .clock import latest_user_date
 from .db import Record
 from .repository import latest_record
 
@@ -46,7 +47,7 @@ def normalize(value, unit):
 def window(start=None, end=None):
     end = end or date.today()
     start = start or end - timedelta(days=89)
-    if end > date.today() or start > end or (end - start).days > 3650:
+    if end > latest_user_date() or start > end or (end - start).days > 3650:
         raise ValueError("Choose an ordered interval up to 3651 days ending no later than today")
     return start, end
 

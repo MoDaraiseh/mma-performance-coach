@@ -1,26 +1,32 @@
 # MMA Performance Coach
 
-Authoritative final handoff: [Final delivery, acceptance, operations and owner decisions](docs/FINAL_DELIVERY.md) (4 November 2026). Local candidate acceptance passed; security clearance and launch remain blocked. Staging replacement and public deployment are not authorized. All numbered reports and status statements below are historical snapshots, not current availability or clearance claims.
+## Status
 
-Current verification: [Phase 24 isolated vulnerability remediation](docs/PHASE24_REPORT.md). Original staging at `127.0.0.1:18018` is preserved; the patched candidate is separately available at `127.0.0.1:18026`. Candidate scans: application 0 high/critical; PostgreSQL 0 critical/1 high, with a musl data discrepancy still open. New verification: 388 backend / 12 frontend / 10 real Edge-to-PostgreSQL passed, plus native restore/session recovery. Security clearance and cutover remain blocked; no public deployment.
+**Authoritative record:** [Final delivery, acceptance, operations and owner decisions](docs/FINAL_DELIVERY.md) (4 November 2026). Local candidate acceptance passed; security clearance and launch remain blocked. Staging replacement and public deployment are not authorized.
 
-Current release: **1.0.0-rc.17**, [Phase 17 acceptance](docs/PHASE17_ACCEPTANCE.md), [feature matrix](docs/PHASE17_FEATURE_MATRIX.md), [launch/deployment/rollback runbooks](docs/PHASE17_LAUNCH_RUNBOOK.md). Readiness is **A - local release candidate** on the Phase 17 scale. Public launch is blocked; no public deployment is authorized. Earlier B-local labels used a different scale. See the current report for actual verification and remaining infrastructure, licensing and independent-review gates.
+- **Post-handoff review (11 November 2026):** [defects fixed, open findings and re-verification](docs/POST_HANDOFF_REVIEW.md). These source fixes postdate the accepted Phase 24 candidate images, so the candidate must be rebuilt and re-accepted before they apply to staging.
+- **Release:** 1.0.0-rc.17, category **A - local release candidate** on the [Phase 17 scale](docs/PHASE17_ACCEPTANCE.md). No final tag.
+- **Candidate environment:** original staging preserved at `127.0.0.1:18018`; isolated patched candidate at `127.0.0.1:18026` ([Phase 24](docs/PHASE24_REPORT.md)).
+- **Open security gates:** libxml2 CVE-2026-86140 (no supported Alpine fix); no current trusted image scan. The musl CVE-2026-107891 scanner discrepancy has vendor-backed fixed-status evidence but still awaits independent review.
+- **Other launch blockers:** content-rights, professional (medical/nutrition/coaching) and security review; live identity provider, TLS, durable backups and monitoring. See [known limitations](docs/KNOWN_LIMITATIONS.md).
 
-**Current delivery: Phase 15.** [Changes, source coverage, tests and limitations](docs/PHASE15_DELIVERY.md) ? [Updated acceptance matrix](docs/PHASE15_FEATURE_MATRIX.md).19source-backed fighter snapshots,55USDA foods and49exercises; macro-balanced fat-food substitutions, explicit amateur-training context and stronger allergy/source validation.344backend/12frontend tests pass; full Edge verification: 168 passed, 0 failed, 7 intentional skips; final safety checks: 5 passed. Existing data/schema0008 are preserved; nutrition catalog v3 requires reviewed regeneration of older meal plans. Independent baseline checkpoint d8839ce excludes secrets/runtime/evidence. No public deployment or expert approval. Earlier phase notes below are historical.
+## Phase history
 
+Historical snapshots, newest first. Statements in these reports describe their own date, not current availability or clearance.
 
-**Current release: Phase14 - verified local release candidate (category B).** [Acceptance report, feature matrix, evidence and launch gates](docs/PHASE14_ACCEPTANCE.md). 328 backend / 12 frontend tests passed; full Edge 158 passed, 0 failed, 7 intentional skips across five widths; final focused checks 15 passed. Current schema0008. No public deployment, live AI/IdP, PostgreSQL runtime or independent professional approval. Earlier phase statements below are historical snapshots.
+- **Phase 24 - container triage.** [Report](docs/PHASE24_REPORT.md), [triage matrix](docs/PHASE24_TRIAGE.md). Candidate scans: application 0 high/critical; PostgreSQL 0 critical/1 high. 388 backend / 12 frontend / 10 real Edge-to-PostgreSQL passed, plus native restore/session recovery.
+- **Phases 18-23 - isolated staging.** [Phase 18 staging](docs/PHASE18_STAGING.md), [launch gates](docs/PHASE18_LAUNCH_GATES.md), [Phase 19](docs/PHASE19_REPORT.md), [Phase 20](docs/PHASE20_REPORT.md), [Phase 21](docs/PHASE21_REPORT.md), [Phase 22](docs/PHASE22_REPORT.md), [Phase 23](docs/PHASE23_REPORT.md).
+- **Phase 17 - release acceptance (1.0.0-rc.17).** [Acceptance](docs/PHASE17_ACCEPTANCE.md), [feature matrix](docs/PHASE17_FEATURE_MATRIX.md), [launch/deployment/rollback runbooks](docs/PHASE17_LAUNCH_RUNBOOK.md). Earlier B-local labels used a different scale.
+- **Phase 15 - catalog and feature refinement.** [Delivery](docs/PHASE15_DELIVERY.md), [acceptance matrix](docs/PHASE15_FEATURE_MATRIX.md). 19 source-backed fighter snapshots, 55 USDA foods and 49 exercises; macro-balanced fat-food substitutions, explicit amateur-training context and stronger allergy/source validation. 344 backend / 12 frontend tests; full Edge verification 168 passed, 0 failed, 7 intentional skips. Nutrition catalog v3 requires reviewed regeneration of older meal plans. Independent baseline checkpoint d8839ce.
+- **Phase 14 - verified local release candidate (category B).** [Acceptance, feature matrix, evidence and launch gates](docs/PHASE14_ACCEPTANCE.md). 328 backend / 12 frontend; full Edge 158 passed, 0 failed, 7 intentional skips across five widths. Schema 0008.
+- **Phase 13 - infrastructure and identity.** [Verification and production blockers](docs/PHASE13_INFRASTRUCTURE.md). Authlib OIDC with explicit local-account linking, session visibility/revocation, shared AI budgets, migration-aware readiness, private deployment templates and backup/restore tooling. Existing databases require migration 0008.
+- **Phase 12 - review readiness.** [Safety audit, methodology inventory and four specialist review packs](docs/PHASE12_SAFETY.md). Automated safety checks are separate from independent professional approval, which remains pending.
+- **Phase 11 - analytics.** [Implementation, methodology and limitations](docs/PHASE11_ANALYTICS.md). Longitudinal measurements, comparable records, weekly workload, calendar adherence, martial arts participation, technical achievements and private CSV/JSON/print reports (schema 0007).
+- **Phase 10 - coach.** [Context, actions, evaluations and cost limits](docs/PHASE10_COACH.md). Rescheduling, frequency changes, exercise/food replacements, assessment snapshots and evidence-gated progression use validated previews and explicit approval. Providers cannot authorize capabilities or write records. Live OpenAI quality remains unverified.
+- **Phase 9 - nutrition.** [Report, coverage and limitations](docs/PHASE9_NUTRITION.md). Forty USDA source-backed foods with fiber, sodium, calcium, iron and potassium; cooking/meal-count preferences and food replacements with preview and approval.
+- **Phases 1-8.** See the sections below and the `docs/PHASE*` reports.
 
-
-**Latest: Phase 13 infrastructure and identity.** [Verification, evidence and production blockers](docs/PHASE13_INFRASTRUCTURE.md). Added Authlib OIDC with explicit local-account linking, session visibility/revocation, shared AI budgets, migration-aware readiness, private deployment templates and backup/restore tooling. **328 backend / 12 frontend tests passed; 25 focused Edge checks passed.** Existing databases require migration0008. PostgreSQL runtime, real IdP/MFA, TLS/proxy and production infrastructure remain unverified; no public deployment occurred.
-
-**Latest: Phase 12 review readiness.** [Safety audit, methodology inventory and four specialist review packs](docs/PHASE12_SAFETY.md). Automated safety checks are separate from independent professional approval, which remains pending. Reassessment effort matching, deload rep consistency, rapid-cut withholding and minor/unsupported-claim coach safeguards were improved. No new migration; existing athlete data and plans are preserved.
-
-**Latest: Phase 11 analytics.** [Implementation, methodology, verification and limitations](docs/PHASE11_ANALYTICS.md). Progress now provides actual longitudinal measurements, comparable records, weekly workload, explicit calendar adherence, martial arts participation, technical achievements and private CSV/JSON/print reports. Existing databases require `alembic upgrade head` from `backend/` (schema 0007); payload history and approved plans are preserved.
-
-**Phase 10 coach.** [Context, actions, evaluations, cost limits and verification](docs/PHASE10_COACH.md). Offline coaching now uses bounded history and deterministic analytics. Rescheduling, frequency changes, exercise/food replacements, updated assessment snapshots and evidence-gated progression use validated previews and explicit approval. Providers cannot authorize capabilities or write records. Live OpenAI quality remains unverified. Schema head remains 0006 and existing data is preserved.
-
-**Phase 9 nutrition.** [Report, coverage and limitations](docs/PHASE9_NUTRITION.md). Forty USDA source-backed foods now include fiber, sodium, calcium, iron and potassium. Cooking/meal-count preferences and selected food replacements integrate with preview, approval and retained history. Catalog v2 requires reviewed regeneration of old targets without erasing snapshots. No migration beyond 0006 is required.
+## About
 
 A functional local MMA development workspace built with React, TypeScript, Vite, Recharts, FastAPI, Pydantic, SQLAlchemy, SQLite and Alembic. The existing Saudi law tracker is untouched.
 
@@ -60,7 +66,7 @@ Copy `.env.example` to `.env` in **this app directory** if configuration is need
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `DATABASE_URL` | `sqlite:///./mma.db` | Relative to backend working directory. PostgreSQL driver is pinned; offline migration SQL compiles, but real PostgreSQL integration remains unverified. |
+| `DATABASE_URL` | `sqlite:///./mma.db` | Relative SQLite paths resolve against `backend/` regardless of the launch directory, so the default is always `backend/mma.db`. PostgreSQL runtime was verified on the isolated staging candidate (Phases 21-24); production PostgreSQL remains unverified. |
 | `OPENAI_API_KEY` | empty | Optional, server-only. All calculations and local coaching work without it. |
 | `OPENAI_MODEL` | `gpt-4o-mini` | Configurable Responses API model with structured output support. |
 | `COOKIE_SECURE` | `false` | Set `true` behind HTTPS for deployment. |
@@ -143,7 +149,7 @@ cd backend
 
 The app's **Print report** button prints the current view (including the selected training week or nutrition day), with ingredient/method disclosures expanded temporarily. **Settings & data → Download all data** exports all saved versions and includes record types.
 
-Core tests require no paid APIs. Optional backend lint/format uses Ruff (`ruff check backend`, `ruff format --check backend`). Frontend formatting: `npm.cmd exec prettier -- --check src tools vite.config.ts`.
+Core tests require no paid APIs. Optional backend lint/format uses Ruff, which is not part of the locked requirements; run it without installing into the project environment with `uvx ruff check backend` and `uvx ruff format --check backend` (verified with Ruff 0.17.4). Frontend formatting: `npm.cmd exec prettier -- --check src tools vite.config.ts`.
 
 See [delivery status](docs/DELIVERY.md) for exact results and verification limits, [methodology](docs/METHODOLOGY.md) for formulas, and [sources](docs/SOURCES.md) for provenance and data permissions.
 

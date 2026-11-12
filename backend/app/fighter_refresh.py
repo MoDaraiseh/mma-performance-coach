@@ -95,3 +95,30 @@ def revisions():
                 )
             )
         ]
+
+
+if __name__ == "__main__":
+    # Operator maintenance path; the HTTP endpoint is disabled outside development.
+    import argparse
+    import os
+    import sys
+
+    from .fighters import LicensedFileFighterProvider, SeededFighterProvider
+
+    parser = argparse.ArgumentParser(description="Reimport reviewed fighter snapshots.")
+    parser.add_argument("--provider", choices=("local", "licensed"), default="local")
+    args = parser.parse_args()
+    selected = SeededFighterProvider()
+    if args.provider == "licensed":
+        path, reference = (
+            os.getenv("FIGHTER_LICENSED_EXPORT"),
+            os.getenv("FIGHTER_LICENSE_REFERENCE"),
+        )
+        if not path or not reference:
+            parser.error("Set FIGHTER_LICENSED_EXPORT and FIGHTER_LICENSE_REFERENCE first")
+        selected = LicensedFileFighterProvider(path, reference)
+    try:
+        result = refresh(selected, refresh_reference=args.provider == "local")
+    except (ValueError, OSError) as exc:
+        sys.exit(f"Provider export rejected; no changes applied: {exc}")
+    print(json.dumps({k: result[k] for k in ("changed", "reviewed", "message")}))

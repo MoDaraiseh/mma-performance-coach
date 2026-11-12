@@ -40,6 +40,7 @@ from .analysis import (
     weight_classes,
 )
 from .athletics import athletic_assessment
+from .clock import latest_user_date
 from .db import (
     ExternalIdentity,
     FighterSnapshot,
@@ -115,7 +116,6 @@ app = FastAPI(
     docs_url=None if settings.app_env == "production" else "/docs",
     redoc_url=None if settings.app_env == "production" else "/redoc",
 )
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_hosts.split(","))
 app.add_middleware(
     SessionMiddleware,
     secret_key=settings.oidc_state_secret or secrets.token_urlsafe(48),
@@ -176,22 +176,16 @@ async def security(request: Request, call_next):
             return JSONResponse(
                 {"error": "Service temporarily unavailable. Please retry."}, status_code=503
             )
-    response = await call_next(request)
-    response.headers["X-Content-Type-Options"] = "nosniff"
-    response.headers["Referrer-Policy"] = "same-origin"
-    response.headers["Cache-Control"] = "no-store"
-    response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
-        "img-src 'self' data:; font-src 'self'; connect-src 'self'; "
-        "object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
-    )
-    response.headers["X-Frame-Options"] = "DENY"
-    if settings.app_env != "production" and request.url.path in {"/docs", "/redoc"}:
-        # FastAPI's development documentation loads its own inline/CDN assets.
-        del response.headers["Content-Security-Policy"]
-    if settings.app_env == "production":
-        response.headers["Strict-Transport-Security"] = "max-age=31536000"
-    return response
+    # Security headers are applied once, by operational_response (the outer middleware),
+    # so early rejections above receive them too.
+    return await call_next(request)
+
+
+CONTENT_SECURITY_POLICY = (
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+    "img-src 'self' data:; font-src 'self'; connect-src 'self'; "
+    "object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
+)
 
 
 @app.middleware("http")
@@ -203,13 +197,12 @@ async def operational_response(request: Request, call_next):
     response.headers["Referrer-Policy"] = "same-origin"
     response.headers["Cache-Control"] = "no-store"
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=()"
-    if "Content-Security-Policy" not in response.headers and request.url.path not in {
-        "/docs",
-        "/redoc",
-    }:
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
-        )
+    if settings.app_env != "production" and request.url.path in {"/docs", "/redoc"}:
+        # FastAPI's development documentation loads its own inline/CDN assets.
+        if "Content-Security-Policy" in response.headers:
+            del response.headers["Content-Security-Policy"]
+    else:
+        response.headers["Content-Security-Policy"] = CONTENT_SECURITY_POLICY
     if settings.app_env == "production":
         response.headers["Strict-Transport-Security"] = "max-age=31536000"
     logger.info(
@@ -231,6 +224,11 @@ async def operational_response(request: Request, call_next):
         except SQLAlchemyError:
             logger.error(json.dumps({"event": "operational_counter_unavailable"}))
     return response
+
+
+# Registered last so it is the outermost middleware: an unexpected Host header is
+# rejected before origin/body checks, rate-limit writes or telemetry counters run.
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=settings.allowed_hosts.split(","))
 
 
 @app.exception_handler(HTTPException)
@@ -607,14 +605,16 @@ def fighter_data(uid=Depends(auth)):
             },
         ],
         "revisions": fighter_revisions(),
+        "refresh_allowed": settings.user_fighter_refresh,
     }
 
 
 @app.post("/api/fighter-data/refresh")
 def refresh_fighter_data(provider: str = "local", uid=Depends(auth)):
-    if settings.app_env == "production":
+    if not settings.user_fighter_refresh:
         raise HTTPException(
-            403, "Shared fighter data refresh is an operator-only maintenance task in production."
+            403,
+            "Shared fighter data refresh is an operator-only maintenance task in this environment.",
         )
     if provider not in ("local", "licensed"):
         raise HTTPException(422, "Choose local or licensed provider")
@@ -720,7 +720,7 @@ def log_workout(data: WorkoutLog, uid=Depends(auth)):
             )
         if data.plan_id is not None and data.plan_id != current.id:
             raise HTTPException(409, "Plan changed; reopen the session before logging")
-        if data.completed_on and data.completed_on > date.today():
+        if data.completed_on and data.completed_on > latest_user_date():
             raise HTTPException(422, "Session dates cannot be in the future")
         if (
             sum(s.duration_seconds or 0 for e in data.performances for s in e.sets)
@@ -907,7 +907,7 @@ def progress(limit: int | None = Query(None, ge=1, le=500), uid=Depends(auth)):
 
 @app.post("/api/progress")
 def checkin(data: CheckIn, uid=Depends(auth)):
-    if data.date > date.today():
+    if data.date > latest_user_date():
         raise HTTPException(422, "Check-in dates cannot be in the future")
     with account_write(uid) as db:
         if db.scalar(
@@ -1210,7 +1210,9 @@ def reassessments(uid=Depends(auth)):
 
 @app.post("/api/coach")
 async def coach(data: CoachRequest, uid=Depends(auth)):
-    if data.use_ai:
+    # Only a configured provider can make outbound calls; without a key the request is
+    # answered locally, so it must not consume the athlete quota or the operator budget.
+    if data.use_ai and os.getenv("OPENAI_API_KEY"):
         await run_in_threadpool(quota, uid, "ai", settings.ai_per_day, 86400)
         await run_in_threadpool(reserve_ai)
     with Session() as db:
@@ -1416,7 +1418,7 @@ def analytics_schedule(data: AnalyticsSchedule, uid=Depends(auth)):
 
 @app.post("/api/analytics/achievements")
 def technical_achievement(data: TechnicalAchievement, uid=Depends(auth)):
-    if data.date > date.today():
+    if data.date > latest_user_date():
         raise HTTPException(422, "Achievement date cannot be in the future")
     return record_json(save(uid, "technical_achievement", data.model_dump(mode="json")))
 

@@ -3,6 +3,7 @@
 from copy import deepcopy
 from datetime import date, timedelta
 
+from .clock import latest_user_date
 from .exercises import CATALOG
 from .schemas import Profile
 
@@ -43,7 +44,7 @@ def workload_summary(logs):
         )
         return start <= when < end
 
-    recent = [log for log in logs if within(log, cutoff, date.today() + timedelta(days=1))]
+    recent = [log for log in logs if within(log, cutoff, latest_user_date() + timedelta(days=1))]
     prior = [log for log in logs if within(log, previous, cutoff)]
     performed = [log for log in recent if log.get("status", "completed") != "missed"]
     return {
@@ -75,7 +76,7 @@ def progression_review(plan, logs, p, check=None):
         and log["fatigue"] >= 7
         and date.today() - timedelta(days=6)
         <= date.fromisoformat(log.get("completed_on") or log.get("recorded_at", "1900-01-01")[:10])
-        <= date.today()
+        <= latest_user_date()
         and log.get("status", "completed") != "missed"
         for log in logs
     ):

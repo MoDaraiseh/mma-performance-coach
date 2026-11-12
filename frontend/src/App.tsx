@@ -46,7 +46,7 @@ import {
   Saved,
   Workout,
 } from "./types";
-import { fmt } from "./utils";
+import { fmt, inPlanLineage } from "./utils";
 
 const Comparison = lazy(() => import("./components/Comparison"));
 const Progress = lazy(() => import("./components/Progress"));
@@ -244,7 +244,7 @@ export default function App() {
       URL.revokeObjectURL(url);
     });
   const completed = plan
-    ? logs.filter((l) => l.data.plan_id === plan.id).length
+    ? logs.filter((l) => inPlanLineage(plan, l.data.plan_id)).length
     : 0;
   if (!ready)
     return (

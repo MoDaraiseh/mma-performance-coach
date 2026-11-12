@@ -1,3 +1,5 @@
+import type { Plan, Saved } from "./types";
+
 export const disciplines = [
   "Boxing",
   "Muay Thai",
@@ -35,3 +37,6 @@ export const labelMap: Record<string, string> = {
 export const fmt = (v: number | null | undefined, suffix = "") =>
   v == null ? "Not recorded" : `${Number(v.toFixed(1))}${suffix}`;
 export const today = () => new Date().toLocaleDateString("en-CA");
+/** True when a log belongs to the active plan or an earlier version of the same program. */
+export const inPlanLineage = (plan: Saved<Plan>, planId: string) =>
+  planId === plan.id || (plan.data.history_plan_ids ?? []).includes(planId);

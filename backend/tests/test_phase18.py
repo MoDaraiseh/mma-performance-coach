@@ -91,7 +91,11 @@ with TestClient(app) as c:
     assert c.post('/api/fighter-matches', json={}).status_code == 200
     assert c.get('/api/training-plans').json()['id']
     assert c.get('/api/nutrition').json()['id']
-    assert c.post('/api/coach', json={'message':'Why prioritize wrestling?', 'use_ai':True}).status_code == 429
+    # Blank key and zero budgets: AI requests get the offline coach and never reach a provider.
+    ai = c.post('/api/coach', json={'message':'Why prioritize wrestling?', 'use_ai':True})
+    assert ai.status_code == 200
+    assert ai.json()['data']['usage']['outcome'] == 'unconfigured'
+    assert ai.json()['data']['usage']['attempts'] == 0
     assert c.post('/api/coach', json={'message':'Why prioritize wrestling?', 'use_ai':False}).status_code == 200
     assert c.delete('/api/account').status_code == 200
     assert c.post('/api/auth/restore', json={'token':recovery}).status_code == 401
