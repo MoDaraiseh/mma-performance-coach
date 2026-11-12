@@ -69,9 +69,31 @@ Source: `phase18-isolated-staging` at `a86f429`, after this review was merged in
 | Real Edge browser journey and security, 5 widths | 10 passed, 0 failed, in a single run |
 | Bounded outage drill | Health 200 in 0.05 s; readiness 503 in 3.03 s while the database was paused; monitor samples passed; readiness recovered after unpause |
 | SPDX SBOMs, app and PostgreSQL | Generated |
-| Image vulnerability scan | Not obtained: Docker Scout requires login. The scanner-freshness gate remains open. |
+| Image vulnerability scan | Obtained after the owner logged in; see the next section |
 | npm audit / pip-audit | 0 vulnerabilities / 0 known vulnerabilities (dependency lock files unchanged) |
 
 Raw records are in the git-ignored `.qa-runtime/review-acceptance/` (including `acceptance-summary.json`). The browser specs were run from a temporary copy retargeted to port 18027, so the committed specs were not edited.
+
+### Current image vulnerability scan (Docker Scout, 12 November 2026, authenticated)
+
+Images were scanned against current advisory data. The installed packages are byte-identical to Phase 24; every additional finding comes from advisories published since the Phase 24 scan on 1 November.
+
+| Image | Findings | New since Phase 24 |
+| --- | --- | --- |
+| `mma-review-app:local` | 3: zlib 1.3.2-r1 (CVE-2026-4738, critical 9.4), sqlite-libs 3.53.4-r0 (CVE-2026-119586, high 8.5), musl 1.2.6-r3 (CVE-2026-107891, high) | zlib, sqlite |
+| `mma-review-postgres:local` | 38 across zlib (1, critical), krb5-libs (21: 7 high, 8 medium, 6 unscored), libxslt (4: 2 high), libxml2 (11, including CVE-2026-86140 high) and musl (1) | 26 (zlib, krb5, libxslt) |
+
+Alpine 3.24 fix availability, checked against the live `v3.24/main` index:
+
+| Package | Installed | Fix in Alpine 3.24 |
+| --- | --- | --- |
+| zlib | 1.3.2-r1 | **1.4-r0 available** |
+| krb5-libs | 1.22.2-r1 | **1.22.3-r0 available** |
+| libxslt | 1.1.43-r3 | **1.1.43-r4 available** |
+| libxml2 | 2.13.9-r2 | None (unchanged; CVE-2026-86140 blocker stands) |
+| sqlite-libs | 3.53.4-r0 | None |
+| musl | 1.2.6-r3 | Scanner threshold r6; vendor-fixed in r3 per the existing FINAL_DELIVERY disposition |
+
+The scanner-freshness gate now has a current trusted scan, and that scan is **not clean**. Clearing it requires pinning the three available Alpine fixes in the candidate recipes, rebuilding, rescanning and re-running acceptance. libxml2 and sqlite need either a vendor fix or an explicit owner risk decision. Raw SARIF is in `.qa-runtime/review-acceptance/`.
 
 This acceptance covers functional behaviour only. It does not clear the security, rights, professional-review or operations gates. It also does not authorize replacing staging or deploying publicly.
