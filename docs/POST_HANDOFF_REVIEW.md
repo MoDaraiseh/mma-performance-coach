@@ -47,4 +47,31 @@ The external gates in FINAL_DELIVERY are unchanged: libxml2 CVE-2026-86140, a cu
 | TypeScript (app and browser configs) / Prettier | Passed | Passed |
 | Production build | — | Passed |
 
-Browser (Playwright/Edge), PostgreSQL verifier and container checks were not re-run: they need the Docker/staging environment and owner authorization. Each new regression test was confirmed to fail on the old code and pass with the fix. Two existing assertions were updated because they encoded defects 1 and 3: `test_phase11` treated server-date + 1 as always future, and `test_phase18` expected staging to answer AI requests with 429 rather than the offline coach (it now also asserts zero provider attempts).
+Browser, PostgreSQL and container checks were run afterwards on a rebuilt candidate; see the next section. Each new regression test was confirmed to fail on the old code and pass with the fix. Two existing assertions were updated because they encoded defects 1 and 3: `test_phase11` treated server-date + 1 as always future, and `test_phase18` expected staging to answer AI requests with 429 rather than the offline coach (it now also asserts zero provider attempts).
+
+## Rebuilt review candidate acceptance (12 November 2026, owner-authorized)
+
+Source: `phase18-isolated-staging` at `a86f429`, after this review was merged in PR #1.
+
+**Build context.** A new sanitized context was generated with `tools.prepare_candidate_build`. It differs from [FINAL_BUILD_MANIFEST.json](FINAL_BUILD_MANIFEST.json) only in the 13 files this review changed: 12 modified, plus the new `backend/app/clock.py`. The rights exclusion, notices and candidate recipes are unchanged.
+
+**Images.** Built under new names from the unchanged candidate recipes:
+- `mma-review-app:local` (`sha256:2e99240dc5ef4e136e332f093b79831a2c1ef03337c40ad0ecb5c1d2e258f1f6`).
+- `mma-review-postgres:local` (`sha256:d8dd9b00077c87c250760bc351bb5f6cb997fe6594a3af35b2ec9eee730629ec`). Its filesystem layers are identical to `mma-phase24-postgres-patched:local`; only the attestation wrapper differs. Packages are unchanged: libxml2 2.13.9-r2, musl 1.2.6-r3, libcurl 8.23.0-r0, brotli-libs 1.2.1-r0.
+
+**Isolation.** The candidate ran as a separate Compose project, `mma-review`, at `http://127.0.0.1:18027`. It had an internal database network, a tmpfs database and newly generated credentials. No original staging or Phase 22–24 container, image, network or database was started, stopped or modified. All of those containers were already stopped, because Docker Desktop was not running at the start.
+
+| Check | Result |
+| --- | --- |
+| Guarded PostgreSQL verifier, run in a temporary container on the review network | Passed: migrations, foreign keys, rollback, concurrency, versioning, exports, deletion |
+| Runtime security assertions | Passed: non-root user, read-only filesystem, all capabilities dropped, no-new-privileges, internal database network with no published database port, Host/Origin/cross-site rejection, security headers, least-privilege database role, gosu absent, entrypoint hash matches |
+| Fixes checked live through the ingress | Passed: bad Host returns 400; fighter refresh returns 403 and `refresh_allowed=false`; AI with no key answers offline (200, never 429); a date that is "today" at UTC+14 is accepted and the next day returns 422; security headers present, no HSTS over HTTP |
+| Real Edge browser journey and security, 5 widths | 10 passed, 0 failed, in a single run |
+| Bounded outage drill | Health 200 in 0.05 s; readiness 503 in 3.03 s while the database was paused; monitor samples passed; readiness recovered after unpause |
+| SPDX SBOMs, app and PostgreSQL | Generated |
+| Image vulnerability scan | Not obtained: Docker Scout requires login. The scanner-freshness gate remains open. |
+| npm audit / pip-audit | 0 vulnerabilities / 0 known vulnerabilities (dependency lock files unchanged) |
+
+Raw records are in the git-ignored `.qa-runtime/review-acceptance/` (including `acceptance-summary.json`). The browser specs were run from a temporary copy retargeted to port 18027, so the committed specs were not edited.
+
+This acceptance covers functional behaviour only. It does not clear the security, rights, professional-review or operations gates. It also does not authorize replacing staging or deploying publicly.
