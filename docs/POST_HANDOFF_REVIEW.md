@@ -97,3 +97,39 @@ Alpine 3.24 fix availability, checked against the live `v3.24/main` index:
 The scanner-freshness gate now has a current trusted scan, and that scan is **not clean**. Clearing it requires pinning the three available Alpine fixes in the candidate recipes, rebuilding, rescanning and re-running acceptance. libxml2 and sqlite need either a vendor fix or an explicit owner risk decision. Raw SARIF is in `.qa-runtime/review-acceptance/`.
 
 This acceptance covers functional behaviour only. It does not clear the security, rights, professional-review or operations gates. It also does not authorize replacing staging or deploying publicly.
+
+## Alpine security pins, rebuild and re-acceptance (12 November 2026, owner-authorized)
+
+The three fixes that Alpine 3.24 now publishes are pinned exactly in the candidate recipes:
+- `deploy/Dockerfile.postgres-candidate` adds `zlib=1.4-r0`, `krb5-libs=1.22.3-r0` and `libxslt=1.1.43-r4` to its existing upgrade line.
+- `deploy/Dockerfile.candidate` adds `zlib=1.4-r0`.
+
+No other package versions changed: libxml2 2.13.9-r2, musl 1.2.6-r3, libcurl 8.23.0-r0, brotli-libs 1.2.1-r0 and sqlite-libs 3.53.4-r0. Both images were built with `--no-cache` from a new sanitized context:
+- `mma-review-app:patched` (`sha256:634a8dc8c74ceba845af71265d2bb2841e27d6cd4d6191db797020266966cecb`)
+- `mma-review-postgres:patched` (`sha256:3ba0584f0a35503f2305abdf6e44e942516a0b90ce32ace66158c0609287ab21`)
+
+The recipe hashes in [FINAL_BUILD_MANIFEST.json](FINAL_BUILD_MANIFEST.json) therefore describe the earlier Phase 24 recipes.
+
+| Docker Scout (authenticated) | Before pins | After pins |
+| --- | --- | --- |
+| App image | 3 (zlib critical, sqlite high, musl high) | 2 (sqlite high, musl high) |
+| PostgreSQL image | 38 (zlib, krb5 ×21, libxslt ×4, libxml2 ×11, musl) | 12 (libxml2 ×11, musl). Same set as the Phase 24 baseline |
+
+The review candidate at `127.0.0.1:18027` was recreated on the patched images, with a fresh tmpfs database and the same isolation. All checks passed again:
+
+| Check | Result |
+| --- | --- |
+| PostgreSQL verifier | Passed |
+| Runtime security assertions | Passed |
+| Live checks of the review fixes | Passed |
+| Edge browser suite, 5 widths | 10 passed, 0 failed, in a single run. Screenshots went to `.qa-runtime/` |
+| Outage drill | Health 200 in 0.04 s; readiness 503 in 3.05 s during the outage; recovered |
+
+Raw records are in `.qa-runtime/review-acceptance-patched/`.
+
+**Remaining scanner findings, for owner decision:**
+- **libxml2.** CVE-2026-86140 (high) and 10 lower-severity findings. Alpine 3.24 publishes no fix. This is the existing FINAL_DELIVERY blocker.
+- **sqlite-libs in the app image.** CVE-2026-119586 (high 8.5). Alpine 3.24 publishes no fix. The deployed app uses PostgreSQL; the library is present because the Python runtime links it.
+- **musl.** The scanner threshold is r6, but Alpine names r3 as fixed. This scanner discrepancy is already recorded in FINAL_DELIVERY.
+
+None of these is cleared by this work. Staging replacement and public deployment remain unauthorized.

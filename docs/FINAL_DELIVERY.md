@@ -88,6 +88,8 @@ Backup/recovery: use matching PostgreSQL 18 native `pg_dump --format=custom` fro
 
 ## Reproduce the candidate build inputs
 
+> **Post-handoff update (12 November 2026):** the candidate recipes now also pin the Alpine 3.24 security upgrades zlib 1.4-r0 (both images), krb5-libs 1.22.3-r0 and libxslt 1.1.43-r4 (PostgreSQL). Their recipe hashes therefore differ from FINAL_BUILD_MANIFEST. A rebuild from these recipes was rescanned and re-accepted; see [POST_HANDOFF_REVIEW](POST_HANDOFF_REVIEW.md).
+
 The new helper creates a new sanitized context only, rejects overwrite/outside-project output and reuses the established rights exclusion/notices. From `backend/`:
 
 ```powershell
