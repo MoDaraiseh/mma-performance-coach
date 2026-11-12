@@ -1,6 +1,8 @@
 # Isolated derivative of pinned official PostgreSQL; no server or entrypoint patches.
 FROM postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5 AS vendor
+# Exact Alpine 3.24 security upgrades; rescan whenever these pins change.
 RUN apk add --no-cache --upgrade libcurl=8.23.0-r0 brotli-libs=1.2.1-r0 \
+    zlib=1.4-r0 krb5-libs=1.22.3-r0 libxslt=1.1.43-r4 \
     && test "$(id -u postgres)" = 70 && rm /usr/local/bin/gosu
 # Copy the merged filesystem so the discarded Go executable is absent from layers too.
 FROM scratch

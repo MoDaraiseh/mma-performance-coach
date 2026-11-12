@@ -11,6 +11,8 @@ RUN npm run build
 FROM ${PYTHON_IMAGE}
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app/backend
+# Exact Alpine 3.24 security upgrade (CVE-2026-4738); rescan whenever this pin changes.
+RUN apk add --no-cache --upgrade zlib=1.4-r0
 COPY backend/requirements.lock.txt ./
 RUN pip install --only-binary=:all: --no-cache-dir -r requirements.lock.txt \
     && python -m pip check \
