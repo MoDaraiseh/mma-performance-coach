@@ -96,20 +96,20 @@ Remaining: no independent sports-science/medical/nutrition/security sign-off, no
 | Check | Actual result |
 | --- | --- |
 | Baseline | 251 backend / 12 frontend passed |
-| Final backend | **278 passed**; one existing upstream Starlette/httpx deprecation; [output](evidence/phase10/pytest.txt) |
-| New Phase 10 coverage | 18 mocked scenarios plus nine additional API/unit cases; [evaluation coverage](evidence/phase10/evaluation-coverage.json) |
+| Final backend | **278 passed**; one existing upstream Starlette/httpx deprecation; output (`evidence/phase10/pytest.txt`) |
+| New Phase 10 coverage | 18 mocked scenarios plus nine additional API/unit cases; evaluation coverage (`evidence/phase10/evaluation-coverage.json`) |
 | Frontend | **12 passed** |
-| Full real Edge regression | **123 passed, zero failed, seven intentional skips**, zero flaky cases or suite errors in 7.9 minutes; [report](evidence/phase10/browser-results.json) |
-| Focused correction | Four desktop/mobile cases passed; [report](evidence/phase10/browser-focused-fixed.json) |
-| Final UI/context confirmation | **35 passed**, zero failures/skips, native exit 0 in 2.3 minutes across all five widths; new auto-scroll assertions, existing coach/nutrition actions and complete journeys; [report](evidence/phase10/browser-final-coach.json) |
+| Full real Edge regression | **123 passed, zero failed, seven intentional skips**, zero flaky cases or suite errors in 7.9 minutes; report (`evidence/phase10/browser-results.json`) |
+| Focused correction | Four desktop/mobile cases passed; report (`evidence/phase10/browser-focused-fixed.json`) |
+| Final UI/context confirmation | **35 passed**, zero failures/skips, native exit 0 in 2.3 minutes across all five widths; new auto-scroll assertions, existing coach/nutrition actions and complete journeys; report (`evidence/phase10/browser-final-coach.json`) |
 | App/browser TypeScript, Vite | Passed |
 | Ruff / Prettier | Passed; 53 Python files formatted |
-| A4 reports | Four reports / 14 pages; text and safe-margin checks passed; [checks](evidence/phase10/print-checks.json) |
-| Offline CLI smoke | Three synthetic cases, no provider calls or writes; [output](evidence/phase10/offline-evaluation.json) |
+| A4 reports | Four reports / 14 pages; text and safe-margin checks passed; checks (`evidence/phase10/print-checks.json`) |
+| Offline CLI smoke | Three synthetic cases, no provider calls or writes; output (`evidence/phase10/offline-evaluation.json`) |
 | Live provider | **Not run**; no live quality or account/model compatibility claim |
 
 The full browser matrix exercised 1440/1920/768/390/375 px, including all ten new assessment/reschedule/frequency/context cases and existing nutrition, coaching, account, progression, accessibility, responsive and complete-journey checks. Seven skips avoid duplicate PDF checks and desktop-only drawer checks. Installed headless Edge and viewport emulation are not physical-device or cross-engine verification. Targeted axe checks reported zero violations in the new reschedule flows, not full accessibility certification.
 
 Visual review found a further UX defect: new replies could remain below the chat's internal scroll position while welcome prompts stayed visible. The smallest fix scrolls that container to its latest reply after message refresh, without animation. A browser assertion checks the latest response bottom lies in the chat viewport. This UI correction and the final historical-context flag are covered by the subsequent targeted coach/journey rerun; results are recorded below. Existing approvals and plan generation are unchanged by scrolling.
 
-Screenshots are in [the evidence directory](evidence/phase10/), including [desktop preview](evidence/phase10/desktop-1440-phase10-reschedule.png) and [mobile preview](evidence/phase10/mobile-375-phase10-reschedule.png). Full-page captures can place a fixed header at its current scroll position. Desktop and mobile previews were visually inspected. Original tracker tracked files remain unchanged; athlete QA uses disposable databases and no configured personal provider key.
+Screenshots are in the evidence directory (`evidence/phase10/`), including desktop preview (`evidence/phase10/desktop-1440-phase10-reschedule.png`) and mobile preview (`evidence/phase10/mobile-375-phase10-reschedule.png`). Full-page captures can place a fixed header at its current scroll position. Desktop and mobile previews were visually inspected. Original tracker tracked files remain unchanged; athlete QA uses disposable databases and no configured personal provider key.

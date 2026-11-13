@@ -26,14 +26,14 @@ No PostgreSQL server, Docker executable or psql was available. The included opt-
 
 | Check | Result / evidence |
 | --- | --- |
-| Backend Pytest | **187 passed**, one existing Starlette/httpx deprecation warning; [output](evidence/phase6/pytest.txt) |
+| Backend Pytest | **187 passed**, one existing Starlette/httpx deprecation warning; output (`evidence/phase6/pytest.txt`) |
 | Frontend Vitest | **10 passed**, including deferred preference refresh and stale workout modal regression |
 | App/browser TypeScript | Passed |
 | Vite production build | Passed; entry about 94 KB gzip, chart chunk about 99 KB gzip, analytics code split retained |
 | Ruff lint / formatting | Passed for app/tests/tools/migrations |
 | Prettier | Passed for frontend source, browser tests, tools and configuration |
-| npm audit | **Zero known vulnerabilities** reported; [JSON](evidence/phase6/npm-audit.json) |
-| Python pinned dependency audit | **Zero known vulnerabilities** across the enumerated runtime lock including PostgreSQL driver; [JSON](evidence/phase6/python-audit.json) |
+| npm audit | **Zero known vulnerabilities** reported; JSON (`evidence/phase6/npm-audit.json`) |
+| Python pinned dependency audit | **Zero known vulnerabilities** across the enumerated runtime lock including PostgreSQL driver; JSON (`evidence/phase6/python-audit.json`) |
 | pip check | Passed, no broken requirements |
 | SQLite migrations | Upgrade/check/downgrade/re-upgrade passed; pre-existing recovery hash preserved; head **0005** |
 | PostgreSQL offline SQL | All migrations compile without connecting; not a runtime test |
@@ -42,19 +42,19 @@ Advisory results are a dated lookup, not proof of dependency safety. The Python 
 
 ## E. Browser verification
 
-The [final report](evidence/phase6/browser-results.json) records actual Edge execution at **1440, 1920, 768, 390 and 375 CSS pixels**. **88 passed, zero failed, seven intentional viewport-specific skips** in the final full rerun (5.6 minutes). All ten new Phase 6 cases and all prior workflows passed. Existing complete journeys cover account creation/onboarding/profile/assessment/divisions/matches/lab, training generation and exercise logging, nutrition/substitutions/coaching actions, preview/approval/rejection, progress/reassessment and export. Phase 6 adds expired/deleted-session recovery plus canceled and confirmed deletion through the actual UI at all five widths. Local and configured-interface provider tests are clearly labeled; configured transport is mocked.
+The final report (`evidence/phase6/browser-results.json`) records actual Edge execution at **1440, 1920, 768, 390 and 375 CSS pixels**. **88 passed, zero failed, seven intentional viewport-specific skips** in the final full rerun (5.6 minutes). All ten new Phase 6 cases and all prior workflows passed. Existing complete journeys cover account creation/onboarding/profile/assessment/divisions/matches/lab, training generation and exercise logging, nutrition/substitutions/coaching actions, preview/approval/rejection, progress/reassessment and export. Phase 6 adds expired/deleted-session recovery plus canceled and confirmed deletion through the actual UI at all five widths. Local and configured-interface provider tests are clearly labeled; configured transport is mocked.
 
-The [initial full matrix](evidence/phase6/browser-initial.json) recorded **85 passes, three failures, seven intentional skips**. All three failures exposed one training race at desktop/tablet widths: approval persisted while a user could open the pre-refresh session; the session modal retained the old exercise object even after the calendar showed the new version. The fix disables session opening while tasks are pending and closes modal state on plan-ID change. Pending task counting also prevents nested requests from clearing busy state early. A component regression covers disabled opening and invalidation, and the existing cross-viewport substitution journey is rerun. The earlier [two-case focused run](evidence/phase6/browser-focused.json) passed export/deletion on desktop and mobile; it was not treated as a replacement for the full suite.
+The initial full matrix (`evidence/phase6/browser-initial.json`) recorded **85 passes, three failures, seven intentional skips**. All three failures exposed one training race at desktop/tablet widths: approval persisted while a user could open the pre-refresh session; the session modal retained the old exercise object even after the calendar showed the new version. The fix disables session opening while tasks are pending and closes modal state on plan-ID change. Pending task counting also prevents nested requests from clearing busy state early. A component regression covers disabled opening and invalidation, and the existing cross-viewport substitution journey is rerun. The earlier two-case focused run (`evidence/phase6/browser-focused.json`) passed export/deletion on desktop and mobile; it was not treated as a replacement for the full suite.
 
-Browser checks include requested-viewport overflow, automated WCAG rules, keyboard/modal/focus behavior, error/retry/loading states and reduced motion. Seven intentional skips are the drawer test at three non-mobile widths and duplicate print runs at four widths. Browser results do not establish manual screen-reader accessibility or physical-device behavior. Screenshots include settings [1440](evidence/phase6/desktop-1440-phase6-settings.png), [1920](evidence/phase6/desktop-1920-phase6-settings.png), [768](evidence/phase6/tablet-768-phase6-settings.png), [390](evidence/phase6/mobile-390-phase6-settings.png), [375](evidence/phase6/mobile-375-phase6-settings.png), plus regenerated training/comparison/nutrition/coaching evidence in the same folder. Synthetic recovery credentials are dismissed before screenshots.
+Browser checks include requested-viewport overflow, automated WCAG rules, keyboard/modal/focus behavior, error/retry/loading states and reduced motion. Seven intentional skips are the drawer test at three non-mobile widths and duplicate print runs at four widths. Browser results do not establish manual screen-reader accessibility or physical-device behavior. Screenshots include settings 1440 (`evidence/phase6/desktop-1440-phase6-settings.png`), 1920 (`evidence/phase6/desktop-1920-phase6-settings.png`), 768 (`evidence/phase6/tablet-768-phase6-settings.png`), 390 (`evidence/phase6/mobile-390-phase6-settings.png`), 375 (`evidence/phase6/mobile-375-phase6-settings.png`), plus regenerated training/comparison/nutrition/coaching evidence in the same folder. Synthetic recovery credentials are dismissed before screenshots.
 
-Four A4 reports (12 total pages) passed nonblank-text and safe-margin checks; [print results](evidence/phase6/print-checks.json) and rendered pages are retained under [evidence](evidence/phase6/): nutrition, overview, training and comparison. The mobile settings screenshot and a rendered nutrition page were visually inspected. Full histories/seven-day plans are exported as JSON; printing shows the selected day/week and opens relevant details. Margin/text checks supplement visual inspection; neither establishes scientific validity.
+Four A4 reports (12 total pages) passed nonblank-text and safe-margin checks; print results (`evidence/phase6/print-checks.json`) and rendered pages are retained under evidence (`evidence/phase6/`): nutrition, overview, training and comparison. The mobile settings screenshot and a rendered nutrition page were visually inspected. Full histories/seven-day plans are exported as JSON; printing shows the selected day/week and opens relevant details. Margin/text checks supplement visual inspection; neither establishes scientific validity.
 
 ## F. Security findings
 
 [Security review](SECURITY.md) records controls, root causes and remaining risks. Nine new API/security tests plus the PostgreSQL offline migration test extend the baseline 177 backend cases to 187. New cases cover distinct sessions, expiry/logout replay, deleted accounts/all sessions, FK violations, concurrent quotas, rate Retry-After, host/origin/body limits, production TLS/secure cookies/HSTS/shared-refresh authorization, AI quota, retention dry-run/preservation and failed-write rollback/error privacy. Existing ownership-negative/stale/conflicting approval tests remain passing.
 
-No passwords are accepted or stored, so password hashing is not claimed. Recovery-token hashing protects high-entropy random credentials, not human passwords; no custom cryptographic protocol was introduced. Production shared fighter refresh is denied pending an operator administration workflow. Server API keys never enter frontend configuration. Quota counters persist across workers/restarts but need edge limits and periodic expiry cleanup. See [deployment checklist](DEPLOYMENT.md#deployment-gate-checklist).
+No passwords are accepted or stored, so password hashing is not claimed. Recovery-token hashing protects high-entropy random credentials, not human passwords; no custom cryptographic protocol was introduced. Production shared fighter refresh is denied pending an operator administration workflow. Server API keys never enter frontend configuration. Quota counters persist across workers/restarts but need edge limits and periodic expiry cleanup. See [deployment checklist](DEPLOYMENT.md#rollout-and-rollback-gates).
 
 ## G. Database compatibility
 
@@ -81,7 +81,7 @@ Anthropometric resemblance does not imply professional fighting ability. Subject
 
 **Local release candidate; public production remains gated.** [Deployment guide](DEPLOYMENT.md) provides production `.env` example, same-origin HTTPS/proxy requirements, PostgreSQL setup and migration commands, local build/start commands, liveness/readiness, logs, explicit retention, backup/recovery guidance and release checklist. The original tracker is outside this deployment. No service was published or external spend incurred.
 
-The [local benchmark](evidence/phase6/performance.json) measures 20 samples per operation. Indexed latest-version reads are materially cheaper than loading 1,000 aggregate versions. Assessment, matching/search and nutrition timings include the current rate/auth middleware. These are local single-client values, not a capacity target; no cache was added that could stale an athlete report.
+The local benchmark (`evidence/phase6/performance.json`) measures 20 samples per operation. Indexed latest-version reads are materially cheaper than loading 1,000 aggregate versions. Assessment, matching/search and nutrition timings include the current rate/auth middleware. These are local single-client values, not a capacity target; no cache was added that could stale an athlete report.
 
 ## K. Recommended next enhancements
 
@@ -91,4 +91,4 @@ The [local benchmark](evidence/phase6/performance.json) measures 20 samples per 
 4. Add operator budget controls, retention scheduling and restore/deletion governance.
 5. Expand verified licensed food/fighter coverage and nutrition adequacy/palatability, then paginate history/export and extract orchestration modules as scale warrants.
 
-Exact local startup is in [deployment](DEPLOYMENT.md#local-startup-powershell); current automated commands are in [testing](TESTING.md). No arbitrary completion percentage is assigned.
+Exact local startup is in [deployment](DEPLOYMENT.md#existing-local-installation); current automated commands are in [testing](TESTING.md). No arbitrary completion percentage is assigned.

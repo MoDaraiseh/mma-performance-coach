@@ -99,7 +99,7 @@ The exact four/three-day caps, self-reported stage cutoffs, fatigue thresholds, 
 
 ## Phase 8 fighter supplement and permissions
 
-[Six-record attribution/license notice](FIGHTER_SUPPLEMENT_LICENSE.md), [exact JSON records](../backend/app/data/fighters_wikimedia.json) and [quality report](evidence/phase8/data-quality.json). Reviewed 2026-10-31. [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content) allows reuse subject to source license/attribution/share-alike obligations; the six adapted records carry CC BY-SA 4.0 and source/history links. Wikidata's CC0 policy was also reviewed but **does not license these Wikipedia-derived records as CC0**.
+[Six-record attribution/license notice](FIGHTER_SUPPLEMENT_LICENSE.md), [exact JSON records](../backend/app/data/fighters_wikimedia.json) and quality report (`evidence/phase8/data-quality.json`). Reviewed 2026-10-31. [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content) allows reuse subject to source license/attribution/share-alike obligations; the six adapted records carry CC BY-SA 4.0 and source/history links. Wikidata's CC0 policy was also reviewed but **does not license these Wikipedia-derived records as CC0**.
 
 | Fighter | Source | Original listed height / reach / weight | Included UFC history |
 | --- | --- | --- | --- |

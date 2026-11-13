@@ -1,6 +1,6 @@
 # Implementation plan
 
-Build an isolated local application without changing the existing law tracker.
+Build an isolated local application.
 
 1. Core: validated athlete profile, local account sessions, SQLite persistence, physical calculations, sourced division references and three sourced fighter snapshots.
 2. Programs: explainable style recommendations, time-bounded 12-week plans, dietary-aware seven-day meal estimates.

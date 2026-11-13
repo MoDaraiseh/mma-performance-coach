@@ -28,7 +28,7 @@ This phase changes QA tooling and release documentation, preserving working doma
 | Offline evaluation |18 scenarios executed; zero provider attempts; smoke output requires human quality review |
 | Configured AI |Mocked structured-success/error/schema/retry/deadline/quota/context/security cases passed; no live-model evaluation |
 
-[Advisory evidence](evidence/phase14/npm-audit.json), [Python audit](evidence/phase14/python-audit.json), [restore](evidence/phase14/backup-restore.json), [offline coach](evidence/phase14/offline-coach.json), [runtime availability](evidence/phase14/runtime.json). Audits initially hit restricted cache/network access; reruns with authorized access succeeded. An initial npm output path was missing; it was created and the actual audit rerun. No failed lookup was counted as clean. Warnings are Starlette/Authlib httpx compatibility deprecations, not suppressed failures.
+Advisory evidence (`evidence/phase14/npm-audit.json`), Python audit (`evidence/phase14/python-audit.json`), restore (`evidence/phase14/backup-restore.json`), offline coach (`evidence/phase14/offline-coach.json`), runtime availability (`evidence/phase14/runtime.json`). Audits initially hit restricted cache/network access; reruns with authorized access succeeded. An initial npm output path was missing; it was created and the actual audit rerun. No failed lookup was counted as clean. Warnings are Starlette/Authlib httpx compatibility deprecations, not suppressed failures.
 
 ## Browser acceptance and UX
 
@@ -36,7 +36,7 @@ Installed Edge/Blink on Windows, isolated HTTP API and synthetic accounts, five 
 
 The suite exercises all eight main workspace views plus Settings, chart data tables, keyboard navigation, focus restoration/trapping, Escape, reduced motion, onboarding validation, responsive drawer/touch targets, document overflow, loading/error/retry states, permissions, session expiry/deletion, stale proposals and persisted approval/rejection. Forty core-view axe scans plus targeted dialog/phase scans check WCAG2 A/AA/2.1 AA rules; absence of automated violations is not full accessibility conformance or manual screen-reader testing. Dark charcoal/red styling and legibility were retained; no redesign was necessary.
 
-Five fresh A4 reports total18 pages: overview2, training3, nutrition4, comparison5, progress4. All pages contain text and no detected text outside20 pt margins. Representative rendered pages were visually inspected, including charts/tables, nutrition portions and long comparison details. Long reports span pages and the progress history ends on a short final page; pagination polish is P3, not hidden clipping. PDFs and rendered page PNGs are in evidence/phase14; [print checks](evidence/phase14/print-checks.json). Print produces the current detailed view, not a complete book of every week/day.
+Five fresh A4 reports total18 pages: overview2, training3, nutrition4, comparison5, progress4. All pages contain text and no detected text outside20 pt margins. Representative rendered pages were visually inspected, including charts/tables, nutrition portions and long comparison details. Long reports span pages and the progress history ends on a short final page; pagination polish is P3, not hidden clipping. PDFs and rendered page PNGs are in evidence/phase14; print checks (`evidence/phase14/print-checks.json`). Print produces the current detailed view, not a complete book of every week/day.
 
 ## User acceptance mapping
 
@@ -77,7 +77,7 @@ Failures tested include invalid forms, failed saves/retry, failed/missed session
 
 ## Data and recommendation findings
 
-[Fresh local catalog validation](evidence/phase14/data-quality.json):17 fighter snapshots (10 men/7 women),40 foods,39 exercises. Historical division counts overlap: men Flyweight2/Bantamweight1/Featherweight2/Lightweight2/Welterweight2/Middleweight3/Light Heavyweight3/Heavyweight3; women Strawweight3/Flyweight5/Bantamweight3/historicalFeatherweight1. These are historical participants, not a current roster. Career labels are dated snapshots:8 Active,2 Retired,1 Not fighting,6 Unknown. Height/reach/listedweight17 each; stance2/background11/statistics2/currentprofessionalrecord0/styletraits0. Missing dimensions are excluded with reported coverage; deterministic weights/scales remain heuristic. No professional proficiency prediction is supported.
+Fresh local catalog validation (`evidence/phase14/data-quality.json`):17 fighter snapshots (10 men/7 women),40 foods,39 exercises. Historical division counts overlap: men Flyweight2/Bantamweight1/Featherweight2/Lightweight2/Welterweight2/Middleweight3/Light Heavyweight3/Heavyweight3; women Strawweight3/Flyweight5/Bantamweight3/historicalFeatherweight1. These are historical participants, not a current roster. Career labels are dated snapshots:8 Active,2 Retired,1 Not fighting,6 Unknown. Height/reach/listedweight17 each; stance2/background11/statistics2/currentprofessionalrecord0/styletraits0. Missing dimensions are excluded with reported coverage; deterministic weights/scales remain heuristic. No professional proficiency prediction is supported.
 
 No new online fighter source verification or ingestion occurred. Source references and schema/field provenance were revalidated, not current claims of roster accuracy. Original11 records retain unresolved redistribution rights; six attributed secondary-source adaptations have CC BY-SA obligations. No access-control bypass/scraper is included. Forty USDA SR Legacy April2018 records contain macros/source energy/fiber/sodium/calcium/iron/potassium; editorial allergen/cost/diet labels are not certification. Nutrition estimates use Mifflin-St Jeor and documented conservative heuristics; no measured TDEE or clinical adequacy claim. Training progression uses actual comparable exposures and recovery gates; technical stages/fatigue thresholds/deloads are product heuristics. Analytics requires comparable protocols and sample windows; it does not fabricate historical baseline or infer causation.
 
@@ -103,7 +103,7 @@ Windows11/Python3.14.7/Node24.20.0. API benchmarks use disposable SQLite and in-
 |Synthetic manual lookup|median0.59 ms,1 query|
 |Synthetic1000 fighter ranking|median196.34 ms,2 queries|
 
-[API timings](evidence/phase14/api-performance.json), [fighter timings](evidence/phase14/fighter-performance.json). Vite production build: mainJS319.44 kB(96.79 gzip), chartchunk337.61 kB(98.85 gzip), CSS44.63 kB(9.82 gzip); split progress/comparison/training modules. These are build sizes, not measured network transfer totals. Browser timing details are in the viewport load-performance JSON files.
+API timings (`evidence/phase14/api-performance.json`), fighter timings (`evidence/phase14/fighter-performance.json`). Vite production build: mainJS319.44 kB(96.79 gzip), chartchunk337.61 kB(98.85 gzip), CSS44.63 kB(9.82 gzip); split progress/comparison/training modules. These are build sizes, not measured network transfer totals. Browser timing details are in the viewport load-performance JSON files.
 
 ## Launch gates and owner checklist
 
@@ -140,12 +140,12 @@ The local application integrates onboarding, explainable assessments/comparisons
 
 ## Final full-browser result
 
-[Native full-suite report](evidence/phase14/browser-results.json):158 passed,0 failed,0 flaky,7 intentional skips in568.99 seconds (9.5 minutes). Thirty-three cases were scheduled per viewport. Four print skips apply outside desktop1440; three drawer skips apply outside the mobile viewports. No skip masks a missing browser prerequisite. The full UAT and prior-phase integration cases passed with an isolated server and no provider key. [Desktop screenshot](evidence/phase14/desktop-1440-overview.png), [mobile progress screenshot](evidence/phase14/mobile-375-progress.png), and the other per-view PNGs/PDFs are retained.
+Native full-suite report (`evidence/phase14/browser-results.json`):158 passed,0 failed,0 flaky,7 intentional skips in568.99 seconds (9.5 minutes). Thirty-three cases were scheduled per viewport. Four print skips apply outside desktop1440; three drawer skips apply outside the mobile viewports. No skip masks a missing browser prerequisite. The full UAT and prior-phase integration cases passed with an isolated server and no provider key. Desktop screenshot (`evidence/phase14/desktop-1440-overview.png`), mobile progress screenshot (`evidence/phase14/mobile-375-progress.png`), and the other per-view PNGs/PDFs are retained.
 
 
 ## Final release-check result and browser performance
 
-[Focused report](evidence/phase14/browser-release-checks.json): 15 passed, 0 failed, 0 skipped in87.83seconds (five new timing cases plus ten repeated responsive/keyboard cases). The full report preceded adding the timing test; these are separate runs, not173unique tests. All40fresh core-view axe summaries report zero violations and no runtime errors; evidence routing now targets Phase14 for all five viewports. Final Ruff lint/format passed for74files.
+Focused report (`evidence/phase14/browser-release-checks.json`): 15 passed, 0 failed, 0 skipped in87.83seconds (five new timing cases plus ten repeated responsive/keyboard cases). The full report preceded adding the timing test; these are separate runs, not173unique tests. All40fresh core-view axe summaries report zero violations and no runtime errors; evidence routing now targets Phase14 for all five viewports. Final Ruff lint/format passed for74files.
 
 | Width (CSS px) | Overview ready median (ms) | Progress dashboard ready median (ms) | DOMContentLoaded median (ms) |
 | --- | ---: | ---: | ---: |
@@ -155,7 +155,7 @@ The local application integrates onboarding, explainable assessments/comparisons
 | 390 | 334.94 | 794.69 | 54 |
 | 768 | 322.9 | 532.31 | 41.5 |
 
-Three warm reloads per width, Edge155.0.4283.45, local HTTP, no throttling, synthetic demo with empty history; dashboard waits for the actual analytics response and rendered event summary. These numbers include automation polling. Long-history API performance is measured separately. [Raw viewport summaries](evidence/phase14/browser-performance-summary.json). No physical-device, cold-network or production-latency claim.
+Three warm reloads per width, Edge155.0.4283.45, local HTTP, no throttling, synthetic demo with empty history; dashboard waits for the actual analytics response and rendered event summary. These numbers include automation polling. Long-history API performance is measured separately. Raw viewport summaries (`evidence/phase14/browser-performance-summary.json`). No physical-device, cold-network or production-latency claim.
 
 
-[Source integrity manifest](evidence/phase14/source-manifest.json) fingerprints the inspected application/test/config files and locks; it is not a signed release or commit.
+Source integrity manifest (`evidence/phase14/source-manifest.json`) fingerprints the inspected application/test/config files and locks; it is not a signed release or commit.

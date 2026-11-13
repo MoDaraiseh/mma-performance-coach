@@ -1,6 +1,6 @@
 # Phase 17 local performance and reliability report
 
-2026-11-01. These are actual local measurements, not production SLAs, capacity certification or live-provider latency. Hardware: AMD Ryzen 7 7730U, eight cores/16 logical processors, 14,879,617,024 bytes installed RAM (about 13.86 GiB). OS: Windows 11 build 26300. Python 3.14.7, Node 24.20.0, npm 11.19.0; installed Edge/Blink 155.0.4283.45. [CPU](evidence/phase17/cpu.json), [RAM](evidence/phase17/memory.json), [runtime](evidence/phase17/runtime.json).
+2026-11-01. These are actual local measurements, not production SLAs, capacity certification or live-provider latency. Hardware: AMD Ryzen 7 7730U, eight cores/16 logical processors, 14,879,617,024 bytes installed RAM (about 13.86 GiB). OS: Windows 11 build 26300. Python 3.14.7, Node 24.20.0, npm 11.19.0; installed Edge/Blink 155.0.4283.45. CPU (`evidence/phase17/cpu.json`), RAM (`evidence/phase17/memory.json`), runtime (`evidence/phase17/runtime.json`).
 
 API measurements use FastAPI TestClient in-process HTTP transport, disposable local SQLite, synthetic demo profile, 1,000 extra 1-KB aggregate versions plus 1,000 dated check-ins. Middleware/auth/quota/monitoring/database work is included; no WAN, TLS or production PostgreSQL. API and fighter benchmark commands ran sequentially while the separate browser acceptance process was active; background host contention is uncontrolled. No benchmark accesses the athlete database. Twenty sequential samples per operation; reported p95 is nearest-rank sample 19/20, not a stable population tail estimate. Offline coach requests persist synthetic conversations; nutrition generation appends synthetic plan versions.
 
@@ -17,11 +17,11 @@ API measurements use FastAPI TestClient in-process HTTP transport, disposable lo
 | Analytics over 1,000 check-ins | 79.87 | 114.66 |
 | Paginated history | 29.22 | 35.62 |
 
-[Native API results](evidence/phase17/api-performance.json), [command log](evidence/phase17/api-performance.log). The old-latest comparison is a benchmark of a former full-materialization approach, not a claim that the current endpoint still uses it.
+Native API results (`evidence/phase17/api-performance.json`), command log (`evidence/phase17/api-performance.log`). The old-latest comparison is a benchmark of a former full-materialization approach, not a claim that the current endpoint still uses it.
 
 Concurrency: 32 authenticated session requests with eight workers all returned 200; median 115.47ms, max 1,034.73ms. A separate 32-request profile-read workload across four independently authenticated synthetic users/four workers all returned 200; median 71.50ms, max343.70ms. Independent account cookies were used; cross-account denial is separately asserted by the security suite. These small read workloads do not validate multiworker startup, PostgreSQL approval races, prolonged write load, connection exhaustion or failover. SQLite shared quota/counter writes can serialize requests; the one-second tail warrants staging workload/queueing measurements before setting limits.
 
-Fighter scale fixture: **1,000 synthetic clones, not verified fighter coverage**. Ten samples per operation: paginated search median16.97ms/two SQL queries; direct lookup0.70ms/one query; full ranking199.11ms/two queries. Query count is bounded, but ranking still validates/scores the full candidate set and is not a claim of arbitrary-scale constant-time matching. [Native fighter benchmark](evidence/phase17/fighter-performance.json).
+Fighter scale fixture: **1,000 synthetic clones, not verified fighter coverage**. Ten samples per operation: paginated search median16.97ms/two SQL queries; direct lookup0.70ms/one query; full ranking199.11ms/two queries. Query count is bounded, but ranking still validates/scores the full candidate set and is not a claim of arbitrary-scale constant-time matching. Native fighter benchmark (`evidence/phase17/fighter-performance.json`).
 
 Long histories: the full backend regression executes 2,100-event behavior, checks the 2,000-event/120-point caps and truncation warning, bounded query count, paginated histories, streaming CSV, corrected/deleted records, empty/single histories and owned exports. The 1,000-check-in benchmark measures summary/page timing; full account JSON still materializes history and remains a P2 large-account limitation.
 
@@ -44,4 +44,4 @@ Three warm samples per row; median milliseconds, including local test polling.
 | mobile-390 | 470.9 | 842.39 |
 | mobile-375 | 462.6 | 895.57 |
 
-[Native aggregate](evidence/phase17/frontend-performance-summary.json); raw samples retain navigation/load timing and exact browser version. These are not cold-load or WAN measurements.
+Native aggregate (`evidence/phase17/frontend-performance-summary.json`); raw samples retain navigation/load timing and exact browser version. These are not cold-load or WAN measurements.

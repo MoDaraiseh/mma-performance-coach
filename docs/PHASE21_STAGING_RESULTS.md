@@ -10,7 +10,7 @@ Branch: `phase18-isolated-staging`. Starting HEAD: `1fa14995f2d289b9e1ea40ffa431
 
 ## Actual ACL changes
 
-Current host account was verified as `IWA2024\darai_qtguapt`, SID `S-1-5-21-3645006260-4010894991-199683691-1009`. Before mutation, recursive inspection confirmed only the two already identified protected children, `secrets` and `backups`.
+Current host account was verified as `<host>\<user>`, SID `<SID>`. Before mutation, recursive inspection confirmed only the two already identified protected children, `secrets` and `backups`.
 
 | Directory | Actual result |
 | --- | --- |
@@ -110,7 +110,7 @@ Private TLS/proxy/secure-cookie production tests were **not executed**; no separ
 | Python runtime dependencies | `pip check` passed |
 | Real Edge subset | **40 passed, zero failures/skips/flaky**, five widths: 1440, 1920, 768, 390, 375; journey, responsive/accessibility/modal/keyboard, Phase 13 identity/security and Phase 15 refinements |
 
-Browser tests used the existing **disposable SQLite browser server on 8123**, not the inaccessible PostgreSQL container endpoint. Individual tests completed, but Windows server teardown hung. After identity-checking the exact disposable QA Python parent/child processes, graceful termination was rejected; those two processes were force-stopped. Playwright then exited **0** and wrote the final JSON report, duration 376.470 seconds. No unrelated process/service was stopped. This intervention and the backend's initial fixture errors are not hidden as clean first attempts. Browser evidence: [browser-results.json](evidence/phase21/browser-results.json). This was a focused 40-case run, not a rerun of Phase 18's full 175 scheduled cases. No new print/TLS coverage is claimed.
+Browser tests used the existing **disposable SQLite browser server on 8123**, not the inaccessible PostgreSQL container endpoint. Individual tests completed, but Windows server teardown hung. After identity-checking the exact disposable QA Python parent/child processes, graceful termination was rejected; those two processes were force-stopped. Playwright then exited **0** and wrote the final JSON report, duration 376.470 seconds. No unrelated process/service was stopped. This intervention and the backend's initial fixture errors are not hidden as clean first attempts. Browser evidence: browser-results.json (`evidence/phase21/browser-results.json`). This was a focused 40-case run, not a rerun of Phase 18's full 175 scheduled cases. No new print/TLS coverage is claimed.
 
 ## Updated launch gates and final state
 

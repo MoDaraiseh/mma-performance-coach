@@ -53,9 +53,9 @@ Browser results and print evidence are recorded in `docs/evidence/phase11/`; fin
 
 ## Browser execution audit
 
-Final fresh focused verification: **43 passed, zero failed, seven intentional skips**, with no flaky results, in [final-browser-results.json](evidence/phase11/final-browser-results.json). This run covers all three Phase 11 scenarios, the full athlete journey, configured-provider UI with mocked transport, loading/error states, modal accessibility, mobile navigation and print exports. All **15 Phase 11 cases passed** across 1440, 1920, 768, 390 and 375 px. Five targeted analytics axe scans returned zero violations. Skips are desktop-only mobile-drawer tests (three) and duplicate fixed-paper print runs (four).
+Final fresh focused verification: **43 passed, zero failed, seven intentional skips**, with no flaky results, in final-browser-results.json (`evidence/phase11/final-browser-results.json`). This run covers all three Phase 11 scenarios, the full athlete journey, configured-provider UI with mocked transport, loading/error states, modal accessibility, mobile navigation and print exports. All **15 Phase 11 cases passed** across 1440, 1920, 768, 390 and 375 px. Five targeted analytics axe scans returned zero violations. Skips are desktop-only mobile-drawer tests (three) and duplicate fixed-paper print runs (four).
 
-Final screenshots: [desktop](evidence/phase11/desktop-1440-phase11-development.png), [tablet](evidence/phase11/tablet-768-phase11-development.png), [mobile](evidence/phase11/mobile-375-phase11-development.png). Additional widths and empty states are in the same directory. [Development PDF](evidence/phase11/progress-a4.pdf), [print checks](evidence/phase11/print-checks.json).
+Final screenshots: desktop (`evidence/phase11/desktop-1440-phase11-development.png`), tablet (`evidence/phase11/tablet-768-phase11-development.png`), mobile (`evidence/phase11/mobile-375-phase11-development.png`). Additional widths and empty states are in the same directory. Development PDF (`evidence/phase11/progress-a4.pdf`), print checks (`evidence/phase11/print-checks.json`).
 
 | Final checklist | Result |
 | --- | --- |

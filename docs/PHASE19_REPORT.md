@@ -18,7 +18,7 @@ Date: **2026-11-01**. Outcome: **BLOCKED; local release candidate remains unchan
 | Isolation guards inspected | Loopback-only app/restore ports, internal network, separate roles/configs, tmpfs test data; guarded PostgreSQL tool requires postgresql+psycopg/mma_test* and generated qa_hex schema |
 | Existing data/history | No athlete DB, production credential/database, existing volume, release tag or original tracker was changed |
 
-Machine-readable evidence: [environment.json](evidence/phase19/environment.json). Discovery used Get-Command, Test-Path/common install locations, read-only service/installer metadata queries, WSL status commands, .NET local TCP listener enumeration and Git/context integrity checks. No exhaustive disk/network scan or firmware/service change occurred. WSL output is preserved with encoding normalized in the evidence file.
+Machine-readable evidence: environment.json (`evidence/phase19/environment.json`). Discovery used Get-Command, Test-Path/common install locations, read-only service/installer metadata queries, WSL status commands, .NET local TCP listener enumeration and Git/context integrity checks. No exhaustive disk/network scan or firmware/service change occurred. WSL output is preserved with encoding normalized in the evidence file.
 
 ## Exact prerequisite and installation instructions — NOT EXECUTED
 

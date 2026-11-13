@@ -1,36 +1,25 @@
 # MMA Performance Coach
 
-## Status
+A local-first training workspace for amateur mixed martial artists. You complete a guided athlete assessment, and the app builds a conservative 12-week training plan and a seven-day meal plan from it. It also tracks workouts and check-ins and compares your measurements with a small, source-referenced set of UFC fighter snapshots. An optional AI coach can explain your plan and propose changes, and nothing is saved until you approve it.
 
-**Authoritative record:** [Final delivery, acceptance, operations and owner decisions](docs/FINAL_DELIVERY.md) (4 November 2026). Local candidate acceptance passed; security clearance and launch remain blocked. Staging replacement and public deployment are not authorized.
+**Stack:** React, TypeScript, Vite and Recharts on the frontend; FastAPI, Pydantic, SQLAlchemy and Alembic on the backend, with SQLite by default and PostgreSQL supported.
 
-- **Post-handoff review (11 November 2026):** [defects fixed, open findings and re-verification](docs/POST_HANDOFF_REVIEW.md). These source fixes postdate the accepted Phase 24 candidate images, so the candidate must be rebuilt and re-accepted before they apply to staging.
-- **Release:** 1.0.0-rc.17, category **A - local release candidate** on the [Phase 17 scale](docs/PHASE17_ACCEPTANCE.md). No final tag.
-- **Candidate environment:** original staging preserved at `127.0.0.1:18018`; isolated patched candidate at `127.0.0.1:18026` ([Phase 24](docs/PHASE24_REPORT.md)).
-- **Open security gates:** libxml2 CVE-2026-86140 (no supported Alpine fix); no current trusted image scan. The musl CVE-2026-107891 scanner discrepancy has vendor-backed fixed-status evidence but still awaits independent review.
-- **Other launch blockers:** content-rights, professional (medical/nutrition/coaching) and security review; live identity provider, TLS, durable backups and monitoring. See [known limitations](docs/KNOWN_LIMITATIONS.md).
+> **Status:** release candidate `1.0.0-rc.17`, intended for local use. It has not been publicly deployed, and its training and nutrition guidance has not yet been reviewed by qualified coaches, dietitians or medical professionals. It is not medical or nutritional advice. See [known limitations](docs/KNOWN_LIMITATIONS.md) and the [project history](docs/HISTORY.md) for the full release record.
 
-## Phase history
+## Features
 
-Historical snapshots, newest first. Statements in these reports describe their own date, not current availability or clearance.
+- Six-step editable athlete assessment, backend draft saving, optional measurements, metric/imperial input, independent discipline history and benchmark evidence labels.
+- Persistent local accounts with hashed high-entropy recovery tokens, HttpOnly SameSite cookies, user-scoped records, data download and complete account deletion.
+- Physical calculations, explainable scale-weight division references, historical women's featherweight distinction, conservative target-weight uncertainty, and exploratory style priorities.
+- Nineteen source-reviewed UFC fighter study snapshots (11 men, eight women; 11 official-source records and eight attributed Wikipedia records), field-level provenance, current/history division contexts, manual comparisons, configurable deterministic ranking and coverage, height/reach charts, immutable favorites, and explicit provider refresh with archived data revisions.
+- A 12-week conservative training roadmap with phases, deloads, recovery constraints, equipment substitutions, session details and duplicate-safe workout logging.
+- Estimated resting/TDEE/maintenance ranges, optional bounded goal adjustments, macro guidance, seven-day source-backed portions, dietary exclusions, meal feedback, substitution previews and approved nutrition versions.
+- Weekly check-ins, weight/sleep/fatigue and benchmark charts, recorded personal bests, plan completion, comparable benchmark changes and reassessment reports.
+- Contextual local coaching and optional structured OpenAI explanations/intents, using current usable plan/meal and recent progress summaries. Validated training/meal edits require explicit approval; provider failures fall back locally.
+- Preview/approve/reject plan revisions, retained plan versions and original inputs, stale proposal protection. No chat text directly mutates a saved plan.
+- Responsive charcoal/red UI, local font assets, accessible labels and print views. JSON export includes all user records and plan versions.
 
-- **Phase 24 - container triage.** [Report](docs/PHASE24_REPORT.md), [triage matrix](docs/PHASE24_TRIAGE.md). Candidate scans: application 0 high/critical; PostgreSQL 0 critical/1 high. 388 backend / 12 frontend / 10 real Edge-to-PostgreSQL passed, plus native restore/session recovery.
-- **Phases 18-23 - isolated staging.** [Phase 18 staging](docs/PHASE18_STAGING.md), [launch gates](docs/PHASE18_LAUNCH_GATES.md), [Phase 19](docs/PHASE19_REPORT.md), [Phase 20](docs/PHASE20_REPORT.md), [Phase 21](docs/PHASE21_REPORT.md), [Phase 22](docs/PHASE22_REPORT.md), [Phase 23](docs/PHASE23_REPORT.md).
-- **Phase 17 - release acceptance (1.0.0-rc.17).** [Acceptance](docs/PHASE17_ACCEPTANCE.md), [feature matrix](docs/PHASE17_FEATURE_MATRIX.md), [launch/deployment/rollback runbooks](docs/PHASE17_LAUNCH_RUNBOOK.md). Earlier B-local labels used a different scale.
-- **Phase 15 - catalog and feature refinement.** [Delivery](docs/PHASE15_DELIVERY.md), [acceptance matrix](docs/PHASE15_FEATURE_MATRIX.md). 19 source-backed fighter snapshots, 55 USDA foods and 49 exercises; macro-balanced fat-food substitutions, explicit amateur-training context and stronger allergy/source validation. 344 backend / 12 frontend tests; full Edge verification 168 passed, 0 failed, 7 intentional skips. Nutrition catalog v3 requires reviewed regeneration of older meal plans. Independent baseline checkpoint d8839ce.
-- **Phase 14 - verified local release candidate (category B).** [Acceptance, feature matrix, evidence and launch gates](docs/PHASE14_ACCEPTANCE.md). 328 backend / 12 frontend; full Edge 158 passed, 0 failed, 7 intentional skips across five widths. Schema 0008.
-- **Phase 13 - infrastructure and identity.** [Verification and production blockers](docs/PHASE13_INFRASTRUCTURE.md). Authlib OIDC with explicit local-account linking, session visibility/revocation, shared AI budgets, migration-aware readiness, private deployment templates and backup/restore tooling. Existing databases require migration 0008.
-- **Phase 12 - review readiness.** [Safety audit, methodology inventory and four specialist review packs](docs/PHASE12_SAFETY.md). Automated safety checks are separate from independent professional approval, which remains pending.
-- **Phase 11 - analytics.** [Implementation, methodology and limitations](docs/PHASE11_ANALYTICS.md). Longitudinal measurements, comparable records, weekly workload, calendar adherence, martial arts participation, technical achievements and private CSV/JSON/print reports (schema 0007).
-- **Phase 10 - coach.** [Context, actions, evaluations and cost limits](docs/PHASE10_COACH.md). Rescheduling, frequency changes, exercise/food replacements, assessment snapshots and evidence-gated progression use validated previews and explicit approval. Providers cannot authorize capabilities or write records. Live OpenAI quality remains unverified.
-- **Phase 9 - nutrition.** [Report, coverage and limitations](docs/PHASE9_NUTRITION.md). Forty USDA source-backed foods with fiber, sodium, calcium, iron and potassium; cooking/meal-count preferences and food replacements with preview and approval.
-- **Phases 1-8.** See the sections below and the `docs/PHASE*` reports.
-
-## About
-
-A functional local MMA development workspace built with React, TypeScript, Vite, Recharts, FastAPI, Pydantic, SQLAlchemy, SQLite and Alembic. The existing Saudi law tracker is untouched.
-
-## Run on Windows
+## Getting started (Windows)
 
 From this directory, with Python 3.12+ and Node 22.12+ installed:
 
@@ -62,7 +51,7 @@ On macOS/Linux replace `.venv\Scripts\python.exe` with `.venv/bin/python` and `n
 
 ## Configuration
 
-Copy `.env.example` to `.env` in **this app directory** if configuration is needed. Do not reuse the parent project's `.env`.
+Copy `.env.example` to `.env` in the repository root if configuration is needed.
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
@@ -74,19 +63,6 @@ Copy `.env.example` to `.env` in **this app directory** if configuration is need
 | `FIGHTER_LICENSE_REFERENCE` | empty | Operator license reference; must match each export source. |
 
 Alembic imports the same database configuration as the API. Migrations are explicit; startup fails on an uninitialized database. Public deployment remains gated on PostgreSQL, external HTTPS/proxy, identity-policy and operational review; see docs/DEPLOYMENT.md.
-
-## Implemented workflows
-
-- Six-step editable athlete assessment, backend draft saving, optional measurements, metric/imperial input, independent discipline history and benchmark evidence labels.
-- Persistent local accounts with hashed high-entropy recovery tokens, HttpOnly SameSite cookies, user-scoped records, data download and complete account deletion.
-- Physical calculations, explainable scale-weight division references, historical women's featherweight distinction, conservative target-weight uncertainty, and exploratory style priorities.
-- Seventeen source-reviewed UFC fighter study snapshots (10 men, seven women; 11 original official-source and six attributed secondary-source records), field-level provenance, current/history division contexts, manual comparisons, configurable deterministic ranking and coverage, height/reach charts, immutable favorites, and explicit provider refresh with archived data revisions.
-- A 12-week conservative training roadmap with phases, deloads, recovery constraints, equipment substitutions, session details and duplicate-safe workout logging.
-- Estimated resting/TDEE/maintenance ranges, optional bounded goal adjustments, macro guidance, seven-day source-backed portions, dietary exclusions, meal feedback, substitution previews and approved nutrition versions.
-- Weekly check-ins, weight/sleep/fatigue and benchmark charts, recorded personal bests, plan completion, comparable benchmark changes and reassessment reports.
-- Contextual local coaching and optional structured OpenAI explanations/intents, using current usable plan/meal and recent progress summaries. Validated training/meal edits require explicit approval; provider failures fall back locally.
-- Preview/approve/reject plan revisions, retained plan versions and original inputs, stale proposal protection. No chat text directly mutates a saved plan.
-- Responsive charcoal/red UI, local font assets, accessible labels and print views. JSON export includes all user records and plan versions.
 
 ## Architecture
 
@@ -125,7 +101,7 @@ npm.cmd run build
 npm.cmd audit
 ```
 
-## Phase 1 browser QA
+### Browser QA
 
 Real-browser coverage, fixes and evidence are documented in [the Phase 1 QA report](docs/PHASE1_QA.md). The browser suite uses installed Microsoft Edge in headless mode and builds the production frontend first:
 
@@ -135,7 +111,7 @@ npm.cmd run test:browser
 npm.cmd run test:browser:report
 ```
 
-Tests cover 1440, 1920, 768, 390 and 375 CSS-pixel widths. They start an isolated API on port **8123**, create a disposable database under this application's ignored `.qa-runtime/`, and force the AI key to empty. They refuse to reuse a server already on that port. Normal `backend/mma.db` and the parent tracker are not used. A configured AI interface is tested with a labeled mocked transport; no paid provider call is made.
+Tests cover 1440, 1920, 768, 390 and 375 CSS-pixel widths. They start an isolated API on port **8123**, create a disposable database under this application's ignored `.qa-runtime/`, and force the AI key to empty. They refuse to reuse a server already on that port. Normal `backend/mma.db` is not used. A configured AI interface is tested with a labeled mocked transport; no paid provider call is made.
 
 If Edge is unavailable, install Playwright Chromium with `npm.cmd exec playwright -- install chromium`, then set `$env:PW_CHANNEL='chromium'` before running the suite. Missing browser executables are a failed prerequisite, not a passing or silently skipped browser run. Reports and traces are local; avoid committing test artifacts containing recovery credentials. Saved screenshot evidence dismisses the synthetic account's recovery token first.
 
@@ -153,122 +129,28 @@ Core tests require no paid APIs. Optional backend lint/format uses Ruff, which i
 
 See [delivery status](docs/DELIVERY.md) for exact results and verification limits, [methodology](docs/METHODOLOGY.md) for formulas, and [sources](docs/SOURCES.md) for provenance and data permissions.
 
-## Remaining limits and next improvements
+## Limitations
 
-This is a working local first version, not the entire production specification. The fighter library is intentionally small (17 dated snapshots, including seven women), and omits unverified current records, most stance data and imagery. Two explicitly historical statistics are descriptive only. Style similarity is excluded without a shared source-backed taxonomy. No live scraping, licensed feed, professional ability score or automated weight cut is implemented.
+This is a working local first version, not the entire production specification. The fighter library is intentionally small (19 dated snapshots, including eight women), and omits unverified current records, most stance data and imagery. Two explicitly historical statistics are descriptive only. Style similarity is excluded without a shared source-backed taxonomy. No live scraping, licensed feed, professional ability score or automated weight cut is implemented.
 
-Training uses conservative templates, not clinically reviewed individualized programming or a full exercise library. Food values come from a 22-record public-domain USDA subset; meals target general macro guidance, with no complete micronutrient or competition-specific optimization. Structured exclusions and inspired ingredient patterns are supported; budget tiers do not represent real prices, and legacy preference prose is not automatically interpreted. The coach supports whitelisted language-driven previews plus the existing frequency form, rather than arbitrary plan rewriting. Reassessments are user-triggered, with week 4/8/12 prompts in the plan rather than scheduled notifications. Adherence is reported as recorded plan completion, not automatically inferred attendance. Exercise performance logging supports optional actual sets, repetitions, load and timed duration, alongside session duration/effort and separate check-in benchmarks.
+Training uses conservative templates and a 49-exercise catalog, not clinically reviewed individualized programming. Food values come from a 55-food public-domain USDA subset; meals target general macro guidance, with no complete micronutrient or competition-specific optimization. Structured exclusions and inspired ingredient patterns are supported; budget tiers do not represent real prices, and legacy preference prose is not automatically interpreted. The coach supports whitelisted language-driven previews plus the existing frequency form, rather than arbitrary plan rewriting. Reassessments are user-triggered, with week 4/8/12 prompts in the plan rather than scheduled notifications. Adherence is reported as recorded plan completion, not automatically inferred attendance. Exercise performance logging supports optional actual sets, repetitions, load and timed duration, alongside session duration/effort and separate check-in benchmarks.
 
 Before public deployment: validate the implemented session/rate/production controls under the actual HTTPS proxy and PostgreSQL deployment, decide token-identity suitability, schedule retention and review consent/backup governance, obtain rights for expanded datasets, review training/nutrition with qualified practitioners, and complete real-device, manual assistive-technology and cross-browser QA. The requested responsive browser matrix now runs in headless Edge; a real paid AI response has not been exercised.
 
+## Documentation
 
-## Phase 2 feature audit
+| Topic | Document |
+| --- | --- |
+| User guide | [docs/USER_GUIDE.md](docs/USER_GUIDE.md) |
+| Architecture and API | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), [docs/API.md](docs/API.md) |
+| Methodology (formulas and rules) | [docs/METHODOLOGY.md](docs/METHODOLOGY.md) |
+| Data sources and provenance | [docs/SOURCES.md](docs/SOURCES.md), [fighter data license](docs/FIGHTER_SUPPLEMENT_LICENSE.md) |
+| AI configuration | [docs/AI_CONFIGURATION.md](docs/AI_CONFIGURATION.md) |
+| Deployment and security | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/SECURITY.md](docs/SECURITY.md) |
+| Testing | [docs/TESTING.md](docs/TESTING.md) |
+| Known limitations | [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md) |
+| Release status and phase-by-phase history | [docs/HISTORY.md](docs/HISTORY.md), [original plan](docs/PLAN.md) |
 
-See [the 17-module feature matrix and fix report](docs/PHASE2_AUDIT.md) for verified scope, priorities and remaining work. This iteration adds current-input approval checks, recovery-aware reassessment proposals, serialized account writes, conservative limitation-based withholding, time-budgeted mixed training, read-only program history, actual-set/missed logging, body-fat/mobility check-ins and edit-draft resume.
+## License
 
-**Existing databases require migration before starting the updated backend:**
-
-```powershell
-cd backend
-..\.venv\Scripts\python.exe -m alembic upgrade head
-```
-
-Migration `0003` adds the per-account write serialization counter; it preserves existing records. Legacy pending proposals without source bindings must be previewed again before approval. Explicit frequency revisions retain prior versions and restart week 1; Phase 3 adaptive revisions continue the cycle after the selected checkpoint. New adverse recovery or training-profile changes withhold the active schedule until a fresh revision is approved. Historical prescriptions remain historical references, not current clearance.
-
-To keep Phase 2 browser evidence separate:
-
-```powershell
-cd frontend
-$env:PW_REPORT_FILE='../docs/evidence/phase2/browser-results.json'
-$env:PW_EVIDENCE_DIR='../docs/evidence/phase2'
-npm.cmd run test:browser
-```
-
-
-## Phase 3 training intelligence
-
-See [Phase 3 delivery, rules, evidence and scientific boundaries](docs/PHASE3_TRAINING.md).
-
-- **37-entry structured exercise catalog** with technique, movement patterns, muscle involvement, equipment, guidance, mistakes, modification notes and alternatives.
-- Catalog-linked timed workouts, equipment and conditioning preferences, strength/conditioning goal emphasis, technical-access checks, mobility blocks and phase/deload structure. Existing instructor-led classes count inside the weekly availability budget.
-- Actual exercise sets, repetitions, load, RPE, duration, distance, session date and notes; completed/failed/missed outcomes; per-exercise history tables/charts. Session effort starts blank and missing effort is not fabricated.
-- Separate recorded versus estimated athletic evidence, relative-load and pace calculations, missing-domain disclosure and subjective recovery review.
-- Evidence-gated repetition/load/duration proposals; no automatic progression after missing, failed or missed work. Recovery, prescribed dose, separate completion dates and effort matter.
-- Week 4/8 adaptive proposals preserve earlier weeks and cycle logs; week 12 reviews the completed cycle. Substitutions are equipment-filtered proposals requiring approval. Full proposed prescriptions are reviewable in AI coach.
-
-No extra database migration is required beyond `0003`; optional JSON fields have backward-compatible defaults. Existing plans are not silently regenerated. To use the new catalog engine, generate a first plan or explicitly preview and approve a current-input revision. Historical performance remains accessible across cycles; progression decisions use the current cycle only. Review age/health/access limitations with qualified professionals; contact training and injury-sensitive programming require qualified coaches.
-
-Phase 3 browser evidence uses a separate directory:
-
-```powershell
-cd frontend
-$env:PW_REPORT_FILE='../docs/evidence/phase3/browser-results.json'
-$env:PW_EVIDENCE_DIR='../docs/evidence/phase3'
-npm.cmd run test:browser
-```
-
-Optional print inspection: from `backend`, set `$env:MMA_QA_PHASE='phase3'` and run `..\.venv\Scripts\python.exe tests/check_prints.py`. The catalog/intelligence panels are excluded from current-view print to avoid printing the whole library; JSON export includes all recorded fields.
-
-
-## Phase 4 comparison system
-
-See [Phase 4 delivery and coverage](docs/PHASE4_COMPARISON.md) for the audit, mathematics, source register, browser evidence and limitations. Upgrade existing databases through Alembic **0004**. Startup adds missing reviewed records without overwriting existing snapshots; use **Comparison lab > Refresh reviewed fighter data** to explicitly replace legacy snapshots with the reviewed bundle. This reimports data, preserves revisions and does not fetch websites or advance verification dates.
-
-Optional operator settings `FIGHTER_LICENSED_EXPORT` (server-local JSON file) and `FIGHTER_LICENSE_REFERENCE` enable a validated licensed-export adapter. No commercial provider or redistribution license is included. Do not put these settings in frontend configuration. Schema: `backend/app/fighter_models.py`; canonical units cm/kg, per-field source IDs, source dates/method/rights and division-history context required.
-
-
-Phase 4 QA uses an isolated temporary database and these evidence settings:
-
-```powershell
-cd frontend
-$env:PW_REPORT_FILE='../docs/evidence/phase4/browser-results.json'
-$env:PW_EVIDENCE_DIR='../docs/evidence/phase4'
-npm.cmd run test:browser
-```
-
-For the four A4 reports, from `backend/` set `$env:MMA_QA_PHASE='phase4'` and run `..\.venv\Scripts\python.exe tests/check_prints.py` with the optional PDF QA dependencies described above. Current test results, intermediate failures and limitations are in the Phase 4 report.
-
-
-## Phase 5 nutrition and adaptive coach
-
-[Phase 5 implementation, sources, tests and limitations](docs/PHASE5_NUTRITION_COACH.md) documents the current nutrition/coaching system. Nutrition now uses a bundled **22-ingredient USDA SR Legacy subset (CC0)**, separate source versus macro-derived energy, bounded portions, macro guidance, additive dietary settings and feedback, substitutions, groceries and reviewed plan versions. The historical generic catalog does not certify allergens/halal products, guarantee local prices or establish complete micronutrient adequacy.
-
-In **Nutrition**, save feedback if needed, choose **Preview updated meal plan** or a meal substitution, review the full candidate, then approve or reject. Old input assumptions are withheld after relevant changes. An approved sustained-weight review may use a check-in median without overwriting the profile. In **AI coach**, requests such as ?Make my Monday workout shorter to 20 minutes? or ?Suggest a different halal lunch? can prepare a real validated preview. An existing unlogged session/current usable nutrition plan is required. Approval saves a new version; the model has no write tools. Refer medical/competition-specific nutrition and contact training to qualified professionals.
-
-Phase 5 itself added no schema migration; Phase 6 now requires **0005** before startup. Existing illustrative nutrition snapshots remain in history and require explicit reviewed regeneration. `POST /api/nutrition` remains an explicit authenticated manual generation/regeneration API for existing integrations; the application uses preview/approval for changes to existing meals. No nutrition API key or live USDA connection is required. Optional OpenAI settings remain server-only; provider calls have context/output limits, short timeouts, bounded retries and sanitized usage metadata. Paid live AI quality and global spend enforcement remain unverified; Phase 6 adds a tested per-account daily attempt quota.
-
-To reproduce the food subset from an independently downloaded official archive:
-
-```powershell
-cd backend
-..\.venv\Scripts\python.exe tools/import_usda.py ..\.qa-runtime\usda-sr-2018.zip
-```
-
-The importer has no network behavior. The included JSON is sufficient to run the application; downloading the source archive is optional for audit/reproduction. Sources, original IDs/descriptions and the checked archive hash are in [SOURCES.md](docs/SOURCES.md#phase-5-nutrition-and-coaching-sources-reviewed-2026-10-31).
-
-Phase 5 browser evidence uses `$env:PW_REPORT_FILE='../docs/evidence/phase5/browser-results.json'` and `$env:PW_EVIDENCE_DIR='../docs/evidence/phase5'` before `npm.cmd run test:browser` in `frontend/`. Optional A4 inspection uses `$env:MMA_QA_PHASE='phase5'` with `tests/check_prints.py` from `backend/`.
-
-
-## Phase 6 release and operations
-
-[Final readiness report](docs/PHASE6_RELEASE.md), [deployment](docs/DEPLOYMENT.md), [security review](docs/SECURITY.md), [architecture](docs/ARCHITECTURE.md), [API notes](docs/API.md), [testing](docs/TESTING.md) and [qualified specialist checklist](docs/SPECIALIST_REVIEW.md) describe the release candidate. **Public production readiness is not claimed**: live PostgreSQL, deployed HTTPS/proxy, backup restoration, production operations and independent specialist review remain gates.
-
-Migration **0005** adds independent expiring/revocable sessions and shared quota counters, preserving existing profiles/plans and recovery hashes. Old cookies require restoration with the existing private recovery token. Production configuration requires HTTPS `PUBLIC_ORIGIN`, explicit `ALLOWED_HOSTS` and secure cookies. See `.env.production.example` for all settings. New settings include session lifetime, API/auth limits, daily AI attempts, body size and explicit conversation/draft retention. `GET /api/ready` checks database connectivity; `/api/health` is process liveness. No passwords or managed identity are implied by token accounts.
-
-Only this project's `.env` is loaded, centrally for API, migrations and maintenance. From `backend/`, `..\.venv\Scripts\python.exe -m app.maintenance` previews retention; add `--apply` only after reviewing policy and scheduling it appropriately. Historical plans/progress remain until account deletion. The PostgreSQL driver is included; `compose.postgres-test.yml` and `backend/tools/verify_postgres.py` provide opt-in disposable verification when PostgreSQL/Docker is available. No personal database was migrated or deleted for QA.
-
-
-## Phase 7 training intelligence
-
-[Phase 7 methodology, changes, tests and review decisions](docs/PHASE7_TRAINING.md) documents the new ten-dimension athlete development view, independent histories/goals for Boxing, Muay Thai, Kickboxing, BJJ, Wrestling, Judo and integrated MMA, exact optional weekdays, optional supervised explosive practice, and bounded controlled cycling intervals. The catalog now has **39 exercises**, with separate Kickboxing and Judo entries. No anaerobic capacity or technical skill is invented from body measurements.
-
-Edit discipline goals in assessment step 3, coaching/power preferences in step 4, and exact weekdays in step 5. In Training, inspect **Athlete development model** and open independent discipline details. Optional post-session fatigue is logged with the workout; recent high fatigue blocks progression suggestions. Current plans are not replaced by assessment/logging. Preview and approve a current-input change when training inputs change. Compatible reassessments preserve approved substitutions and reviewed loads; previous checkpoints/versions and workout history remain intact.
-
-The new windows/caps/stages are explicit product heuristics and need qualified coaching review. There is no maximal testing, unsupervised contact, validated anaerobic assessment, competition-camp programming or independent professional sign-off. No schema migration beyond **0005** is required; old JSON profiles/logs have safe defaults. Local startup and the Phase 6 production gates remain unchanged.
-
-
-## Phase 8 fighter data and matching
-
-[Phase 8 report](docs/PHASE8_FIGHTERS.md) gives actual division coverage, source/rights limitations, data quality, deterministic mathematics, tests and the offline import/rollback procedure. The bundle now has **17 source-snapshot records: 10 men, seven women**, including six attributed Wikipedia adaptations under [CC BY-SA 4.0](docs/FIGHTER_SUPPLEMENT_LICENSE.md). Historical study coverage includes all eight men's and three active women's reference divisions; this is not a current comprehensive roster. Original 11 redistribution rights remain unestablished.
-
-**Existing databases require migration 0006** before starting: run `..\.venv\Scripts\python.exe -m alembic upgrade head` from `backend/`. This backfills searchable fighter metadata and adds operator import-batch history, preserving athlete aggregates/favorites. The Comparison Lab now uses paginated server search with category, historical division, stance and career-status filters. Matching v3 reduces a partial physical group's contribution in proportion to its supported evidence; scores remain heuristic and independent from professional skill. Current status/division for the six additions remain unknown. No new web scraping or network startup dependency exists.
+Code is MIT licensed; see [LICENSE](LICENSE). The eight-record fighter supplement is adapted from Wikipedia under CC BY-SA 4.0; see [docs/FIGHTER_SUPPLEMENT_LICENSE.md](docs/FIGHTER_SUPPLEMENT_LICENSE.md). USDA food data is public domain (CC0); see [docs/SOURCES.md](docs/SOURCES.md).

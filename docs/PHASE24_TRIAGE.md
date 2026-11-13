@@ -4,7 +4,7 @@ Historical scanner/advisory snapshot. See [the authoritative final handoff](FINA
 
 72 image/finding rows; 69 distinct high/critical CVEs. Covers every baseline high/critical finding and high/critical findings introduced by the evaluated Alpine variant. No exceptions are approved.
 
-Full versions, affected locations, vendor/CNA boundaries, reachability evidence, compensating controls, remaining risks and approval requirements are in [JSON](evidence/phase24/triage-matrix.json) and [CSV](evidence/phase24/triage-matrix.csv). Authoritative CNA records were retrieved on 2026-11-01; original descriptions and references are retained privately under `.qa-runtime/phase24/advisories`.
+Full versions, affected locations, vendor/CNA boundaries, reachability evidence, compensating controls, remaining risks and approval requirements are in JSON (`evidence/phase24/triage-matrix.json`) and CSV (`evidence/phase24/triage-matrix.csv`). Authoritative CNA records were retrieved on 2026-11-01; original descriptions and references are retained privately under `.qa-runtime/phase24/advisories`.
 
 The cached scanner labels are preserved. Presence of an old Go version does not prove each linked library routine is used by gosu. Removal is verified independently, rather than treating speculation as a security exception. Windows-specific Go findings are platform-inapplicable on the Linux runtime. The final PostgreSQL libxml2 finding remains unresolved.
 

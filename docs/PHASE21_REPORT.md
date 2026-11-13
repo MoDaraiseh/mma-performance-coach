@@ -10,7 +10,7 @@ Date: 2026-11-01. **Runtime installed and verified; staging blocked by existing 
 
 The owner subsequently authorized adding only an inheritable ReadAndExecute allow rule for their current Windows SID on `.qa-runtime/phase18`, preserving ownership, entries and inheritance protection, and explicitly required stopping if protected children need separate rules.
 
-Read-only host identity resolved the intended account to `IWA2024\darai_qtguapt`. Before applying any rule, recursive ACL inspection found **two protected child directories: `secrets` and `backups`**. Their ACLs block inheritance from the staging root. The `secrets` directory grants OWNER RIGHTS/SYSTEM/Administrators and therefore needs its own explicit rule for the owner account to read credentials. Parent permission alone cannot satisfy the staging preflight.
+Read-only host identity resolved the intended account to `<host>\<user>`. Before applying any rule, recursive ACL inspection found **two protected child directories: `secrets` and `backups`**. Their ACLs block inheritance from the staging root. The `secrets` directory grants OWNER RIGHTS/SYSTEM/Administrators and therefore needs its own explicit rule for the owner account to read credentials. Parent permission alone cannot satisfy the staging preflight.
 
 **Stopped before Set-Acl: zero ACL changes were applied.** No owner/entry/protection change, secret regeneration or value disclosure occurred. Evidence: ignored `.qa-runtime/phase21/acl-boundary.json`. No container build/start, PostgreSQL migration, backup/restore, monitoring, security scan or regression suite ran in this continuation. Previous runtime results below remain historical evidence, not new executions.
 

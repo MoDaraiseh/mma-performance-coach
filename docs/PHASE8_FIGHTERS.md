@@ -22,7 +22,7 @@ The bundle now has **17 validated source-snapshot records: 10 men and 7 women**,
 
 The iteration target was **six reusable, attributed additions split equally across men/women**, with at least one documented historical participant in all eight men's active reference divisions and all three women's active reference divisions. All targets were met using accessible secondary sources. This is historical participation coverage, **not coverage of every active fighter or current roster slot**. The infrastructure accepts up to 10,000 file records; only 17 real records are bundled. The 1,000-row load fixture is synthetic and never counted as fighters.
 
-[Generated quality report](evidence/phase8/data-quality.json): historical counts overlap because a fighter can appear in multiple divisions.
+Generated quality report (`evidence/phase8/data-quality.json`): historical counts overlap because a fighter can appear in multiple divisions.
 
 | Category | Historical UFC division | Validated snapshots |
 | --- | --- | ---: |
@@ -59,7 +59,7 @@ SQLAlchemy write hooks keep metadata aligned with payload changes. Database pagi
 
 `GET /api/fighters/search?q=...&category=Women&division=Bantamweight&stance=Orthodox&status=Unknown&page=1&page_size=10` returns `{items,total,page,page_size}`. Query length, page and page-size are bounded. Legacy `/api/fighters` remains a list response capped at 50 and advertises `X-Result-Limit`; larger integrations must use pagination. The lab uses the new endpoint, ignores superseded responses and resets pagination on search/filter changes. Ranking still evaluates the candidate set deterministically; it is not limited to the current search page.
 
-Manual lookup now uses the fighter primary key rather than scanning every payload. Ranking resolves the common division reference once per request, removing the prior per-fighter reference query. No athlete-response cache was introduced. With 1,000 synthetic records, the [local benchmark](evidence/phase8/performance.json) measured two queries per search/ranking and one per manual lookup: medians 8.96 ms, 117.93 ms and 0.43 ms respectively over ten samples. These include local SQLite/Python overhead, not network/device/production load results.
+Manual lookup now uses the fighter primary key rather than scanning every payload. Ranking resolves the common division reference once per request, removing the prior per-fighter reference query. No athlete-response cache was introduced. With 1,000 synthetic records, the local benchmark (`evidence/phase8/performance.json`) measured two queries per search/ranking and one per manual lookup: medians 8.96 ms, 117.93 ms and 0.43 ms respectively over ten samples. These include local SQLite/Python overhead, not network/device/production load results.
 
 ## Similarity and explanation
 
@@ -101,17 +101,17 @@ Rollback restores only that batch's prior fighter payloads or removes its newly 
 ## Validation and actual results
 
 - Baseline: **221 backend / 11 frontend** passed.
-- Current backend: **239 passed**, one existing Starlette/httpx deprecation; [output](evidence/phase8/pytest.txt).
+- Current backend: **239 passed**, one existing Starlette/httpx deprecation; output (`evidence/phase8/pytest.txt`).
 - Frontend: **12 passed**, including server pagination and filter-triggered page reset.
 - New tests cover partial-physical weighting, exact normalized percentages, dated professional record provenance, invalid percentages, six-record license/status coverage, duplicate IDs/names/external IDs, conflict/token/rollback protection, athlete export preservation, indexed metadata updates, literal/accent queries, pagination/filter bounds, fixed query counts and 1,000 synthetic records.
 - Existing unit normalization, threshold/missing-data/tie/weight/stale/division tests remain passing. SQLite upgrade/check/downgrade/re-upgrade and PostgreSQL offline SQL compile are included. Real PostgreSQL runtime remains unverified.
-- App/browser TypeScript, Vite, Ruff and Prettier checks are run. Full Edge matrix: **108 passed, zero failed, seven intentional viewport-specific skips** in 6.1 minutes. All ten new Phase 8 cases passed at 1440/1920/768/390/375 px. Four A4 reports (13 pages) passed [text/margin checks](evidence/phase8/print-checks.json); mobile source/license presentation and a rendered comparison page were visually inspected.
+- App/browser TypeScript, Vite, Ruff and Prettier checks are run. Full Edge matrix: **108 passed, zero failed, seven intentional viewport-specific skips** in 6.1 minutes. All ten new Phase 8 cases passed at 1440/1920/768/390/375 px. Four A4 reports (13 pages) passed text/margin checks (`evidence/phase8/print-checks.json`); mobile source/license presentation and a rendered comparison page were visually inspected.
 
-The [first focused browser attempt](evidence/phase8/browser-focused.json) failed all four cases at implicit select-label interaction; explicit accessible labels fixed it. Heading locators were also corrected to the existing side-by-side card title. [Corrected focused run](evidence/phase8/browser-focused-fixed.json): **four passed** on desktop/mobile, covering pagination, filters, license/source quality and unknown women's current status. Full prior-workflow regression passed in [the final Edge report](evidence/phase8/browser-results.json). Seven intentional skips are non-mobile drawer checks at three widths and duplicate print runs at four widths; no retries/flaky passes were used.
+The first focused browser attempt (`evidence/phase8/browser-focused.json`) failed all four cases at implicit select-label interaction; explicit accessible labels fixed it. Heading locators were also corrected to the existing side-by-side card title. Corrected focused run (`evidence/phase8/browser-focused-fixed.json`): **four passed** on desktop/mobile, covering pagination, filters, license/source quality and unknown women's current status. Full prior-workflow regression passed in the final Edge report (`evidence/phase8/browser-results.json`). Seven intentional skips are non-mobile drawer checks at three widths and duplicate print runs at four widths; no retries/flaky passes were used.
 
 ## Remaining work and review boundaries
 
 No comprehensive current roster, verified live record feed or dense current statistics. Reuse rights for the original 11 remain unresolved. Secondary-source disagreements need independent corroboration, and exact source-revision capture can strengthen reproducibility. Bulk imports are operator tools, not a managed-provider scheduler or public administration interface. Substring metadata search and full candidate scoring are adequate at the synthetic scale tested, not a production scalability guarantee. Real PostgreSQL, multiworker load, backup restoration, live licensed providers, other browser engines/devices and external security/specialist review remain outstanding. Similarity scales and weights require domain review; they cannot predict competitive outcomes or fighting potential.
 
 
-Browser evidence includes provenance [1440](evidence/phase8/desktop-1440-phase8-provenance.png), [1920](evidence/phase8/desktop-1920-phase8-provenance.png), [768](evidence/phase8/tablet-768-phase8-provenance.png), [390](evidence/phase8/mobile-390-phase8-provenance.png), [375](evidence/phase8/mobile-375-phase8-provenance.png), and women/history screenshots in the same folder. Original tracker tracked files remain unchanged.
+Browser evidence includes provenance 1440 (`evidence/phase8/desktop-1440-phase8-provenance.png`), 1920 (`evidence/phase8/desktop-1920-phase8-provenance.png`), 768 (`evidence/phase8/tablet-768-phase8-provenance.png`), 390 (`evidence/phase8/mobile-390-phase8-provenance.png`), 375 (`evidence/phase8/mobile-375-phase8-provenance.png`), and women/history screenshots in the same folder. Original tracker tracked files remain unchanged.

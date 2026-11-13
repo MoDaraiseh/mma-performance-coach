@@ -69,4 +69,4 @@ Reviewer must record exact revision/output hash, credentials, date, scope, popul
 
 Specific review request: Assess actual seven-day output and substitutions,55historical foods, ingredient quantity practicality, missing nutrient coverage, allergy/certification uncertainty and referral for medical/competition needs.
 
-Full current12-week training and seven-day nutrition outputs (including withheld/unsupported safety cases) are available as [seven synthetic full examples](../evidence/phase18/specialist-full-examples.json). Regenerate using `python tools/build_staging_review.py` from backend. They are software outputs, not expert-approved programs; reviewer fields remain blank.
+Full current12-week training and seven-day nutrition outputs (including withheld/unsupported safety cases) are available as seven synthetic full examples (`evidence/phase18/specialist-full-examples.json`). Regenerate using `python tools/build_staging_review.py` from backend. They are software outputs, not expert-approved programs; reviewer fields remain blank.

@@ -27,13 +27,13 @@ A final ten-sample real pause/unpause test targeted only PostgreSQL ID `96ae8909
 | Collector | 10 samples, exit 0; no external notifications |
 | Database | Same ID/start time/image; running and unpaused afterward |
 
-[Outage evidence](evidence/phase23/outage-result.json), [collector snapshots](evidence/phase23/collector.jsonl).
+Outage evidence (`evidence/phase23/outage-result.json`), collector snapshots (`evidence/phase23/collector.jsonl`).
 
 A continuous collector was started inside the existing candidate container using `python -m app.monitoring --watch --url http://127.0.0.1:8000 --output /app/.qa-runtime/continuous.jsonl --interval 5`; two initial successful samples were verified. It uses private tmpfs, exclusive new output files, bounded history and an 8 MiB output guard. Output is volatile and requires manual rotation/restart when capped; this is not durable hosted monitoring or external paging. No Windows service was installed.
 
 ## Preservation and runtime
 
-[Before](evidence/phase23/before.json) and [after](evidence/phase23/after.json) capture exact labels, IDs, storage, hashes and network evidence. All four original Phase18 containers retain their IDs, images and start times, including the completed migration container. PostgreSQL was never stopped, restarted or recreated. Original app/restore containers remain running. PostgreSQL PID1 runs as UID 999 and retains its original writable storage/capabilities; the stronger application restrictions below must not be attributed to the database container.
+Before (`evidence/phase23/before.json`) and after (`evidence/phase23/after.json`) capture exact labels, IDs, storage, hashes and network evidence. All four original Phase18 containers retain their IDs, images and start times, including the completed migration container. PostgreSQL was never stopped, restarted or recreated. Original app/restore containers remain running. PostgreSQL PID1 runs as UID 999 and retains its original writable storage/capabilities; the stronger application restrictions below must not be attributed to the database container.
 
 Users (4), records (26), fighter snapshots (8) and reference snapshots (2) have identical before/after content hashes. Both existing synthetic dump SHA256 hashes match. All 89 original prepared context hashes match. Operational counters intentionally changed during synthetic alert tests; no claim of byte-identical database storage is made. No new backup/restore rehearsal was performed in Phase23; archive preservation supplements the earlier successful separate-database restore.
 
@@ -41,7 +41,7 @@ A parallel candidate was built from a new sanitized 90-file context, preserving 
 
 ## Container security, SBOM and findings
 
-Both active application/relay containers run as UID 10001, read-only, all capabilities dropped, no-new-privileges, with memory/PID limits. Application networking is the existing internal isolated network, with no default route or published app port. Only the relay publishes `127.0.0.1:18018`; its upstream is fixed, and it has no database/AI secret environment. Application temporary writes use restricted tmpfs. Runtime database CREATE SCHEMA/TABLE attempts are rejected. Invalid Host returns 400 and untrusted/cross-site POST returns 403; security headers are present. AI key is blank and global daily/monthly budgets are zero. [Actual security probe](evidence/phase23/security-result.json).
+Both active application/relay containers run as UID 10001, read-only, all capabilities dropped, no-new-privileges, with memory/PID limits. Application networking is the existing internal isolated network, with no default route or published app port. Only the relay publishes `127.0.0.1:18018`; its upstream is fixed, and it has no database/AI secret environment. Application temporary writes use restricted tmpfs. Runtime database CREATE SCHEMA/TABLE attempts are rejected. Invalid Host returns 400 and untrusted/cross-site POST returns 403; security headers are present. AI key is blank and global daily/monthly budgets are zero. Actual security probe (`evidence/phase23/security-result.json`).
 
 The actual final image contains an empty excluded-original-fighter catalog and eight sanitized supplemental records; .git, .env and backend tests are absent and the font notice is present. Technical exclusion is not fighter-data licensing approval.
 
@@ -57,7 +57,7 @@ Installed Docker Scout 1.27.0 produced local SPDX SBOMs and SARIF scans using of
 
 Fresh npm audit reported zero advisories. Remaining application high findings concern OS packages including util-linux, glibc, perl and zlib; the cached report marks these not fixed. PostgreSQL's four critical findings identify Go 1.24.6 in `/usr/local/bin/gosu`: CVE-2026-78663, CVE-2026-39821, CVE-2026-56857 and CVE-2025-68121. These are scanner findings, not proof of four exploitable PostgreSQL server vulnerabilities. They nevertheless require vendor/reachability triage and remediation. The database image was deliberately not upgraded or restarted under the preservation constraint. A future patched candidate database should be validated by separate restore before an authorized cutover.
 
-[Scan summary](evidence/phase23/scan-summary.json), [application SARIF](evidence/phase23/offline-cves.sarif), [PostgreSQL SARIF](evidence/phase23/postgres-cves.sarif), [application SPDX](evidence/phase23/app.sbom.spdx.json), [PostgreSQL SPDX](evidence/phase23/postgres.sbom.spdx.json), [frontend CycloneDX](evidence/phase23/frontend.sbom.cdx.json). Counts are scanner advisory findings, not independently verified unique exploits. Scan exit 0 means completion, not a clean security gate.
+Scan summary (`evidence/phase23/scan-summary.json`), application SARIF (`evidence/phase23/offline-cves.sarif`), PostgreSQL SARIF (`evidence/phase23/postgres-cves.sarif`), application SPDX (`evidence/phase23/app.sbom.spdx.json`), PostgreSQL SPDX (`evidence/phase23/postgres.sbom.spdx.json`), frontend CycloneDX (`evidence/phase23/frontend.sbom.cdx.json`). Counts are scanner advisory findings, not independently verified unique exploits. Scan exit 0 means completion, not a clean security gate.
 
 ## Ingress review
 
@@ -76,7 +76,7 @@ The Phase22 relay already bounds connections and upstream/idle waits, supports s
 | Real outage / recovery / local alerts | Passed |
 | Final image security assertions | Passed; vulnerability clearance separately blocked |
 
-Browser execution used the live staging endpoint and PostgreSQL, not SQLite or mocked APIs. [Browser results](evidence/phase23/browser-results.json) and five viewport screenshots are in [the evidence directory](evidence/phase23). Focused tests cover process deadlines/singleflight, malformed worker output, outage-safe metrics, health middleware, rolling trends, local URL validation and ingress behavior. [Regression summary](evidence/phase23/regression-summary.json). No earlier-phase result is counted as a newly executed backup/TLS/live-provider test.
+Browser execution used the live staging endpoint and PostgreSQL, not SQLite or mocked APIs. Browser results (`evidence/phase23/browser-results.json`) and five viewport screenshots are in the evidence directory (`evidence/phase23`). Focused tests cover process deadlines/singleflight, malformed worker output, outage-safe metrics, health middleware, rolling trends, local URL validation and ingress behavior. Regression summary (`evidence/phase23/regression-summary.json`). No earlier-phase result is counted as a newly executed backup/TLS/live-provider test.
 
 ## Staging runbook and gate matrix
 

@@ -34,7 +34,7 @@ Backend route definitions remain in `backend/app/main.py`. Existing deterministi
 
 The full matrix contains **38 passed tests and 7 intentional skips**: the mobile-only drawer test skips the three non-mobile projects, and the fixed A4 print test skips four duplicate screen configurations. Skips are not counted as browser coverage. A separate focused A4 rerun verifies the final print-only refinements.
 
-Machine-readable [browser results](evidence/phase1/browser-results.json) preserve test outcomes. Each viewport has a `*-checks.json` containing the actual browser version, document width, page names, axe findings and runtime errors. The eight-page sweep recorded **no document-level horizontal overflow, no uncaught page errors and no failing application/static responses** in the seeded workflow.
+Machine-readable browser results (`evidence/phase1/browser-results.json`) preserve test outcomes. Each viewport has a `*-checks.json` containing the actual browser version, document width, page names, axe findings and runtime errors. The eight-page sweep recorded **no document-level horizontal overflow, no uncaught page errors and no failing application/static responses** in the seeded workflow.
 
 ## Journey checklist
 
@@ -85,7 +85,7 @@ Normal screen layouts preserve the existing charcoal surfaces, red accent and ty
 
 The four A4 QA PDFs and their rendered page PNGs live under `docs/evidence/phase1/`. They use synthetic demo data. Each final PDF has **two pages**; text extraction found no empty pages and the margin check found no text outside a 20-point safe region. Actual page renders were reviewed for clipping, contrast, alignment and continuation. The overview's seven-day mini schedule is kept together; nutrition portions/methods and fighter names/breakdowns remain printable. These print outputs cover the current selected view, not every week/day at once; the JSON download includes all saved plan versions.
 
-The repeatable inspector is `backend/tests/check_prints.py`; [print checks](evidence/phase1/print-checks.json) record page/text/margin results. Rendered screenshots and screenshot links are indexed in [the evidence directory](evidence/phase1/README.md).
+The repeatable inspector is `backend/tests/check_prints.py`; print checks (`evidence/phase1/print-checks.json`) record page/text/margin results. Rendered screenshots and screenshot links are indexed in the evidence directory (`evidence/phase1/README.md`).
 
 ## Checks and limits
 

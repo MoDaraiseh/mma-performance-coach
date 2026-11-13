@@ -32,7 +32,7 @@ Seven synthetic examples were regenerated with the current deterministic engine.
 | PostgreSQL runtime/restore | **Not run**: no server, Docker, native client/backup tools or disposable test URL |
 | Live IdP/MFA, TLS/proxy, private staging, alert delivery | **Not run**: no configured/authorized target |
 
-Locally generated evidence is intentionally ignored by Git: [baseline](evidence/phase16/baseline-backend.log), [final backend](evidence/phase16/final-backend.log), [native browser report](evidence/phase16/browser-results.json), [restore](evidence/phase16/backup-restore.json), [npm audit](evidence/phase16/npm-audit.json), [Python audit](evidence/phase16/python-audit.json), [infrastructure prerequisites](evidence/phase16/infrastructure.json). Archive redacted evidence with the reviewed source revision. Earlier full visual, screenshot and print coverage remains Phase 15 evidence, not newly executed Phase 16 testing.
+Locally generated evidence is intentionally ignored by Git: baseline (`evidence/phase16/baseline-backend.log`), final backend (`evidence/phase16/final-backend.log`), native browser report (`evidence/phase16/browser-results.json`), restore (`evidence/phase16/backup-restore.json`), npm audit (`evidence/phase16/npm-audit.json`), Python audit (`evidence/phase16/python-audit.json`), infrastructure prerequisites (`evidence/phase16/infrastructure.json`). Archive redacted evidence with the reviewed source revision. Earlier full visual, screenshot and print coverage remains Phase 15 evidence, not newly executed Phase 16 testing.
 
 ## Outstanding acceptance gates
 

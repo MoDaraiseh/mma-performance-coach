@@ -51,7 +51,7 @@ ruff check app tests tools migrations
 ruff format --check app tests tools migrations
 ```
 
-Pytest creates disposable SQLite data; migration tests create a separate database beneath `--basetemp`. That directory is pytest-owned and may be cleared by pytest: use only a dedicated QA path. Tests override provider key and test quotas; specific tests lower quotas to verify enforcement. They do not upgrade the normal athlete DB. The PostgreSQL SQL compilation test connects to no server; real PostgreSQL verification is a separate opt-in [deployment procedure](DEPLOYMENT.md#database-setup-and-migration).
+Pytest creates disposable SQLite data; migration tests create a separate database beneath `--basetemp`. That directory is pytest-owned and may be cleared by pytest: use only a dedicated QA path. Tests override provider key and test quotas; specific tests lower quotas to verify enforcement. They do not upgrade the normal athlete DB. The PostgreSQL SQL compilation test connects to no server; real PostgreSQL verification is a separate opt-in [deployment procedure](DEPLOYMENT.md#database-and-migrations).
 
 From `frontend/`:
 

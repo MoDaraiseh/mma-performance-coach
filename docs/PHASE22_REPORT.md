@@ -46,7 +46,7 @@ No existing container was stopped/recreated/restarted, and no `down`, prune or b
 
 After browser fixture cleanup, all original canonical count/row hashes match: **4 users, 26 records, 8 fighter snapshots, 2 division references**. The initial assertion-failure fixture was cleaned using its exact generated name and post-snapshot record timestamp, through normal account deletion with an in-memory synthetic test session. No pre-existing account was targeted. Successful journeys verify deletion through the UI; afterEach/finally cleanup is limited to each new test's own account contexts.
 
-Evidence: [before.json](evidence/phase22/before.json), [after.json](evidence/phase22/after.json), [fixture cleanup](evidence/phase22/fixture-cleanup.json).
+Evidence: before.json (`evidence/phase22/before.json`), after.json (`evidence/phase22/after.json`), fixture cleanup (`evidence/phase22/fixture-cleanup.json`).
 
 ## Before/after Windows connectivity
 
@@ -85,7 +85,7 @@ Initial attempts are disclosed:
 - Next desktop run passed the journey but revealed that the test incorrectly expected Lax cookies; actual Strict is stronger. Test corrected to the implementation.
 - First five-width run passed 9/10; last registration received a genuine HTTP 429. Registration fixtures now honor the actual Retry-After once (maximum 60-second wait), with no quota or middleware change. Final complete rerun passed 10/10.
 
-[Final browser JSON](evidence/phase22/browser-results.json), [earlier five-width attempt](evidence/phase22/browser-attempt-five-widths.json), [desktop screenshot](evidence/phase22/desktop-1440-postgres-acceptance.png), [375 px screenshot](evidence/phase22/mobile-375-postgres-acceptance.png). Screenshots exist for all five widths. Full print/PDF or automated accessibility re-audit was not part of this new suite; earlier SQLite findings are not counted as PostgreSQL coverage.
+Final browser JSON (`evidence/phase22/browser-results.json`), earlier five-width attempt (`evidence/phase22/browser-attempt-five-widths.json`), desktop screenshot (`evidence/phase22/desktop-1440-postgres-acceptance.png`), 375 px screenshot (`evidence/phase22/mobile-375-postgres-acceptance.png`). Screenshots exist for all five widths. Full print/PDF or automated accessibility re-audit was not part of this new suite; earlier SQLite findings are not counted as PostgreSQL coverage.
 
 ## Application/security/monitoring verification
 
@@ -93,7 +93,7 @@ Whitelisted runtime configuration confirms driver `postgresql+psycopg`, database
 
 The existing guarded PostgreSQL verifier passed again using a fresh generated schema and `run --rm --no-deps`, with `testserver` allowed **only inside the verifier**: migrations up/check/down/up, FK, rollback, concurrency, ownership, plan versions, nutrition/export, account deletion and recovery denial. No dependency reconciliation or database recreation occurred.
 
-After browser tests, **only the exact preserved PostgreSQL container** was briefly paused/unpaused with a finally-unpause guard. A custom bounded three-second readiness probe plus the existing alert evaluator emitted critical `database_not_ready`; after unpause head 0008/ready returned and alerts cleared. Windows loopback readiness returned 200 after recovery. No app/database restart or external alert was used. [Monitoring evidence](evidence/phase22/monitoring-result.json).
+After browser tests, **only the exact preserved PostgreSQL container** was briefly paused/unpaused with a finally-unpause guard. A custom bounded three-second readiness probe plus the existing alert evaluator emitted critical `database_not_ready`; after unpause head 0008/ready returned and alerts cleared. Windows loopback readiness returned 200 after recovery. No app/database restart or external alert was used. Monitoring evidence (`evidence/phase22/monitoring-result.json`).
 
 **Remaining operational defect:** the loopback readiness request during the pause timed out at the client's 1.5-second bound instead of promptly returning structured unavailable status. The bounded probe catches the outage, but the ordinary aggregate-report CLI/continuous collector still needs robust database timeout/error handling. This phase does not mark that broader monitoring gate passed. No TLS/proxy certificate, external IdP, full image CVE scan, new native recovery rehearsal, independent penetration test or professional/legal sign-off was claimed.
 
