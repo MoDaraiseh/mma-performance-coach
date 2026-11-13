@@ -6,6 +6,10 @@ Phase 18 technically excludes the original 11 fighter records from its generated
 
 Highest supported category: **A - local release candidate** under [Phase 17 acceptance](PHASE17_ACCEPTANCE.md). Earlier B-local labels are historical and use a different scale. Not staging-ready or production-ready; no deployment or paid-service authorization.
 
+## Public source repository
+
+The source repository was made public in November 2026, after the gate reviews recorded in this folder were written. Those reviews concern deploying the application as a service and distributing release artifacts, and every gate they list remains open. In particular, no redistribution permission has been obtained for the 11 original official-source fighter records in `backend/app/fighter_catalog.py`, which are therefore published in source form only. The MIT license covers the application code, not those records. The eight attributed Wikipedia records remain under [CC BY-SA 4.0](FIGHTER_SUPPLEMENT_LICENSE.md).
+
 ## Public-launch blockers
 
 - PostgreSQL runtime, guarded migration/FK/concurrency verification and native `pg_dump`/`pg_restore` round trips were executed on the isolated synthetic staging candidate in Phases 21-24. No production database, durable storage, PITR or approved RPO/RTO exists; candidate PGDATA is disposable tmpfs.

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Source repository made public. This does not change any gate below; see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository) for the status of the fighter data.
+- Added an MIT license for the application code and a CI workflow (frontend and backend tests, lint, Docker build).
+- Rewrote the README for new readers and moved the phase-by-phase notes to [docs/HISTORY.md](docs/HISTORY.md).
+
 ## 1.0.0-rc.17 — 2026-11-01
 
 Internal local release candidate; tag `v1.0.0-rc.17`. Not an authorization to publish source, images or a service. Public distribution remains blocked by rights and external acceptance gates.

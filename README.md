@@ -153,4 +153,4 @@ Before public deployment: validate the implemented session/rate/production contr
 
 ## License
 
-Code is MIT licensed; see [LICENSE](LICENSE). The eight-record fighter supplement is adapted from Wikipedia under CC BY-SA 4.0; see [docs/FIGHTER_SUPPLEMENT_LICENSE.md](docs/FIGHTER_SUPPLEMENT_LICENSE.md). USDA food data is public domain (CC0); see [docs/SOURCES.md](docs/SOURCES.md).
+The application code is MIT licensed; see [LICENSE](LICENSE). That license does not grant any rights in third-party data. The 11 official-source fighter records in `backend/app/fighter_catalog.py` are factual measurements with source references, and no redistribution permission has been obtained for them (see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository)). The eight-record fighter supplement is adapted from Wikipedia under CC BY-SA 4.0; see [docs/FIGHTER_SUPPLEMENT_LICENSE.md](docs/FIGHTER_SUPPLEMENT_LICENSE.md). USDA food data is public domain (CC0); see [docs/SOURCES.md](docs/SOURCES.md).
