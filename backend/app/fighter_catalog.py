@@ -1,6 +1,8 @@
-"""Small reviewed factual subset. URLs support fields, not redistribution rights.
+"""Small reviewed factual subset of official UFC athlete profiles.
 
-Observed via indexed official excerpts on 2026-10-31; direct requests returned 403.
+Values were recorded on 2026-10-31 from official ufc.com athlete profiles. Each
+record keeps its source URL and each field names the source it came from; see
+docs/SOURCES.md. Source links document provenance, not redistribution rights.
 No bulk collection, images, biographies, inferred skills or current fight records.
 """
 

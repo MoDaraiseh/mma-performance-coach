@@ -8,7 +8,13 @@ Highest supported category: **A - local release candidate** under [Phase 17 acce
 
 ## Public source repository
 
-The source repository was made public in November 2026, after the gate reviews recorded in this folder were written. Those reviews concern deploying the application as a service and distributing release artifacts, and every gate they list remains open. In particular, no redistribution permission has been obtained for the 11 original official-source fighter records in `backend/app/fighter_catalog.py`, which are therefore published in source form only. The MIT license covers the application code, not those records. The eight attributed Wikipedia records remain under [CC BY-SA 4.0](FIGHTER_SUPPLEMENT_LICENSE.md).
+The source repository has been public since November 2026. The MIT license covers the application code only, not third-party data:
+
+- The 11 official-source fighter records in `backend/app/fighter_catalog.py` are factual profile fields (height, reach, listed weight, division and activity status) recorded on 2026-10-31 from official ufc.com athlete profiles, with a source link for each field. They include no images, biographies or fight records. No permission or license from the UFC has been obtained for them.
+- The eight Wikipedia-derived records are adapted under [CC BY-SA 4.0](FIGHTER_SUPPLEMENT_LICENSE.md).
+- The USDA food data is public domain (CC0); see [sources](SOURCES.md).
+
+The gate reviews in this folder were written before the repository was public. They concern running the application as a public service and distributing release builds, and every gate they list remains open.
 
 ## Public-launch blockers
 

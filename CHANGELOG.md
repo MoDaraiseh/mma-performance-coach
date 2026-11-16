@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Source repository made public. This does not change any gate below; see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository) for the status of the fighter data.
+- Source repository made public. The MIT license covers the code; the fighter and food data keep their own terms (see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository)). The 1.0.0-rc.17 note below was written for that internal candidate, before the source was published. The gates it lists for running the app as a public service and distributing builds remain open.
 - Added an MIT license for the application code and a CI workflow (frontend and backend tests, lint, Docker build).
 - Rewrote the README for new readers and moved the phase-by-phase notes to [docs/HISTORY.md](docs/HISTORY.md).
 
