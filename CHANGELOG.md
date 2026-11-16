@@ -5,6 +5,7 @@
 - Source repository made public. The MIT license covers the code; the fighter and food data keep their own terms (see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository)). The 1.0.0-rc.17 note below was written for that internal candidate, before the source was published. The gates it lists for running the app as a public service and distributing builds remain open.
 - Added an MIT license for the application code and a CI workflow (frontend and backend tests, lint, Docker build).
 - Rewrote the README for new readers and moved the phase-by-phase notes to [docs/history/](docs/history/README.md).
+- README: screenshots, a short feature summary (the full list moved to the user guide), and equal macOS/Linux and Windows quickstarts with a new `run-local.sh`.
 - Moved the phase, delivery and review reports from `docs/` into [docs/history/](docs/history/README.md); `docs/` now holds only the reader-facing guides. Report contents are unchanged apart from link paths.
 
 ## 1.0.0-rc.17 — 2026-11-01

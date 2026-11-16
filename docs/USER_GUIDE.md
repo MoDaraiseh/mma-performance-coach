@@ -19,3 +19,18 @@ This is a verified local release candidate, with automated checks rather than in
 
 
 Phase15: Training now labels general development versus supervised amateur intent. Edit competition intent deliberately and review a new proposal when prompted; it never authorizes contact or increases workload automatically. The exercise library includes a Mobility filter and objective text. Nutrition supports selected nut/seed/avocado alternatives through the existing replacement preview; inspect the full ingredient/portion differences before approving. New catalog v3 may request reviewed regeneration of earlier meal plans; saved history is retained. Generic food labels are not certification or cross-contact assurance. Verify packaged ingredients and professional guidance for allergies.
+
+## Features in detail
+
+The full feature list, as it stood at release candidate `1.0.0-rc.17`. The README has a short summary.
+
+- Six-step editable athlete assessment, backend draft saving, optional measurements, metric/imperial input, independent discipline history and benchmark evidence labels.
+- Persistent local accounts with hashed high-entropy recovery tokens, HttpOnly SameSite cookies, user-scoped records, data download and complete account deletion.
+- Physical calculations, explainable scale-weight division references, historical women's featherweight distinction, conservative target-weight uncertainty, and exploratory style priorities.
+- Nineteen source-reviewed UFC fighter study snapshots (11 men, eight women; 11 official-source records and eight attributed Wikipedia records), field-level provenance, current/history division contexts, manual comparisons, configurable deterministic ranking and coverage, height/reach charts, immutable favorites, and explicit provider refresh with archived data revisions.
+- A 12-week conservative training roadmap with phases, deloads, recovery constraints, equipment substitutions, session details and duplicate-safe workout logging.
+- Estimated resting/TDEE/maintenance ranges, optional bounded goal adjustments, macro guidance, seven-day source-backed portions, dietary exclusions, meal feedback, substitution previews and approved nutrition versions.
+- Weekly check-ins, weight/sleep/fatigue and benchmark charts, recorded personal bests, plan completion, comparable benchmark changes and reassessment reports.
+- Contextual local coaching and optional structured OpenAI explanations/intents, using current usable plan/meal and recent progress summaries. Validated training/meal edits require explicit approval; provider failures fall back locally.
+- Preview/approve/reject plan revisions, retained plan versions and original inputs, stale proposal protection. No chat text directly mutates a saved plan.
+- Responsive charcoal/red UI, local font assets, accessible labels and print views. JSON export includes all user records and plan versions.

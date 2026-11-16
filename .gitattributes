@@ -1,1 +1,2 @@
 deploy/*.sh text eol=lf
+run-local.sh text eol=lf
