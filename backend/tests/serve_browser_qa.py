@@ -20,6 +20,9 @@ with tempfile.TemporaryDirectory(prefix="browser-", dir=runtime) as directory:
         "APP_ENV": "test",
         "IDENTITY_MODE": "local",
         "ALLOW_LEGACY_RECOVERY": "true",
+        # Shared fighter-data refresh is operator-only outside development; the
+        # browser suite exercises it, as the API tests do.
+        "ALLOW_USER_FIGHTER_REFRESH": "true",
         "API_PER_MINUTE": "100000",
         "AUTH_PER_MINUTE": "1000",
     }
