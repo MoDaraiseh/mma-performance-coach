@@ -10,7 +10,8 @@
     "typecheck": "tsc -b",
     "test:browser": "npm run build && npm run typecheck:browser && playwright test",
     "typecheck:browser": "tsc --project tsconfig.e2e.json",
-    "test:browser:report": "playwright show-report"
+    "test:browser:report": "playwright show-report",
+    "screenshots": "npm run build && playwright test --config playwright.screenshots.config.ts"
   },
   "dependencies": {
     "@fontsource/barlow-condensed": "^5.3.0",

@@ -6,6 +6,8 @@
   "include": [
     "e2e/**/*.ts",
     "staging-e2e/**/*.ts",
+    "screenshots/**/*.ts",
+    "playwright.screenshots.config.ts",
     "playwright.candidate.config.ts",
     "playwright.staging.config.ts",
     "playwright.config.ts",
