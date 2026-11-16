@@ -1124,7 +1124,7 @@ export default function App() {
                   <Suspense
                     fallback={
                       <div className="empty" role="status">
-                        Loading analytics?
+                        Loading analytics…
                       </div>
                     }
                   >
@@ -1158,7 +1158,7 @@ export default function App() {
                   <Suspense
                     fallback={
                       <div className="empty" role="status">
-                        Loading analytics?
+                        Loading analytics…
                       </div>
                     }
                   >
