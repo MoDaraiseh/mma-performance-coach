@@ -4,7 +4,7 @@
 
 The catalog expands from 22 to **40** records from the official [USDA SR Legacy April 2018 archive](https://fdc.nal.usda.gov/download-datasets/). [USDA's API guide](https://fdc.nal.usda.gov/api-guide/) identifies public-domain data under CC0 1.0. No external API key, scraping, branded-product rights assumption or startup dependency is used. The source archive hash is pinned in the importer and every record. Review date does not make this historical snapshot current.
 
-New sodium/calcium/iron/potassium are extracted by nutrient IDs 1093/1087/1089/1092, in mg per 100 g edible food; fiber remains g per 100 g. Optional missing composition is null. All 40 currently contain these nutrients. Product cross-contact and halal certification are unknown, separate from generic composition and editorial exclusions. See [coverage and methodology](PHASE9_NUTRITION.md).
+New sodium/calcium/iron/potassium are extracted by nutrient IDs 1093/1087/1089/1092, in mg per 100 g edible food; fiber remains g per 100 g. Optional missing composition is null. All 40 currently contain these nutrients. Product cross-contact and halal certification are unknown, separate from generic composition and editorial exclusions. See [coverage and methodology](history/PHASE9_NUTRITION.md).
 
 Initial review date: **2026-10-30**. Phase 4 fighter/reference review: **2026-10-31**. No continuous updates are implied. API source metadata accompanies individual fighter records.
 
@@ -36,7 +36,7 @@ Phase 2 source note (2026-10-30): the legacy ACSM PDF link above returned HTTP 4
 
 ## Phase 3 training sources (checked 2026-10-30)
 
-The [Phase 3 scientific-basis table](PHASE3_TRAINING.md#scientific-basis) maps each source to its supported principle and limitation. The current catalog links [ACSM's 2026 resistance-training position stand](https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/), [CDC intensity guidance](https://www.cdc.gov/physical-activity-basics/measuring/), and the [IOC load consensus](https://bjsm.bmj.com/content/50/17/1030). Additional context: [ACSM 2009 progression](https://pubmed.ncbi.nlm.nih.gov/19204579/), [Foster 2001 session-RPE monitoring](https://pubmed.ncbi.nlm.nih.gov/11708692/), and [Saw et al. subjective monitoring review](https://pmc.ncbi.nlm.nih.gov/articles/PMC4789708/).
+The [Phase 3 scientific-basis table](history/PHASE3_TRAINING.md#scientific-basis) maps each source to its supported principle and limitation. The current catalog links [ACSM's 2026 resistance-training position stand](https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/), [CDC intensity guidance](https://www.cdc.gov/physical-activity-basics/measuring/), and the [IOC load consensus](https://bjsm.bmj.com/content/50/17/1030). Additional context: [ACSM 2009 progression](https://pubmed.ncbi.nlm.nih.gov/19204579/), [Foster 2001 session-RPE monitoring](https://pubmed.ncbi.nlm.nih.gov/11708692/), and [Saw et al. subjective monitoring review](https://pmc.ncbi.nlm.nih.gov/articles/PMC4789708/).
 
 Catalog cues and mistake/modification text are original editorial summaries, not copied source text or source-specific biomechanical validation. Muscle lists are broad involvement descriptions. Exact app thresholds and 12-week organization are heuristics; sources do not establish their effectiveness for individual MMA athletes. The 2009 source is historical context, not presented as the latest adult guidance. No new licensed fighter/nutrient data or athlete imagery was introduced.
 
@@ -117,12 +117,12 @@ The [UFC terms](https://www.ufc.com/news/terms-use) indexed text prohibits autom
 
 ## Phase 12 safety source audit
 
-See the [dated reference register and source-access limitations](review/METHODOLOGY_INVENTORY.md#source-register). Primary Mifflin and 2026 ACSM pages were opened; official NIDDK, AAP, UFC, ISSN and IOC excerpts were consulted for scope/rationale. Direct UFC/IOC-journal requests returned 403 and the direct protein page challenged browser access. Exact app thresholds and templates remain product heuristics; no author, clinician or organization endorsed this application. No new nutrient/fighter data or license permissions were obtained.
+See the [dated reference register and source-access limitations](history/review/METHODOLOGY_INVENTORY.md#source-register). Primary Mifflin and 2026 ACSM pages were opened; official NIDDK, AAP, UFC, ISSN and IOC excerpts were consulted for scope/rationale. Direct UFC/IOC-journal requests returned 403 and the direct protein page challenged browser access. Exact app thresholds and templates remain product heuristics; no author, clinician or organization endorsed this application. No new nutrient/fighter data or license permissions were obtained.
 
 
 ## Phase14 release acceptance
 
-The [current acceptance report](PHASE14_ACCEPTANCE.md), [feature matrix](PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
+The [current acceptance report](history/PHASE14_ACCEPTANCE.md), [feature matrix](history/PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
 
 
 ## Phase15 curated additions (2026-10-31)

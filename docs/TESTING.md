@@ -1,6 +1,6 @@
 # Testing and reproducibility
 
-Current final acceptance and exact results: [Phase 17](PHASE17_ACCEPTANCE.md). Historical sections below retain their phase-specific totals. Phase 17 evidence is isolated in ignored `docs/evidence/phase17/`; no normal athlete database is used.
+Current final acceptance and exact results: [Phase 17](history/PHASE17_ACCEPTANCE.md). Historical sections below retain their phase-specific totals. Phase 17 evidence is isolated in ignored `docs/evidence/phase17/`; no normal athlete database is used.
 
 ## Phase 17 commands and environment
 
@@ -39,7 +39,7 @@ npm.cmd run test:browser
 
 The build command includes app TypeScript (`tsc -b`); the browser command repeats production build and browser TypeScript before the full suite. Outputs were redirected into named Phase 17 logs; PowerShell text logs can be UTF-16 while native JSON files are UTF-8. Browser channel is installed Edge/Blink, one worker, local isolated HTTP at8123, five configured viewports and synthetic fixtures. Live provider keys are cleared by test server. Automated accessibility checks, screen-reader/manual-device testing and mocked/live identity/provider tests are distinct in the final report.
 
-Real PostgreSQL verification was not executed: no Docker/PostgreSQL/native tools or authorized disposable test URL. When available, explicitly configure `MMA_TEST_DATABASE_URL` naming `mma_test*`, optionally `MMA_TEST_RESTORE=1`, then run `python tools/verify_postgres.py`; preserve output and inspect failures. Never substitute a normal DATABASE_URL or athlete database. Live-model evaluation likewise remains unexecuted and requires separate explicit configuration/cost authorization. [Controlled procedures and remaining gates](PHASE17_LAUNCH_RUNBOOK.md).
+Real PostgreSQL verification was not executed: no Docker/PostgreSQL/native tools or authorized disposable test URL. When available, explicitly configure `MMA_TEST_DATABASE_URL` naming `mma_test*`, optionally `MMA_TEST_RESTORE=1`, then run `python tools/verify_postgres.py`; preserve output and inspect failures. Never substitute a normal DATABASE_URL or athlete database. Live-model evaluation likewise remains unexecuted and requires separate explicit configuration/cost authorization. [Controlled procedures and remaining gates](history/PHASE17_LAUNCH_RUNBOOK.md).
 
 Run commands from the stated MMA project directories. Never point tests at personal or production data. The original tracker has independent tooling and is outside this task.
 
@@ -94,31 +94,31 @@ Migration release checks include SQLite upgrade/check/downgrade/re-upgrade with 
 
 ## Phase 10 AI evaluation
 
-`backend/tests/fixtures/coach_evaluations.json` defines 18 reproducible scenarios; `tests/test_phase10.py` uses mock responses/transports plus real transactional API checks. Run `..\.venv\Scripts\python.exe -m pytest tests/test_phase10.py -q` from backend. `tools/evaluate_coach.py --limit 3` is a synthetic offline smoke report. Optional live runs require `--live`, `MMA_LIVE_COACH_EVAL=1`, an explicit `OPENAI_MODEL` and server-side `OPENAI_API_KEY`; calls may incur charges. Live evaluation has not been run. Browser cases in `frontend/e2e/phase10.spec.ts` verify preview/approval/history, rescheduling and stale nutrition, frequency rejection, evidence-gated progression and context disclosure. See [full report and limitations](PHASE10_COACH.md).
+`backend/tests/fixtures/coach_evaluations.json` defines 18 reproducible scenarios; `tests/test_phase10.py` uses mock responses/transports plus real transactional API checks. Run `..\.venv\Scripts\python.exe -m pytest tests/test_phase10.py -q` from backend. `tools/evaluate_coach.py --limit 3` is a synthetic offline smoke report. Optional live runs require `--live`, `MMA_LIVE_COACH_EVAL=1`, an explicit `OPENAI_MODEL` and server-side `OPENAI_API_KEY`; calls may incur charges. Live evaluation has not been run. Browser cases in `frontend/e2e/phase10.spec.ts` verify preview/approval/history, rescheduling and stale nutrition, frequency rejection, evidence-gated progression and context disclosure. See [full report and limitations](history/PHASE10_COACH.md).
 
 
 ## Phase 11 analytics
 
 Run `python -m pytest tests/test_phase11.py` from backend with the project virtualenv. Eight regression tests cover trends, records, dates/units, ownership, exports, correction/deletion, calendar adherence, 2,100-event histories and migration 0007. Full backend: 286 passed; frontend: 12 passed.
 
-`npm run test:browser -- phase11.spec.ts` exercises measured/empty dashboards, technical milestone persistence without plan mutation, CSV download, responsive overflow and targeted axe checks at five viewport widths. Full suite also prints the Progress report. Set `PW_REPORT_FILE=../docs/evidence/phase11/browser-results.json` and `PW_EVIDENCE_DIR=../docs/evidence/phase11` before browser execution. `MMA_QA_PHASE=phase11` selects the five-report print inspector. Consult the [final report](PHASE11_ANALYTICS.md) for actual execution results and limitations.
+`npm run test:browser -- phase11.spec.ts` exercises measured/empty dashboards, technical milestone persistence without plan mutation, CSV download, responsive overflow and targeted axe checks at five viewport widths. Full suite also prints the Progress report. Set `PW_REPORT_FILE=../docs/evidence/phase11/browser-results.json` and `PW_EVIDENCE_DIR=../docs/evidence/phase11` before browser execution. `MMA_QA_PHASE=phase11` selects the five-report print inspector. Consult the [final report](history/PHASE11_ANALYTICS.md) for actual execution results and limitations.
 
 
 ## Phase 12 safety regression
 
-`python -m pytest tests/test_phase12.py` covers 22 safety cases; full backend suite:308 passed, frontend:12 passed. `python tools/build_review_examples.py` regenerates seven synthetic review examples with no athlete database writes or provider requests. Browser scenarios in `e2e/phase12.spec.ts` verify honest review status and visible rapid-cut withholding; actual results are in [Phase 12](PHASE12_SAFETY.md). Automated testing does not satisfy independent expert-review gates.
+`python -m pytest tests/test_phase12.py` covers 22 safety cases; full backend suite:308 passed, frontend:12 passed. `python tools/build_review_examples.py` regenerates seven synthetic review examples with no athlete database writes or provider requests. Browser scenarios in `e2e/phase12.spec.ts` verify honest review status and visible rapid-cut withholding; actual results are in [Phase 12](history/PHASE12_SAFETY.md). Automated testing does not satisfy independent expert-review gates.
 
 
 ## Phase 13 security/infrastructure
 
 Full backend:328 passed (20 new Phase13 cases), frontend:12 passed. `python -m pytest tests/test_phase13.py` exercises real Authlib signed-token verification through mocked HTTP discovery/token/JWKS, identity/link ownership, replay/expiry/claims, session revocation, shared calendar budgets, readiness and legacy-preserving migration/backup behavior. `python tools/verify_sqlite_restore.py` emits synthetic backup/restore evidence without normal athlete data.
 
-Final focused Edge:25 passed at five widths, covering sessions, revocation, recovery, mocked managed login/link navigation and existing account-deletion/privacy flows. Provider browser pages are mocked; no real SSO/MFA validation. Five Settings axe scans passed. `MMA_QA_PHASE=phase13` selects isolated API/fighter performance evidence destinations. PostgreSQL native runtime/restore and container/proxy infrastructure remain unexecuted; use the dedicated test tools/runbook on an authorized disposable host. [Evidence and limitations](PHASE13_INFRASTRUCTURE.md).
+Final focused Edge:25 passed at five widths, covering sessions, revocation, recovery, mocked managed login/link navigation and existing account-deletion/privacy flows. Provider browser pages are mocked; no real SSO/MFA validation. Five Settings axe scans passed. `MMA_QA_PHASE=phase13` selects isolated API/fighter performance evidence destinations. PostgreSQL native runtime/restore and container/proxy infrastructure remain unexecuted; use the dedicated test tools/runbook on an authorized disposable host. [Evidence and limitations](history/PHASE13_INFRASTRUCTURE.md).
 
 
 ## Phase14 release acceptance
 
-The [current acceptance report](PHASE14_ACCEPTANCE.md), [feature matrix](PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
+The [current acceptance report](history/PHASE14_ACCEPTANCE.md), [feature matrix](history/PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
 
 
 Phase14 reproduction (project root; use only the dedicated evidence/QA paths):
@@ -150,12 +150,12 @@ From backend: `..\.venv\Scripts\python.exe tools/phase15_quality.py` produces th
 From frontend set PW_REPORT_FILE=../docs/evidence/phase15/browser-results.json and PW_EVIDENCE_DIR=../docs/evidence/phase15 before npm.cmd run test:browser. The dedicated phase15.spec.ts tests a new sourced fighter, explicit training context, selected fat-food preview/approval/history, and final Mobility filter/objective behavior. Final follow-up uses a new API process and rebuilt assets so stale static modules do not stand in for final code. MMA_QA_PHASE=phase15 selects the optional print inspector. No physical-device/live-AI/real-IdP/PostgreSQL runtime pass is implied.
 
 
-Phase17 full Edge initially returned163passed/5fixture failures/7intentional skips. Corrected UTC calendar fixtures; final `npm.cmd run test:browser -- phase11.spec.ts` passed15cases across five widths with explicit native exit0. Reports/logs use edge-phase11-final names and separate evidence directory. `PW_CHANNEL=chromium` with `journey.spec.ts --project=desktop-1440 --project=mobile-375` additionally passed4cases. All commands were sequential against isolated servers; the original full report remains unchanged. [Failure analysis and precise accounting](PHASE17_BROWSER_QA.md).
+Phase17 full Edge initially returned163passed/5fixture failures/7intentional skips. Corrected UTC calendar fixtures; final `npm.cmd run test:browser -- phase11.spec.ts` passed15cases across five widths with explicit native exit0. Reports/logs use edge-phase11-final names and separate evidence directory. `PW_CHANNEL=chromium` with `journey.spec.ts --project=desktop-1440 --project=mobile-375` additionally passed4cases. All commands were sequential against isolated servers; the original full report remains unchanged. [Failure analysis and precise accounting](history/PHASE17_BROWSER_QA.md).
 
 
 ## Phase 18 isolated-staging verification
 
-See [actual results](PHASE18_DELIVERY.md) and [safe staging/restore steps](PHASE18_STAGING.md). Use phase18 evidence paths and dedicated pytest basetemp. Full backend370/frontend12 passed; full Edge168passed/0failed/7intentional skips. Twelve new staging/monitoring cases are included, not added again for focused reruns.
+See [actual results](history/PHASE18_DELIVERY.md) and [safe staging/restore steps](history/PHASE18_STAGING.md). Use phase18 evidence paths and dedicated pytest basetemp. Full backend370/frontend12 passed; full Edge168passed/0failed/7intentional skips. Twelve new staging/monitoring cases are included, not added again for focused reruns.
 
 From backend: `python -m pytest tests/test_phase18.py` verifies no-overwrite/private context, source preservation, generated role credentials, loopback/internal networking, actual sanitized SQLite migration/app lifecycle and fixed local alert signals. `python tools/prepare_staging.py --destination ../.qa-runtime/phase18-preparation-check` prepared a private test context; existing destinations are refused. The final default folder is prepared from the committed branch. No command starts Docker or reads the athlete database.
 

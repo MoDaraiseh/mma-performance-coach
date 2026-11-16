@@ -35,7 +35,7 @@ Review date: **2026-10-31**. Development is confined to `mma-performance-coach/`
 
 ## Data quality, provenance and coverage
 
-See the [source/permissions register](SOURCES.md#phase-4-fighter-register-2026-10-31) for every profile URL, original inches/pounds, supporting history articles and known conflicts. Field-level IDs, original units and review method are also returned by the API and visible in the lab.
+See the [source/permissions register](../SOURCES.md#phase-4-fighter-register-2026-10-31) for every profile URL, original inches/pounds, supporting history articles and known conflicts. Field-level IDs, original units and review method are also returned by the API and visible in the lab.
 
 The bundle contains Max Holloway, Alexander Volkanovski, Israel Adesanya, Valentina Shevchenko, Zhang Weili, Joanna Jedrzejczyk, Georges St-Pierre, Tom Aspinall, Alex Pereira, Demetrious Johnson and Amanda Nunes. Source snapshots indicate eight active, two retired and one not fighting; these are not a live career-status feed. Retired/not-fighting athletes have no asserted current division. Histories are deliberately incomplete documented UFC subsets, not entire competitive biographies.
 
@@ -47,7 +47,7 @@ Direct official profile requests returned **HTTP 403**. Facts were reviewed thro
 
 ## Mathematics and interpretation
 
-The [methodology](METHODOLOGY.md#fighter-matching-phase-4) specifies every factor, scale, default weight, missing-data rule and filter. `backend/app/matching.py` is the deterministic implementation; no LLM computes scores or changes inputs.
+The [methodology](../METHODOLOGY.md#fighter-matching-phase-4) specifies every factor, scale, default weight, missing-data rule and filter. `backend/app/matching.py` is the deterministic implementation; no LLM computes scores or changes inputs.
 
 For physical measurement `x`, score is `100 * exp(-0.5 * ((athlete_x - fighter_x) / scale)^2)`. Height/reach scales are 15 cm; optional derived ratio scale is 0.05. Physical subweights default to height/reach/ratio = 50/50/0. A separate ratio weight is optional because it reuses reach/height evidence. Group defaults are physical/background/style/stance/division = 60/15/10/5/10. Shared discipline/style sets use Jaccard overlap, not proficiency. Only mutually supported attributes enter scoring. Coverage independently reports how much requested weight had support, including the fraction of physical subweights available.
 

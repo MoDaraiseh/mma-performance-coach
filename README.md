@@ -4,7 +4,7 @@ A local-first training workspace for amateur mixed martial artists. You complete
 
 **Stack:** React, TypeScript, Vite and Recharts on the frontend; FastAPI, Pydantic, SQLAlchemy and Alembic on the backend, with SQLite by default and PostgreSQL supported.
 
-> **Status:** release candidate `1.0.0-rc.17`, intended for local use. It has not been publicly deployed, and its training and nutrition guidance has not yet been reviewed by qualified coaches, dietitians or medical professionals. It is not medical or nutritional advice. See [known limitations](docs/KNOWN_LIMITATIONS.md) and the [project history](docs/HISTORY.md) for the full release record.
+> **Status:** release candidate `1.0.0-rc.17`, intended for local use. It has not been publicly deployed, and its training and nutrition guidance has not yet been reviewed by qualified coaches, dietitians or medical professionals. It is not medical or nutritional advice. See [known limitations](docs/KNOWN_LIMITATIONS.md) and the [project history](docs/history/README.md) for the full release record.
 
 ## Features
 
@@ -103,7 +103,7 @@ npm.cmd audit
 
 ### Browser QA
 
-Real-browser coverage, fixes and evidence are documented in [the Phase 1 QA report](docs/PHASE1_QA.md). The browser suite uses installed Microsoft Edge in headless mode and builds the production frontend first:
+Real-browser coverage, fixes and evidence are documented in [the Phase 1 QA report](docs/history/PHASE1_QA.md). The browser suite uses installed Microsoft Edge in headless mode and builds the production frontend first:
 
 ```powershell
 cd frontend
@@ -127,7 +127,7 @@ The app's **Print report** button prints the current view (including the selecte
 
 Core tests require no paid APIs. Optional backend lint/format uses Ruff, which is not part of the locked requirements; run it without installing into the project environment with `uvx ruff check backend` and `uvx ruff format --check backend` (verified with Ruff 0.17.4). Frontend formatting: `npm.cmd exec prettier -- --check src tools vite.config.ts`.
 
-See [delivery status](docs/DELIVERY.md) for exact results and verification limits, [methodology](docs/METHODOLOGY.md) for formulas, and [sources](docs/SOURCES.md) for provenance and data permissions.
+See [delivery status](docs/history/DELIVERY.md) for exact results and verification limits, [methodology](docs/METHODOLOGY.md) for formulas, and [sources](docs/SOURCES.md) for provenance and data permissions.
 
 ## Limitations
 
@@ -149,7 +149,7 @@ Before public deployment: validate the implemented session/rate/production contr
 | Deployment and security | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md), [docs/SECURITY.md](docs/SECURITY.md) |
 | Testing | [docs/TESTING.md](docs/TESTING.md) |
 | Known limitations | [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md) |
-| Release status and phase-by-phase history | [docs/HISTORY.md](docs/HISTORY.md), [original plan](docs/PLAN.md) |
+| Release status and phase-by-phase history | [docs/history/](docs/history/README.md), [original plan](docs/history/PLAN.md) |
 
 ## License
 

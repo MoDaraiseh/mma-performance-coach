@@ -1,12 +1,12 @@
 # Deployment and operations - Phase 13
 
-Current development staging procedure: [Phase 18](PHASE18_STAGING.md), [verified results and blockers](PHASE18_DELIVERY.md). Use the sanitized private context and separate synthetic credentials; no production database, secret or public target is authorized.
+Current development staging procedure: [Phase 18](history/PHASE18_STAGING.md), [verified results and blockers](history/PHASE18_DELIVERY.md). Use the sanitized private context and separate synthetic credentials; no production database, secret or public target is authorized.
 
-Current controlled deployment and rollback instructions: [Phase 17 runbook](PHASE17_LAUNCH_RUNBOOK.md). No public deployment is authorized. Category A: local release candidate on the Phase 17 scale; earlier status labels are historical.
+Current controlled deployment and rollback instructions: [Phase 17 runbook](history/PHASE17_LAUNCH_RUNBOOK.md). No public deployment is authorized. Category A: local release candidate on the Phase 17 scale; earlier status labels are historical.
 
-**Phase 16 policy supersedes historical cutover instructions:** see [current operations and release gates](PHASE16_OPERATIONS.md). Production requires explicit identity cutover and fighter distribution review. No staging deployment was performed.
+**Phase 16 policy supersedes historical cutover instructions:** see [current operations and release gates](history/PHASE16_OPERATIONS.md). Production requires explicit identity cutover and fighter distribution review. No staging deployment was performed.
 
-**Public production deployment is not authorized or verified.** Read [Phase 13 evidence and blockers](PHASE13_INFRASTRUCTURE.md) and [security boundaries](SECURITY.md). Local SQLite validation and mocked OIDC protocol tests do not establish PostgreSQL, real IdP, proxy/TLS, container or production readiness.
+**Public production deployment is not authorized or verified.** Read [Phase 13 evidence and blockers](history/PHASE13_INFRASTRUCTURE.md) and [security boundaries](SECURITY.md). Local SQLite validation and mocked OIDC protocol tests do not establish PostgreSQL, real IdP, proxy/TLS, container or production readiness.
 
 ## Existing local installation
 
@@ -136,4 +136,4 @@ For PostgreSQL use native `pg_dump --format=custom` / `pg_restore` with secret-m
 
 ## Phase14 release acceptance
 
-The [current acceptance report](PHASE14_ACCEPTANCE.md), [feature matrix](PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
+The [current acceptance report](history/PHASE14_ACCEPTANCE.md), [feature matrix](history/PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.

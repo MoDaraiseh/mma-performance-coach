@@ -24,7 +24,7 @@ Group weights default to physical/background/style/stance/division = 60/15/10/5/
 
 All-zero group weights, and all-zero physical subweights when physical is enabled, are invalid. No supported positive-weight components produces an unscored manual comparison and no ranked match. Category mismatches are unscored manual references. Full-precision score sorts descending, exact ties by fighter ID; display is rounded to whole points. Top three are returned. Manual comparisons use the same engine without the top-three restriction. Source snapshots, reference version, algorithm, weights and athlete inputs are frozen in favorites; loading a favorite uses those inputs. Re-evaluation is explicit.
 
-Full audit, coverage limits and source review method: [PHASE4_COMPARISON.md](PHASE4_COMPARISON.md).
+Full audit, coverage limits and source review method: [PHASE4_COMPARISON.md](history/PHASE4_COMPARISON.md).
 
 ## Training
 
@@ -34,7 +34,7 @@ Profiles and plans are independently versioned. Editing a profile does not mutat
 
 ## Nutrition (Phase 5)
 
-Calculations, ingredients, dietary screening, meal composition, validation, integrity/versioning and AI explanations are separate modules. [Phase 5 design and coverage](PHASE5_NUTRITION_COACH.md) supersede the former illustrative-food template.
+Calculations, ingredients, dietary screening, meal composition, validation, integrity/versioning and AI explanations are separate modules. [Phase 5 design and coverage](history/PHASE5_NUTRITION_COACH.md) supersede the former illustrative-food template.
 
 The simplified [Mifflin?St Jeor equation](https://pubmed.ncbi.nlm.nih.gov/2305711/) estimates resting expenditure: `10*kg + 6.25*cm - 5*age + s` (+5 male, -161 female equation constant). It is an estimated resting/BMR proxy, not measured BMR. Equation input is independent of competition division; unspecified input withholds targets. Self-reported activity factors 1.4/1.6/1.8 and the ?15% maintenance band are product heuristics, not measured TDEE or a confidence interval.
 
@@ -70,7 +70,7 @@ Generated plans include both the unchanged source profile snapshot and effective
 
 ## Phase 3 catalog and evidence-gated adaptation
 
-The current engine is catalog template v3; [Phase 3 rules and source boundaries](PHASE3_TRAINING.md) supersede the older template description above. Calendar phase labels do not themselves increase volume. All work/rest remains inside timed blocks. Progression is proposed only from comparable actual performance on separate dates, with explicit effort and current recovery context. Repetition/load/time targets do not compound without new actual evidence. Set RPE is not inferred from the prescribed RPE; the session-effort input starts blank.
+The current engine is catalog template v3; [Phase 3 rules and source boundaries](history/PHASE3_TRAINING.md) supersede the older template description above. Calendar phase labels do not themselves increase volume. All work/rest remains inside timed blocks. Progression is proposed only from comparable actual performance on separate dates, with explicit effort and current recovery context. Repetition/load/time targets do not compound without new actual evidence. Set RPE is not inferred from the prescribed RPE; the session-effort input starts blank.
 
 Relative external load uses the body mass accompanying the entered profile/check-in and retains its repetition count and evidence label. This is not a one-repetition maximum estimate or a professional norm. Running pace is a deterministic duration/distance calculation. Jump results are not converted to power; mobility/recovery remain subjective signals.
 
@@ -79,7 +79,7 @@ Adaptive revisions retain checkpoint and earlier weeks, bind the exact source pr
 
 ## Phase 7 development model and programming
 
-[Detailed Phase 7 methodology](PHASE7_TRAINING.md) supersedes calendar-based technical complexity and unconditionally regenerated future prescriptions. General strength, relative strength, aerobic conditioning, anaerobic conditioning, explosive performance, mobility, training age, technical experience, recovery/fatigue and availability are separate evidence dimensions, with observations/estimates/missing data identified. No composite or professional norm is calculated. Anaerobic capacity has no validated input protocol and remains missing.
+[Detailed Phase 7 methodology](history/PHASE7_TRAINING.md) supersedes calendar-based technical complexity and unconditionally regenerated future prescriptions. General strength, relative strength, aerobic conditioning, anaerobic conditioning, explosive performance, mobility, training age, technical experience, recovery/fatigue and availability are separate evidence dimensions, with observations/estimates/missing data identified. No composite or professional norm is calculated. Anaerobic capacity has no validated input protocol and remains missing.
 
 Selected weekdays constrain the template; low-training beginners have a four-day cap and cautious/youth contexts retain the three-day cap. Explicit supervised power and cycling-interval requests have bounded suitability gates, fit existing time blocks and are omitted on deloads/unsupported recovery. Technical stages depend on recorded discipline history/goals/access, never height/reach or calendar phase alone. Current actual sets/effort and conservative recovery/performance freshness gates support proposals; possible plateaus hold rather than automatically add volume. Compatible approved sessions survive reassessment, while shorter budgets replace hard blocks that no longer fit. All modifications still require approval and preserve history. These rules are transparent app heuristics, not an independently validated MMA protocol.
 
@@ -88,9 +88,9 @@ Selected weekdays constrain the template; low-training beginners have a four-day
 
 `resemblance-v3` keeps the deterministic Gaussian/Jaccard/reference model but scales the physical group's contribution by the fraction of requested physical subweights actually supported. Thus incomplete physical evidence no longer retains the entire requested physical influence when other groups exist. Missing values remain excluded rather than zero. Coverage and source/freshness warnings are separate from the whole-point resemblance score. Configured/effective percentages use largest-remainder allocation at two-decimal precision so each nonempty weight set sums to 100%. No calibration, professional proficiency or competitive-outcome inference is claimed.
 
-Search pagination is independent from top-three scoring. Manual lookup uses the primary key; a ranking request shares one division-reference read across all candidates. Saved comparisons retain their original algorithm/input/source snapshots. [Phase 8 report](PHASE8_FIGHTERS.md) documents equations, sources, duplicates/conflict/rollback rules, query evidence and coverage limits.
+Search pagination is independent from top-three scoring. Manual lookup uses the primary key; a ranking request shares one division-reference read across all candidates. Saved comparisons retain their original algorithm/input/source snapshots. [Phase 8 report](history/PHASE8_FIGHTERS.md) documents equations, sources, duplicates/conflict/rollback rules, query evidence and coverage limits.
 
 
 ## Phase 12 consolidated inventory
 
-The [current method-by-method inventory](review/METHODOLOGY_INVENTORY.md) records 31 methods, assumptions, source scope, limitations, controls and pending expert-review status. The [safety report](PHASE12_SAFETY.md) records automated corrections and four unfilled specialist review packs. Reassessment now requires matching recorded effort; trained deload rep text/ranges agree. Numerical nutrition is withheld for recognized extreme-cut goals. Automated tests are not professional approval.
+The [current method-by-method inventory](history/review/METHODOLOGY_INVENTORY.md) records 31 methods, assumptions, source scope, limitations, controls and pending expert-review status. The [safety report](history/PHASE12_SAFETY.md) records automated corrections and four unfilled specialist review packs. Reassessment now requires matching recorded effort; trained deload rep text/ranges agree. Numerical nutrition is withheld for recognized extreme-cut goals. Automated tests are not professional approval.

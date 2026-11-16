@@ -83,7 +83,9 @@ def build():
 
 
 if __name__ == "__main__":
-    destination = Path(__file__).resolve().parents[2] / "docs" / "review" / "examples.json"
+    destination = (
+        Path(__file__).resolve().parents[2] / "docs" / "history" / "review" / "examples.json"
+    )
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(build(), indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Generated {len(CASES)} synthetic examples: {destination}")

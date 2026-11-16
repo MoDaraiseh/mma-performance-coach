@@ -1,7 +1,7 @@
 # Build recipe only: execute and scan in authorized staging before production use.
 # Original (Debian) staging recipe. Its base images carry the findings triaged in
-# docs/PHASE24_TRIAGE.md; deploy/Dockerfile.candidate is the remediated recipe.
-# Digests are the exact inputs recorded for original staging in docs/PHASE21_STAGING_RESULTS.md
+# docs/history/PHASE24_TRIAGE.md; deploy/Dockerfile.candidate is the remediated recipe.
+# Digests are the exact inputs recorded for original staging in docs/history/PHASE21_STAGING_RESULTS.md
 # (node:24-bookworm-slim, python:3.14-slim-bookworm), so rebuilds cannot drift silently.
 ARG NODE_IMAGE=node@sha256:c86ecead9e55a5210ac1727de38a4ca840bf03dcaf34dc9749addbf383b1920c
 ARG PYTHON_IMAGE=python@sha256:516b51cb9db2ef061e465c803e50f64361b82cefd91e525b889b967b83e83527

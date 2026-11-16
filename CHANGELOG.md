@@ -4,14 +4,15 @@
 
 - Source repository made public. The MIT license covers the code; the fighter and food data keep their own terms (see [known limitations](docs/KNOWN_LIMITATIONS.md#public-source-repository)). The 1.0.0-rc.17 note below was written for that internal candidate, before the source was published. The gates it lists for running the app as a public service and distributing builds remain open.
 - Added an MIT license for the application code and a CI workflow (frontend and backend tests, lint, Docker build).
-- Rewrote the README for new readers and moved the phase-by-phase notes to [docs/HISTORY.md](docs/HISTORY.md).
+- Rewrote the README for new readers and moved the phase-by-phase notes to [docs/history/](docs/history/README.md).
+- Moved the phase, delivery and review reports from `docs/` into [docs/history/](docs/history/README.md); `docs/` now holds only the reader-facing guides. Report contents are unchanged apart from link paths.
 
 ## 1.0.0-rc.17 — 2026-11-01
 
 Internal local release candidate; tag `v1.0.0-rc.17`. Not an authorization to publish source, images or a service. Public distribution remains blocked by rights and external acceptance gates.
 
 - Consolidated Phases 1–16 into an evidence-linked feature matrix, launch checklist, security/licensing assessment and controlled deployment/rollback runbooks.
-- Ran final local backend/frontend/security/mocked-AI/migration/browser acceptance; actual totals and limitations are in [Phase 17 acceptance](docs/PHASE17_ACCEPTANCE.md).
+- Ran final local backend/frontend/security/mocked-AI/migration/browser acceptance; actual totals and limitations are in [Phase 17 acceptance](docs/history/PHASE17_ACCEPTANCE.md).
 - Corrected a calendar test fixture that mixed Dubai-local weekday arithmetic with UTC ISO dates, producing Sunday instead of Monday before 04:00. Initial failures and the fresh five-viewport Phase 11 recheck are retained separately.
 - Added reproducible clean-source/frontend/evidence hashing for the local release manifest. Manifest generation refuses uncommitted source and sensitive/generated tracked paths.
 - Extended existing performance, source-inventory, synthetic restore and print QA tools to write Phase 17 evidence without overwriting prior phase reports. Corrected a stale six-versus-eight fighter supplement count.

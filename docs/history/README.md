@@ -12,7 +12,7 @@ Phase reports link to raw evidence files (test logs, browser results, screenshot
 - **Release:** 1.0.0-rc.17, category **A - local release candidate** on the [Phase 17 scale](PHASE17_ACCEPTANCE.md). No final tag.
 - **Candidate environment:** original staging preserved at `127.0.0.1:18018`; isolated patched candidate at `127.0.0.1:18026` ([Phase 24](PHASE24_REPORT.md)).
 - **Open security gates:** libxml2 CVE-2026-86140 (no supported Alpine fix); no current trusted image scan. The musl CVE-2026-107891 scanner discrepancy has vendor-backed fixed-status evidence but still awaits independent review.
-- **Other launch blockers:** content-rights, professional (medical/nutrition/coaching) and security review; live identity provider, TLS, durable backups and monitoring. See [known limitations](KNOWN_LIMITATIONS.md).
+- **Other launch blockers:** content-rights, professional (medical/nutrition/coaching) and security review; live identity provider, TLS, durable backups and monitoring. See [known limitations](../KNOWN_LIMITATIONS.md).
 
 ## Phase history
 
@@ -108,13 +108,13 @@ cd backend
 ..\.venv\Scripts\python.exe tools/import_usda.py ..\.qa-runtime\usda-sr-2018.zip
 ```
 
-The importer has no network behavior. The included JSON is sufficient to run the application; downloading the source archive is optional for audit/reproduction. Sources, original IDs/descriptions and the checked archive hash are in [SOURCES.md](SOURCES.md#phase-5-nutrition-and-coaching-sources-reviewed-2026-10-31).
+The importer has no network behavior. The included JSON is sufficient to run the application; downloading the source archive is optional for audit/reproduction. Sources, original IDs/descriptions and the checked archive hash are in [SOURCES.md](../SOURCES.md#phase-5-nutrition-and-coaching-sources-reviewed-2026-10-31).
 
 Phase 5 browser evidence uses `$env:PW_REPORT_FILE='../docs/evidence/phase5/browser-results.json'` and `$env:PW_EVIDENCE_DIR='../docs/evidence/phase5'` before `npm.cmd run test:browser` in `frontend/`. Optional A4 inspection uses `$env:MMA_QA_PHASE='phase5'` with `tests/check_prints.py` from `backend/`.
 
 ## Phase 6 release and operations
 
-[Final readiness report](PHASE6_RELEASE.md), [deployment](DEPLOYMENT.md), [security review](SECURITY.md), [architecture](ARCHITECTURE.md), [API notes](API.md), [testing](TESTING.md) and [qualified specialist checklist](SPECIALIST_REVIEW.md) describe the release candidate. **Public production readiness is not claimed**: live PostgreSQL, deployed HTTPS/proxy, backup restoration, production operations and independent specialist review remain gates.
+[Final readiness report](PHASE6_RELEASE.md), [deployment](../DEPLOYMENT.md), [security review](../SECURITY.md), [architecture](../ARCHITECTURE.md), [API notes](../API.md), [testing](../TESTING.md) and [qualified specialist checklist](SPECIALIST_REVIEW.md) describe the release candidate. **Public production readiness is not claimed**: live PostgreSQL, deployed HTTPS/proxy, backup restoration, production operations and independent specialist review remain gates.
 
 Migration **0005** adds independent expiring/revocable sessions and shared quota counters, preserving existing profiles/plans and recovery hashes. Old cookies require restoration with the existing private recovery token. Production configuration requires HTTPS `PUBLIC_ORIGIN`, explicit `ALLOWED_HOSTS` and secure cookies. See `.env.production.example` for all settings. New settings include session lifetime, API/auth limits, daily AI attempts, body size and explicit conversation/draft retention. `GET /api/ready` checks database connectivity; `/api/health` is process liveness. No passwords or managed identity are implied by token accounts.
 
@@ -130,6 +130,6 @@ The new windows/caps/stages are explicit product heuristics and need qualified c
 
 ## Phase 8 fighter data and matching
 
-[Phase 8 report](PHASE8_FIGHTERS.md) gives actual division coverage, source/rights limitations, data quality, deterministic mathematics, tests and the offline import/rollback procedure. The bundle now has **17 source-snapshot records: 10 men, seven women**, including six attributed Wikipedia adaptations under [CC BY-SA 4.0](FIGHTER_SUPPLEMENT_LICENSE.md). Historical study coverage includes all eight men's and three active women's reference divisions; this is not a current comprehensive roster. Original 11 redistribution rights remain unestablished.
+[Phase 8 report](PHASE8_FIGHTERS.md) gives actual division coverage, source/rights limitations, data quality, deterministic mathematics, tests and the offline import/rollback procedure. The bundle now has **17 source-snapshot records: 10 men, seven women**, including six attributed Wikipedia adaptations under [CC BY-SA 4.0](../FIGHTER_SUPPLEMENT_LICENSE.md). Historical study coverage includes all eight men's and three active women's reference divisions; this is not a current comprehensive roster. Original 11 redistribution rights remain unestablished.
 
 **Existing databases require migration 0006** before starting: run `..\.venv\Scripts\python.exe -m alembic upgrade head` from `backend/`. This backfills searchable fighter metadata and adds operator import-batch history, preserving athlete aggregates/favorites. The Comparison Lab now uses paginated server search with category, historical division, stance and career-status filters. Matching v3 reduces a partial physical group's contribution in proportion to its supported evidence; scores remain heuristic and independent from professional skill. Current status/division for the six additions remain unknown. No new web scraping or network startup dependency exists.

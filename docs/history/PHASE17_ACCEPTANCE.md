@@ -35,7 +35,7 @@ Changes: phase-safe source/benchmark/restore/print evidence routing; corrected o
 | Chromium journey smoke | **Four passed**, zero failed/skipped,36.83s, native exit0; report (`evidence/phase17/chromium-smoke-results.json`). Two runtimes share Blink, not independent engine coverage |
 | Release manifest | Dirty-source refusal exercised; final clean-source manifest generated after commit/tag and frontend build. Source/lock/build/evidence SHA256 hashes, revision and tag are recorded; no actual image or signed supply-chain attestation |
 
-Commands, environment and safe reproduction instructions are in [TESTING](TESTING.md#phase-17-commands-and-environment). Full browser acceptance and its actual final totals are in [the browser report](PHASE17_BROWSER_QA.md) and native results (`evidence/phase17/browser-results.json`). Viewport PDF inspection passed five reports/18 pages with nonblank text and no text outside20pt safe margins; desktop/mobile UI screenshots and one rendered nutrition page were visually inspected. This is not a physical printer/device or manual screen-reader test.
+Commands, environment and safe reproduction instructions are in [TESTING](../TESTING.md#phase-17-commands-and-environment). Full browser acceptance and its actual final totals are in [the browser report](PHASE17_BROWSER_QA.md) and native results (`evidence/phase17/browser-results.json`). Viewport PDF inspection passed five reports/18 pages with nonblank text and no text outside20pt safe margins; desktop/mobile UI screenshots and one rendered nutrition page were visually inspected. This is not a physical printer/device or manual screen-reader test.
 
 ## Real infrastructure, AI, professional and rights gates
 

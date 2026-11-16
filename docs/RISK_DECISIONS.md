@@ -11,7 +11,7 @@ This record covers two scanner findings for which no vendor fix exists in the pi
 | R1 | CVE-2026-86140 (high 8.0), plus 10 low/medium libxml2 findings | `mma-review-postgres:patched`, libxml2 2.13.9-r2 | None in Alpine 3.24 (checked 12 November 2026). The upstream fix is 2.15.4. |
 | R2 | CVE-2026-119586 (high 8.5) | `mma-review-app:patched`, sqlite-libs 3.53.4-r0 | None in Alpine 3.24 (checked 12 November 2026) |
 
-The musl CVE-2026-107891 finding is **not** part of this record. Alpine names the installed 1.2.6-r3 as fixed, and the scanner discrepancy is already dispositioned in [FINAL_DELIVERY](FINAL_DELIVERY.md).
+The musl CVE-2026-107891 finding is **not** part of this record. Alpine names the installed 1.2.6-r3 as fixed, and the scanner discrepancy is already dispositioned in [FINAL_DELIVERY](history/FINAL_DELIVERY.md).
 
 ## Alternatives evaluated
 
@@ -85,7 +85,7 @@ The record changes only if a version newer than `libxml2 2.13.9-r2` or `sqlite-l
 1. Pin the new version in the candidate recipe.
 2. Rebuild with a new tag.
 3. Run `docker scout cves` on the new image.
-4. Repeat the review acceptance described in [POST_HANDOFF_REVIEW](POST_HANDOFF_REVIEW.md).
+4. Repeat the review acceptance described in [POST_HANDOFF_REVIEW](history/POST_HANDOFF_REVIEW.md).
 5. Close the item here.
 
 ## Approval

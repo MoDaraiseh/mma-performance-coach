@@ -10,7 +10,7 @@ All endpoints are under `/api`. The authoritative machine-readable contract is `
 | Analysis | `GET /assessment`, `GET /exercise-catalog`, `GET /training-intelligence`, public reference/fighter reads |
 | Fighters | `GET /fighters?q=...`, `POST /fighter-matches`, `POST /fighter-comparisons/{fighter_id}`, owned comparison favorites, data provenance/revisions; shared refresh denied in production |
 | Training | `GET/POST /training-plans`, `GET /training-plans/history`, `GET/POST /training-sessions`; source plan/session checks prevent logs against invalid prescriptions |
-| Nutrition | Catalog/settings/current/history, regeneration/substitution previews and explicit decisions; exact Phase 5 contracts in [nutrition/coach report](PHASE5_NUTRITION_COACH.md#user-workflows-and-api-contracts) |
+| Nutrition | Catalog/settings/current/history, regeneration/substitution previews and explicit decisions; exact Phase 5 contracts in [nutrition/coach report](history/PHASE5_NUTRITION_COACH.md#user-workflows-and-api-contracts) |
 | Coaching/reassessment | Coach conversation and whitelisted action previews, review checkpoints, revisions and approve/reject; no response alone applies edits |
 | Data | `GET /export` all owned aggregate versions; `DELETE /account` transactionally removes owned records, sessions and account; cannot erase prior external backups/exports |
 
@@ -18,19 +18,19 @@ Status codes: **401** absent/expired/revoked/deleted session, **403** prohibited
 
 Legacy authenticated `POST /nutrition` remains explicit manual generation for compatibility. Existing-plan app UI and all AI edits use preview/approval; the provider is never given that route as a write tool. Recovery-token possession grants full account access: no password or managed-identity flow is implied.
 
-OpenAI configuration/transport remains the Phase 5 server-only Responses adapter with bounded schema/context/output, retry and timeout rules. Daily per-account attempts are now enforced even when a provider falls back. Invalid/unavailable provider replies use local explanations and validated local intents; no paid provider was invoked in QA. See [source/methodology notes](SOURCES.md) and [AI boundaries](PHASE5_NUTRITION_COACH.md#ai-reliability-privacy-and-cost-controls).
+OpenAI configuration/transport remains the Phase 5 server-only Responses adapter with bounded schema/context/output, retry and timeout rules. Daily per-account attempts are now enforced even when a provider falls back. Invalid/unavailable provider replies use local explanations and validated local intents; no paid provider was invoked in QA. See [source/methodology notes](SOURCES.md) and [AI boundaries](history/PHASE5_NUTRITION_COACH.md#ai-reliability-privacy-and-cost-controls).
 
 
 ## Phase 8 search and governance additions
 
 `GET /api/fighters/search` accepts bounded `q`, `category` (Men/Women), `division` (historical), `stance`, `status`, `page` and `page_size` (1–50); returns `items`, `total`, `page`, `page_size`. Legacy `/api/fighters` keeps a list response with a 50-record cap and `X-Result-Limit`; use pagination for larger datasets. `GET /api/fighter-data` includes the current coverage/field/source-rights quality report. Manual comparison uses indexed ID lookup, and matching returns v3 evidence-scaled weights/support labels.
 
-There is **no public import/rollback endpoint**. Operator CLI and migration **0006** are documented in [Phase 8](PHASE8_FIGHTERS.md). Ordinary production-user refresh remains denied. Optional typed professional-record fields require dated scope and provenance, but the current bundle has none verified; sparse historical statistic values remain outside similarity scoring.
+There is **no public import/rollback endpoint**. Operator CLI and migration **0006** are documented in [Phase 8](history/PHASE8_FIGHTERS.md). Ordinary production-user refresh remains denied. Optional typed professional-record fields require dated scope and provenance, but the current bundle has none verified; sparse historical statistic values remain outside similarity scoring.
 
 
 ## Phase 10 coaching contract
 
-Existing authenticated endpoints remain: `POST /api/coach`, `GET /api/coach`, `GET /api/coach/actions`, `POST /api/coach/actions/{id}/approve` and `/reject`. Coach requests still accept only `message` and `use_ai`; no user ID, approval or arbitrary tool arguments come from the model. Responses include context-section/omission metadata and explicit action errors. Proposals now support training, nutrition or assessment targets, canonical request permission, optional before/after week and assessment previews, and persisted saved-version metadata. Assessment approval appends `coach_assessment` without changing a plan. Duplicate/stale/tampered approvals return 409; another account's action returns 404. See [typed capability behavior](PHASE10_COACH.md). Export/account deletion include all new aggregates.
+Existing authenticated endpoints remain: `POST /api/coach`, `GET /api/coach`, `GET /api/coach/actions`, `POST /api/coach/actions/{id}/approve` and `/reject`. Coach requests still accept only `message` and `use_ai`; no user ID, approval or arbitrary tool arguments come from the model. Responses include context-section/omission metadata and explicit action errors. Proposals now support training, nutrition or assessment targets, canonical request permission, optional before/after week and assessment previews, and persisted saved-version metadata. Assessment approval appends `coach_assessment` without changing a plan. Duplicate/stale/tampered approvals return 409; another account's action returns 404. See [typed capability behavior](history/PHASE10_COACH.md). Export/account deletion include all new aggregates.
 
 
 ## Phase 11 analytics contract
@@ -45,7 +45,7 @@ All endpoints require the current authenticated account; ownership is never acce
 - Workout logs optionally accept `practices:[{discipline,minutes}]`; unique disciplines, total practice minutes cannot exceed actual duration.
 - Existing progress/workout GET routes accept optional `limit` (1–500), preserving legacy array responses.
 
-See [methodology and limits](PHASE11_ANALYTICS.md). Migration 0007 is required.
+See [methodology and limits](history/PHASE11_ANALYTICS.md). Migration 0007 is required.
 
 
 ## Phase 13 authentication and operations contract

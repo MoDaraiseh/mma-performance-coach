@@ -1,10 +1,10 @@
 # Known limitations and release gates
 
-> **Current state (11 November 2026):** the authoritative gate list is the decision table in [FINAL_DELIVERY.md](FINAL_DELIVERY.md); post-handoff fixes and open findings are in [POST_HANDOFF_REVIEW.md](POST_HANDOFF_REVIEW.md). Items below were written at Phases 15-18 and have been corrected where later phases changed them.
+> **Current state (11 November 2026):** the authoritative gate list is the decision table in [FINAL_DELIVERY.md](history/FINAL_DELIVERY.md); post-handoff fixes and open findings are in [POST_HANDOFF_REVIEW.md](history/POST_HANDOFF_REVIEW.md). Items below were written at Phases 15-18 and have been corrected where later phases changed them.
 
-Phase 18 technically excludes the original 11 fighter records from its generated staging context, preserving internal source/history; whole-repository distribution remains unapproved. Staging configuration and local alerts are tested, but Docker/PostgreSQL/separate-DB restore/live IdP/TLS/external reviews remain unavailable or pending. [Current gates](PHASE18_LAUNCH_GATES.md).
+Phase 18 technically excludes the original 11 fighter records from its generated staging context, preserving internal source/history; whole-repository distribution remains unapproved. Staging configuration and local alerts are tested, but Docker/PostgreSQL/separate-DB restore/live IdP/TLS/external reviews remain unavailable or pending. [Current gates](history/PHASE18_LAUNCH_GATES.md).
 
-Highest supported category: **A - local release candidate** under [Phase 17 acceptance](PHASE17_ACCEPTANCE.md). Earlier B-local labels are historical and use a different scale. Not staging-ready or production-ready; no deployment or paid-service authorization.
+Highest supported category: **A - local release candidate** under [Phase 17 acceptance](history/PHASE17_ACCEPTANCE.md). Earlier B-local labels are historical and use a different scale. Not staging-ready or production-ready; no deployment or paid-service authorization.
 
 ## Public source repository
 

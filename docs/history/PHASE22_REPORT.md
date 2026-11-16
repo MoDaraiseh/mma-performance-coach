@@ -22,11 +22,11 @@ Only the relay joins the new ordinary bridge. App and database remain on the ori
 
 ## Exact source/configuration changes
 
-- [compose.ingress.json](../deploy/compose.ingress.json): separate project `mma-phase22-ingress`, one ingress service, existing sanitized image pinned to digest `sha256:4445750e0135806ee6099c9daf509d6f862e1fb4169d98539606f794ff02398b`, pull disabled; existing internal network declared external; one new bridge; **only `127.0.0.1:18018:8080`** published.
-- [staging_relay.py](../deploy/staging_relay.py): transparent fixed-upstream TCP relay. It preserves HTTP/Host/Origin/cookies, logs no request bytes or identities, limits concurrent connections to 32, bounds upstream/send/idle/connection lifetime, and supports half-close/streaming. No HTTP security middleware was modified.
+- [compose.ingress.json](../../deploy/compose.ingress.json): separate project `mma-phase22-ingress`, one ingress service, existing sanitized image pinned to digest `sha256:4445750e0135806ee6099c9daf509d6f862e1fb4169d98539606f794ff02398b`, pull disabled; existing internal network declared external; one new bridge; **only `127.0.0.1:18018:8080`** published.
+- [staging_relay.py](../../deploy/staging_relay.py): transparent fixed-upstream TCP relay. It preserves HTTP/Host/Origin/cookies, logs no request bytes or identities, limits concurrent connections to 32, bounds upstream/send/idle/connection lifetime, and supports half-close/streaming. No HTTP security middleware was modified.
 - Relay controls: UID 10001, read-only root, all capabilities dropped, no-new-privileges, 64 PID / 128 MiB / 0.5 CPU bounds. Its only bind mount is the relay script, read-only. It receives no staging env file or secret mounts.
-- [playwright.staging.config.ts](../frontend/playwright.staging.config.ts) and [staging-e2e](../frontend/staging-e2e/journey.spec.ts): dedicated external PostgreSQL browser suite, fixed loopback base URL, **no webServer/SQLite fixture**, no API mocking. Trace capture disabled because synthetic recovery credentials flow through requests. Browser TypeScript configuration includes the new suite.
-- [test_phase22.py](../backend/tests/test_phase22.py): real socket regression for large binary payloads, half-close and unchanged request bytes/target despite an arbitrary Host header.
+- [playwright.staging.config.ts](../../frontend/playwright.staging.config.ts) and [staging-e2e](../../frontend/staging-e2e/journey.spec.ts): dedicated external PostgreSQL browser suite, fixed loopback base URL, **no webServer/SQLite fixture**, no API mocking. Trace capture disabled because synthetic recovery credentials flow through requests. Browser TypeScript configuration includes the new suite.
+- [test_phase22.py](../../backend/tests/test_phase22.py): real socket regression for large binary payloads, half-close and unchanged request bytes/target despite an arbitrary Host header.
 - Generated staging test outputs ignored; no original Phase 18 context, credentials, Compose model, application features or database schema changed. The 89 prepared context hashes still match.
 
 ## Preservation evidence

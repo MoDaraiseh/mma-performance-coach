@@ -36,7 +36,7 @@ Implemented:
 
 Seven skips are intentional: drawer checks excluded at three nonmobile widths; fixed A4 paper layout executed once rather than repeated at four other viewports. Phase17's UTC fixture correction is included in this fresh complete green run; no failure was hidden/reclassified. Evidence is local and Git-ignored; archive it privately with source/context hashes. Browser traces and generated credentials must not be published.
 
-Full regression commands follow [TESTING](TESTING.md); Phase18 uses `MMA_QA_PHASE=phase18`, `PW_REPORT_FILE=../docs/evidence/phase18/browser-results.json`, `PW_EVIDENCE_DIR=../docs/evidence/phase18` and dedicated `.qa-runtime/pytest-phase18` basetemp. Final focused suite uses its own QA folder. Advisory/browser commands required authorized network/process access; no service was provisioned. Restore and source inventory tools now route Phase18 evidence without overwriting prior phases.
+Full regression commands follow [TESTING](../TESTING.md); Phase18 uses `MMA_QA_PHASE=phase18`, `PW_REPORT_FILE=../docs/evidence/phase18/browser-results.json`, `PW_EVIDENCE_DIR=../docs/evidence/phase18` and dedicated `.qa-runtime/pytest-phase18` basetemp. Final focused suite uses its own QA folder. Advisory/browser commands required authorized network/process access; no service was provisioned. Restore and source inventory tools now route Phase18 evidence without overwriting prior phases.
 
 ## Blocker status and remaining work
 

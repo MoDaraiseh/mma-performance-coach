@@ -60,7 +60,7 @@ Raw local execution records are in `.qa-runtime/phase25/` (acceptance, PostgreSQ
 | Staging replacement | Not authorized | Separate explicit owner approval of exact artifacts, target, write-freeze and rollback after gates close |
 | Public deployment | Not authorized | Separate explicit target/operator/budget/deployment approval after all required gates close |
 
-> **Post-handoff update (12 November 2026):** a proposed risk decision for CVE-2026-86140 (libxml2) and CVE-2026-119586 (sqlite-libs), covering the isolated staging candidate only, and a proposed managed-PostgreSQL production plan are in [RISK_DECISIONS](RISK_DECISIONS.md). **That decision is a draft and is not approved until the owner signs it.** A Debian-based alternative was evaluated and rejected because it contains the same libxml2 CVE and more findings.
+> **Post-handoff update (12 November 2026):** a proposed risk decision for CVE-2026-86140 (libxml2) and CVE-2026-119586 (sqlite-libs), covering the isolated staging candidate only, and a proposed managed-PostgreSQL production plan are in [RISK_DECISIONS](../RISK_DECISIONS.md). **That decision is a draft and is not approved until the owner signs it.** A Debian-based alternative was evaluated and rejected because it contains the same libxml2 CVE and more findings.
 
 Compensating controls: loopback-only ingress, isolated internal app/database network, no arbitrary SQL/XML application endpoint identified, nonroot/read-only containers, removed gosu, bounded resources, restricted roles and disabled paid AI. These reduce exposure but do not prove vulnerable paths unreachable or authorize unresolved risks. Remaining historical PostgreSQL medium/low findings stay recorded in Phase 24 SARIF.
 
@@ -80,7 +80,7 @@ Invoke-RestMethod http://127.0.0.1:18026/api/ready
 
 For an already-created, stopped candidate only, verify identities and storage first. `docker start` of the three `mma-phase24-patched-*-1` containers is a candidate-only operation; stopping a tmpfs database loses its contents, so recovery/reinitialization may be needed. Do not blindly reconcile Compose or treat a restarted empty DB as recovered. Do not use `compose down`, `prune`, `--remove-orphans`, or run original staging Compose during handoff.
 
-For source-only local development, use the existing `run-local.cmd` after installing locked prerequisites as documented in [README](../README.md). It builds frontend, migrates the project-local SQLite database and starts port 8000; this is separate from accepted PostgreSQL candidate operation. Do not run it against original staging or use it as evidence of PostgreSQL acceptance.
+For source-only local development, use the existing `run-local.cmd` after installing locked prerequisites as documented in [README](../../README.md). It builds frontend, migrates the project-local SQLite database and starts port 8000; this is separate from accepted PostgreSQL candidate operation. Do not run it against original staging or use it as evidence of PostgreSQL acceptance.
 
 Runtime secret locations (values intentionally omitted): `.qa-runtime/phase24/runtime-host/secrets/{admin,migrator,runtime}.txt`, and that directory's `postgres.env`, `migration.env`, `app-patched.env`; original preparation remains `.qa-runtime/phase18/`. Preserve protected ACLs. `deploy/compose.candidate.json` maps the candidate paths and controls; never print `docker inspect` environment/config or resolved Compose secrets into public evidence. Do not regenerate existing credentials.
 

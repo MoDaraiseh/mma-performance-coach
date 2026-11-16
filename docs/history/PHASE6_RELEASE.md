@@ -52,9 +52,9 @@ Four A4 reports (12 total pages) passed nonblank-text and safe-margin checks; pr
 
 ## F. Security findings
 
-[Security review](SECURITY.md) records controls, root causes and remaining risks. Nine new API/security tests plus the PostgreSQL offline migration test extend the baseline 177 backend cases to 187. New cases cover distinct sessions, expiry/logout replay, deleted accounts/all sessions, FK violations, concurrent quotas, rate Retry-After, host/origin/body limits, production TLS/secure cookies/HSTS/shared-refresh authorization, AI quota, retention dry-run/preservation and failed-write rollback/error privacy. Existing ownership-negative/stale/conflicting approval tests remain passing.
+[Security review](../SECURITY.md) records controls, root causes and remaining risks. Nine new API/security tests plus the PostgreSQL offline migration test extend the baseline 177 backend cases to 187. New cases cover distinct sessions, expiry/logout replay, deleted accounts/all sessions, FK violations, concurrent quotas, rate Retry-After, host/origin/body limits, production TLS/secure cookies/HSTS/shared-refresh authorization, AI quota, retention dry-run/preservation and failed-write rollback/error privacy. Existing ownership-negative/stale/conflicting approval tests remain passing.
 
-No passwords are accepted or stored, so password hashing is not claimed. Recovery-token hashing protects high-entropy random credentials, not human passwords; no custom cryptographic protocol was introduced. Production shared fighter refresh is denied pending an operator administration workflow. Server API keys never enter frontend configuration. Quota counters persist across workers/restarts but need edge limits and periodic expiry cleanup. See [deployment checklist](DEPLOYMENT.md#rollout-and-rollback-gates).
+No passwords are accepted or stored, so password hashing is not claimed. Recovery-token hashing protects high-entropy random credentials, not human passwords; no custom cryptographic protocol was introduced. Production shared fighter refresh is denied pending an operator administration workflow. Server API keys never enter frontend configuration. Quota counters persist across workers/restarts but need edge limits and periodic expiry cleanup. See [deployment checklist](../DEPLOYMENT.md#rollout-and-rollback-gates).
 
 ## G. Database compatibility
 
@@ -71,7 +71,7 @@ Anthropometric resemblance does not imply professional fighting ability. Subject
 ## I. Known issues and maintainability
 
 - One existing Starlette/httpx test-client deprecation remains; tests pass with current pinned versions.
-- `main.py` and `App.tsx` remain large. [Architecture review](ARCHITECTURE.md) identifies incremental router/context/page extraction; no unjustified rewrite was attempted.
+- `main.py` and `App.tsx` remain large. [Architecture review](../ARCHITECTURE.md) identifies incremental router/context/page extraction; no unjustified rewrite was attempted.
 - Full-history/export queries are not paginated/streamed. Startup seeding has not been tested under simultaneous multiple workers; deployment example uses one worker.
 - Rate windows allow boundary bursts, IP buckets can group NAT users, and SQL quota writes add contention. No production load/capacity claim is made.
 - Model text checks are defense in depth; explanations can still be wrong. No live provider efficacy/cost claim.
@@ -79,7 +79,7 @@ Anthropometric resemblance does not imply professional fighting ability. Subject
 
 ## J. Deployment readiness and operation
 
-**Local release candidate; public production remains gated.** [Deployment guide](DEPLOYMENT.md) provides production `.env` example, same-origin HTTPS/proxy requirements, PostgreSQL setup and migration commands, local build/start commands, liveness/readiness, logs, explicit retention, backup/recovery guidance and release checklist. The original tracker is outside this deployment. No service was published or external spend incurred.
+**Local release candidate; public production remains gated.** [Deployment guide](../DEPLOYMENT.md) provides production `.env` example, same-origin HTTPS/proxy requirements, PostgreSQL setup and migration commands, local build/start commands, liveness/readiness, logs, explicit retention, backup/recovery guidance and release checklist. The original tracker is outside this deployment. No service was published or external spend incurred.
 
 The local benchmark (`evidence/phase6/performance.json`) measures 20 samples per operation. Indexed latest-version reads are materially cheaper than loading 1,000 aggregate versions. Assessment, matching/search and nutrition timings include the current rate/auth middleware. These are local single-client values, not a capacity target; no cache was added that could stale an athlete report.
 
@@ -91,4 +91,4 @@ The local benchmark (`evidence/phase6/performance.json`) measures 20 samples per
 4. Add operator budget controls, retention scheduling and restore/deletion governance.
 5. Expand verified licensed food/fighter coverage and nutrition adequacy/palatability, then paginate history/export and extract orchestration modules as scale warrants.
 
-Exact local startup is in [deployment](DEPLOYMENT.md#existing-local-installation); current automated commands are in [testing](TESTING.md). No arbitrary completion percentage is assigned.
+Exact local startup is in [deployment](../DEPLOYMENT.md#existing-local-installation); current automated commands are in [testing](../TESTING.md). No arbitrary completion percentage is assigned.

@@ -1,6 +1,6 @@
 # Architecture review — Phase 6
 
-Current consolidated architecture/acceptance: [Phase 17](PHASE17_ACCEPTANCE.md), schema 0008, 19 fighter snapshots, 55 foods, 49 exercises, indexed/paginated histories and Phase 16 identity/licensing startup gates. Historical sections below retain their original counts and bundle sizes; they are not current readiness claims.
+Current consolidated architecture/acceptance: [Phase 17](history/PHASE17_ACCEPTANCE.md), schema 0008, 19 fighter snapshots, 55 foods, 49 exercises, indexed/paginated histories and Phase 16 identity/licensing startup gates. Historical sections below retain their original counts and bundle sizes; they are not current readiness claims.
 
 ## Boundaries and contracts
 
@@ -41,24 +41,24 @@ The deployed API contract is generated from FastAPI (`/openapi.json`). [API note
 
 ## Phase 10 coaching additions
 
-`coach_context.py` builds bounded, provenance-labeled current summaries; `coach_guidance.py` renders deterministic offline explanations. `coach_security.py` checks primary-request permissions independently of provider interpretations. `coach_actions.py` proposes bounded edits through existing training/nutrition/progression services. `main.py` serializes and revalidates approved writes. A `coach_assessment` record is a separate versioned snapshot, not a checkpoint or profile mutation. No migration beyond 0006 is needed. New typed intents and UI differences are detailed in [Phase 10](PHASE10_COACH.md). Fighter context reads the current validated database; free-text source biographies are omitted.
+`coach_context.py` builds bounded, provenance-labeled current summaries; `coach_guidance.py` renders deterministic offline explanations. `coach_security.py` checks primary-request permissions independently of provider interpretations. `coach_actions.py` proposes bounded edits through existing training/nutrition/progression services. `main.py` serializes and revalidates approved writes. A `coach_assessment` record is a separate versioned snapshot, not a checkpoint or profile mutation. No migration beyond 0006 is needed. New typed intents and UI differences are detailed in [Phase 10](history/PHASE10_COACH.md). Fighter context reads the current validated database; free-text source biographies are omitted.
 
 
 ## Phase 11 analytics additions
 
-`analytics.py` reads account-scoped indexed events and deterministic summaries; it never changes approved plans. Nullable event-date/parent metadata are maintained by `history_index.py` on writes and backfilled by migration 0007, preserving source payloads. History is SQL-paginated; CSV uses keyset pages. The dashboard explicitly reports bounded coverage and keeps current profile inputs separate from actual window baselines. See [Phase 11](PHASE11_ANALYTICS.md) for comparison rules, caps and caveats.
+`analytics.py` reads account-scoped indexed events and deterministic summaries; it never changes approved plans. Nullable event-date/parent metadata are maintained by `history_index.py` on writes and backfilled by migration 0007, preserving source payloads. History is SQL-paginated; CSV uses keyset pages. The dashboard explicitly reports bounded coverage and keeps current profile inputs separate from actual window baselines. See [Phase 11](history/PHASE11_ANALYTICS.md) for comparison rules, caps and caveats.
 
 
 ## Phase 13 identity and operations
 
 `identity.py` integrates Authlib OIDC, exact issuer/subject bindings, single-use server flows and explicit authenticated linking. No provider tokens are persisted. `ExternalIdentity`, `OIDCFlow`, `OperatorCounter` and session metadata arrive in migration0008. Existing recovery credentials and athlete aggregates are not migrated to another UID automatically. `SessionSecurity.tsx` exposes owned session handles and revocation; provider navigation follows a same-origin POST initiation response.
 
-`operations.py` supplies migration-aware readiness, aggregate counters and two-period atomic outbound-attempt reservations. Request budgets span workers; token/context/model limits remain server-side. The CLI report exposes no athlete facts or credentials. Maintenance includes expired identity flows and a disabled-by-default destructive scheduling gate. Backup/restore tools use new destinations/disposable fixtures; production restoration and deletion governance remain external operational controls. [Full Phase13 report](PHASE13_INFRASTRUCTURE.md).
+`operations.py` supplies migration-aware readiness, aggregate counters and two-period atomic outbound-attempt reservations. Request budgets span workers; token/context/model limits remain server-side. The CLI report exposes no athlete facts or credentials. Maintenance includes expired identity flows and a disabled-by-default destructive scheduling gate. Backup/restore tools use new destinations/disposable fixtures; production restoration and deletion governance remain external operational controls. [Full Phase13 report](history/PHASE13_INFRASTRUCTURE.md).
 
 
 ## Phase14 release acceptance
 
-The [current acceptance report](PHASE14_ACCEPTANCE.md), [feature matrix](PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
+The [current acceptance report](history/PHASE14_ACCEPTANCE.md), [feature matrix](history/PHASE14_FEATURE_MATRIX.md), [known limitations](KNOWN_LIMITATIONS.md), [user guide](USER_GUIDE.md) and [AI configuration guide](AI_CONFIGURATION.md) consolidate the release. Current schema head is0008. Historical results above retain their phase-specific context; Phase14 evidence supersedes release totals. No public deployment, live AI, real IdP or PostgreSQL runtime verification is claimed. Source validation rechecks bundled schemas/provenance and nutrient completeness; it does not reverify current fighter facts online.
 
 
 ## Phase15 integration

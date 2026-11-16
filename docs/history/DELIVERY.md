@@ -145,7 +145,7 @@ No schema migration beyond `0004` is required. The normal MMA database and origi
 
 **187 backend tests and ten frontend tests passed.** App/browser TypeScript, Vite, Ruff, formatting, pip check and both dependency advisory audits passed; no known vulnerabilities were returned. SQLite migration round trip/schema checks and PostgreSQL offline SQL compile passed. Final full Edge matrix: **88 passed, zero failed, seven intentional skips** across five widths. Four A4 reports (12 pages) passed text/margin checks; screenshots/renders and the initial three training-race failures are recorded in the linked report. No real paid AI or public deployment was exercised.
 
-**Local release candidate; public production remains gated.** PostgreSQL runtime, deployed TLS/proxy/host behavior, actual backup restoration, managed-identity suitability, production operations/cost governance and independent specialist/manual device review remain unverified. See [deployment](DEPLOYMENT.md), [security](SECURITY.md) and [specialist checklist](SPECIALIST_REVIEW.md). The original tracker and normal athlete database were not modified by QA.
+**Local release candidate; public production remains gated.** PostgreSQL runtime, deployed TLS/proxy/host behavior, actual backup restoration, managed-identity suitability, production operations/cost governance and independent specialist/manual device review remain unverified. See [deployment](../DEPLOYMENT.md), [security](../SECURITY.md) and [specialist checklist](SPECIALIST_REVIEW.md). The original tracker and normal athlete database were not modified by QA.
 
 
 ## Phase 7 training delivery
