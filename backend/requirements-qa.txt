@@ -1,3 +1,3 @@
 # Optional tools for inspecting browser-generated print evidence.
 pypdf==7.1.0
-PyMuPDF==2.0
+PyMuPDF==2.1
