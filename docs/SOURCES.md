@@ -12,19 +12,14 @@ Initial review date: **2026-10-30**. Phase 4 fighter/reference review: **2026-10
 | --- | --- |
 | [UFC weight classes](https://www.ufc.com/news/understanding-ufc-weight-classes-and-weigh-ins) | Championship limits and typical non-title allowances. |
 | [UFC rankings](https://www.ufc.com/rankings) | Distinction between active women's divisions and historical featherweight availability; recheck before competition use. |
-| [Max Holloway career highlights](https://www.ufc.com/news/max-holloway-career-highlights-ufc-308-topuria-vs-holloway-abu-dhabi) | Historical 2024 snapshot: height 71 in, reach 69 in, featherweight/lightweight history. Current record, weight and status intentionally omitted. |
-| [Alexander Volkanovski official profile](https://www.ufc.com/athlete/alexander-volkanovski?language_content_entity=en&page=1) | Source-listed height 66 in, reach 71.5 in and weight 158.30 lb, plus featherweight context and source-listed activity status. |
-| [Israel Adesanya official profile](https://www.ufc.com/athlete/israel-adesanya?language_content_entity=en&page=1) | Height 76 in, reach 80 in, listed weight 185 lb, Freestyle label and professional boxing/kickboxing background. |
 | [Original Mifflin–St Jeor study](https://pubmed.ncbi.nlm.nih.gov/2305711/) | Simplified resting expenditure equation. |
 | [NIDDK Body Weight Planner](https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner) | Adult-only scope and exclusion of pregnancy/breastfeeding from automated adult weight-planning tools. |
 | [ACSM resistance exercise guidance](https://www.acsm.org/docs/default-source/files-for-resource-library/resistance-training-for-health.pdf) | General background for conservative resistance exercise; app templates are not a validated MMA protocol. |
 | [OpenAI structured output documentation](https://developers.openai.com/api/docs/guides/structured-outputs) | Responses API schema-based output implementation. |
 
-Some UFC direct page opens returned HTTP 403. Factual profile fields were reviewed through the search service's indexed official UFC excerpts; they are stored as **development snapshots**, not a current licensed statistics feed. URLs and dates remain visible. No fight records or current rankings are invented.
-
 ## Rights and ingestion
 
-Public accessibility is not evidence of redistribution rights. No automated scraper, live bulk-download integration, athlete image download, UFC logo or copyrighted biography is included. This is a minimal manually curated factual development subset with attribution. Commercial redistribution permissions have **not** been established. Before expanding or publicly distributing a live dataset, obtain an appropriate license or documented permission and review provider terms, robots policies, rate limits and permitted caching.
+Public accessibility is not evidence of redistribution rights. No automated scraper, live bulk-download integration, athlete image download, UFC logo or copyrighted biography is included. The fighter records are a small, manually curated subset adapted from Wikipedia under CC BY-SA 4.0, with attribution. Before expanding or publicly distributing a live dataset, obtain an appropriate license or documented permission and review provider terms, robots policies, rate limits and permitted caching.
 
 `FighterDataProvider` isolates data access. `SeededFighterProvider` supplies the reviewed development subset; startup persists it without overwriting existing snapshots. API comparisons read `DatabaseFighterProvider`. Replace this with a licensed adapter or validated import without changing matching logic. Unknown fields remain absent/null. Public snapshots survive user account deletion because they contain no athlete account data.
 
@@ -41,29 +36,29 @@ The [Phase 3 scientific-basis table](history/PHASE3_TRAINING.md#scientific-basis
 Catalog cues and mistake/modification text are original editorial summaries, not copied source text or source-specific biomechanical validation. Muscle lists are broad involvement descriptions. Exact app thresholds and 12-week organization are heuristics; sources do not establish their effectiveness for individual MMA athletes. The 2009 source is historical context, not presented as the latest adult guidance. No new licensed fighter/nutrient data or athlete imagery was introduced.
 
 
-## Phase 4 fighter register (2026-10-31)
+## Fighter records from Wikipedia (2026-11-17)
 
-This register supersedes the original three-record descriptions above. Direct profile requests returned **403**; review used the search service's **indexed official UFC excerpts**, not a full live feed. The stored `observed_at`/`verified_at` date identifies that review, not when measurements were taken. Copyright/redistribution rights remain **not established**. No scraper, complete biographies, images, current rankings or live statistics are included. Coverage is 11 fighters: seven men and four women; it is not comprehensive across UFC divisions.
+On 2026-11-17 the 11 records taken from official ufc.com profiles (the Phase 4 register, now only in git history) were replaced by records adapted from English Wikipedia under CC BY-SA 4.0, handled like the Phase 8 supplement below. Each record keeps the same application ID, cites its article, and stores the revision it was read from (`external_ids.wikipedia-en-revision`). The links below open that exact revision.
 
-| Official profile | Height / reach (in) | Listed weight (lb) | Current profile division / history used | Source status |
-| --- | --- | --- | --- | --- |
-| [Max Holloway](https://www.ufc.com/athlete/max-holloway?language_content_entity=en&page=8) | 71 / 69 | 155 | Lightweight / featherweight, lightweight | Active |
-| [Alexander Volkanovski](https://www.ufc.com/index.php/athlete/alexander-volkanovski) | 66 / 71.5 | 158.3 | Featherweight / featherweight, lightweight | Active |
-| [Israel Adesanya](https://www.ufc.com/athlete/israel-adesanya) | 76 / 80 | 185 | Middleweight / middleweight, light heavyweight | Active |
-| [Valentina Shevchenko](https://www.ufc.com/athlete/valentina-shevchenko?page=1) | 65 / 67 | 124.6 | Flyweight / flyweight only in this subset | Active |
-| [Zhang Weili](https://www.ufc.com/athlete/zhang-weili) | 64 / 63 | 124.6 | Profile-listed flyweight / strawweight, flyweight | Active |
-| [Joanna Jedrzejczyk](https://www.ufc.com/athlete/joanna-jedrzejczyk?id=&page=1) | 66 / 65.5 | 116 | No current division / strawweight, flyweight | Retired |
-| [Georges St-Pierre](https://www.ufc.com/athlete/georges-st-pierre) | 70.5 / 76 | 184.4 | No current division / welterweight, middleweight | Retired |
-| [Tom Aspinall](https://www.ufc.com/athlete/tom-aspinall?page=1) | 77 / 78 | 254 | Heavyweight / heavyweight | Active |
-| [Alex Pereira](https://www.ufc.com/athlete/alex-pereira) | 76 / 79 | 251 | Profile-listed heavyweight / middleweight, light heavyweight, heavyweight | Active |
-| [Demetrious Johnson](https://www.ufc.com/athlete/temetoriasu-shiyonson) | 63 / 66 | 125 | No current division / flyweight | Not Fighting (not a verified global retirement claim) |
-| [Amanda Nunes](https://www.ufc.com/athlete/amanda-nunes?language_content_entity=es) | 68 / 69 | 135 | Bantamweight / bantamweight, historical featherweight | Active at indexed snapshot |
+Values come from the article's infobox at that revision: height, reach and listed weight as published; stance only where the infobox states one; background only from the infobox `style` and `rank` fields (including belt ranks); and division history from the infobox weight classes for MMA, which can include bouts outside the UFC. Current division, career status and fight records are unknown for all of them, as for the Phase 8 records. No images, biographies or statistics were copied.
 
-Field-level source IDs are stored with every known matching attribute. Profile Q&A supports Volkanovski's BJJ/wrestling, Adesanya's kickboxing/boxing/BJJ, Jedrzejczyk's Muay Thai, Pereira's kickboxing and Nunes's boxing/BJJ/judo/karate practice. Missing background is unknown. Raw style labels (Muay Thai, Freestyle, Karate, Striker, Kickboxer) remain descriptive; they are not inferred skill scores or automatically translated into pressure/counter/grappling traits. No current stance is asserted.
+| Fighter (revision) | Revision ID | Height / reach / listed weight | Stance | Background | Division history |
+| --- | --- | --- | --- | --- | --- |
+| [Max Holloway](https://en.wikipedia.org/w/index.php?title=Max_Holloway&oldid=1384078139) | 1384078139 | 71 in / 69 in / 170 lb | not stated | BJJ | Featherweight, Lightweight, Welterweight |
+| [Alexander Volkanovski](https://en.wikipedia.org/w/index.php?title=Alexander_Volkanovski&oldid=1384732303) | 1384732303 | 66 in / 71.5 in / 145 lb | Orthodox | none stated | Featherweight, Lightweight, Welterweight |
+| [Israel Adesanya](https://en.wikipedia.org/w/index.php?title=Israel_Adesanya&oldid=1385933236) | 1385933236 | 76 in / 80 in / 185 lb | Switch | Kickboxing | Middleweight, Light Heavyweight |
+| [Valentina Shevchenko](https://en.wikipedia.org/w/index.php?title=Valentina_Shevchenko&oldid=1386092351) | 1386092351 | 65 in / 66.5 in / 125 lb | Southpaw | Muay Thai, Taekwondo, Judo | Bantamweight, Flyweight |
+| [Zhang Weili](https://en.wikipedia.org/w/index.php?title=Zhang_Weili&oldid=1384948982) | 1384948982 | 64 in / 63 in / 125 lb | Switch | BJJ | Strawweight, Flyweight |
+| [Joanna Jędrzejczyk](https://en.wikipedia.org/w/index.php?title=Joanna_Jędrzejczyk&oldid=1383746405) | 1383746405 | 66 in / 65.5 in / 115 lb | not stated | Muay Thai, Kickboxing, BJJ | Strawweight, Flyweight |
+| [Georges St-Pierre](https://en.wikipedia.org/w/index.php?title=Georges_St-Pierre&oldid=1385755393) | 1385755393 | 70 in / 76 in / 170 lb | not stated | none stated | Welterweight, Middleweight |
+| [Tom Aspinall](https://en.wikipedia.org/w/index.php?title=Tom_Aspinall&oldid=1385977885) | 1385977885 | 77 in / 78 in / 255 lb | Orthodox | none stated | Heavyweight |
+| [Alex Pereira](https://en.wikipedia.org/w/index.php?title=Alex_Pereira&oldid=1385109552) | 1385109552 | 76 in / 79 in / 251 lb | Orthodox | Kickboxing, BJJ | Middleweight, Light Heavyweight, Heavyweight |
+| [Demetrious Johnson](https://en.wikipedia.org/w/index.php?title=Demetrious_Johnson&oldid=1380867659) | 1380867659 | 63 in / 66 in / 135 lb | Orthodox | BJJ | Flyweight, Bantamweight |
+| [Amanda Nunes](https://en.wikipedia.org/w/index.php?title=Amanda_Nunes&oldid=1385828415) | 1385828415 | 68 in / 69 in / 135 lb | Orthodox | BJJ, Judo | Bantamweight, Featherweight |
 
-Additional history sources: [Holloway career article](https://www.ufc.com/news/max-holloway-career-highlights-ufc-308-topuria-vs-holloway-abu-dhabi), [UFC 284](https://www.ufc.com/news/significant-stats-ufc-284-makhachev-vs-volkanovski), [UFC 259](https://www.ufc.com/event/ufc-259), [2026 featherweight context](https://www.ufc.com/news/where-we-stand-ufc-featherweight-division), and [St-Pierre retirement announcement, 2019-02-21](https://www.ufc.com/news/ufc-and-canadian-icon-georges-st-pierre-retires). The retirement article supports his historical 26 career wins; this is not a live record. [Pre-UFC 275 statistics](https://www.ufc.com/news/significant-stats-ufc-275-teixeira-prochazka) supports Jedrzejczyk's historical 6.62 significant strikes landed/minute, labeled with the 2022-06-11 event context. Neither statistic affects similarity.
+Notes recorded with the affected records: Max Holloway's 170 lb listed weight is the infobox value at this revision, which also lists a 2026 Welterweight entry; Demetrious Johnson's Bantamweight entry covers 135 lb bouts in ONE Championship, which names that class Flyweight; women's Featherweight (Amanda Nunes) is inactive in the current UFC reference model.
 
-Conflicting bout-table/narrative results on Adesanya, Pereira and Zhang excerpts are deliberately omitted. Pereira and Zhang have profile-listed division versus ranking-list differences; both the current-profile context and documented history remain visible, with no assertion that one division covers an entire career. Zhang's exact transition date is omitted because excerpts disagree. Nunes's current source-listed activity is not replaced by remembered 2023 retirement history. The current [UFC division reference](https://www.ufc.com/news/understanding-ufc-weight-classes-and-weigh-ins) and [rankings](https://www.ufc.com/rankings) support active women's 115/125/135 and historical inactive 145; title/non-title/everyday/listed/target weights are separate contexts.
+A local database seeded before this change keeps the old records until a fighter data refresh. The refresh accepts this one provider change (`reviewed-local` to `wikimedia-reviewed`) for the same fighter IDs and archives the old payloads; any other provider change is still rejected.
 
 `LicensedFileFighterProvider` accepts an operator-supplied JSON export only with matching source license references; it does not establish the legal sufficiency of those references, fetch third-party URLs or include a commercial agreement. Live provider access and commercial redistribution remain unverified. Local refresh reimports this fixed reviewed bundle; it does not claim fresh external verification. Existing invalid/legacy provenance is surfaced and excluded pending explicit refresh. Refresh is atomic, rejects newer-date replacement/provider collisions, archives old/new content hashes and leaves favorites and athlete data intact.
 
@@ -99,7 +94,7 @@ The exact four/three-day caps, self-reported stage cutoffs, fatigue thresholds, 
 
 ## Phase 8 fighter supplement and permissions
 
-[Six-record attribution/license notice](FIGHTER_SUPPLEMENT_LICENSE.md), [exact JSON records](../backend/app/data/fighters_wikimedia.json) and quality report (`evidence/phase8/data-quality.json`). Reviewed 2026-10-31. [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content) allows reuse subject to source license/attribution/share-alike obligations; the six adapted records carry CC BY-SA 4.0 and source/history links. Wikidata's CC0 policy was also reviewed but **does not license these Wikipedia-derived records as CC0**.
+[Attribution/license notice](FIGHTER_SUPPLEMENT_LICENSE.md) (now covering all 19 records), [exact JSON records](../backend/app/data/fighters_wikimedia.json) and quality report (`evidence/phase8/data-quality.json`). Reviewed 2026-10-31. [Wikimedia Terms of Use](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content) allows reuse subject to source license/attribution/share-alike obligations; the six adapted records carry CC BY-SA 4.0 and source/history links. Wikidata's CC0 policy was also reviewed but **does not license these Wikipedia-derived records as CC0**.
 
 | Fighter | Source | Original listed height / reach / weight | Included UFC history |
 | --- | --- | --- | --- |
@@ -112,7 +107,7 @@ The exact four/three-day caps, self-reported stage cutoffs, fatigue thresholds, 
 
 All six current career/division/record fields remain unknown; only explicitly supported backgrounds and two stances were included. Source imperial/metric rounding differences are disclosed. These are observed secondary-source facts, not independent official measurement verification. No biographies, images or statistics were fabricated.
 
-The [UFC terms](https://www.ufc.com/news/terms-use) indexed text prohibits automated extraction; direct requests returned 403. No bypass, UFC/UFCStats scraper or assumed sublicensing from an unrelated dataset was used. Original 11 rights remain unestablished, distinct from the licensed six-record supplement. Licensed external files need operator verification of actual access/redistribution terms; a license-reference string alone is not proof.
+No UFC or UFCStats scraper, and no data assumed sublicensed from an unrelated dataset, was used. Licensed external files need operator verification of actual access/redistribution terms; a license-reference string alone is not proof.
 
 
 ## Phase 12 safety source audit

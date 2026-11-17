@@ -78,7 +78,9 @@ test("comparison controls, manual selection, provenance, favorites and refresh",
     page.getByRole("heading", { name: /heuristic resemblance.*coverage/ }),
   ).toBeVisible();
   await expect(
-    page.getByText("Current profile division: Heavyweight", { exact: true }),
+    page.getByText("Current profile division: Not established", {
+      exact: true,
+    }),
   ).toBeVisible();
   await page
     .getByText("Sources, division history and data quality", { exact: true })
@@ -87,7 +89,9 @@ test("comparison controls, manual selection, provenance, favorites and refresh",
     page.getByRole("table", { name: "Field-level source references" }),
   ).toBeVisible();
   await expect(
-    page.getByText(/direct profile access returned 403/),
+    page.getByText(
+      /Secondary-source snapshot, not independent official verification/,
+    ),
   ).toBeVisible();
   await page
     .getByRole("button", { name: "Save selected comparison", exact: true })

@@ -10,12 +10,6 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-STUB = '''"""Original unresolved-rights fighter records excluded from this staging artifact."""
-
-
-def reviewed_records():
-    return []
-'''
 
 
 def build_context(destination):
@@ -39,8 +33,6 @@ def build_context(destination):
         "docs/FIGHTER_SUPPLEMENT_LICENSE.md",
     }
     for name in paths:
-        if name == "backend/app/fighter_catalog.py":
-            continue
         if ".test." in name or "/__tests__/" in name:
             continue
         allowed = (
@@ -62,7 +54,6 @@ def build_context(destination):
         target = destination / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
-    (destination / "backend/app/fighter_catalog.py").write_text(STUB, encoding="utf-8")
     notices = destination / "third_party_notices"
     notices.mkdir()
     for font in ("dm-sans", "barlow-condensed"):
@@ -101,10 +92,9 @@ def build_context(destination):
             subprocess.check_output(["git", "status", "--porcelain"], cwd=ROOT, text=True).strip()
         ),
         "files": included,
-        "original_fighter_records_excluded": 11,
-        "supplement_records": 8,
+        "attributed_fighter_records": 19,
         "legal_approval": False,
-        "note": "Technical exclusion only; CC-BY-SA notices and independent distribution review remain required.",
+        "note": "All bundled fighter records are CC BY-SA 4.0 adaptations; the notice is included. Independent distribution review remains required.",
     }
 
 

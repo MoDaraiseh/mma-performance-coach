@@ -2,6 +2,1003 @@
   {
     "schema_version": 2,
     "provider_id": "wikimedia-reviewed",
+    "id": "holloway",
+    "name": "Max Holloway",
+    "competition_division": "Men",
+    "height_cm": 180.34,
+    "reach_cm": 175.26,
+    "listed_weight_kg": 77.1107,
+    "division_history": [
+      {
+        "name": "Featherweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Lightweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Welterweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "background": [
+      "BJJ"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Max_Holloway",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 71,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 69,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 170,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision.",
+      "Listed weight (170 lb) is the infobox value at this revision, which also lists a 2026 Welterweight entry."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Max_Holloway",
+      "wikipedia-en-revision": "1384078139"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "volkanovski",
+    "name": "Alexander Volkanovski",
+    "competition_division": "Men",
+    "height_cm": 167.64,
+    "reach_cm": 181.61,
+    "listed_weight_kg": 65.7709,
+    "division_history": [
+      {
+        "name": "Featherweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Lightweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Welterweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Alexander_Volkanovski",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 66,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 71.5,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 145,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Alexander_Volkanovski",
+      "wikipedia-en-revision": "1384732303"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "adesanya",
+    "name": "Israel Adesanya",
+    "competition_division": "Men",
+    "height_cm": 193.04,
+    "reach_cm": 203.2,
+    "listed_weight_kg": 83.9146,
+    "division_history": [
+      {
+        "name": "Middleweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Light Heavyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Switch",
+    "background": [
+      "Kickboxing"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Israel_Adesanya",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 76,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 80,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 185,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Israel_Adesanya",
+      "wikipedia-en-revision": "1385933236"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "shevchenko",
+    "name": "Valentina Shevchenko",
+    "competition_division": "Women",
+    "height_cm": 165.1,
+    "reach_cm": 168.91,
+    "listed_weight_kg": 56.699,
+    "division_history": [
+      {
+        "name": "Bantamweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Flyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Southpaw",
+    "background": [
+      "Muay Thai",
+      "Taekwondo",
+      "Judo"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Valentina_Shevchenko",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 65,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 66.5,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 125,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Valentina_Shevchenko",
+      "wikipedia-en-revision": "1386092351"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "zhang",
+    "name": "Zhang Weili",
+    "competition_division": "Women",
+    "height_cm": 162.56,
+    "reach_cm": 160.02,
+    "listed_weight_kg": 56.699,
+    "division_history": [
+      {
+        "name": "Strawweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Flyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Switch",
+    "background": [
+      "BJJ"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Zhang_Weili",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 64,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 63,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 125,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Zhang_Weili",
+      "wikipedia-en-revision": "1384948982"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "jedrzejczyk",
+    "name": "Joanna Jędrzejczyk",
+    "competition_division": "Women",
+    "height_cm": 167.64,
+    "reach_cm": 166.37,
+    "listed_weight_kg": 52.1631,
+    "division_history": [
+      {
+        "name": "Strawweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Flyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "background": [
+      "Muay Thai",
+      "Kickboxing",
+      "BJJ"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Joanna_Jędrzejczyk",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 66,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 65.5,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 115,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Joanna_Jędrzejczyk",
+      "wikipedia-en-revision": "1383746405"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "st-pierre",
+    "name": "Georges St-Pierre",
+    "competition_division": "Men",
+    "height_cm": 177.8,
+    "reach_cm": 193.04,
+    "listed_weight_kg": 77.1107,
+    "division_history": [
+      {
+        "name": "Welterweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Middleweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "background": [],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Georges_St-Pierre",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 70,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 76,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 170,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Georges_St-Pierre",
+      "wikipedia-en-revision": "1385755393"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "aspinall",
+    "name": "Tom Aspinall",
+    "competition_division": "Men",
+    "height_cm": 195.58,
+    "reach_cm": 198.12,
+    "listed_weight_kg": 115.6661,
+    "division_history": [
+      {
+        "name": "Heavyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Tom_Aspinall",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 77,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 78,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 255,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Tom_Aspinall",
+      "wikipedia-en-revision": "1385977885"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "pereira",
+    "name": "Alex Pereira",
+    "competition_division": "Men",
+    "height_cm": 193.04,
+    "reach_cm": 200.66,
+    "listed_weight_kg": 113.8517,
+    "division_history": [
+      {
+        "name": "Middleweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Light Heavyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Heavyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [
+      "Kickboxing",
+      "BJJ"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Alex_Pereira",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 76,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 79,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 251,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Alex_Pereira",
+      "wikipedia-en-revision": "1385109552"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "johnson",
+    "name": "Demetrious Johnson",
+    "competition_division": "Men",
+    "height_cm": 160.02,
+    "reach_cm": 167.64,
+    "listed_weight_kg": 61.235,
+    "division_history": [
+      {
+        "name": "Flyweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Bantamweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [
+      "BJJ"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Demetrious_Johnson",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 63,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 66,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 135,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision.",
+      "The infobox's Bantamweight entry covers 135 lb bouts in ONE Championship, which names that class Flyweight."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Demetrious_Johnson",
+      "wikipedia-en-revision": "1380867659"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
+    "id": "nunes",
+    "name": "Amanda Nunes",
+    "competition_division": "Women",
+    "height_cm": 172.72,
+    "reach_cm": 175.26,
+    "listed_weight_kg": 61.235,
+    "division_history": [
+      {
+        "name": "Bantamweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      },
+      {
+        "name": "Featherweight",
+        "context": "MMA weight class listed in the Wikipedia infobox at the cited revision; may include bouts outside the UFC. Not an assertion of current division.",
+        "source_ids": [
+          "wikipedia-review"
+        ]
+      }
+    ],
+    "stance": "Orthodox",
+    "background": [
+      "BJJ",
+      "Judo"
+    ],
+    "verified_at": "2026-11-17",
+    "sources": [
+      {
+        "id": "wikipedia-review",
+        "url": "https://en.wikipedia.org/wiki/Amanda_Nunes",
+        "publisher": "Wikipedia contributors",
+        "observed_at": "2026-11-17",
+        "method": "direct_review",
+        "rights": "licensed",
+        "license_reference": "CC-BY-SA-4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Wikipedia contributors; linked article/history. Factual selection and unit normalization adapted for this application."
+      }
+    ],
+    "field_sources": {
+      "name": [
+        "wikipedia-review"
+      ],
+      "competition_division": [
+        "wikipedia-review"
+      ],
+      "height_cm": [
+        "wikipedia-review"
+      ],
+      "reach_cm": [
+        "wikipedia-review"
+      ],
+      "listed_weight_kg": [
+        "wikipedia-review"
+      ],
+      "background": [
+        "wikipedia-review"
+      ],
+      "stance": [
+        "wikipedia-review"
+      ]
+    },
+    "original_measurements": {
+      "height": {
+        "value": 68,
+        "unit": "in"
+      },
+      "reach": {
+        "value": 69,
+        "unit": "in"
+      },
+      "listed_weight": {
+        "value": 135,
+        "unit": "lb"
+      }
+    },
+    "issues": [
+      "Secondary-source snapshot, not independent official verification.",
+      "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
+      "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision.",
+      "Historical women's Featherweight is inactive in the current UFC reference model."
+    ],
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "external_ids": {
+      "wikipedia-en": "Amanda_Nunes",
+      "wikipedia-en-revision": "1385828415"
+    }
+  },
+  {
+    "schema_version": 2,
+    "provider_id": "wikimedia-reviewed",
     "id": "usman",
     "name": "Kamaru Usman",
     "competition_division": "Men",
@@ -78,7 +1075,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Kamaru_Usman"
     }
@@ -166,7 +1163,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Jon_Jones"
     }
@@ -253,7 +1250,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Henry_Cejudo"
     }
@@ -342,7 +1339,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Rose_Namajunas"
     }
@@ -425,7 +1422,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Ronda_Rousey"
     }
@@ -512,7 +1509,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Six-record attributed secondary-source supplement; CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Miesha_Tate"
     }
@@ -592,7 +1589,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Attributed secondary-source factual adaptation; CC BY-SA 4.0. Current status/division and live record unknown. No photos or biography.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Alexander_Volkov_(fighter)"
     }
@@ -676,7 +1673,7 @@
       "Current career status/division and live record deliberately unknown; listed weight is not a divisional limit.",
       "Source imperial and metric figures are rounded; canonical units are conversions, not additional measurement precision."
     ],
-    "note": "Attributed secondary-source factual adaptation; CC BY-SA 4.0. Current status/division and live record unknown. No photos or biography.",
+    "note": "Attributed secondary-source record (Wikipedia); CC BY-SA 4.0 applies to these adapted records. No images or biographies.",
     "external_ids": {
       "wikipedia-en": "Antonina_Shevchenko"
     }

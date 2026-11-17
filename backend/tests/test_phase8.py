@@ -44,7 +44,7 @@ def test_actual_coverage_licenses_and_no_current_status_inference():
         "Bantamweight",
     }
     new = [r for r in rows if r["provider_id"] == "wikimedia-reviewed"]
-    assert len(new) == 8
+    assert len(new) == 19
     assert all(r["current_division"] is None and r["career_status"] == "Unknown" for r in new)
     assert all(
         s["license_reference"] == "CC-BY-SA-4.0" and s["attribution"]

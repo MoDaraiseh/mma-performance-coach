@@ -7,6 +7,8 @@
 - Rewrote the README for new readers and moved the phase-by-phase notes to [docs/history/](docs/history/README.md).
 - README: screenshots, a short feature summary (the full list moved to the user guide), and equal macOS/Linux and Windows quickstarts with a new `run-local.sh`.
 - Moved the phase, delivery and review reports from `docs/` into [docs/history/](docs/history/README.md); `docs/` now holds only the reader-facing guides. Report contents are unchanged apart from link paths.
+- Fighter data: the 11 records taken from official ufc.com profiles are replaced by records adapted from Wikipedia (CC BY-SA 4.0), handled like the existing eight. Each cites the article revision it came from. Height, reach, listed weight, stance and background follow that revision's infobox; current division and career status are unknown for all 19 records. A local database seeded earlier keeps the old records until a fighter data refresh, which accepts this one provider change. See [sources](docs/SOURCES.md#fighter-records-from-wikipedia-2026-11-17).
+- Fighter comparison: a record without a division summary now shows its division history instead of "Unknown". The comparison option "Documented UFC division history" is now "Documented division history", because the Wikipedia infobox weight classes can include bouts outside the UFC.
 
 ## 1.0.0-rc.17 — 2026-11-01
 

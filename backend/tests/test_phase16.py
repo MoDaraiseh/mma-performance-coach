@@ -1,3 +1,4 @@
+from copy import deepcopy
 from types import SimpleNamespace
 
 import pytest
@@ -38,9 +39,17 @@ def test_release_policy_preserves_accounts_and_blocks_unlicensed_seed(client):
     with Session.begin() as db:
         before = db.scalar(select(User))
         original = before.token_hash
+        assert inspect_release(db, policy())["fighter_records_blocking_distribution"] == 0
+        # every bundled record is licensed; a record without established rights blocks release
+        row = db.scalar(select(FighterSnapshot).order_by(FighterSnapshot.id))
+        payload = deepcopy(row.payload)
+        for source in payload["sources"]:
+            source.update(rights="not_established", license_reference=None, license_url=None)
+        row.payload = payload
+        db.flush()
         result = inspect_release(db, policy())
         assert result["unlinked_accounts"] == 1
-        assert result["fighter_records_blocking_distribution"] == 11
+        assert result["fighter_records_blocking_distribution"] == 1
         with pytest.raises(RuntimeError):
             require_release(db, policy())
         assert before.token_hash == original
@@ -90,6 +99,6 @@ def test_licensed_only_dataset_passes_policy_without_changing_records(client):
             if any(s["rights"] != "licensed" for s in row.payload["sources"]):
                 db.execute(delete(FighterSnapshot).where(FighterSnapshot.id == row.id))
         result = inspect_release(db, policy())
-        assert result["fighter_records"] == 8
+        assert result["fighter_records"] == 19
         assert result["ready"]
         require_release(db, policy())

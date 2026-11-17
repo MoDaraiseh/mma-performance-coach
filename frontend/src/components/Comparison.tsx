@@ -323,7 +323,7 @@ export default function Comparison({
                   })
                 }
               >
-                <option value="history">Documented UFC division history</option>
+                <option value="history">Documented division history</option>
                 <option value="current">Profile-listed current division</option>
               </select>
             </label>

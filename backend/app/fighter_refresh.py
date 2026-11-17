@@ -6,6 +6,11 @@ from sqlalchemy import select
 from .db import FighterDataRevision, FighterSnapshot, ReferenceSnapshot, Session
 from .divisions import DivisionReference, bundled_reference
 
+# A retired bundled provider and the provider that replaced its records under the
+# same fighter IDs: the 11 official-profile records (`reviewed-local`) became
+# Wikipedia-sourced records on 2026-11-17. Every other provider change is rejected.
+RETIRED_PROVIDERS = {"reviewed-local": "wikimedia-reviewed"}
+
 
 def fingerprint(entity, payload):
     return hashlib.sha256(
@@ -44,7 +49,10 @@ def refresh(provider, refresh_reference=False):
             if old:
                 if old.verified_at > f["verified_at"]:
                     raise ValueError("Refresh would replace a newer observation")
-                if old.payload.get("provider_id", "reviewed-local") != f["provider_id"]:
+                old_provider = old.payload.get("provider_id", "reviewed-local")
+                if old_provider != f["provider_id"] and not (
+                    RETIRED_PROVIDERS.get(old_provider) == f["provider_id"]
+                ):
                     raise ValueError("Provider identity collision; use distinct fighter IDs")
                 archive("fighter:" + f["id"], old.payload)
                 if old.payload != f:

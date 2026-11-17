@@ -50,7 +50,7 @@ def main():
             for k in next(iter(foods.values()))["per_100g"]
         },
         "exercise_count": len(exercises),
-        "licensing_limit": "Original 11 fighter source snapshots have unestablished redistribution rights; eight attributed CC BY-SA adaptations. Foods USDA SR Legacy April 2018; editorial allergen metadata is not certification.",
+        "licensing_limit": "All 19 fighter records are attributed CC BY-SA 4.0 adaptations of Wikipedia articles. Foods USDA SR Legacy April 2018; editorial allergen metadata is not certification.",
     }
     runtime = {
         "platform": platform.platform(),

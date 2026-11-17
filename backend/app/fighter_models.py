@@ -103,6 +103,9 @@ class FighterRecord(StrictModel):
 
     @model_validator(mode="after")
     def provenance(self):
+        if self.division == "Unknown" and self.division_history:
+            # Display summary for records that don't set one (e.g. the Wikipedia records).
+            self.division = " / ".join(d.name for d in self.division_history)
         ids = {s.id for s in self.sources}
         if len(ids) != len(self.sources):
             raise ValueError("Source IDs must be unique")

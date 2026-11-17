@@ -68,7 +68,8 @@ def test_identical_physical_match_and_missing_renormalization():
     assert ranking["matches"][0]["fighter"]["id"] == f["id"]
     p.wingspan_cm = None
     result = FighterMatchingService().rank(p, MatchWeights())
-    assert result["matches"][0]["breakdown"]["physical"] == 100
+    same = next(m for m in result["matches"] if m["fighter"]["id"] == f["id"])
+    assert same["breakdown"]["physical"] == 100  # height alone, renormalized
     assert "stance" in result["matches"][0]["excluded"]
     assert sum(result["weights"].values()) == 100
     assert result == FighterMatchingService().rank(p, MatchWeights())
@@ -85,7 +86,7 @@ def test_weights_missing_style_and_empty_data():
         == 3
     )
     for f in SeededFighterProvider().all():
-        assert f["source"].startswith(("https://www.ufc.com/", "https://en.wikipedia.org/wiki/"))
+        assert f["source"].startswith("https://en.wikipedia.org/wiki/")
         assert f["verified_at"]
         assert f["record"] is None
 

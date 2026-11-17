@@ -32,8 +32,8 @@ def test_expanded_catalogs_have_source_coverage_and_resolvable_alternatives():
     records = SeededFighterProvider().all()
     report = quality(records)
     assert report["validated_count"] == 19
-    assert report["unestablished_rights"] == 11
-    assert report["providers"]["wikimedia-reviewed"] == 8
+    assert report["unestablished_rights"] == 0
+    assert report["providers"] == {"wikimedia-reviewed": 19}
     for key in ("volkov", "antonina-shevchenko"):
         r = next(r for r in records if r["id"] == key)
         assert r["current_division"] is None and r["record"] is None
@@ -179,8 +179,8 @@ def test_new_fat_food_requires_owned_approval_and_allergy_invalidates_preview(cl
 def test_bundled_duplicate_identity_is_rejected_before_seeding(monkeypatch):
     from app import fighters
 
-    original = fighters.reviewed_records()
-    monkeypatch.setattr(fighters, "reviewed_records", lambda: [*original, original[0]])
+    original = fighters.bundled_records()
+    monkeypatch.setattr(fighters, "bundled_records", lambda: [*original, original[0]])
     with pytest.raises(ValueError, match="Duplicate bundled"):
         SeededFighterProvider().all()
 

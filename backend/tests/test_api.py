@@ -685,6 +685,50 @@ def test_phase4_concurrent_refresh_and_older_snapshot_rejection(client):
     assert client.get("/api/fighters").json() == before
 
 
+def test_refresh_replaces_retired_official_profile_records(client):
+    """A database seeded before 2026-11-17 holds the official-profile records
+    (`reviewed-local`); a refresh moves them to the Wikipedia records under the
+    same IDs. No other provider change is allowed, including the way back."""
+    from copy import deepcopy
+
+    from app.db import FighterSnapshot, Session
+    from app.fighter_refresh import refresh
+    from app.fighters import SeededFighterProvider
+
+    account(client)
+    records = SeededFighterProvider().all()
+    with Session.begin() as db:
+        row = db.get(FighterSnapshot, "holloway")
+        old = deepcopy(row.payload)
+        old.update(provider_id="reviewed-local", verified_at="2026-10-31", note="old snapshot")
+        for source in old["sources"]:
+            source["observed_at"] = "2026-10-31"
+        row.payload, row.verified_at = old, "2026-10-31"
+    assert refresh(SeededFighterProvider())["changed"] == 1
+    with Session() as db:
+        assert db.get(FighterSnapshot, "holloway").payload["provider_id"] == "wikimedia-reviewed"
+
+    class Back:
+        def all(self):
+            result = deepcopy(records)
+            result[0]["provider_id"] = "reviewed-local"
+            return result
+
+    with pytest.raises(ValueError, match="collision"):
+        refresh(Back())
+
+
+def test_division_summary_comes_from_history_when_not_set(client):
+    from app.fighters import SeededFighterProvider
+
+    usman = next(r for r in SeededFighterProvider().all() if r["id"] == "usman")
+    assert usman["current_division"] is None
+    assert usman["division"] == "Welterweight"  # was the default "Unknown"
+    account(client)
+    found = client.get("/api/fighters/search", params={"q": "Usman"}).json()["items"]
+    assert [f["division"] for f in found] == ["Welterweight"]
+
+
 def test_phase5_nutrition_preview_approval_rejection_and_input_preservation(client):
     account(client)
     client.post("/api/demo")

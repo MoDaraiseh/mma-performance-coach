@@ -85,7 +85,7 @@ test("women historical records retain unknown current status and distinguish lis
   const data = await (
     await page.request.get("/api/fighters/search?category=Women&status=Unknown")
   ).json();
-  expect(data.total).toBe(4);
+  expect(data.total).toBe(8); // every bundled woman's current status is unknown
   expect(
     data.items.find((f: { id: string }) => f.id === "rousey"),
   ).toMatchObject({ current_division: null, career_status: "Unknown" });

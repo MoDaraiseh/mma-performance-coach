@@ -5,8 +5,11 @@ from datetime import date
 from pathlib import Path
 from typing import Protocol
 
-from .fighter_catalog import reviewed_records
 from .fighter_models import FighterRecord
+
+# Provider IDs of the bundled data. `reviewed-local` (official-profile excerpts,
+# 2026-10-31) was retired on 2026-11-17 in favor of `wikimedia-reviewed`.
+BUNDLED_PROVIDERS = {"reviewed-local", "wikimedia-reviewed"}
 
 
 class FighterDataProvider(Protocol):
@@ -91,18 +94,23 @@ class DatabaseFighterProvider:
                     self.issues.append(
                         {
                             "id": row.id,
-                            "reason": "Invalid or legacy provenance; reviewed-local refresh required.",
+                            "reason": "Invalid or legacy provenance; fighter data refresh required.",
                         }
                     )
         return result
 
 
+def bundled_records():
+    """The reviewed fighter records shipped with the app (Wikipedia, CC BY-SA 4.0)."""
+
+    return json.loads(
+        (Path(__file__).parent / "data" / "fighters_wikimedia.json").read_text(encoding="utf-8")
+    )
+
+
 class SeededFighterProvider:
     def all(self):
-        supplement = json.loads(
-            (Path(__file__).parent / "data" / "fighters_wikimedia.json").read_text(encoding="utf-8")
-        )
-        records = [validated(r) for r in [*reviewed_records(), *supplement]]
+        records = [validated(r) for r in bundled_records()]
         identities = {
             (" ".join(r["name"].casefold().split()), r["competition_division"]) for r in records
         }
@@ -133,7 +141,7 @@ class LicensedFileFighterProvider:
         if len({r["id"] for r in records}) != len(records):
             raise ValueError("Duplicate fighter IDs")
         for r in records:
-            if r["provider_id"] == "reviewed-local" or any(
+            if r["provider_id"] in BUNDLED_PROVIDERS or any(
                 s["rights"] != "licensed" or s["license_reference"] != self.license_reference
                 for s in r["sources"]
             ):

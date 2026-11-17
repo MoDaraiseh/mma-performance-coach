@@ -168,12 +168,9 @@ def test_catalog_field_provenance_and_observed_dates():
     for record in records:
         assert validated(record) == record
         assert record["record"] is None
-        if record["provider_id"] == "reviewed-local":
-            assert record["stance"] is None
+        assert record["provider_id"] == "wikimedia-reviewed"
         assert record["style_traits"] == []
-        assert all(
-            s["method"] in {"indexed_official_excerpt", "direct_review"} for s in record["sources"]
-        )
+        assert all(s["method"] == "direct_review" for s in record["sources"])
     f = fighter()
     f["field_sources"].pop("height_cm")
     with pytest.raises(ValidationError, match="provenance"):

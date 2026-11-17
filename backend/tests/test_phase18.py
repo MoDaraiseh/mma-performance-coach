@@ -20,16 +20,17 @@ def staging_folder():
         yield Path(folder)
 
 
-def test_staging_context_excludes_originals_and_private_runtime(staging_folder):
-    source = ROOT / "backend/app/fighter_catalog.py"
+def test_staging_context_has_licensed_records_and_excludes_private_runtime(staging_folder):
+    source = ROOT / "backend/app/data/fighters_wikimedia.json"
     before = hashlib.sha256(source.read_bytes()).hexdigest()
     result = build_context(staging_folder / "context")
     files = result["files"]
-    assert result["original_fighter_records_excluded"] == 11
+    assert result["attributed_fighter_records"] == 19
     assert not any(".test." in p or "/tests/" in p or p.endswith(".db") for p in files)
     assert not any(p.startswith((".env", ".git/", "docs/evidence/")) for p in files)
-    assert "return []" in (staging_folder / "context/backend/app/fighter_catalog.py").read_text()
+    assert files["backend/app/data/fighters_wikimedia.json"] == before
     assert "docs/FIGHTER_SUPPLEMENT_LICENSE.md" in files
+    assert "third_party_notices/FIGHTER_SUPPLEMENT_LICENSE.md" in files
     assert "third_party_notices/dm-sans.txt" in files
     assert "COPY third_party_notices/" in (staging_folder / "context/deploy/Dockerfile").read_text()
     assert hashlib.sha256(source.read_bytes()).hexdigest() == before
@@ -86,7 +87,7 @@ with TestClient(app) as c:
     recovery = c.post('/api/auth/register').json()['recovery_token']
     assert c.post('/api/demo').status_code == 200
     fighters = c.get('/api/fighters/search').json()
-    assert fighters['total'] == 8
+    assert fighters['total'] == 19
     assert all(s['rights'] == 'licensed' for f in fighters['items'] for s in f['sources'])
     assert c.post('/api/fighter-matches', json={}).status_code == 200
     assert c.get('/api/training-plans').json()['id']

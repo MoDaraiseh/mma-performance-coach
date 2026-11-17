@@ -47,13 +47,13 @@ test("complete athlete journey through onboarding, logging, reassessment, approv
   await navigate(page, "Physical analysis");
   await expect(page.locator(".division-big")).toHaveText("Middleweight");
   await navigate(page, "Comparison lab");
-  await expect(
-    page.getByRole("button", { name: "Save Max Holloway comparison" }),
-  ).toBeVisible();
+  // the top-ranked fighter's save button (which fighter depends on the data)
+  const saveTopMatch = page
+    .getByRole("button", { name: /^Save (?!selected ).+ comparison$/ })
+    .first();
+  await expect(saveTopMatch).toBeVisible();
   await page.getByLabel("Physical attributes", { exact: true }).fill("80");
-  await page
-    .getByRole("button", { name: "Save Max Holloway comparison" })
-    .click();
+  await saveTopMatch.click();
   await expect(
     page.getByRole("button", { name: "Load weights" }),
   ).toBeVisible();
